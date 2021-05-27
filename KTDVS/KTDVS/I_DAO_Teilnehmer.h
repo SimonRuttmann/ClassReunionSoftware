@@ -9,24 +9,25 @@
 #define EA_43508566_3A5A_4c77_AEFA_69198D629CC9__INCLUDED_
 
 #include "Teilnehmer.h"
+#include <string>
+#include <list>
+using namespace std;
 
+
+//Schnittstelle von Teilnehmer-Zugriffsobjekten
 class I_DAO_Teilnehmer
 {
 
 public:
-	I_DAO_Teilnehmer() {
+	I_DAO_Teilnehmer() {}
 
-	}
+	virtual ~I_DAO_Teilnehmer() {}
 
-	virtual ~I_DAO_Teilnehmer() {
-
-	}
-
-	virtual boolean insert(Teilnehmer teilnehmer) =0;
-	virtual boolean update(Teilnehmer* teilnehmer) =0;
-	virtual boolean search(Teilnehmer teilnehmer) =0;
-	virtual boolean remove(int id) =0;
-	virtual boolean select(String name, list<Teilnehmer*> ps) =0;
+    virtual bool insert(Teilnehmer& teilnehmer) =0;
+    virtual bool update(const Teilnehmer& teilnehmer) =0;
+    virtual bool search(Teilnehmer& teilnehmer) =0;
+    virtual bool remove(int teilnehmerkey) =0;
+    virtual bool select(string name, list<Teilnehmer*>& teilnehmerListe) =0;
 
 };
 #endif // !defined(EA_43508566_3A5A_4c77_AEFA_69198D629CC9__INCLUDED_)

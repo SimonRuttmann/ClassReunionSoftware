@@ -8,22 +8,24 @@
 #if !defined(EA_248FD9DE_F6FD_420a_A509_B1B330F62379__INCLUDED_)
 #define EA_248FD9DE_F6FD_420a_A509_B1B330F62379__INCLUDED_
 
+#include <list>
+#include <string>
+#include "Teilnehmerdaten.h"
+using namespace std;
+
+//Schnittstelle von Teilnehmerdaten-Zugriffsobjekten
 class I_DAO_Teilnehmerdaten
 {
 
 public:
-	I_DAO_Teilnehmerdaten() {
+	I_DAO_Teilnehmerdaten() {}
 
-	}
+	virtual ~I_DAO_Teilnehmerdaten() {}
 
-	virtual ~I_DAO_Teilnehmerdaten() {
-
-	}
-
-	virtual boolean insert(Teilnehmerdaten teilnehmerdaten) =0;
-	virtual boolean update(Teilnehmerdaten teilnehmerdaten) =0;
-	virtual boolean search(Teilnehmerdaten teilnehmerdaten) =0;
-	virtual boolean select(String name, list<Teilnehmerdaten*> ps) =0;
+    virtual bool insert(Teilnehmerdaten& teilnehmerdaten) =0;
+    virtual bool update(const Teilnehmerdaten& teilnehmerdaten) =0;
+    virtual bool search(Teilnehmerdaten& teilnehmerdaten) =0;
+    virtual bool select(string name, list<Teilnehmerdaten*>& teilnehmerdatenliste) =0;
 
 };
 #endif // !defined(EA_248FD9DE_F6FD_420a_A509_B1B330F62379__INCLUDED_)

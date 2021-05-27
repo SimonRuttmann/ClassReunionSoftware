@@ -1,5 +1,5 @@
 QT       += core gui
-
+QT       += sql
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -41,7 +41,9 @@ HEADERS += \
     View_Teilnehmerliste.h \
     View_TeilnehmerTeilnehmerHinzufügen.h \
     View_Versionsverlauf.h \
-    View_VersionsverlaufDetailiert.h
+    View_VersionsverlaufDetailiert.h \
+    I_DAO_Teilnehmer.h \
+    I_DAO_Teilnehmerdaten.h
 FORMS += \
     mainwindow.ui
 

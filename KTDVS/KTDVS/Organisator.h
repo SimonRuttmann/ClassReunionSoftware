@@ -9,6 +9,7 @@
 #define EA_A8887EED_CA40_4b20_839B_BC83AB8B67BD__INCLUDED_
 
 #include "Teilnehmer.h"
+#include <string>
 
 class Organisator : public Teilnehmer
 {
@@ -16,13 +17,13 @@ class Organisator : public Teilnehmer
 public:
 	Organisator();
 
-	Organisator(String passwort, String e-mail, boolean isHauptorganisator);
+    Organisator(string passwort, string eMail, bool isHauptorganisator);
 	~Organisator();
-	String Getpasswort();
-	void Setpasswort(String newVal);
+    string getPasswort();
+    void Setpasswort(string newVal);
 
 private:
-	String passwort;
+    string passwort;
 
 };
 #endif // !defined(EA_A8887EED_CA40_4b20_839B_BC83AB8B67BD__INCLUDED_)
