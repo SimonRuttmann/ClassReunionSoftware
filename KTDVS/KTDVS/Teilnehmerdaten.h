@@ -21,8 +21,10 @@ public:
 
 	Teilnehmerdaten(int teilnehmerdatenkey, int teilnehmerkey);
 	~Teilnehmerdaten();
+
 	int getTeilnehmerdatenkey();
         int getTeilnehmerkey();
+        void setTeilnehmerkey(int teilnehmerkey);
         string getPostleitzahl() const;
         string getNachname() const;
         void setNachname(string newVal);
@@ -31,13 +33,13 @@ public:
         string getEMail() const;
         void setEmail(string newVal);
         Adresse getAdresse()const;
-        void setAdresse(Adresse newVal);
+        void setAdresse(Adresse &newVal);
         string getVorname()const;
         void setVorname(string newVal);
         string getSchulname()const;
-        void setSchulname(int newVal);
+        void setSchulname(string newVal);
         Datum getDatum()const;
-        void setDatum(Datum newVal);
+        void setDatum(Datum &newVal);
 
         list<string>* getWeitereTelefonnummern();
         void setWeitereTelefonnummern(list<string>* newVal);
@@ -48,11 +50,11 @@ public:
 private:
 	int teilnehmerdatenkey;
         string Email;
-	Adresse adresse;
+        Adresse* adresse;
         string vorname;
         string nachname;
 	int schulname;
-	Datum datum;
+        Datum* datum;
         list<string>* weitere_telefonnummern;
         string haupttelefonnummer;
 	int teilnehmerKey;

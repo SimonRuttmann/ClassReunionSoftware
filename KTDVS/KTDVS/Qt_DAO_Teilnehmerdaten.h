@@ -23,6 +23,7 @@ private:
                 last_insert_id_query,
                 //insert_select_query;
                 remove_query,
+                remove_query_tel,
                 search_query,
                 select_query_all,
                 select_query_ofTeilnehmer,

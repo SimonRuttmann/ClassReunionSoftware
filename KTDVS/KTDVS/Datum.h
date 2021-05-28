@@ -10,7 +10,7 @@ public:
         datum.append(to_string(tag) + " ");
         datum.append(to_string(monat) + " ");
         datum.append(to_string(jahr) + " ");
-        datum.append(to_string(stunde) + "::");
+        datum.append(to_string(stunde) + " ");
         datum.append(to_string(min) + " ");
         datum.append(to_string(sekunde) + " ");
         return datum;
