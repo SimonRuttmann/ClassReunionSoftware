@@ -23,9 +23,9 @@ public:
 	virtual ~I_DAO_Teilnehmerdaten() {}
 
     virtual bool insert(Teilnehmerdaten& teilnehmerdaten)=0;
-    virtual bool search(Teilnehmerdaten& teilnehmerdaten)=0;
-    virtual bool remove(int teilnehmerkey)=0;
-    virtual bool selectFirstOfTeilnehmer(Teilnehmerdaten& teilnehmerdaten)=0;
+
+    //virtual bool remove(int teilnehmerkey)=0;
+    virtual bool selectFirstOfTeilnehmer(int teilnehmerkey, Teilnehmerdaten& teilnehmerdaten)=0;
     virtual bool selectAllOfTeilnehmer(int teilnehmerkey,  list<Teilnehmerdaten*>& teilnehmerdatenliste)=0;
     virtual bool selectAll(list<Teilnehmerdaten*>& teilnehmerdatenliste)=0;
 

@@ -25,6 +25,7 @@ private:
                 remove_query,
                 remove_query_tel,
                 search_query,
+                select_telefonNr_ofTeilnehmerdaten,
                 select_query_all,
                 select_query_ofTeilnehmer,
                 select_query_first;
@@ -33,9 +34,10 @@ public:
 	virtual ~Qt_DAO_Teilnehmerdaten();
 
     bool insert(Teilnehmerdaten& teilnehmerdaten);
-    bool search(Teilnehmerdaten& teilnehmerdaten);
-    bool remove(int teilnehmerkey);
-    bool selectFirstOfTeilnehmer(Teilnehmerdaten& teilnehmerdaten);
+
+    //Teilnehmerdaten werden nicht geloescht -> Wirkungslos
+   // bool remove(int teilnehmerkey);
+    bool selectFirstOfTeilnehmer(int teilnehmerkey, Teilnehmerdaten& teilnehmerdaten);
     bool selectAllOfTeilnehmer(int teilnehmerkey,  list<Teilnehmerdaten*>& teilnehmerdatenliste);
     bool selectAll(list<Teilnehmerdaten*>& teilnehmerdatenliste);
 };

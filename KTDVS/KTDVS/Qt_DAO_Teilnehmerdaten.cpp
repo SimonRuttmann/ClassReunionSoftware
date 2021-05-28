@@ -41,23 +41,35 @@ Qt_DAO_Teilnehmerdaten::Qt_DAO_Teilnehmerdaten(){
            "DELETE FROM Telefonnummer WHERE teilnehmerdatenkey = :teilnehmerdatenkey;"
           );
 
-    search_query.prepare
+    select_telefonNr_ofTeilnehmerdaten.prepare
          (
-          ""
+          "SELECT * FROM Telefonnummer WHERE teilnehmerdatenkey = :teilnehmerdatenkey;"
           );
 
-    select_query_all.prepare("");
+    select_query_all.prepare
+            (
+              "SELECT * FROM Teilnehmerdaten;"
+            );
     select_query_ofTeilnehmer.prepare
           (
            "SELECT FROM Teilnehmerdaten WHERE teilnehmerkey = :teilnehmerkey"
            );
-    select_query_first.prepare("");
+    select_query_first.prepare
+          (
+           "SELECT * FROM Teilnehmerdaten"
+           "WHERE teilnehmerkey = :teilnehmerkey AND teilnehmerdatenkey >= ALL "
+           "(SELECT teilnehmerdatenkey FROM Teilnehmerdaten WHERE teilnehmerkey = :teilnehmerkey);"
+           );
 
 }
 
 Qt_DAO_Teilnehmerdaten::~Qt_DAO_Teilnehmerdaten(){
 
 }
+
+
+//Teilnehmerdaten werden nicht geloescht -> Wirkungslos
+//bool Qt_DAO_Teilnehmerdaten::remove(int teilnehmerkey){return false;};
 
 bool Qt_DAO_Teilnehmerdaten::insert(Teilnehmerdaten& teilnehmerdaten){
     insert_query.bindValue(":teilnehmerkey", teilnehmerdaten.getTeilnehmerkey());
@@ -101,15 +113,90 @@ bool Qt_DAO_Teilnehmerdaten::insert(Teilnehmerdaten& teilnehmerdaten){
     return true;
 }
 
-bool Qt_DAO_Teilnehmerdaten::search(Teilnehmerdaten& teilnehmerdaten){};
 
 
-bool Qt_DAO_Teilnehmerdaten::remove(int teilnehmerkey){
-   // remove_query.bindValue(":teilnehmerdatenkey", teil)
+bool Qt_DAO_Teilnehmerdaten::selectFirstOfTeilnehmer(int teilnehmerkey, Teilnehmerdaten& teilnehmerdaten){
+    select_query_first.bindValue(":teilnehmerkey", teilnehmerkey);
+
+    if(select_query_first.exec())return false;
+
+    teilnehmerdaten.setTeilnehmerkey(teilnehmerkey);
+
+    int teilnehmerdatenkey = select_query_first.value(0).toInt();
+    teilnehmerdaten.setTeilnehmerdatenkey(teilnehmerdatenkey);
+
+    string vorname = select_query_first.value(2).toString().toStdString();
+    teilnehmerdaten.setVorname(vorname);
+
+    string nachname = select_query_first.value(3).toString().toStdString();
+    teilnehmerdaten.setNachname(nachname);
+
+    string schulname = select_query_first.value(4).toString().toStdString();
+    teilnehmerdaten.setSchulname(schulname);
+
+    string email = select_query_first.value(5).toString().toStdString();
+    teilnehmerdaten.setEmail(email);
+
+    string datumString = select_query_first.value(6).toString().toStdString();
+
+    char leer = ' ';
+    istringstream iss(datumString);
+    string item;
+
+    getline(iss,item, leer); string tag = item;
+    getline(iss,item, leer); string monat = item;
+    getline(iss,item, leer); string jahr = item;
+    getline(iss,item, leer); string stunde = item;
+    getline(iss,item, leer); string min = item;
+    getline(iss,item, leer); string sekunde = item;
+    Datum* datum = new Datum();
+    datum->tag = stoi(tag);
+    datum->monat = stoi(monat);
+    datum->jahr = stoi(jahr);
+    datum->stunde = stoi(stunde);
+    datum->min = stoi(min);
+    datum->sekunde = stoi(sekunde);
+
+    teilnehmerdaten.setDatum(*datum);
+
+    int postleitzahl = select_query_first.value(7).toInt();
+    Adresse* adresse = new Adresse();
+    adresse->postleitzahl = postleitzahl;
+
+    int hausnummer = select_query_first.value(8).toInt();
+    adresse->haussnummer = hausnummer;
+
+    string stadt = select_query_first.value(9).toString().toStdString();
+    adresse->stadt = stadt;
+
+    string strasse = select_query_first.value(10).toString().toStdString();
+    adresse->strasse = strasse;
+
+    string land = select_query_first.value(11).toString().toStdString();
+    adresse->land = land;
+    teilnehmerdaten.setAdresse(*adresse);
+
+    select_telefonNr_ofTeilnehmerdaten.bindValue(":teilnehmerdaten", teilnehmerdatenkey);
+
+    if(select_telefonNr_ofTeilnehmerdaten.exec()) return false;
+
+    list<string>* telefonnummerliste = new list<string>();
+
+    while(select_telefonNr_ofTeilnehmerdaten.next()){
+        bool hauptnummer = select_telefonNr_ofTeilnehmerdaten.value(2).toBool();
+        string nummer = select_telefonNr_ofTeilnehmerdaten.value(3).toString().toStdString();
+
+        if(!hauptnummer){
+            telefonnummerliste->push_front(nummer);
+        }
+        else{
+            teilnehmerdaten.setHaupttelefonnummer(nummer);
+        }
+    }
+
+    teilnehmerdaten.setWeitereTelefonnummern(telefonnummerliste);
+    return true;
 };
-
-
-bool Qt_DAO_Teilnehmerdaten::selectFirstOfTeilnehmer(Teilnehmerdaten& teilnehmerdaten){};
 
 //Leere Liste an Teilnehmerdaten wird übergeben
 bool Qt_DAO_Teilnehmerdaten::selectAllOfTeilnehmer(int teilnehmerkey,  list<Teilnehmerdaten*>& teilnehmerdatenliste){
@@ -123,19 +210,19 @@ bool Qt_DAO_Teilnehmerdaten::selectAllOfTeilnehmer(int teilnehmerkey,  list<Teil
         int teilnehmerdatenkey = select_query_ofTeilnehmer.value(0).toInt();
         teilnehmerdaten->setTeilnehmerdatenkey(teilnehmerdatenkey);
 
-        string vorname = select_query_ofTeilnehmer.value(1).toString().toStdString();
+        string vorname = select_query_ofTeilnehmer.value(2).toString().toStdString();
         teilnehmerdaten->setVorname(vorname);
 
-        string nachname = select_query_ofTeilnehmer.value(1).toString().toStdString();
+        string nachname = select_query_ofTeilnehmer.value(3).toString().toStdString();
         teilnehmerdaten->setNachname(nachname);
 
-        string schulname = select_query_ofTeilnehmer.value(2).toString().toStdString();
+        string schulname = select_query_ofTeilnehmer.value(4).toString().toStdString();
         teilnehmerdaten->setSchulname(schulname);
 
-        string email = select_query_ofTeilnehmer.value(3).toString().toStdString();
+        string email = select_query_ofTeilnehmer.value(5).toString().toStdString();
         teilnehmerdaten->setEmail(email);
 
-        string datumString = select_query_ofTeilnehmer.value(4).toString().toStdString();
+        string datumString = select_query_ofTeilnehmer.value(6).toString().toStdString();
 
         char leer = ' ';
         istringstream iss(datumString);
@@ -157,29 +244,137 @@ bool Qt_DAO_Teilnehmerdaten::selectAllOfTeilnehmer(int teilnehmerkey,  list<Teil
 
         teilnehmerdaten->setDatum(*datum);
 
-        int postleitzahl = select_query_ofTeilnehmer.value(5).toInt();
+        int postleitzahl = select_query_ofTeilnehmer.value(7).toInt();
         Adresse* adresse = new Adresse();
         adresse->postleitzahl = postleitzahl;
 
-        int hausnummer = select_query_ofTeilnehmer.value(6).toInt();
+        int hausnummer = select_query_ofTeilnehmer.value(8).toInt();
         adresse->haussnummer = hausnummer;
 
-        string stadt = select_query_ofTeilnehmer.value(7).toString().toStdString();
+        string stadt = select_query_ofTeilnehmer.value(9).toString().toStdString();
         adresse->stadt = stadt;
 
-        string strasse = select_query_ofTeilnehmer.value(8).toString().toStdString();
+        string strasse = select_query_ofTeilnehmer.value(10).toString().toStdString();
         adresse->strasse = strasse;
 
-        string land = select_query_ofTeilnehmer.value(9).toString().toStdString();
+        string land = select_query_ofTeilnehmer.value(11).toString().toStdString();
         adresse->land = land;
         teilnehmerdaten->setAdresse(*adresse);
 
+        select_telefonNr_ofTeilnehmerdaten.bindValue(":teilnehmerdaten", teilnehmerdatenkey);
+
+        if(select_telefonNr_ofTeilnehmerdaten.exec()) return false;
+
+        list<string>* telefonnummerliste = new list<string>();
+
+        while(select_telefonNr_ofTeilnehmerdaten.next()){
+            bool hauptnummer = select_telefonNr_ofTeilnehmerdaten.value(2).toBool();
+            string nummer = select_telefonNr_ofTeilnehmerdaten.value(3).toString().toStdString();
+
+            if(!hauptnummer){
+                telefonnummerliste->push_front(nummer);
+            }
+            else{
+                teilnehmerdaten->setHaupttelefonnummer(nummer);
+            }
+        }
+
+        teilnehmerdaten->setWeitereTelefonnummern(telefonnummerliste);
         teilnehmerdatenliste.push_front(teilnehmerdaten);
     }
     return true;
 };
 
+//Nicht verwenden, ist nur um zu testen was passieren kann!
+//Heftiger Select, ladet praktisch die gesammte Datenbank in den Hauptspeicher
+bool Qt_DAO_Teilnehmerdaten::selectAll(list<Teilnehmerdaten*>& teilnehmerdatenliste){
+    if(select_query_all.exec()) return false;
 
-bool Qt_DAO_Teilnehmerdaten::selectAll(list<Teilnehmerdaten*>& teilnehmerdatenliste){};
+    while(select_query_all.next()){
+        Teilnehmerdaten* teilnehmerdaten = new Teilnehmerdaten();
+
+
+        int teilnehmerdatenkey = select_query_all.value(0).toInt();
+        teilnehmerdaten->setTeilnehmerdatenkey(teilnehmerdatenkey);
+
+        int teilnehmerkey = select_query_all.value(1).toInt();
+        teilnehmerdaten->setTeilnehmerkey(teilnehmerkey);
+
+        string vorname = select_query_all.value(2).toString().toStdString();
+        teilnehmerdaten->setVorname(vorname);
+
+        string nachname = select_query_all.value(3).toString().toStdString();
+        teilnehmerdaten->setNachname(nachname);
+
+        string schulname = select_query_all.value(4).toString().toStdString();
+        teilnehmerdaten->setSchulname(schulname);
+
+        string email = select_query_all.value(5).toString().toStdString();
+        teilnehmerdaten->setEmail(email);
+
+        string datumString = select_query_all.value(6).toString().toStdString();
+
+        char leer = ' ';
+        istringstream iss(datumString);
+        string item;
+
+        getline(iss,item, leer); string tag = item;
+        getline(iss,item, leer); string monat = item;
+        getline(iss,item, leer); string jahr = item;
+        getline(iss,item, leer); string stunde = item;
+        getline(iss,item, leer); string min = item;
+        getline(iss,item, leer); string sekunde = item;
+        Datum* datum = new Datum();
+        datum->tag = stoi(tag);
+        datum->monat = stoi(monat);
+        datum->jahr = stoi(jahr);
+        datum->stunde = stoi(stunde);
+        datum->min = stoi(min);
+        datum->sekunde = stoi(sekunde);
+
+        teilnehmerdaten->setDatum(*datum);
+
+        int postleitzahl = select_query_all.value(7).toInt();
+        Adresse* adresse = new Adresse();
+        adresse->postleitzahl = postleitzahl;
+
+        int hausnummer = select_query_all.value(8).toInt();
+        adresse->haussnummer = hausnummer;
+
+        string stadt = select_query_all.value(9).toString().toStdString();
+        adresse->stadt = stadt;
+
+        string strasse = select_query_all.value(10).toString().toStdString();
+        adresse->strasse = strasse;
+
+        string land = select_query_all.value(11).toString().toStdString();
+        adresse->land = land;
+        teilnehmerdaten->setAdresse(*adresse);
+
+
+        select_telefonNr_ofTeilnehmerdaten.bindValue(":teilnehmerdaten", teilnehmerdatenkey);
+
+        if(select_telefonNr_ofTeilnehmerdaten.exec()) return false;
+
+        list<string>* telefonnummerliste = new list<string>();
+
+        while(select_telefonNr_ofTeilnehmerdaten.next()){
+            bool hauptnummer = select_telefonNr_ofTeilnehmerdaten.value(2).toBool();
+            string nummer = select_telefonNr_ofTeilnehmerdaten.value(3).toString().toStdString();
+
+            if(!hauptnummer){
+                telefonnummerliste->push_front(nummer);
+            }
+            else{
+                teilnehmerdaten->setHaupttelefonnummer(nummer);
+            }
+        }
+
+        teilnehmerdaten->setWeitereTelefonnummern(telefonnummerliste);
+        teilnehmerdatenliste.push_front(teilnehmerdaten);
+
+    }
+    return true;
+};
 
 
