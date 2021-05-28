@@ -8,47 +8,53 @@
 #if !defined(EA_B0DBE83D_D464_48b5_89B7_8DFF0896E9D3__INCLUDED_)
 #define EA_B0DBE83D_D464_48b5_89B7_8DFF0896E9D3__INCLUDED_
 
-#include "Qt_DAO_Teilnehmerdaten.h"
-
+//#include "Qt_DAO_Teilnehmerdaten.h"
+#include "Datum.h"
+#include "Adresse.h"
+#include <list>
 class Teilnehmerdaten
 {
 
 public:
 	Teilnehmerdaten();
-	Qt_DAO_Teilnehmerdaten *TeilnehmerdatenDao;
+        //Qt_DAO_Teilnehmerdaten *TeilnehmerdatenDao;
 
 	Teilnehmerdaten(int teilnehmerdatenkey, int teilnehmerkey);
 	~Teilnehmerdaten();
 	int getTeilnehmerdatenkey();
-	String Getnachname();
-	void Setnachname(String newVal);
-	int Getteilnehmerdatenkey();
-	void Setteilnehmerdatenkey(int newVal);
-	String Gete-mail();
-	void Sete-mail(String newVal);
-	Adresse Getadresse();
-	void Setadresse(Adresse newVal);
-	String Getvorname();
-	void Setvorname(String newVal);
-	int Getschulname();
-	void Setschulname(int newVal);
-	Datum Getdatum();
-	void Setdatum(Datum newVal);
-	String Getweitere_telefonnummern();
-	void Setweitere_telefonnummern(String newVal);
-	int Gethaupttelefonnummer();
-	void Sethaupttelefonnummer(int newVal);
+        int getTeilnehmerkey();
+        string getPostleitzahl() const;
+        string getNachname() const;
+        void setNachname(string newVal);
+        int getTeilnehmerdatenkey() const;
+        void setTeilnehmerdatenkey(int newVal);
+        string getEMail() const;
+        void setEmail(string newVal);
+        Adresse getAdresse()const;
+        void setAdresse(Adresse newVal);
+        string getVorname()const;
+        void setVorname(string newVal);
+        string getSchulname()const;
+        void setSchulname(int newVal);
+        Datum getDatum()const;
+        void setDatum(Datum newVal);
+
+        list<string>* getWeitereTelefonnummern();
+        void setWeitereTelefonnummern(list<string>* newVal);
+
+        string getHaupttelefonnummer()const;
+        void setHaupttelefonnummer(string newVal);
 
 private:
 	int teilnehmerdatenkey;
-	String e-mail;
+        string Email;
 	Adresse adresse;
-	String vorname;
-	String nachname;
+        string vorname;
+        string nachname;
 	int schulname;
 	Datum datum;
-	String weitere_telefonnummern;
-	String haupttelefonnummer;
+        list<string>* weitere_telefonnummern;
+        string haupttelefonnummer;
 	int teilnehmerKey;
 
 };

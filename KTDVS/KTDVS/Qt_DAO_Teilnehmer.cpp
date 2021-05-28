@@ -6,9 +6,6 @@
 ///////////////////////////////////////////////////////////
 
 #include "Qt_DAO_Teilnehmer.h"
-#include "Hauptorganisator.h"
-#include "Teilnehmer.h"
-#include "Organisator.h"
 #include <QVariant>
 
 /*
@@ -37,14 +34,14 @@ Qt_DAO_Teilnehmer::Qt_DAO_Teilnehmer(){
         ("SELECT last_rowid();");
 
 
-    insert_select_query.prepare
-        (
-        "SELECT teilnehmerkey FROM Teilnehmer "
-        "WHERE passwort = :passwort AND isHauptorganisator = :isHauptorganisator;"
-        );
+  //  insert_select_query.prepare
+   //     (
+   //     "SELECT teilnehmerkey FROM Teilnehmer "
+   //     "WHERE passwort = :passwort AND isHauptorganisator = :isHauptorganisator;"
+   //     );
 
     update_query.prepare(
-    "......"
+    "UPDATE Teilnehmer SET passwort = :passwort, isHauptorganisator = :isHauptorganisator WHERE teilnehmerkey = :teilnehmerkey;"
     );
 
     remove_query.prepare
@@ -54,12 +51,16 @@ Qt_DAO_Teilnehmer::Qt_DAO_Teilnehmer(){
 
     search_query.prepare
     (
-    "SELECT gname, name FROM Person "
-    "WHERE id = :id;"
+    "SELECT passwort, isHauptorganisator FROM teilnehmer "
+    "WHERE teilnehmerkey = :teilnehmerkey;"
     );
 
-    select_query.prepare(
-    "......"
+    select_query_ho.prepare(
+    "SELECT teilnehmerkey FROM teilnehmer WHERE isHauptorganisator = true;"
+    );
+
+    select_query_all.prepare(
+    "SELECT * FROM teilnehmer;"
     );
 }
 
@@ -73,6 +74,7 @@ bool Qt_DAO_Teilnehmer::insert(Teilnehmer& teilnehmer){
 QString passwort = "NULL";
 bool isHauptorganisator = false;
 
+/*
     //Hauptorganisator
     if (this->instanceof<Hauptorganisator>(&teilnehmer) ){
         isHauptorganisator = true;
@@ -88,7 +90,12 @@ bool isHauptorganisator = false;
         Organisator* organisator = (Organisator*)teilnehmerptr;
         passwort = QString::fromStdString(organisator->getPasswort());
 
+
     }
+
+    */
+    passwort = QString::fromStdString(teilnehmer.getPasswort());
+    isHauptorganisator = teilnehmer.isHauptorganisator();
 
     //Formale Parameter zuweisen
     insert_query.bindValue(":passwort", passwort);
@@ -104,32 +111,61 @@ bool isHauptorganisator = false;
     if(!last_insert_id_query.next()) return false;
 
     //Teilnehmerkey setzen
-    teilnehmer.Setteilnehmerkey(last_insert_id_query.value(0).toInt());
+    teilnehmer.setTeilnehmerkey(last_insert_id_query.value(0).toInt());
 
    return true;
 }
 
 
 bool Qt_DAO_Teilnehmer::update(const Teilnehmer& teilnehmer){
+    QString passwort = QString::fromStdString(teilnehmer.getPasswort());
 
-	return  NULL;
+    update_query.bindValue(":passwort", passwort);
+    update_query.bindValue(":isHauptorganisator",teilnehmer.isHauptorganisator());
+    update_query.bindValue(":teilenhmerkey", teilnehmer.getTeilnehmerkey());
+
+    return update_query.exec();
 }
 
 
 bool Qt_DAO_Teilnehmer::search(Teilnehmer& teilnehmer){
+    search_query.bindValue(":teilnehmerkey", teilnehmer.getTeilnehmerkey());
 
-	return  NULL;
+    if(!search_query.exec()) return false;
+    if(!search_query.next()) return false;
+
+    string passwort = search_query.value(0).toString().toStdString();
+    bool ho = search_query.value(1).toBool();
+
+    teilnehmer.setPasswort(passwort);
+    teilnehmer.setHauptorganisator(ho);
+    return true;
 }
 
 
 bool Qt_DAO_Teilnehmer::remove(int teilnehmerkey){
-
-	return  NULL;
+    remove_query.bindValue(":teilnehmerkey", teilnehmerkey);
+    return remove_query.exec();
 }
 
+bool Qt_DAO_Teilnehmer::selectHo(Teilnehmer &teilnehmer){
+    if(!select_query_ho.exec()) return false;
+    if(!select_query_ho.next()) return false;
+    teilnehmer.setHauptorganisator(true);
+    teilnehmer.setTeilnehmerkey(select_query_ho.value(0).toInt());
+    teilnehmer.setPasswort(select_query_ho.value(1).toString().toStdString());
+    return true;
+}
 
-bool Qt_DAO_Teilnehmer::select(string name, list<Teilnehmer*>& teilnehmerdatenliste){
+bool Qt_DAO_Teilnehmer::selectAll(list<Teilnehmer*>& teilnehmerliste){
+    if(!select_query_all.exec()) return false;
 
-	return  NULL;
+    while(select_query_all.next()){
+        int teilnehmerkey = select_query_all.value(0).toInt();
+        string passwort = select_query_all.value(1).toString().toStdString();
+        bool isHauptorganistor = select_query_all.value(2).toBool();
+        teilnehmerliste.push_front(new Teilnehmer(teilnehmerkey, passwort, isHauptorganistor));
+    }
+    return  true;
 }
 

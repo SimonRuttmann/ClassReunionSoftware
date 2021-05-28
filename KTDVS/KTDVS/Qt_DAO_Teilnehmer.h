@@ -8,7 +8,6 @@
 #if !defined(EA_1F693830_6283_4e37_B639_A49F2ADA0073__INCLUDED_)
 #define EA_1F693830_6283_4e37_B639_A49F2ADA0073__INCLUDED_
 
-#include "Teilnehmer.h"
 #include "I_DAO_Teilnehmer.h"
 #include <string>
 #include <list>
@@ -34,11 +33,12 @@ class Qt_DAO_Teilnehmer : public I_DAO_Teilnehmer
 private:
     QSqlQuery   insert_query,
                 last_insert_id_query,
-                insert_select_query,
+//                insert_select_query,
                 update_query,
                 remove_query,
                 search_query,
-                select_query;
+                select_query_all,
+                select_query_ho;
 public:
     template<typename Base, typename T>
     inline bool instanceof(const T*) { return is_base_of<Base, T>::value; }
@@ -50,8 +50,8 @@ public:
     bool update(const Teilnehmer& teilnehmer);
     bool search(Teilnehmer& teilnehmer);
     bool remove(int teilnehmerkey);
-    bool select(string name, list<Teilnehmer*>& teilnehmerliste);
-
+    bool selectAll(list<Teilnehmer*>& teilnehmerliste);
+    bool selectHo(Teilnehmer& teilnehmer);
 };
 
 

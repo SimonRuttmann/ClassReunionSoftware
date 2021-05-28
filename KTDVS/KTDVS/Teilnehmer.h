@@ -8,10 +8,13 @@
 #if !defined(EA_6737B85E_F4CB_4e88_B320_135147C75A2E__INCLUDED_)
 #define EA_6737B85E_F4CB_4e88_B320_135147C75A2E__INCLUDED_
 
-#include "Teilnehmerdaten.h"
-#include "Qt_DAO_Teilnehmer.h"
-#include "View_VersionsverlaufDetailiert.h"
-
+#include <list>
+#include <string>
+using namespace std;
+//#include "Qt_DAO_Teilnehmer.h"
+class View_VersionsverlaufDetailiert;
+class Qt_DAO_Teilnehmer;
+class Teilnehmerdaten;
 class Teilnehmer
 {
 
@@ -23,14 +26,20 @@ public:
 	Teilnehmer(Teilnehmerdaten teilnehmerdaten);
 	Teilnehmer();
 	~Teilnehmer();
-	Teilnehmerdaten*[1..*] getTeilnehmerdaten();
+    Teilnehmer(int teilnehmerkey, string passwort, bool isHauptorganisator);
+	Teilnehmerdaten* getTeilnehmerdaten();
 	Teilnehmerdaten teilnehmerdatenErstellen();
-	TeilnehmerdatenLöschen();
-	int Getteilnehmerkey();
-	void Setteilnehmerkey(int newVal);
-	boolean prüfePasswort(String passwort);
-
+    void TeilnehmerdatenLoeschen();
+    int getTeilnehmerkey()const;
+    void setTeilnehmerkey(int newVal);
+    bool pruefePasswort(string passwort);
+    void setPasswort(string pw);
+    string getPasswort()const;
+    void setHauptorganisator(bool ho);
+    bool isHauptorganisator()const;
 private:
+    bool isHauptorg;
+    string passwort;
 	int teilnehmerkey;
 
 };

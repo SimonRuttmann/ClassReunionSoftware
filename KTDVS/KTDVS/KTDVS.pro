@@ -27,6 +27,8 @@ SOURCES += \
     View_VersionsverlaufDetailiert.cpp
 
 HEADERS += \
+    Adresse.h \
+    Datum.h \
     mainwindow.h \
     Controller_Einloggen.h \
     Hauptorganisator.h \

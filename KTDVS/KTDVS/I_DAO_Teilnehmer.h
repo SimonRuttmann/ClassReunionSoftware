@@ -23,11 +23,13 @@ public:
 
 	virtual ~I_DAO_Teilnehmer() {}
 
-    virtual bool insert(Teilnehmer& teilnehmer) =0;
-    virtual bool update(const Teilnehmer& teilnehmer) =0;
-    virtual bool search(Teilnehmer& teilnehmer) =0;
-    virtual bool remove(int teilnehmerkey) =0;
-    virtual bool select(string name, list<Teilnehmer*>& teilnehmerListe) =0;
+
+    virtual bool insert(Teilnehmer& teilnehmer)=0;
+    virtual bool update(const Teilnehmer& teilnehmer)=0;
+    virtual bool search(Teilnehmer& teilnehmer)=0;
+    virtual bool remove(int teilnehmerkey)=0;
+    virtual bool selectAll(list<Teilnehmer*>& teilnehmerliste)=0;
+    virtual bool selectHo(Teilnehmer& teilnehmer)=0;
 
 };
 #endif // !defined(EA_43508566_3A5A_4c77_AEFA_69198D629CC9__INCLUDED_)
