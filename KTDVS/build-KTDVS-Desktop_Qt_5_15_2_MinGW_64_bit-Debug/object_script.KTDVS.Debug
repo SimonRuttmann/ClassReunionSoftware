@@ -1,0 +1,17 @@
+debug/main.o
+debug/mainwindow.o
+debug/Controller_Einloggen.o
+debug/Hauptorganisator.o
+debug/Organisator.o
+debug/Qt_DAO_Teilnehmer.o
+debug/Qt_DAO_Teilnehmerdaten.o
+debug/Teilnehmer.o
+debug/Teilnehmerliste.o
+debug/View_Einloggen.o
+debug/View_ErsterSystemstart.o
+debug/View_Passwortänderung.o
+debug/View_Teilnehmerliste.o
+debug/View_TeilnehmerTeilnehmerHinzufügen.o
+debug/View_Versionsverlauf.o
+debug/View_VersionsverlaufDetailiert.o
+debug/moc_mainwindow.o

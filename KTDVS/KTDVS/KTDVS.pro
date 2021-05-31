@@ -47,7 +47,8 @@ HEADERS += \
     I_DAO_Teilnehmer.h \
     I_DAO_Teilnehmerdaten.h
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    View_VersionsverlaufDetailiert.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
