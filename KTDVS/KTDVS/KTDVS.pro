@@ -12,7 +12,6 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     Controller_Einloggen.cpp \
-    Hauptorganisator.cpp \
     Organisator.cpp \
     Qt_DAO_Teilnehmer.cpp \
     Qt_DAO_Teilnehmerdaten.cpp \
@@ -32,7 +31,6 @@ HEADERS += \
     Datum.h \
     mainwindow.h \
     Controller_Einloggen.h \
-    Hauptorganisator.h \
     Organisator.h \
     Qt_DAO_Teilnehmer.h \
     Qt_DAO_Teilnehmerdaten.h \

@@ -47,7 +47,10 @@ public:
         string getHaupttelefonnummer()const;
         void setHaupttelefonnummer(string newVal);
 
+        string getKommentar();
+        void setKommentar(string kommentar);
 private:
+        string kommentar;
 	int teilnehmerdatenkey;
         string Email;
         Adresse* adresse;

@@ -14,26 +14,12 @@
 #include <QSqlQuery>
 using namespace std;
 
-
-/*
-
-CREATE TABLE Teilnehmer{
-
-teilnehmerkey        SERIAL PRIMARY KEY,
-passwort             varchar(50),
-isHauptorganisator   boolean
-};
-
-passwort = NULL                         -> Teilnehmer
-passwort != NULL && !isHauptorganisator -> Organisator
-passwort != NULL && isHauptroganisator  -> Hauptorganisator
-*/
 class Qt_DAO_Teilnehmer : public I_DAO_Teilnehmer
 {
 private:
+    //Notwendige Anfragen zur Implementierung der Methoden
     QSqlQuery   insert_query,
                 last_insert_id_query,
-//                insert_select_query,
                 update_query,
                 remove_query,
                 search_query,
@@ -43,17 +29,24 @@ public:
     template<typename Base, typename T>
     inline bool instanceof(const T*) { return is_base_of<Base, T>::value; }
 public:
+    //Konstruktor bereitet die Anfragen vor
 	Qt_DAO_Teilnehmer();
-	virtual ~Qt_DAO_Teilnehmer();
 
-    bool insert(Teilnehmer& teilnehmer);
-    bool update(const Teilnehmer& teilnehmer);
-    bool search(Teilnehmer& teilnehmer);
+    //Methoden beschrieben nach dem Interface I_DAO_Teilnehmer.h
+
     bool remove(int teilnehmerkey);
-    bool selectAll(list<Teilnehmer*>& teilnehmerliste);
-    bool selectHo(Teilnehmer& teilnehmer);
+
+    bool insertTeilnehmer(Teilnehmer& teilnehmer);
+    bool updateTeilnehmer(const Teilnehmer& teilnehmer);
+    bool selectAllTeilnehmer(list<Teilnehmer*>& teilnehmerliste);
+
+    bool selectHo(Organisator& teilnehmer);
+
+    bool insertOrganisator(Organisator& organisator);
+    bool updateOrganisator(const Organisator& teilnehmer);
+    bool searchOrganisator(Organisator& organisator);
+    bool selectAllOrganisatoren(list<Organisator*>& organisatorliste);
+
 };
-
-
 
 #endif // !defined(EA_1F693830_6283_4e37_B639_A49F2ADA0073__INCLUDED_)
