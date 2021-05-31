@@ -18,10 +18,10 @@ using namespace std;
 class Qt_DAO_Teilnehmerdaten : public I_DAO_Teilnehmerdaten
 {
 private:
+    //Notwendige Anfragen zur Implementierung der Methoden
     QSqlQuery   insert_query,
                 insert_query_tel,
                 last_insert_id_query,
-                //insert_select_query;
                 remove_query,
                 remove_query_tel,
                 search_query,
@@ -30,13 +30,12 @@ private:
                 select_query_ofTeilnehmer,
                 select_query_first;
 public:
+    //Konstruktor bereitet die Anfragen vor
 	Qt_DAO_Teilnehmerdaten();
 	virtual ~Qt_DAO_Teilnehmerdaten();
 
+    //Methoden beschrieben nach dem Interface I_DAO_Teilnehmerdaten
     bool insert(Teilnehmerdaten& teilnehmerdaten);
-
-    //Teilnehmerdaten werden nicht geloescht -> Wirkungslos
-   // bool remove(int teilnehmerkey);
     bool selectFirstOfTeilnehmer(int teilnehmerkey, Teilnehmerdaten& teilnehmerdaten);
     bool selectAllOfTeilnehmer(int teilnehmerkey,  list<Teilnehmerdaten*>& teilnehmerdatenliste);
     bool selectAll(list<Teilnehmerdaten*>& teilnehmerdatenliste);

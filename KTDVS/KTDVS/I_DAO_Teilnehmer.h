@@ -27,17 +27,19 @@ public:
     virtual bool insertOrganisator(Organisator& organisator)=0;
     virtual bool insertTeilnehmer(Teilnehmer& teilnehmer)=0;
 
-    virtual bool updateOrganisator(const Teilnehmer& teilnehmer)=0;
-    virtual bool updateTeilnehmer(const Organisator& teilnehmer)=0;
+    virtual bool updateTeilnehmer(const Teilnehmer& teilnehmer)=0;
+    virtual bool updateOrganisator(const Organisator& teilnehmer)=0;
 
-    virtual bool searchTeilnehmer(Teilnehmer& teilnehmer)=0;
+  // Nicht sinnvoll, da er nur einen Teilnehmerkey besitzt und dieser zum suchen benötigt wird
+  //  virtual bool searchTeilnehmer(Teilnehmer& teilnehmer)=0;
+
     virtual bool searchOrganisator(Organisator& organisator)=0;
 
     virtual bool remove(int teilnehmerkey)=0;
 
-    virtual bool selectAll(list<Teilnehmer*>& teilnehmerliste)=0;
-    virtual bool selectHo(Teilnehmer& teilnehmer)=0;
-    virtual bool selectAllOrganisatoren(Organisator& organisator)=0;
+    virtual bool selectAllTeilnehmer(list<Teilnehmer*>& teilnehmerliste)=0;
+    virtual bool selectHo(Organisator& organisator)=0;
+    virtual bool selectAllOrganisatoren(list<Organisator*>& organisatorliste)=0;
 
 };
 #endif // !defined(EA_43508566_3A5A_4c77_AEFA_69198D629CC9__INCLUDED_)

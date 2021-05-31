@@ -19,12 +19,16 @@ public:
 
     Organisator(string passwort, string eMail, bool isHauptorganisator);
 	~Organisator();
-    string getPasswort();
-    void Setpasswort(string newVal);
+
+    void setPasswort(string pw);
+    string getPasswort()const;
+    void setHauptorganisator(bool ho);
+    bool isHauptorganisator()const;
+
 
 private:
     string passwort;
-    bool isHauptorganisator;
+    bool hauptorganisator;
 
 };
 #endif // !defined(EA_A8887EED_CA40_4b20_839B_BC83AB8B67BD__INCLUDED_)

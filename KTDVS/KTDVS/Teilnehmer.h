@@ -26,20 +26,20 @@ public:
 	Teilnehmer(Teilnehmerdaten teilnehmerdaten);
 	Teilnehmer();
 	~Teilnehmer();
-    Teilnehmer(int teilnehmerkey, string passwort, bool isHauptorganisator);
+   // Teilnehmer(int teilnehmerkey, string passwort, bool isHauptorganisator);
 	Teilnehmerdaten* getTeilnehmerdaten();
 	Teilnehmerdaten teilnehmerdatenErstellen();
     void TeilnehmerdatenLoeschen();
     int getTeilnehmerkey()const;
     void setTeilnehmerkey(int newVal);
     bool pruefePasswort(string passwort);
-    void setPasswort(string pw);
-    string getPasswort()const;
-    void setHauptorganisator(bool ho);
-    bool isHauptorganisator()const;
+  //  void setPasswort(string pw);
+ //   string getPasswort()const;
+  //  void setHauptorganisator(bool ho);
+ //   bool isHauptorganisator()const;
 private:
-    bool isHauptorg;
-    string passwort;
+  //  bool isHauptorg;
+  //  string passwort;
 	int teilnehmerkey;
 
 };
