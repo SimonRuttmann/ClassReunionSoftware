@@ -18,6 +18,7 @@ SOURCES += \
     Qt_DAO_Teilnehmerdaten.cpp \
     Teilnehmer.cpp \
     Teilnehmerliste.cpp \
+    Teilnehmerdaten.cpp \
     View_Einloggen.cpp \
     View_ErsterSystemstart.cpp \
     View_Passwortänderung.cpp \
@@ -45,7 +46,8 @@ HEADERS += \
     View_Versionsverlauf.h \
     View_VersionsverlaufDetailiert.h \
     I_DAO_Teilnehmer.h \
-    I_DAO_Teilnehmerdaten.h
+    I_DAO_Teilnehmerdaten.h\
+    Teilnehmerdaten.h
 FORMS += \
     mainwindow.ui
 

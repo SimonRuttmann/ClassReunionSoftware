@@ -9,7 +9,7 @@
 #define EA_BB0DD1F2_7BC3_4503_933B_B3E850297616__INCLUDED_
 
 #include "Teilnehmer.h"
-#include "ListeTeilnehmer.java"
+//#include "ListeTeilnehmer.java"
 #include "Qt_DAO_Teilnehmer.h"
 
 class Teilnehmerliste : public ListeTeilnehmer
