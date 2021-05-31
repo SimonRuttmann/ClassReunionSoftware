@@ -25,7 +25,7 @@ SOURCES += \
     View_Teilnehmerliste.cpp \
     View_TeilnehmerTeilnehmerHinzufügen.cpp \
     View_Versionsverlauf.cpp \
-    View_VersionsverlaufDetailiert.cpp
+    view_versionsverlaufdetailliert.cpp
 
 HEADERS += \
     Adresse.h \
@@ -44,13 +44,13 @@ HEADERS += \
     View_Teilnehmerliste.h \
     View_TeilnehmerTeilnehmerHinzufügen.h \
     View_Versionsverlauf.h \
-    View_VersionsverlaufDetailiert.h \
     I_DAO_Teilnehmer.h \
     I_DAO_Teilnehmerdaten.h\
-    Teilnehmerdaten.h
+    Teilnehmerdaten.h \
+    view_versionsverlaufdetailliert.h
 FORMS += \
     mainwindow.ui \
-    View_VersionsverlaufDetailiert.ui
+    view_versionsverlaufdetailliert.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
