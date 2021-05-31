@@ -24,6 +24,7 @@ public:
 
 private:
     string passwort;
+    bool isHauptorganisator;
 
 };
 #endif // !defined(EA_A8887EED_CA40_4b20_839B_BC83AB8B67BD__INCLUDED_)

@@ -14,9 +14,11 @@
 using namespace std;
 
 //Schnittstelle von Teilnehmerdaten-Zugriffsobjekten
+
+
+//Kommentar hinzufuegen!!!!!
 class I_DAO_Teilnehmerdaten
 {
-
 public:
 	I_DAO_Teilnehmerdaten() {}
 

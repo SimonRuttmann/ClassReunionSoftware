@@ -19,7 +19,7 @@ public:
 	Teilnehmerliste *all;
 
 	void onDetailsAnzeigen();
-	void onZurück();
+    void onZurueck();
 	void onAusloggen();
 	void onInit();
 	void onUpdate();
