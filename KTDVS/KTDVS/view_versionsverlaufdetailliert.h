@@ -20,6 +20,12 @@ private slots:
 
     void on_zurueck_clicked();
 
+    void on_zurueck_2_clicked();
+
+    void on_lineEdit_1_cursorPositionChanged(int arg1, int arg2);
+
+    void on_logout_2_clicked();
+
 private:
     Ui::View_VersionsverlaufDetailliert *ui;
 };

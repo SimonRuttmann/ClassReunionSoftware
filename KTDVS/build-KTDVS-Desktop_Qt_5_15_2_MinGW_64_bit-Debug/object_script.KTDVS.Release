@@ -1,7 +1,6 @@
 release/main.o
 release/mainwindow.o
 release/Controller_Einloggen.o
-release/Hauptorganisator.o
 release/Organisator.o
 release/Qt_DAO_Teilnehmer.o
 release/Qt_DAO_Teilnehmerdaten.o

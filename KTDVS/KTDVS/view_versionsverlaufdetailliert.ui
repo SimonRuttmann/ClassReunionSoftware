@@ -36,7 +36,7 @@
         <number>200</number>
        </property>
        <item>
-        <widget class="QPushButton" name="zurueck_2">
+        <widget class="QPushButton" name="zurueck">
          <property name="text">
           <string>Zurück</string>
          </property>
@@ -58,7 +58,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="logout_2">
+        <widget class="QPushButton" name="logout">
          <property name="text">
           <string>Logout(symbol)</string>
          </property>
@@ -76,14 +76,14 @@
          <item>
           <layout class="QHBoxLayout" name="ueberschriftAltVers_2">
            <item>
-            <widget class="QLabel" name="vornameAlt_2">
+            <widget class="QLabel" name="vornameAlt">
              <property name="text">
               <string>VornameAlt</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="nachnameAlt_2">
+            <widget class="QLabel" name="nachnameAlt">
              <property name="text">
               <string>NachnameAlt</string>
              </property>
@@ -108,7 +108,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_11">
+            <widget class="QLineEdit" name="lineEdit_1">
              <property name="enabled">
               <bool>true</bool>
              </property>
@@ -126,7 +126,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_12"/>
+            <widget class="QLineEdit" name="lineEdit_2"/>
            </item>
           </layout>
          </item>
@@ -140,7 +140,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_13"/>
+            <widget class="QLineEdit" name="lineEdit_3"/>
            </item>
           </layout>
          </item>
@@ -154,7 +154,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_14"/>
+            <widget class="QLineEdit" name="lineEdit_4"/>
            </item>
           </layout>
          </item>
@@ -168,7 +168,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_15"/>
+            <widget class="QLineEdit" name="lineEdit_5"/>
            </item>
           </layout>
          </item>
@@ -182,7 +182,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_16"/>
+            <widget class="QLineEdit" name="lineEdit_6"/>
            </item>
           </layout>
          </item>
@@ -196,7 +196,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_17"/>
+            <widget class="QLineEdit" name="lineEdit_7"/>
            </item>
           </layout>
          </item>
@@ -210,7 +210,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_18"/>
+            <widget class="QLineEdit" name="lineEdit_8"/>
            </item>
           </layout>
          </item>
@@ -224,7 +224,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_19"/>
+            <widget class="QLineEdit" name="lineEdit_9"/>
            </item>
           </layout>
          </item>
@@ -238,7 +238,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_20"/>
+            <widget class="QLineEdit" name="lineEdit_10"/>
            </item>
           </layout>
          </item>
@@ -266,14 +266,14 @@
          <item>
           <layout class="QHBoxLayout" name="ueberschriftAltVers_4">
            <item>
-            <widget class="QLabel" name="vornameAlt_4">
+            <widget class="QLabel" name="vornameNeu">
              <property name="text">
               <string>VornameNeu</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="nachnameAlt_4">
+            <widget class="QLabel" name="nachnameNeu">
              <property name="text">
               <string>NachnameNeu</string>
              </property>
@@ -298,7 +298,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_31"/>
+            <widget class="QLineEdit" name="lineEdit_21"/>
            </item>
           </layout>
          </item>
@@ -312,7 +312,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_32"/>
+            <widget class="QLineEdit" name="lineEdit_22"/>
            </item>
           </layout>
          </item>
@@ -326,7 +326,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_33"/>
+            <widget class="QLineEdit" name="lineEdit_23"/>
            </item>
           </layout>
          </item>
@@ -340,7 +340,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_34"/>
+            <widget class="QLineEdit" name="lineEdit_24"/>
            </item>
           </layout>
          </item>
@@ -354,7 +354,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_35"/>
+            <widget class="QLineEdit" name="lineEdit_25"/>
            </item>
           </layout>
          </item>
@@ -368,7 +368,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_36"/>
+            <widget class="QLineEdit" name="lineEdit_26"/>
            </item>
           </layout>
          </item>
@@ -382,7 +382,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_37"/>
+            <widget class="QLineEdit" name="lineEdit_27"/>
            </item>
           </layout>
          </item>
@@ -396,7 +396,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_38"/>
+            <widget class="QLineEdit" name="lineEdit_28"/>
            </item>
           </layout>
          </item>
@@ -410,7 +410,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_39"/>
+            <widget class="QLineEdit" name="lineEdit_29"/>
            </item>
           </layout>
          </item>
@@ -424,7 +424,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_40"/>
+            <widget class="QLineEdit" name="lineEdit_30"/>
            </item>
           </layout>
          </item>

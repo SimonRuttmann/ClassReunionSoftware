@@ -31,82 +31,82 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *Seitenheader_2;
-    QPushButton *zurueck_2;
+    QPushButton *zurueck;
     QLabel *KTDVS_2;
-    QPushButton *logout_2;
+    QPushButton *logout;
     QHBoxLayout *Seiteninhalt_2;
     QVBoxLayout *alteVersion_2;
     QHBoxLayout *ueberschriftAltVers_2;
-    QLabel *vornameAlt_2;
-    QLabel *nachnameAlt_2;
+    QLabel *vornameAlt;
+    QLabel *nachnameAlt;
     QLabel *label_2;
     QHBoxLayout *horizontalLayout_7;
     QLabel *label_13;
-    QLineEdit *lineEdit_11;
+    QLineEdit *lineEdit_1;
     QHBoxLayout *horizontalLayout_8;
     QLabel *label_14;
-    QLineEdit *lineEdit_12;
+    QLineEdit *lineEdit_2;
     QHBoxLayout *horizontalLayout_17;
     QLabel *label_15;
-    QLineEdit *lineEdit_13;
+    QLineEdit *lineEdit_3;
     QHBoxLayout *horizontalLayout_18;
     QLabel *label_16;
-    QLineEdit *lineEdit_14;
+    QLineEdit *lineEdit_4;
     QHBoxLayout *horizontalLayout_19;
     QLabel *label_17;
-    QLineEdit *lineEdit_15;
+    QLineEdit *lineEdit_5;
     QHBoxLayout *horizontalLayout_20;
     QLabel *label_18;
-    QLineEdit *lineEdit_16;
+    QLineEdit *lineEdit_6;
     QHBoxLayout *horizontalLayout_21;
     QLabel *label_19;
-    QLineEdit *lineEdit_17;
+    QLineEdit *lineEdit_7;
     QHBoxLayout *horizontalLayout_22;
     QLabel *label_20;
-    QLineEdit *lineEdit_18;
+    QLineEdit *lineEdit_8;
     QHBoxLayout *horizontalLayout_9;
     QLabel *label_21;
-    QLineEdit *lineEdit_19;
+    QLineEdit *lineEdit_9;
     QHBoxLayout *horizontalLayout_10;
     QLabel *label_22;
-    QLineEdit *lineEdit_20;
+    QLineEdit *lineEdit_10;
     QHBoxLayout *horizontalLayout_39;
     QTextEdit *Aenderungskommentar_3;
     QVBoxLayout *neueVersion_2;
     QHBoxLayout *ueberschriftAltVers_4;
-    QLabel *vornameAlt_4;
-    QLabel *nachnameAlt_4;
+    QLabel *vornameNeu;
+    QLabel *nachnameNeu;
     QLabel *label_35;
     QHBoxLayout *horizontalLayout_40;
     QLabel *label_36;
-    QLineEdit *lineEdit_31;
+    QLineEdit *lineEdit_21;
     QHBoxLayout *horizontalLayout_41;
     QLabel *label_37;
-    QLineEdit *lineEdit_32;
+    QLineEdit *lineEdit_22;
     QHBoxLayout *horizontalLayout_42;
     QLabel *label_38;
-    QLineEdit *lineEdit_33;
+    QLineEdit *lineEdit_23;
     QHBoxLayout *horizontalLayout_43;
     QLabel *label_39;
-    QLineEdit *lineEdit_34;
+    QLineEdit *lineEdit_24;
     QHBoxLayout *horizontalLayout_44;
     QLabel *label_40;
-    QLineEdit *lineEdit_35;
+    QLineEdit *lineEdit_25;
     QHBoxLayout *horizontalLayout_45;
     QLabel *label_41;
-    QLineEdit *lineEdit_36;
+    QLineEdit *lineEdit_26;
     QHBoxLayout *horizontalLayout_46;
     QLabel *label_42;
-    QLineEdit *lineEdit_37;
+    QLineEdit *lineEdit_27;
     QHBoxLayout *horizontalLayout_47;
     QLabel *label_43;
-    QLineEdit *lineEdit_38;
+    QLineEdit *lineEdit_28;
     QHBoxLayout *horizontalLayout_48;
     QLabel *label_44;
-    QLineEdit *lineEdit_39;
+    QLineEdit *lineEdit_29;
     QHBoxLayout *horizontalLayout_49;
     QLabel *label_45;
-    QLineEdit *lineEdit_40;
+    QLineEdit *lineEdit_30;
     QHBoxLayout *horizontalLayout_50;
     QTextEdit *Aenderungskommentar_5;
     QTextEdit *Aenderungskommentar_6;
@@ -130,10 +130,10 @@ public:
         Seitenheader_2 = new QHBoxLayout();
         Seitenheader_2->setSpacing(200);
         Seitenheader_2->setObjectName(QString::fromUtf8("Seitenheader_2"));
-        zurueck_2 = new QPushButton(verticalLayoutWidget);
-        zurueck_2->setObjectName(QString::fromUtf8("zurueck_2"));
+        zurueck = new QPushButton(verticalLayoutWidget);
+        zurueck->setObjectName(QString::fromUtf8("zurueck"));
 
-        Seitenheader_2->addWidget(zurueck_2);
+        Seitenheader_2->addWidget(zurueck);
 
         KTDVS_2 = new QLabel(verticalLayoutWidget);
         KTDVS_2->setObjectName(QString::fromUtf8("KTDVS_2"));
@@ -146,10 +146,10 @@ public:
 
         Seitenheader_2->addWidget(KTDVS_2);
 
-        logout_2 = new QPushButton(verticalLayoutWidget);
-        logout_2->setObjectName(QString::fromUtf8("logout_2"));
+        logout = new QPushButton(verticalLayoutWidget);
+        logout->setObjectName(QString::fromUtf8("logout"));
 
-        Seitenheader_2->addWidget(logout_2);
+        Seitenheader_2->addWidget(logout);
 
 
         verticalLayout_2->addLayout(Seitenheader_2);
@@ -161,15 +161,15 @@ public:
         alteVersion_2->setObjectName(QString::fromUtf8("alteVersion_2"));
         ueberschriftAltVers_2 = new QHBoxLayout();
         ueberschriftAltVers_2->setObjectName(QString::fromUtf8("ueberschriftAltVers_2"));
-        vornameAlt_2 = new QLabel(verticalLayoutWidget);
-        vornameAlt_2->setObjectName(QString::fromUtf8("vornameAlt_2"));
+        vornameAlt = new QLabel(verticalLayoutWidget);
+        vornameAlt->setObjectName(QString::fromUtf8("vornameAlt"));
 
-        ueberschriftAltVers_2->addWidget(vornameAlt_2);
+        ueberschriftAltVers_2->addWidget(vornameAlt);
 
-        nachnameAlt_2 = new QLabel(verticalLayoutWidget);
-        nachnameAlt_2->setObjectName(QString::fromUtf8("nachnameAlt_2"));
+        nachnameAlt = new QLabel(verticalLayoutWidget);
+        nachnameAlt->setObjectName(QString::fromUtf8("nachnameAlt"));
 
-        ueberschriftAltVers_2->addWidget(nachnameAlt_2);
+        ueberschriftAltVers_2->addWidget(nachnameAlt);
 
         label_2 = new QLabel(verticalLayoutWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
@@ -186,11 +186,11 @@ public:
 
         horizontalLayout_7->addWidget(label_13);
 
-        lineEdit_11 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_11->setObjectName(QString::fromUtf8("lineEdit_11"));
-        lineEdit_11->setEnabled(true);
+        lineEdit_1 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_1->setObjectName(QString::fromUtf8("lineEdit_1"));
+        lineEdit_1->setEnabled(true);
 
-        horizontalLayout_7->addWidget(lineEdit_11);
+        horizontalLayout_7->addWidget(lineEdit_1);
 
 
         alteVersion_2->addLayout(horizontalLayout_7);
@@ -202,10 +202,10 @@ public:
 
         horizontalLayout_8->addWidget(label_14);
 
-        lineEdit_12 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_12->setObjectName(QString::fromUtf8("lineEdit_12"));
+        lineEdit_2 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
 
-        horizontalLayout_8->addWidget(lineEdit_12);
+        horizontalLayout_8->addWidget(lineEdit_2);
 
 
         alteVersion_2->addLayout(horizontalLayout_8);
@@ -217,10 +217,10 @@ public:
 
         horizontalLayout_17->addWidget(label_15);
 
-        lineEdit_13 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_13->setObjectName(QString::fromUtf8("lineEdit_13"));
+        lineEdit_3 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
 
-        horizontalLayout_17->addWidget(lineEdit_13);
+        horizontalLayout_17->addWidget(lineEdit_3);
 
 
         alteVersion_2->addLayout(horizontalLayout_17);
@@ -232,10 +232,10 @@ public:
 
         horizontalLayout_18->addWidget(label_16);
 
-        lineEdit_14 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_14->setObjectName(QString::fromUtf8("lineEdit_14"));
+        lineEdit_4 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
 
-        horizontalLayout_18->addWidget(lineEdit_14);
+        horizontalLayout_18->addWidget(lineEdit_4);
 
 
         alteVersion_2->addLayout(horizontalLayout_18);
@@ -247,10 +247,10 @@ public:
 
         horizontalLayout_19->addWidget(label_17);
 
-        lineEdit_15 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_15->setObjectName(QString::fromUtf8("lineEdit_15"));
+        lineEdit_5 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
 
-        horizontalLayout_19->addWidget(lineEdit_15);
+        horizontalLayout_19->addWidget(lineEdit_5);
 
 
         alteVersion_2->addLayout(horizontalLayout_19);
@@ -262,10 +262,10 @@ public:
 
         horizontalLayout_20->addWidget(label_18);
 
-        lineEdit_16 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_16->setObjectName(QString::fromUtf8("lineEdit_16"));
+        lineEdit_6 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_6->setObjectName(QString::fromUtf8("lineEdit_6"));
 
-        horizontalLayout_20->addWidget(lineEdit_16);
+        horizontalLayout_20->addWidget(lineEdit_6);
 
 
         alteVersion_2->addLayout(horizontalLayout_20);
@@ -277,10 +277,10 @@ public:
 
         horizontalLayout_21->addWidget(label_19);
 
-        lineEdit_17 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_17->setObjectName(QString::fromUtf8("lineEdit_17"));
+        lineEdit_7 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_7->setObjectName(QString::fromUtf8("lineEdit_7"));
 
-        horizontalLayout_21->addWidget(lineEdit_17);
+        horizontalLayout_21->addWidget(lineEdit_7);
 
 
         alteVersion_2->addLayout(horizontalLayout_21);
@@ -292,10 +292,10 @@ public:
 
         horizontalLayout_22->addWidget(label_20);
 
-        lineEdit_18 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_18->setObjectName(QString::fromUtf8("lineEdit_18"));
+        lineEdit_8 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
 
-        horizontalLayout_22->addWidget(lineEdit_18);
+        horizontalLayout_22->addWidget(lineEdit_8);
 
 
         alteVersion_2->addLayout(horizontalLayout_22);
@@ -307,10 +307,10 @@ public:
 
         horizontalLayout_9->addWidget(label_21);
 
-        lineEdit_19 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_19->setObjectName(QString::fromUtf8("lineEdit_19"));
+        lineEdit_9 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_9->setObjectName(QString::fromUtf8("lineEdit_9"));
 
-        horizontalLayout_9->addWidget(lineEdit_19);
+        horizontalLayout_9->addWidget(lineEdit_9);
 
 
         alteVersion_2->addLayout(horizontalLayout_9);
@@ -322,10 +322,10 @@ public:
 
         horizontalLayout_10->addWidget(label_22);
 
-        lineEdit_20 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_20->setObjectName(QString::fromUtf8("lineEdit_20"));
+        lineEdit_10 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_10->setObjectName(QString::fromUtf8("lineEdit_10"));
 
-        horizontalLayout_10->addWidget(lineEdit_20);
+        horizontalLayout_10->addWidget(lineEdit_10);
 
 
         alteVersion_2->addLayout(horizontalLayout_10);
@@ -348,15 +348,15 @@ public:
         neueVersion_2->setObjectName(QString::fromUtf8("neueVersion_2"));
         ueberschriftAltVers_4 = new QHBoxLayout();
         ueberschriftAltVers_4->setObjectName(QString::fromUtf8("ueberschriftAltVers_4"));
-        vornameAlt_4 = new QLabel(verticalLayoutWidget);
-        vornameAlt_4->setObjectName(QString::fromUtf8("vornameAlt_4"));
+        vornameNeu = new QLabel(verticalLayoutWidget);
+        vornameNeu->setObjectName(QString::fromUtf8("vornameNeu"));
 
-        ueberschriftAltVers_4->addWidget(vornameAlt_4);
+        ueberschriftAltVers_4->addWidget(vornameNeu);
 
-        nachnameAlt_4 = new QLabel(verticalLayoutWidget);
-        nachnameAlt_4->setObjectName(QString::fromUtf8("nachnameAlt_4"));
+        nachnameNeu = new QLabel(verticalLayoutWidget);
+        nachnameNeu->setObjectName(QString::fromUtf8("nachnameNeu"));
 
-        ueberschriftAltVers_4->addWidget(nachnameAlt_4);
+        ueberschriftAltVers_4->addWidget(nachnameNeu);
 
         label_35 = new QLabel(verticalLayoutWidget);
         label_35->setObjectName(QString::fromUtf8("label_35"));
@@ -373,10 +373,10 @@ public:
 
         horizontalLayout_40->addWidget(label_36);
 
-        lineEdit_31 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_31->setObjectName(QString::fromUtf8("lineEdit_31"));
+        lineEdit_21 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_21->setObjectName(QString::fromUtf8("lineEdit_21"));
 
-        horizontalLayout_40->addWidget(lineEdit_31);
+        horizontalLayout_40->addWidget(lineEdit_21);
 
 
         neueVersion_2->addLayout(horizontalLayout_40);
@@ -388,10 +388,10 @@ public:
 
         horizontalLayout_41->addWidget(label_37);
 
-        lineEdit_32 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_32->setObjectName(QString::fromUtf8("lineEdit_32"));
+        lineEdit_22 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_22->setObjectName(QString::fromUtf8("lineEdit_22"));
 
-        horizontalLayout_41->addWidget(lineEdit_32);
+        horizontalLayout_41->addWidget(lineEdit_22);
 
 
         neueVersion_2->addLayout(horizontalLayout_41);
@@ -403,10 +403,10 @@ public:
 
         horizontalLayout_42->addWidget(label_38);
 
-        lineEdit_33 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_33->setObjectName(QString::fromUtf8("lineEdit_33"));
+        lineEdit_23 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_23->setObjectName(QString::fromUtf8("lineEdit_23"));
 
-        horizontalLayout_42->addWidget(lineEdit_33);
+        horizontalLayout_42->addWidget(lineEdit_23);
 
 
         neueVersion_2->addLayout(horizontalLayout_42);
@@ -418,10 +418,10 @@ public:
 
         horizontalLayout_43->addWidget(label_39);
 
-        lineEdit_34 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_34->setObjectName(QString::fromUtf8("lineEdit_34"));
+        lineEdit_24 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_24->setObjectName(QString::fromUtf8("lineEdit_24"));
 
-        horizontalLayout_43->addWidget(lineEdit_34);
+        horizontalLayout_43->addWidget(lineEdit_24);
 
 
         neueVersion_2->addLayout(horizontalLayout_43);
@@ -433,10 +433,10 @@ public:
 
         horizontalLayout_44->addWidget(label_40);
 
-        lineEdit_35 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_35->setObjectName(QString::fromUtf8("lineEdit_35"));
+        lineEdit_25 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_25->setObjectName(QString::fromUtf8("lineEdit_25"));
 
-        horizontalLayout_44->addWidget(lineEdit_35);
+        horizontalLayout_44->addWidget(lineEdit_25);
 
 
         neueVersion_2->addLayout(horizontalLayout_44);
@@ -448,10 +448,10 @@ public:
 
         horizontalLayout_45->addWidget(label_41);
 
-        lineEdit_36 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_36->setObjectName(QString::fromUtf8("lineEdit_36"));
+        lineEdit_26 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_26->setObjectName(QString::fromUtf8("lineEdit_26"));
 
-        horizontalLayout_45->addWidget(lineEdit_36);
+        horizontalLayout_45->addWidget(lineEdit_26);
 
 
         neueVersion_2->addLayout(horizontalLayout_45);
@@ -463,10 +463,10 @@ public:
 
         horizontalLayout_46->addWidget(label_42);
 
-        lineEdit_37 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_37->setObjectName(QString::fromUtf8("lineEdit_37"));
+        lineEdit_27 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_27->setObjectName(QString::fromUtf8("lineEdit_27"));
 
-        horizontalLayout_46->addWidget(lineEdit_37);
+        horizontalLayout_46->addWidget(lineEdit_27);
 
 
         neueVersion_2->addLayout(horizontalLayout_46);
@@ -478,10 +478,10 @@ public:
 
         horizontalLayout_47->addWidget(label_43);
 
-        lineEdit_38 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_38->setObjectName(QString::fromUtf8("lineEdit_38"));
+        lineEdit_28 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_28->setObjectName(QString::fromUtf8("lineEdit_28"));
 
-        horizontalLayout_47->addWidget(lineEdit_38);
+        horizontalLayout_47->addWidget(lineEdit_28);
 
 
         neueVersion_2->addLayout(horizontalLayout_47);
@@ -493,10 +493,10 @@ public:
 
         horizontalLayout_48->addWidget(label_44);
 
-        lineEdit_39 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_39->setObjectName(QString::fromUtf8("lineEdit_39"));
+        lineEdit_29 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_29->setObjectName(QString::fromUtf8("lineEdit_29"));
 
-        horizontalLayout_48->addWidget(lineEdit_39);
+        horizontalLayout_48->addWidget(lineEdit_29);
 
 
         neueVersion_2->addLayout(horizontalLayout_48);
@@ -508,10 +508,10 @@ public:
 
         horizontalLayout_49->addWidget(label_45);
 
-        lineEdit_40 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_40->setObjectName(QString::fromUtf8("lineEdit_40"));
+        lineEdit_30 = new QLineEdit(verticalLayoutWidget);
+        lineEdit_30->setObjectName(QString::fromUtf8("lineEdit_30"));
 
-        horizontalLayout_49->addWidget(lineEdit_40);
+        horizontalLayout_49->addWidget(lineEdit_30);
 
 
         neueVersion_2->addLayout(horizontalLayout_49);
@@ -556,11 +556,11 @@ public:
     void retranslateUi(QMainWindow *View_VersionsverlaufDetailliert)
     {
         View_VersionsverlaufDetailliert->setWindowTitle(QCoreApplication::translate("View_VersionsverlaufDetailliert", "MainWindow", nullptr));
-        zurueck_2->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Zur\303\274ck", nullptr));
+        zurueck->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Zur\303\274ck", nullptr));
         KTDVS_2->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "KTDVS", nullptr));
-        logout_2->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Logout(symbol)", nullptr));
-        vornameAlt_2->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "VornameAlt", nullptr));
-        nachnameAlt_2->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "NachnameAlt", nullptr));
+        logout->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Logout(symbol)", nullptr));
+        vornameAlt->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "VornameAlt", nullptr));
+        nachnameAlt->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "NachnameAlt", nullptr));
         label_2->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "alteVersion", nullptr));
         label_13->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Vorname", nullptr));
         label_14->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Nachname", nullptr));
@@ -573,8 +573,8 @@ public:
         label_21->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Telefonnummer", nullptr));
         label_22->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Email", nullptr));
         Aenderungskommentar_3->setPlaceholderText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "\303\204nderungskommentar", nullptr));
-        vornameAlt_4->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "VornameNeu", nullptr));
-        nachnameAlt_4->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "NachnameNeu", nullptr));
+        vornameNeu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "VornameNeu", nullptr));
+        nachnameNeu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "NachnameNeu", nullptr));
         label_35->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "alteVersion", nullptr));
         label_36->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Vorname", nullptr));
         label_37->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Nachname", nullptr));

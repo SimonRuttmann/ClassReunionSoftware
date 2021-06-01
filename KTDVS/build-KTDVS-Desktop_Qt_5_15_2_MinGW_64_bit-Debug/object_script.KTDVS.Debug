@@ -1,7 +1,6 @@
 debug/main.o
 debug/mainwindow.o
 debug/Controller_Einloggen.o
-debug/Hauptorganisator.o
 debug/Organisator.o
 debug/Qt_DAO_Teilnehmer.o
 debug/Qt_DAO_Teilnehmerdaten.o
