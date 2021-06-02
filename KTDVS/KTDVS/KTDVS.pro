@@ -23,7 +23,8 @@ SOURCES += \
     View_Passwortänderung.cpp \
     View_Teilnehmerliste.cpp \
     View_TeilnehmerTeilnehmerHinzufügen.cpp \
-    View_Versionsverlauf.cpp \
+    view_versionsverlauf.cpp \
+    view_versionsverlauf.cpp \
     view_versionsverlaufdetailliert.cpp
 
 HEADERS += \
@@ -41,13 +42,15 @@ HEADERS += \
     View_Passwortänderung.h \
     View_Teilnehmerliste.h \
     View_TeilnehmerTeilnehmerHinzufügen.h \
-    View_Versionsverlauf.h \
     I_DAO_Teilnehmer.h \
     I_DAO_Teilnehmerdaten.h\
     Teilnehmerdaten.h \
+    view_versionsverlauf.h \
+    view_versionsverlauf.h \
     view_versionsverlaufdetailliert.h
 FORMS += \
     mainwindow.ui \
+    view_versionsverlauf.ui \
     view_versionsverlaufdetailliert.ui
 
 # Default rules for deployment.

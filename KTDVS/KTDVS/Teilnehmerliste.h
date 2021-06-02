@@ -12,7 +12,7 @@
 //#include "ListeTeilnehmer.java"
 #include "Qt_DAO_Teilnehmer.h"
 
-class Teilnehmerliste : public ListeTeilnehmer
+class Teilnehmerliste
 {
 
 public:
@@ -22,9 +22,9 @@ public:
 	Qt_DAO_Teilnehmer *TeilnehmerDAO;
 
 	Teilnehmer* teilnehmerErstellen();
-	teilnehmerLöschen();
-	static Teilnehmerliste instance();
-	Teilnehmer* sucheTeilnehmer(String e-mail);
+    void teilnehmerLï¿½schen();
+    static Teilnehmerliste* instance();
+    Teilnehmer* sucheTeilnehmer(string email);
 	Teilnehmer* GetaktiverNutzer();
 	void SetaktiverNutzer(Teilnehmer* newVal);
 

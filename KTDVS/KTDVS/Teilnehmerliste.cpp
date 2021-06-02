@@ -31,18 +31,18 @@ Teilnehmer* Teilnehmerliste::teilnehmerErstellen(){
 }
 
 
-Teilnehmerliste::teilnehmerLöschen(){
+void Teilnehmerliste::teilnehmerLöschen(){
 
 }
 
 
-Teilnehmerliste Teilnehmerliste::instance(){
+Teilnehmerliste* Teilnehmerliste::instance(){
 
-	return  NULL;
+    return  NULL;
 }
 
 
-Teilnehmer* Teilnehmerliste::sucheTeilnehmer(String e-mail){
+Teilnehmer* Teilnehmerliste::sucheTeilnehmer(string email){
 
 	return  NULL;
 }
@@ -50,11 +50,9 @@ Teilnehmer* Teilnehmerliste::sucheTeilnehmer(String e-mail){
 
 Teilnehmer* Teilnehmerliste::GetaktiverNutzer(){
 
-	return aktiverNutzer;
+    return NULL;
 }
 
 
 void Teilnehmerliste::SetaktiverNutzer(Teilnehmer* newVal){
-
-	aktiverNutzer = newVal;
 }
