@@ -32,7 +32,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_4->setText(QString::fromStdString(altdaten.getAdresse().strasse));
     ui->lineEdit_5->setText(QString::number(altdaten.getAdresse().haussnummer));
     ui->lineEdit_6->setText(QString::number(altdaten.getAdresse().postleitzahl));
-    //ui->lineEdit_7->setText(QString::fromStdString(altdaten.getAdresse().ort)); //Ort fehlt in Teilnehmerdaten
+    ui->lineEdit_7->setText(QString::fromStdString(altdaten.getAdresse().stadt)); //Ort fehlt in Teilnehmerdaten
     ui->lineEdit_8->setText(QString::fromStdString(altdaten.getAdresse().land));
     ui->lineEdit_9->setText(QString::fromStdString(altdaten.getHaupttelefonnummer()));
     ui->lineEdit_10->setText(QString::fromStdString(altdaten.getEMail()));
@@ -57,7 +57,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_24->setText(QString::fromStdString(neudaten.getAdresse().strasse));
     ui->lineEdit_25->setText(QString::number(neudaten.getAdresse().haussnummer));
     ui->lineEdit_26->setText(QString::number(neudaten.getAdresse().postleitzahl));
-    //ui->lineEdit_27->setText(QString::fromStdString(neudaten.getAdresse().ort)); //Ort fehlt im Datensatz?
+    ui->lineEdit_27->setText(QString::fromStdString(neudaten.getAdresse().stadt)); //Ort fehlt im Datensatz?
     ui->lineEdit_28->setText(QString::fromStdString(neudaten.getAdresse().land));
     ui->lineEdit_29->setText(QString::fromStdString(neudaten.getHaupttelefonnummer()));
     ui->lineEdit_30->setText(QString::fromStdString(neudaten.getEMail()));
