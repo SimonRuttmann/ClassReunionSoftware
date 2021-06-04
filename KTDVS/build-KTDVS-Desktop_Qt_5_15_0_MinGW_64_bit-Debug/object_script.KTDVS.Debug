@@ -1,3 +1,4 @@
+debug/View_Erstersystemstart.o
 debug/main.o
 debug/mainwindow.o
 debug/Controller_Einloggen.o
@@ -8,16 +9,16 @@ debug/Teilnehmer.o
 debug/Teilnehmerliste.o
 debug/Teilnehmerdaten.o
 debug/View_Einloggen.o
-debug/View_ErsterSystemstart.o
-debug/View_Passwortänderung.o
-debug/View_TeilnehmerTeilnehmerHinzufügen.o
+debug/View_Passwortaenderung.o
 debug/view_teilnehmerliste.o
-debug/view_versionsverlauf.o
+debug/view_teilnehmerteilnehmerhinzufuegen.o
 debug/view_versionsverlauf.o
 debug/view_versionsverlaufdetailliert.o
+debug/moc_View_Erstersystemstart.o
+debug/moc_View_Passwortaenderung.o
 debug/moc_mainwindow.o
 debug/moc_View_Einloggen.o
-debug/moc_View_ErsterSystemstart.o
 debug/moc_view_teilnehmerliste.o
+debug/moc_view_teilnehmerteilnehmerhinzufuegen.o
 debug/moc_view_versionsverlauf.o
 debug/moc_view_versionsverlaufdetailliert.o

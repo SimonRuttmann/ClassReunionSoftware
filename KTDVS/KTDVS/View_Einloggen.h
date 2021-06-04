@@ -41,6 +41,8 @@ private:
     string eMailDatenbank;
     Teilnehmer teilnehmer;
 
+private slots:
+    void on_pushButton_clicked();
 };
 
 #endif // VIEW_EINLOGGEN_H

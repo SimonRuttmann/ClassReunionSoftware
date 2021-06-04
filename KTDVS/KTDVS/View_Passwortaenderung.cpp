@@ -55,7 +55,7 @@ void View_Passwortaenderung::on_Speichern_Button_clicked()
         }
     }else{// HO stellt neues Passwort ein
         altespassNormString = neuesPasswort.toStdString();  // wenn HO neues PAsswort verbigt
-        angemeldeterOrganisator.Setpasswort(altespassNormString);
+        angemeldeterOrganisator.setPasswort(altespassNormString);
 
     }
 }
