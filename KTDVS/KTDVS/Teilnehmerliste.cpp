@@ -1,17 +1,17 @@
 ///////////////////////////////////////////////////////////
 //  Teilnehmerliste.cpp
 //  Implementation of the Class Teilnehmerliste
-//  Created on:      27-Mai-2021 14:19:33
-//  Original author: Simon Ruttmann
 ///////////////////////////////////////////////////////////
 
 #include "Teilnehmerliste.h"
 
 
 Teilnehmerliste::Teilnehmerliste(){
-    this->TeilnehmerDAO = new Qt_DAO_Teilnehmer();
-}
+    this->TeilnehmerDAO = new DAO_QT_Teilnehmer();
 
+    this->TeilnehmerDAO->selectAllTeilnehmer(teilnehmerliste);
+    this->TeilnehmerDAO->selectAllOrganisatoren(organisatorliste);
+}
 
 
 Teilnehmerliste::~Teilnehmerliste(){
@@ -24,6 +24,11 @@ Teilnehmerliste::~Teilnehmerliste(){
         delete(*it);
         //it++;
     }
+
+
+    //Organisatorliste wird nicht gelöscht, da
+    //alle Organisatoren in der Teilnehmerliste sind
+    //-> Liste an Nullpointern
 }
 
 
@@ -39,20 +44,37 @@ Teilnehmer* Teilnehmerliste::teilnehmerErstellen(){
     return teilnehmer;
 };
 
+
+
 Organisator* Teilnehmerliste::organisatorErstellen(string passwort, bool isHauptorganisator){
     Organisator* organisator = new Organisator(passwort, isHauptorganisator);
 
     this->TeilnehmerDAO->insertOrganisator(*organisator);
     this->teilnehmerliste.push_back(organisator);
+    this->organisatorliste.push_back(organisator);
     return organisator;
 };
 
+//Initialize of static member
+Teilnehmerliste* Teilnehmerliste::uniqueInstance = 0;
+
 Teilnehmerliste* Teilnehmerliste::instance(){
-    if(uniqueInstance == nullptr){
+    if(!uniqueInstance){
        uniqueInstance = new Teilnehmerliste();
     }
     return uniqueInstance;
 };
+
+
+bool Teilnehmerliste::updateOrganisator(Organisator& organisator){
+    return this->TeilnehmerDAO->updateOrganisator(organisator);
+};
+
+bool Teilnehmerliste::updateTeilnehmer(Teilnehmer& teilnehmer){
+    return this->TeilnehmerDAO->updateTeilnehmer(teilnehmer);
+};
+
+list<Organisator*>* Teilnehmerliste::getOrganisatorliste(){return &(this->organisatorliste);};
 
 list<Teilnehmer*>* Teilnehmerliste::getTeilnehmerliste(){return &(this->teilnehmerliste);};
 

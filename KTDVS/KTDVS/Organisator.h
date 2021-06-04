@@ -1,12 +1,10 @@
 ///////////////////////////////////////////////////////////
 //  Organisator.h
 //  Implementation of the Class Organisator
-//  Created on:      27-Mai-2021 14:19:33
-//  Original author: Simon Ruttmann
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_A8887EED_CA40_4b20_839B_BC83AB8B67BD__INCLUDED_)
-#define EA_A8887EED_CA40_4b20_839B_BC83AB8B67BD__INCLUDED_
+#ifndef ORGANISATOR_H
+#define ORGANISATOR_H
 
 #include "Teilnehmer.h"
 #include <string>
@@ -16,7 +14,7 @@ class Organisator : public Teilnehmer
 {
 public:
     enum Pruefung {EMailFalsch, EmailZutreffendPwFalsch, EMailZutreffendPwRichtig};
-
+    Organisator(){};
     Organisator(string passwort, bool isHauptorganisator);
 
     Pruefung pruefePasswort(string pw, string email);
@@ -27,10 +25,18 @@ public:
     void setHauptorganisator(bool ho);
     bool isHauptorganisator()const;
 
+    void incVersuch();
+    void setVersuch(int newVal);
+    int getVersuch()const;
+
+    void setIsSystempasswort(bool newVal);
+    bool isSystempasswort()const;
 
 private:
     string passwort;
     bool hauptorganisator;
+    int versuch;
+    bool systempasswort;
 
 };
-#endif // !defined(EA_A8887EED_CA40_4b20_839B_BC83AB8B67BD__INCLUDED_)
+#endif // ORGANISATOR_H

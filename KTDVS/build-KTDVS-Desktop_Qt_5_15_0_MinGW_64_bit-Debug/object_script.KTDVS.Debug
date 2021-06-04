@@ -1,10 +1,10 @@
+debug/DAO_QT_Teilnehmer.o
+debug/DAO_QT_Teilnehmerdaten.o
 debug/View_Erstersystemstart.o
 debug/main.o
 debug/mainwindow.o
 debug/Controller_Einloggen.o
 debug/Organisator.o
-debug/Qt_DAO_Teilnehmer.o
-debug/Qt_DAO_Teilnehmerdaten.o
 debug/Teilnehmer.o
 debug/Teilnehmerliste.o
 debug/Teilnehmerdaten.o

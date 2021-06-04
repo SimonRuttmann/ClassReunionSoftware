@@ -27,3 +27,10 @@ string Organisator::getPasswort()const {return this->passwort;};
 
 void Organisator::setHauptorganisator(bool ho){this->hauptorganisator = ho;};
 bool Organisator::isHauptorganisator()const{return this->hauptorganisator;};
+
+void Organisator::incVersuch(){this->versuch++;};
+void Organisator::setVersuch(int newVal){this->versuch = newVal;};
+int Organisator::getVersuch()const{return this->versuch;};
+
+void Organisator::setIsSystempasswort(bool newVal){this->systempasswort = newVal;};
+bool Organisator::isSystempasswort()const{return this->systempasswort;};
