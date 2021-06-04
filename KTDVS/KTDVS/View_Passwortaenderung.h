@@ -45,6 +45,7 @@ private:
     QString altesPasswortDatenbank;
     QString neuesPasswort;
     Organisator angemeldeterOrganisator;
+    void Fensterwechsel(Organisator org, string zurueckZu);
 };
 
 #endif // VIEW_PASSWORTAENDERUNG_H

@@ -1,5 +1,7 @@
 #include "View_Passwortaenderung.h"
 #include "ui_View_Passwortaenderung.h"
+#include "Organisator.h"
+#include "view_teilnehmerliste.h"
 
 View_Passwortaenderung::View_Passwortaenderung(QWidget *parent) :
     QMainWindow(parent),
@@ -44,17 +46,21 @@ void View_Passwortaenderung::on_Speichern_Button_clicked()
 
         neuesPasswort = ui -> neuesPass_Edit -> text();
 
-        if (altesPasswortEingabe == altespassNormString){
+        if (altesPasswortEingabe == altesPasswortDatenbank){
             altespassNormString = neuesPasswort.toStdString();
             angemeldeterOrganisator.setPasswort(altespassNormString);
         }
         else{
             ui->Fehlermeldung_lable -> setVisible(false);
         }
-    }else{
+    }else{// HO stellt neues Passwort ein
         altespassNormString = neuesPasswort.toStdString();  // wenn HO neues PAsswort verbigt
         angemeldeterOrganisator.Setpasswort(altespassNormString);
 
     }
 }
-
+void Fensterwechsel(Organisator org, string zurueckZu){
+  if(zurueckZu == "teilnehmerliste"){
+      //wechsel zu Teilnehmerliste
+  }
+}
