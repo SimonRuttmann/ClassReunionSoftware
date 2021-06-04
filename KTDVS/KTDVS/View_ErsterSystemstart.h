@@ -1,31 +1,28 @@
-///////////////////////////////////////////////////////////
-//  View_ErsterSystemstart.h
-//  Implementation of the Class View_ErsterSystemstart
-//  Created on:      27-Mai-2021 14:19:33
-//  Original author: Simon Ruttmann
-///////////////////////////////////////////////////////////
+#ifndef VIEW_ERSTERSYSTEMSTART_H
+#define VIEW_ERSTERSYSTEMSTART_H
 
-#if !defined(EA_85BDDC06_E7EE_4890_873B_773CC38541D7__INCLUDED_)
-#define EA_85BDDC06_E7EE_4890_873B_773CC38541D7__INCLUDED_
+#include <QMainWindow>
 
-#include "Hauptorganisator.h"
+namespace Ui {
+class View_ErsterSystemStart;
+}
 
-class View_ErsterSystemstart
+class View_ErsterSystemStart : public QMainWindow
 {
+    Q_OBJECT
 
 public:
-	View_ErsterSystemstart();
-	virtual ~View_ErsterSystemstart();
-	Hauptorganisator *subjekt;
+    explicit View_ErsterSystemStart(QWidget *parent = nullptr);
+    ~View_ErsterSystemStart();
+    bool ersterSystemstart= true;
 
-	void onNeuesSystemErstellen();
-	void onBestehendemSystemBeitreten();
-	void onSchlieﬂen();
-	void onInit();
+private slots:
+    void on_NeuesSystem_Button_clicked();
+
+    void on_Beitreten_Button_clicked();
 
 private:
-	QButton neuesSystem;
-	QButton bestehendesSystemBeitreten;
-
+    Ui::View_ErsterSystemStart *ui;
 };
-#endif // !defined(EA_85BDDC06_E7EE_4890_873B_773CC38541D7__INCLUDED_)
+
+#endif // VIEW_ERSTERSYSTEMSTART_H

@@ -1,35 +1,49 @@
-///////////////////////////////////////////////////////////
-//  View_Einloggen.h
-//  Implementation of the Class View_Einloggen
-//  Created on:      27-Mai-2021 14:19:33
-//  Original author: Simon Ruttmann
-///////////////////////////////////////////////////////////
+#ifndef VIEW_EINLOGGEN_H
+#define VIEW_EINLOGGEN_H
 
-#if !defined(EA_7692ED0D_30E6_4a39_8371_DD5FE800E21C__INCLUDED_)
-#define EA_7692ED0D_30E6_4a39_8371_DD5FE800E21C__INCLUDED_
-
+#include <QMainWindow>
+#include <QLineEdit>
+#include <QPushButton>
 #include "Teilnehmer.h"
 #include "Teilnehmerliste.h"
+#include <string>
 
-class View_Einloggen
+namespace Ui {
+class View_Einloggen;
+}
+
+class View_Einloggen : public QMainWindow
 {
+    Q_OBJECT
 
 public:
-	View_Einloggen();
-	virtual ~View_Einloggen();
-	Teilnehmer *subjekt;
-	Teilnehmerliste *all;
+    explicit View_Einloggen(QWidget *parent = nullptr);
+    ~View_Einloggen();
+    Teilnehmer *subjekt;
+    Teilnehmerliste *all;
 
-	void onEinloggen();
-	void onSchlieﬂen();
-	void onErstelleHauptorganisator();
-	void onInit();
+    void onEinloggen();
+    void onSchliessen();
+    void onErstelleHauptorganisator();// buttontext
+    void onInit();
+    bool neuesSystem=true; // !!! wie √ºbergreifend?
+
 
 private:
-	QLineEdit* e-mail;
-	QLineEdit* passwort;
-	QButton login;
-	QButton zurueck;
+    Ui::View_Einloggen *ui;
+    //QLineEdit* email;
+    //QLineEdit* passwort;
+    //QPushButton login;
+    //QPushButton zurueck;
+    QString passwort;
+    QString eMail;
+    string passwortString;
+    string eMailDatenbank;
+    Teilnehmer teilnehmer;
 
 };
-#endif // !defined(EA_7692ED0D_30E6_4a39_8371_DD5FE800E21C__INCLUDED_)
+
+#endif // VIEW_EINLOGGEN_H
+
+
+

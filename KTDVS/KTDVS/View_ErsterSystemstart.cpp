@@ -1,42 +1,30 @@
-///////////////////////////////////////////////////////////
-//  View_ErsterSystemstart.cpp
-//  Implementation of the Class View_ErsterSystemstart
-//  Created on:      27-Mai-2021 14:19:33
-//  Original author: Simon Ruttmann
-///////////////////////////////////////////////////////////
+#include "View_Erstersystemstart.h"
+#include "ui_View_Erstersystemstart.h"
+#include "View_Einloggen.h"
 
-#include "View_ErsterSystemstart.h"
+View_ErsterSystemStart::View_ErsterSystemStart(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::View_ErsterSystemStart)
+{
+    ui->setupUi(this);
+}
 
+View_ErsterSystemStart::~View_ErsterSystemStart()
+{
+    delete ui;
+}
 
-View_ErsterSystemstart::View_ErsterSystemstart(){
-
+void View_ErsterSystemStart::on_NeuesSystem_Button_clicked()
+{
+    View_Einloggen * w = new View_Einloggen();
+    w -> neuesSystem = true;
+    this -> hide();
+    w -> show();
 }
 
 
-
-View_ErsterSystemstart::~View_ErsterSystemstart(){
-
-}
-
-
-
-
-
-void View_ErsterSystemstart::onNeuesSystemErstellen(){
+void View_ErsterSystemStart::on_Beitreten_Button_clicked()
+{
 
 }
 
-
-void View_ErsterSystemstart::onBestehendemSystemBeitreten(){
-
-}
-
-
-void View_ErsterSystemstart::onSchlieﬂen(){
-
-}
-
-
-void View_ErsterSystemstart::onInit(){
-
-}

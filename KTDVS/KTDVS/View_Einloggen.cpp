@@ -1,42 +1,33 @@
-///////////////////////////////////////////////////////////
-//  View_Einloggen.cpp
-//  Implementation of the Class View_Einloggen
-//  Created on:      27-Mai-2021 14:19:33
-//  Original author: Simon Ruttmann
-///////////////////////////////////////////////////////////
-
 #include "View_Einloggen.h"
+#include "ui_View_Einloggen.h"
+#include "Organisator.h"
 
-
-View_Einloggen::View_Einloggen(){
-
+View_Einloggen::View_Einloggen(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::View_Einloggen)
+{
+    ui->setupUi(this);
 }
 
-
-
-View_Einloggen::~View_Einloggen(){
-
+View_Einloggen::~View_Einloggen()
+{
+    delete ui;
 }
-
-
-
-
-
-void View_Einloggen::onEinloggen(){
-
-}
-
-
-void View_Einloggen::onSchlieﬂen(){
-
-}
-
-
-void View_Einloggen::onErstelleHauptorganisator(){
-
-}
-
-
 void View_Einloggen::onInit(){
+     ui-> Fehlermeldung -> setVisible(false);
+}
+
+//ggf. Strings konvertieren: QString::fromStdString(ss), qs.toStdString(ss)
+void View_Einloggen::on_pushButton_clicked() // LoginButton
+{
+    passwort = ui -> Passwort_Edit -> text();
+    eMail = ui -> EMail_Edit -> text();
+
+    teilnehmer = sucheTeilnehmer(passwort.toStdString());
+    if(teilnehmer == NULL){
+        ui -> Fehlermeldung -> setVisible(true);
+    }
+    // hier abpr√ºfen ob passwort stimmt
 
 }
+
