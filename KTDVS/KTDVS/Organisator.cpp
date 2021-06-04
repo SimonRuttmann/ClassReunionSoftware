@@ -13,26 +13,3 @@ Organisator::Organisator(){
 }
 
 
-
-
-
-Organisator::Organisator(String passwort, String e-mail, boolean isHauptorganisator){
-
-}
-
-
-Organisator::~Organisator(){
-
-}
-
-
-String Organisator::Getpasswort(){
-
-	return passwort;
-}
-
-
-void Organisator::Setpasswort(String newVal){
-
-	passwort = newVal;
-}

@@ -47,7 +47,7 @@ Qt_DAO_Teilnehmer::Qt_DAO_Teilnehmer(){
 }
 
 
-Qt_DAO_Teilnehmer::~Qt_DAO_Teilnehmer(){}
+
 
 bool Qt_DAO_Teilnehmer::insertTeilnehmer(Teilnehmer& teilnehmer){
 

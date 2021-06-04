@@ -63,9 +63,7 @@ Qt_DAO_Teilnehmerdaten::Qt_DAO_Teilnehmerdaten(){
 
 }
 
-Qt_DAO_Teilnehmerdaten::~Qt_DAO_Teilnehmerdaten(){
 
-}
 
 
 //Teilnehmerdaten werden nicht geloescht -> Wirkungslos

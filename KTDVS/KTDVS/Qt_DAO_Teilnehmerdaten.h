@@ -32,7 +32,7 @@ private:
 public:
     //Konstruktor bereitet die Anfragen vor
 	Qt_DAO_Teilnehmerdaten();
-	virtual ~Qt_DAO_Teilnehmerdaten();
+
 
     //Methoden beschrieben nach dem Interface I_DAO_Teilnehmerdaten
     bool insert(Teilnehmerdaten& teilnehmerdaten);
