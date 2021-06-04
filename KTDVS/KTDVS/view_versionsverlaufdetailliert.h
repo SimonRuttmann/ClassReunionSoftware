@@ -2,6 +2,8 @@
 #define VIEW_VERSIONSVERLAUFDETAILLIERT_H
 
 #include <QMainWindow>
+#include "Teilnehmerdaten.h"
+#include "view_versionsverlauf.h"
 
 namespace Ui {
 class View_VersionsverlaufDetailliert;
@@ -12,7 +14,7 @@ class View_VersionsverlaufDetailliert : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit View_VersionsverlaufDetailliert(QWidget *parent = nullptr);
+    explicit View_VersionsverlaufDetailliert(QWidget *parent = nullptr,Teilnehmerdaten *alt= nullptr, Teilnehmerdaten *neu=nullptr);
     ~View_VersionsverlaufDetailliert();
 
 private slots:
