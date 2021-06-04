@@ -9,6 +9,8 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    View_Erstersystemstart.cpp \
+    View_Passwortaenderung.cpp \
     main.cpp \
     mainwindow.cpp \
     Controller_Einloggen.cpp \
@@ -30,6 +32,8 @@ SOURCES += \
 HEADERS += \
     Adresse.h \
     Datum.h \
+    View_Erstersystemstart.h \
+    View_Passwortaenderung.h \
     mainwindow.h \
     Controller_Einloggen.h \
     Organisator.h \
@@ -49,6 +53,9 @@ HEADERS += \
     view_versionsverlauf.h \
     view_versionsverlaufdetailliert.h
 FORMS += \
+    View_Einloggen.ui \
+    View_Erstersystemstart.ui \
+    View_Passwortaenderung.ui \
     mainwindow.ui \
     view_teilnehmerliste.ui \
     view_versionsverlauf.ui \
