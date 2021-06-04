@@ -22,7 +22,7 @@ SOURCES += \
     Teilnehmerdaten.cpp \
     View_Einloggen.cpp \
     View_ErsterSystemstart.cpp \
-    View_Passwortänderung.cpp \
+    View_Passwortaenderung.cpp \
     View_TeilnehmerTeilnehmerHinzufügen.cpp \
     view_teilnehmerliste.cpp \
     view_versionsverlauf.cpp \
@@ -43,7 +43,7 @@ HEADERS += \
     Teilnehmerliste.h \
     View_Einloggen.h \
     View_ErsterSystemstart.h \
-    View_Passwortänderung.h \
+    View_Passwortaenderung.h \
     View_TeilnehmerTeilnehmerHinzufügen.h \
     I_DAO_Teilnehmer.h \
     I_DAO_Teilnehmerdaten.h\
@@ -59,7 +59,9 @@ FORMS += \
     mainwindow.ui \
     view_teilnehmerliste.ui \
     view_versionsverlauf.ui \
-    view_versionsverlaufdetailliert.ui
+    view_versionsverlaufdetailliert.ui\
+    View_Einloggen.ui\
+    View_Passwortaenderung.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

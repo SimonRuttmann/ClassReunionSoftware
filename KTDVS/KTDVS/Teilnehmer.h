@@ -13,8 +13,10 @@
 using namespace std;
 //#include "Qt_DAO_Teilnehmer.h"
 class View_VersionsverlaufDetailiert;
+
 class Qt_DAO_Teilnehmer;
 class Teilnehmerdaten;
+
 class Teilnehmer
 {
 

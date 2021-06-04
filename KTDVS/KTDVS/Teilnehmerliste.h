@@ -22,7 +22,7 @@ public:
 	Qt_DAO_Teilnehmer *TeilnehmerDAO;
 
 	Teilnehmer* teilnehmerErstellen();
-    void teilnehmerL�schen();
+    void teilnehmerLoeschen();
     static Teilnehmerliste* instance();
     Teilnehmer* sucheTeilnehmer(string email);
 	Teilnehmer* GetaktiverNutzer();
