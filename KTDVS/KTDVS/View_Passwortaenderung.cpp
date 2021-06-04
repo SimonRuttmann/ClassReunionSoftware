@@ -44,7 +44,7 @@ void View_Passwortaenderung::on_Speichern_Button_clicked()
 
         neuesPasswort = ui -> neuesPass_Edit -> text();
 
-        if (altesPasswortEingabe == altespassNormString){
+        if (altesPasswortEingabe == altesPasswortDatenbank){
             altespassNormString = neuesPasswort.toStdString();
             angemeldeterOrganisator.setPasswort(altespassNormString);
         }
@@ -53,7 +53,7 @@ void View_Passwortaenderung::on_Speichern_Button_clicked()
         }
     }else{
         altespassNormString = neuesPasswort.toStdString();  // wenn HO neues PAsswort verbigt
-        angemeldeterOrganisator.Setpasswort(altespassNormString);
+        angemeldeterOrganisator.setPasswort(altespassNormString);
 
     }
 }

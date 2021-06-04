@@ -10,7 +10,6 @@ CONFIG += c++11
 
 SOURCES += \
     View_Erstersystemstart.cpp \
-    View_Passwortaenderung.cpp \
     main.cpp \
     mainwindow.cpp \
     Controller_Einloggen.cpp \
@@ -21,11 +20,9 @@ SOURCES += \
     Teilnehmerliste.cpp \
     Teilnehmerdaten.cpp \
     View_Einloggen.cpp \
-    View_ErsterSystemstart.cpp \
     View_Passwortaenderung.cpp \
-    View_TeilnehmerTeilnehmerHinzufügen.cpp \
     view_teilnehmerliste.cpp \
-    view_versionsverlauf.cpp \
+    view_teilnehmerteilnehmerhinzufuegen.cpp \
     view_versionsverlauf.cpp \
     view_versionsverlaufdetailliert.cpp
 
@@ -42,14 +39,11 @@ HEADERS += \
     Teilnehmer.h \
     Teilnehmerliste.h \
     View_Einloggen.h \
-    View_ErsterSystemstart.h \
-    View_Passwortaenderung.h \
-    View_TeilnehmerTeilnehmerHinzufügen.h \
     I_DAO_Teilnehmer.h \
     I_DAO_Teilnehmerdaten.h\
     Teilnehmerdaten.h \
     view_teilnehmerliste.h \
-    view_versionsverlauf.h \
+    view_teilnehmerteilnehmerhinzufuegen.h \
     view_versionsverlauf.h \
     view_versionsverlaufdetailliert.h
 FORMS += \
@@ -58,6 +52,7 @@ FORMS += \
     View_Passwortaenderung.ui \
     mainwindow.ui \
     view_teilnehmerliste.ui \
+    view_teilnehmerteilnehmerhinzufuegen.ui \
     view_versionsverlauf.ui \
     view_versionsverlaufdetailliert.ui\
     View_Einloggen.ui\

@@ -23,10 +23,10 @@ void View_Einloggen::on_pushButton_clicked() // LoginButton
     passwort = ui -> Passwort_Edit -> text();
     eMail = ui -> EMail_Edit -> text();
 
-    teilnehmer = sucheTeilnehmer(passwort.toStdString());
-    if(teilnehmer == NULL){
-        ui -> Fehlermeldung -> setVisible(true);
-    }
+  //  teilnehmer = sucheTeilnehmer(passwort.toStdString());
+  //  if(teilnehmer == NULL){
+  //      ui -> Fehlermeldung -> setVisible(true);
+  //  }
     // hier abprüfen ob passwort stimmt
 
 }
