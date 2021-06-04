@@ -1,12 +1,10 @@
 ///////////////////////////////////////////////////////////
 //  Teilnehmer.h
 //  Implementation of the Class Teilnehmer
-//  Created on:      27-Mai-2021 14:19:33
-//  Original author: Simon Ruttmann
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_6737B85E_F4CB_4e88_B320_135147C75A2E__INCLUDED_)
-#define EA_6737B85E_F4CB_4e88_B320_135147C75A2E__INCLUDED_
+#ifndef TEILNEHMER_H
+#define TEILNEHMER_H
 
 #include <list>
 #include <string>
@@ -43,4 +41,4 @@ protected:
 	int teilnehmerkey;
 
 };
-#endif // !defined(EA_6737B85E_F4CB_4e88_B320_135147C75A2E__INCLUDED_)
+#endif // QT_TEILNEHMER_H

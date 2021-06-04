@@ -1,10 +1,10 @@
+release/DAO_QT_Teilnehmer.o
+release/DAO_QT_Teilnehmerdaten.o
 release/View_Erstersystemstart.o
 release/main.o
 release/mainwindow.o
 release/Controller_Einloggen.o
 release/Organisator.o
-release/Qt_DAO_Teilnehmer.o
-release/Qt_DAO_Teilnehmerdaten.o
 release/Teilnehmer.o
 release/Teilnehmerliste.o
 release/Teilnehmerdaten.o

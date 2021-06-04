@@ -1,8 +1,6 @@
 ///////////////////////////////////////////////////////////
 //  Teilnehmerdaten.cpp
 //  Implementation of the Class Teilnehmerdaten
-//  Created on:      27-Mai-2021 14:19:33
-//  Original author: Simon Ruttmann
 ///////////////////////////////////////////////////////////
 
 #include "Teilnehmerdaten.h"
@@ -11,7 +9,7 @@ Teilnehmerdaten::Teilnehmerdaten(){};
 
 Teilnehmerdaten::Teilnehmerdaten(int teilnehmerdatenkey, int teilnehmerkey){
     this->teilnehmerdatenkey = teilnehmerdatenkey;
-    this->teilnehmerKey = teilnehmerKey;
+    this->teilnehmerKey = teilnehmerkey;
 };
 
 int Teilnehmerdaten::getTeilnehmerdatenkey() const {return this->teilnehmerdatenkey;};
@@ -38,12 +36,14 @@ void Teilnehmerdaten::setDatum(Datum newVal){this->datum = newVal;};
 Adresse Teilnehmerdaten::getAdresse()const {return this->adresse;};
 void Teilnehmerdaten::setAdresse(Adresse newVal){this->adresse = newVal;};
 
-
 list<string> Teilnehmerdaten::getWeitereTelefonnummern() const {return this->weitere_telefonnummern;};
-void Teilnehmerdaten::setWeitereTelefonnummern(list<string> newVal){this->weitere_telefonnummern = newVal;};
+void Teilnehmerdaten::setWeitereTelefonnummern(list<string>& newVal){this->weitere_telefonnummern = newVal;};
 
 string Teilnehmerdaten::getHaupttelefonnummer()const {return this->haupttelefonnummer;};
 void Teilnehmerdaten::setHaupttelefonnummer(string newVal){this->haupttelefonnummer = newVal;};
 
 string Teilnehmerdaten::getKommentar() const {return this->kommentar;};
 void Teilnehmerdaten::setKommentar(string kommentar){this->kommentar = kommentar;};
+
+int Teilnehmerdaten::getErstellerKey() const{return this->erstellerKey;};
+void Teilnehmerdaten::setErstellerKey(int newVal){this->erstellerKey = newVal;};

@@ -1,12 +1,10 @@
 ///////////////////////////////////////////////////////////
 //  Teilnehmerdaten.h
 //  Implementation of the Class Teilnehmerdaten
-//  Created on:      27-Mai-2021 14:19:33
-//  Original author: Simon Ruttmann
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_B0DBE83D_D464_48b5_89B7_8DFF0896E9D3__INCLUDED_)
-#define EA_B0DBE83D_D464_48b5_89B7_8DFF0896E9D3__INCLUDED_
+#ifndef TEILNEHMERDATEN_H
+#define TEILNEHMERDATEN_H
 
 
 #include "Datum.h"
@@ -46,14 +44,16 @@ public:
 
 
     list<string> getWeitereTelefonnummern() const;
-    void setWeitereTelefonnummern(list<string> newVal);
+    void setWeitereTelefonnummern(list<string>& newVal);
 
     string getHaupttelefonnummer()const;
     void setHaupttelefonnummer(string newVal);
 
     string getKommentar() const;
-    void setKommentar(string kommentar);
+    void setKommentar(string newVal);
 
+    int getErstellerKey() const;
+    void setErstellerKey(int newVal);
 private:
     string kommentar;
 	int teilnehmerdatenkey;
@@ -66,6 +66,7 @@ private:
     list<string> weitere_telefonnummern;
     string haupttelefonnummer;
 	int teilnehmerKey;
+    int erstellerKey;
 
 };
-#endif // !defined(EA_B0DBE83D_D464_48b5_89B7_8DFF0896E9D3__INCLUDED_)
+#endif // TEILNEHMERDATEN_H

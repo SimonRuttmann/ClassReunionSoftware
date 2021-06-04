@@ -5,7 +5,7 @@
 //  Original author: Simon Ruttmann
 ///////////////////////////////////////////////////////////
 
-#include "Qt_DAO_Teilnehmerdaten.h"
+#include "DAO_QT_Teilnehmerdaten.h"
 #include <QVariant>
 #include <string>
 #include <sstream>
@@ -14,11 +14,14 @@
 
 
 using namespace std;
-Qt_DAO_Teilnehmerdaten::Qt_DAO_Teilnehmerdaten(){
+DAO_QT_Teilnehmerdaten::DAO_QT_Teilnehmerdaten(){
     insert_query.prepare
         (
-         "INSERT INTO Teilnehmerdaten (teilnehmerkey, vorname, nachname, schulname, email, datum, postleitzahl, hausnummer, stadt, strasse, land)"
-         "VALUES (:teilnehmerkey, :vorname, :nachname, :schulname, :email, :datum, :postleitzahl, :hausnumemr, :stadt, :strasse, :land);"
+         "INSERT INTO Teilnehmerdaten "
+         "(teilnehmerkey, vorname, nachname, schulname, "
+         "email, datum, postleitzahl, hausnummer, stadt, strasse, land, kommentar, erstellerkey)"
+         "VALUES (:teilnehmerkey, :vorname, :nachname, :schulname,"
+         ":email, :datum, :postleitzahl, :hausnumemr, :stadt, :strasse, :land, :kommentar, :erstellerkey);"
          );
     insert_query_tel.prepare
          (
@@ -69,18 +72,20 @@ Qt_DAO_Teilnehmerdaten::Qt_DAO_Teilnehmerdaten(){
 //Teilnehmerdaten werden nicht geloescht -> Wirkungslos
 //bool Qt_DAO_Teilnehmerdaten::remove(int teilnehmerkey){return false;};
 
-bool Qt_DAO_Teilnehmerdaten::insert(Teilnehmerdaten& teilnehmerdaten){
+bool DAO_QT_Teilnehmerdaten::insert(Teilnehmerdaten& teilnehmerdaten){
     insert_query.bindValue(":teilnehmerkey", teilnehmerdaten.getTeilnehmerkey());
     insert_query.bindValue(":vorname", QString::fromStdString(teilnehmerdaten.getVorname()));
     insert_query.bindValue(":nachname", QString::fromStdString(teilnehmerdaten.getNachname()));
     insert_query.bindValue(":schulname", QString::fromStdString(teilnehmerdaten.getSchulname()));
     insert_query.bindValue(":email", QString::fromStdString(teilnehmerdaten.getEMail()));
     insert_query.bindValue(":datum", QString::fromStdString(teilnehmerdaten.getDatum().toString()));
-    insert_query.bindValue(":postleitzahl", QString::fromStdString(teilnehmerdaten.getPostleitzahl()));
+    insert_query.bindValue(":postleitzahl", teilnehmerdaten.getAdresse().postleitzahl);
     insert_query.bindValue(":hausnummer", teilnehmerdaten.getAdresse().haussnummer);
     insert_query.bindValue(":stadt", QString::fromStdString(teilnehmerdaten.getAdresse().stadt));
     insert_query.bindValue(":strasse", QString::fromStdString(teilnehmerdaten.getAdresse().strasse));
     insert_query.bindValue(":land", QString::fromStdString(teilnehmerdaten.getAdresse().land));
+    insert_query.bindValue(":land", QString::fromStdString(teilnehmerdaten.getKommentar()));
+    insert_query.bindValue(":erstellerkey", teilnehmerdaten.getErstellerKey());
 
     if(insert_query.exec()) return false;
     if(last_insert_id_query.exec())return false;
@@ -88,7 +93,7 @@ bool Qt_DAO_Teilnehmerdaten::insert(Teilnehmerdaten& teilnehmerdaten){
     int teilnehmerdatenkey = last_insert_id_query.value(0).toInt();
 
 
-    list<string> weitereTel = *teilnehmerdaten.getWeitereTelefonnummern();
+    list<string> weitereTel = teilnehmerdaten.getWeitereTelefonnummern();
     list<string>::iterator iterator;
 
     for (iterator=weitereTel.begin(); iterator != weitereTel.end(); ++iterator){
@@ -113,7 +118,7 @@ bool Qt_DAO_Teilnehmerdaten::insert(Teilnehmerdaten& teilnehmerdaten){
 
 
 
-bool Qt_DAO_Teilnehmerdaten::selectFirstOfTeilnehmer(int teilnehmerkey, Teilnehmerdaten& teilnehmerdaten){
+bool DAO_QT_Teilnehmerdaten::selectFirstOfTeilnehmer(int teilnehmerkey, Teilnehmerdaten& teilnehmerdaten){
     select_query_first.bindValue(":teilnehmerkey", teilnehmerkey);
 
     if(select_query_first.exec())return false;
@@ -174,6 +179,12 @@ bool Qt_DAO_Teilnehmerdaten::selectFirstOfTeilnehmer(int teilnehmerkey, Teilnehm
     adresse->land = land;
     teilnehmerdaten.setAdresse(*adresse);
 
+    string kommentar = select_query_first.value(12).toString().toStdString();
+    teilnehmerdaten.setKommentar(kommentar);
+
+    int erstellerkey = select_query_first.value(13).toInt();
+    teilnehmerdaten.setErstellerKey(erstellerkey);
+
     select_telefonNr_ofTeilnehmerdaten.bindValue(":teilnehmerdaten", teilnehmerdatenkey);
 
     if(select_telefonNr_ofTeilnehmerdaten.exec()) return false;
@@ -192,12 +203,12 @@ bool Qt_DAO_Teilnehmerdaten::selectFirstOfTeilnehmer(int teilnehmerkey, Teilnehm
         }
     }
 
-    teilnehmerdaten.setWeitereTelefonnummern(telefonnummerliste);
+    teilnehmerdaten.setWeitereTelefonnummern(*telefonnummerliste);
     return true;
 };
 
 //Leere Liste an Teilnehmerdaten wird übergeben
-bool Qt_DAO_Teilnehmerdaten::selectAllOfTeilnehmer(int teilnehmerkey,  list<Teilnehmerdaten*>& teilnehmerdatenliste){
+bool DAO_QT_Teilnehmerdaten::selectAllOfTeilnehmer(int teilnehmerkey,  list<Teilnehmerdaten*>& teilnehmerdatenliste){
     select_query_ofTeilnehmer.bindValue(":teilnehmerkey", teilnehmerkey);
     if(select_query_ofTeilnehmer.exec()) return false;
 
@@ -259,12 +270,19 @@ bool Qt_DAO_Teilnehmerdaten::selectAllOfTeilnehmer(int teilnehmerkey,  list<Teil
         adresse->land = land;
         teilnehmerdaten->setAdresse(*adresse);
 
+        string kommentar = select_query_first.value(12).toString().toStdString();
+        teilnehmerdaten->setKommentar(kommentar);
+
+        int erstellerkey = select_query_ofTeilnehmer.value(13).toInt();
+        teilnehmerdaten->setErstellerKey(erstellerkey);
+
         select_telefonNr_ofTeilnehmerdaten.bindValue(":teilnehmerdaten", teilnehmerdatenkey);
 
         if(select_telefonNr_ofTeilnehmerdaten.exec()) return false;
 
         list<string>* telefonnummerliste = new list<string>();
 
+        //Telefonnummern erhalten
         while(select_telefonNr_ofTeilnehmerdaten.next()){
             bool hauptnummer = select_telefonNr_ofTeilnehmerdaten.value(2).toBool();
             string nummer = select_telefonNr_ofTeilnehmerdaten.value(3).toString().toStdString();
@@ -277,7 +295,7 @@ bool Qt_DAO_Teilnehmerdaten::selectAllOfTeilnehmer(int teilnehmerkey,  list<Teil
             }
         }
 
-        teilnehmerdaten->setWeitereTelefonnummern(telefonnummerliste);
+        teilnehmerdaten->setWeitereTelefonnummern(*telefonnummerliste);
         teilnehmerdatenliste.push_front(teilnehmerdaten);
     }
     return true;
@@ -285,7 +303,7 @@ bool Qt_DAO_Teilnehmerdaten::selectAllOfTeilnehmer(int teilnehmerkey,  list<Teil
 
 //Nicht verwenden, ist nur um zu testen was passieren kann!
 //Heftiger Select, ladet praktisch die gesammte Datenbank in den Hauptspeicher
-bool Qt_DAO_Teilnehmerdaten::selectAll(list<Teilnehmerdaten*>& teilnehmerdatenliste){
+bool DAO_QT_Teilnehmerdaten::selectAll(list<Teilnehmerdaten*>& teilnehmerdatenliste){
     if(select_query_all.exec()) return false;
 
     while(select_query_all.next()){
@@ -349,6 +367,11 @@ bool Qt_DAO_Teilnehmerdaten::selectAll(list<Teilnehmerdaten*>& teilnehmerdatenli
         adresse->land = land;
         teilnehmerdaten->setAdresse(*adresse);
 
+        string kommentar = select_query_first.value(12).toString().toStdString();
+        teilnehmerdaten->setKommentar(kommentar);
+
+        int erstellerkey = select_query_ofTeilnehmer.value(13).toInt();
+        teilnehmerdaten->setErstellerKey(erstellerkey);
 
         select_telefonNr_ofTeilnehmerdaten.bindValue(":teilnehmerdaten", teilnehmerdatenkey);
 
@@ -368,7 +391,7 @@ bool Qt_DAO_Teilnehmerdaten::selectAll(list<Teilnehmerdaten*>& teilnehmerdatenli
             }
         }
 
-        teilnehmerdaten->setWeitereTelefonnummern(telefonnummerliste);
+        teilnehmerdaten->setWeitereTelefonnummern(*telefonnummerliste);
         teilnehmerdatenliste.push_front(teilnehmerdaten);
 
     }

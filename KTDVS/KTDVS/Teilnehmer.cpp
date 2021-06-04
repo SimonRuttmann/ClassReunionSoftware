@@ -1,22 +1,20 @@
 ///////////////////////////////////////////////////////////
 //  Teilnehmer.cpp
 //  Implementation of the Class Teilnehmer
-//  Created on:      27-Mai-2021 14:19:33
-//  Original author: Simon Ruttmann
 ///////////////////////////////////////////////////////////
 
 #include "Teilnehmer.h"
 #include "I_DAO_Teilnehmer.h"
-#include "Qt_DAO_Teilnehmer.h"
-#include "Qt_DAO_Teilnehmerdaten.h"
+#include "DAO_QT_Teilnehmer.h"
+#include "DAO_QT_Teilnehmerdaten.h"
 
     Teilnehmer::Teilnehmer(Teilnehmerdaten teilnehmerdaten){
         this->aktuelleTeilnehmerdaten = &teilnehmerdaten;
-        this->TeilnehmerdatenDAO = new Qt_DAO_Teilnehmerdaten();
+        this->TeilnehmerdatenDAO = new DAO_QT_Teilnehmerdaten();
     };
 
     Teilnehmer::Teilnehmer(){
-        this->TeilnehmerdatenDAO = new Qt_DAO_Teilnehmerdaten();
+        this->TeilnehmerdatenDAO = new DAO_QT_Teilnehmerdaten();
         this->aktuelleTeilnehmerdaten = new Teilnehmerdaten();
 
     };

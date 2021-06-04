@@ -9,13 +9,13 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    DAO_QT_Teilnehmer.cpp \
+    DAO_QT_Teilnehmerdaten.cpp \
     View_Erstersystemstart.cpp \
     main.cpp \
     mainwindow.cpp \
     Controller_Einloggen.cpp \
     Organisator.cpp \
-    Qt_DAO_Teilnehmer.cpp \
-    Qt_DAO_Teilnehmerdaten.cpp \
     Teilnehmer.cpp \
     Teilnehmerliste.cpp \
     Teilnehmerdaten.cpp \
@@ -28,14 +28,14 @@ SOURCES += \
 
 HEADERS += \
     Adresse.h \
+    DAO_QT_Teilnehmer.h \
+    DAO_QT_Teilnehmerdaten.h \
     Datum.h \
     View_Erstersystemstart.h \
     View_Passwortaenderung.h \
     mainwindow.h \
     Controller_Einloggen.h \
     Organisator.h \
-    Qt_DAO_Teilnehmer.h \
-    Qt_DAO_Teilnehmerdaten.h \
     Teilnehmer.h \
     Teilnehmerliste.h \
     View_Einloggen.h \
