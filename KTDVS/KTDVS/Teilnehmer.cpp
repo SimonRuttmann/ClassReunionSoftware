@@ -12,25 +12,25 @@
 
     Teilnehmer::Teilnehmer(Teilnehmerdaten teilnehmerdaten){
         this->aktuelleTeilnehmerdaten = &teilnehmerdaten;
-
-        this->TeilnehmerDAO = new Qt_DAO_Teilnehmer();
         this->TeilnehmerdatenDAO = new Qt_DAO_Teilnehmerdaten();
-
-        this->Teilnehmerdatenliste = new list<Teilnehmerdaten*>();
     };
 
     Teilnehmer::Teilnehmer(){
-        this->TeilnehmerDAO = new Qt_DAO_Teilnehmer();
         this->TeilnehmerdatenDAO = new Qt_DAO_Teilnehmerdaten();
-
         this->aktuelleTeilnehmerdaten = new Teilnehmerdaten();
-        this->Teilnehmerdatenliste = new list<Teilnehmerdaten*>();
+
     };
 
     Teilnehmer::~Teilnehmer(){
-        delete this->Teilnehmerdatenliste;
+
         delete this->aktuelleTeilnehmerdaten;
-        delete this->TeilnehmerDAO;
+        list<Teilnehmerdaten*>::iterator it = this->Teilnehmerdatenliste.begin();
+
+        while(it != Teilnehmerdatenliste.end()){
+            this->Teilnehmerdatenliste.erase(it);
+            delete(*it);
+            //it++;
+        }
     };
 
     Teilnehmerdaten* Teilnehmer::getAktuelleTeilnehmerdaten(){
@@ -44,21 +44,23 @@
     };
 
     list<Teilnehmerdaten*>* Teilnehmer::getAlleTeilnehmerdaten(){
-        this->TeilnehmerdatenDAO->selectAllOfTeilnehmer()
+        return &(this->Teilnehmerdatenliste);
     };
-    list<Teilnehmerdaten*>* Teilnehmer::alleTeilnehmerdatenErstellen(){};
 
 
-    int Teilnehmer::getTeilnehmerkey()const{};
-    void Teilnehmer::setTeilnehmerkey(int newVal){};
+    list<Teilnehmerdaten*>* Teilnehmer::alleTeilnehmerdatenErstellen(){
+         this->TeilnehmerdatenDAO->selectAllOfTeilnehmer(this->teilnehmerkey, this->Teilnehmerdatenliste);
+         return &(this->Teilnehmerdatenliste);
+    };
 
-    bool Teilnehmer::pruefePasswort(string passwort, string email){};
 
-//private:
-//    Qt_DAO_Teilnehmer* TeilnehmerDAO;
-//    list<Teilnehmerdaten*>* Teilnehmerdatenliste;
+    int Teilnehmer::getTeilnehmerkey()const{
+        return this->teilnehmerkey;
+    };
 
-//	int teilnehmerkey;
+    void Teilnehmer::setTeilnehmerkey(int neuerTeilnehmerkey){
+        this->teilnehmerkey = neuerTeilnehmerkey;
+    };
 
 
 

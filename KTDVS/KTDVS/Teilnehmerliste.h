@@ -17,20 +17,27 @@ class Teilnehmerliste
 
 public:
 	Teilnehmerliste();
-	virtual ~Teilnehmerliste();
-	list<Teilnehmer*> *m_Teilnehmer;
-	Qt_DAO_Teilnehmer *TeilnehmerDAO;
+    ~Teilnehmerliste();
+
+    Teilnehmer* getAktiverNutzer();
+    void setAktiverNutzer(Teilnehmer* newVal);
 
 	Teilnehmer* teilnehmerErstellen();
-    void teilnehmerLoeschen();
+    //void teilnehmerLoeschen();
+
+    Organisator* organisatorErstellen(string passwort, bool isHauptorganisator);
+    //void organisatorLoeschen();
+
     static Teilnehmerliste* instance();
     Teilnehmer* sucheTeilnehmer(string email);
-	Teilnehmer* GetaktiverNutzer();
-	void SetaktiverNutzer(Teilnehmer* newVal);
+
+    list<Teilnehmer*>* getTeilnehmerliste();
 
 private:
-	static Teilnehmerliste uniqueInstance;
-	Teilnehmer aktiverNutzer;
+    static Teilnehmerliste* uniqueInstance;
+    Teilnehmer* aktiverNutzer;
+    list<Teilnehmer*> teilnehmerliste;
+    I_DAO_Teilnehmer* TeilnehmerDAO;
 
 };
 #endif // !defined(EA_BB0DD1F2_7BC3_4503_933B_B3E850297616__INCLUDED_)

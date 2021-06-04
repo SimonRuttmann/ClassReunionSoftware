@@ -36,12 +36,9 @@ public:
     int getTeilnehmerkey()const;
     void setTeilnehmerkey(int newVal);
 
-    bool pruefePasswort(string passwort, string email);
-
-private:
+protected:
     Teilnehmerdaten* aktuelleTeilnehmerdaten;
-    I_DAO_Teilnehmer* TeilnehmerDAO;
-    list<Teilnehmerdaten*>* Teilnehmerdatenliste;
+    list<Teilnehmerdaten*> Teilnehmerdatenliste;
     I_DAO_Teilnehmerdaten* TeilnehmerdatenDAO;
 	int teilnehmerkey;
 

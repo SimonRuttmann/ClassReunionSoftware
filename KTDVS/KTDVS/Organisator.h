@@ -11,17 +11,19 @@
 #include "Teilnehmer.h"
 #include <string>
 
+
 class Organisator : public Teilnehmer
 {
-
 public:
-	Organisator();
+    enum Pruefung {EMailFalsch, EmailZutreffendPwFalsch, EMailZutreffendPwRichtig};
 
-    Organisator(string passwort, string eMail, bool isHauptorganisator);
-	~Organisator();
+    Organisator(string passwort, bool isHauptorganisator);
+
+    Pruefung pruefePasswort(string pw, string email);
 
     void setPasswort(string pw);
     string getPasswort()const;
+
     void setHauptorganisator(bool ho);
     bool isHauptorganisator()const;
 
