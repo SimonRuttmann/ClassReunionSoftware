@@ -1,36 +1,49 @@
 ///////////////////////////////////////////////////////////
 //  Teilnehmerliste.h
 //  Implementation of the Class Teilnehmerliste
-//  Created on:      27-Mai-2021 14:19:33
-//  Original author: Simon Ruttmann
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_BB0DD1F2_7BC3_4503_933B_B3E850297616__INCLUDED_)
-#define EA_BB0DD1F2_7BC3_4503_933B_B3E850297616__INCLUDED_
+#ifndef TEILNEHMERLISTE_H
+#define TEILNEHMERLISTE_H
 
 #include "Teilnehmer.h"
 //#include "ListeTeilnehmer.java"
-#include "Qt_DAO_Teilnehmer.h"
+#include "DAO_QT_Teilnehmer.h"
 
 class Teilnehmerliste
 {
 
 public:
 	Teilnehmerliste();
-	virtual ~Teilnehmerliste();
-	list<Teilnehmer*> *m_Teilnehmer;
-	Qt_DAO_Teilnehmer *TeilnehmerDAO;
+    ~Teilnehmerliste();
+
+    Teilnehmer* getAktiverNutzer();
+    void setAktiverNutzer(Teilnehmer* newVal);
 
 	Teilnehmer* teilnehmerErstellen();
-    void teilnehmerLoeschen();
-    static Teilnehmerliste* instance();
-    Teilnehmer* sucheTeilnehmer(string email);
-	Teilnehmer* GetaktiverNutzer();
-	void SetaktiverNutzer(Teilnehmer* newVal);
+    //void teilnehmerLoeschen();
 
-private:
-	static Teilnehmerliste uniqueInstance;
-	Teilnehmer aktiverNutzer;
+    Organisator* organisatorErstellen(string passwort, bool isHauptorganisator);
+    //void organisatorLoeschen();
+
+    static Teilnehmerliste* instance();
+
+    Teilnehmer* sucheTeilnehmer(string email);
+
+    list<Teilnehmer*>* getTeilnehmerliste();
+    list<Organisator*>* getOrganisatorliste();
+
+    bool updateOrganisator(Organisator& organisator);
+    bool updateTeilnehmer(Teilnehmer& teilnehmer);
+
+
+public:
+    static Teilnehmerliste* uniqueInstance;
+    Teilnehmer* aktiverNutzer;
+    list<Teilnehmer*> teilnehmerliste;
+    list<Organisator*> organisatorliste;
+    I_DAO_Teilnehmer* TeilnehmerDAO;
+
 
 };
-#endif // !defined(EA_BB0DD1F2_7BC3_4503_933B_B3E850297616__INCLUDED_)
+#endif // TEILNEHMERLISTE_H

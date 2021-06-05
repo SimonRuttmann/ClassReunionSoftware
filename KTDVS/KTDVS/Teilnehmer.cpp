@@ -1,36 +1,34 @@
 ///////////////////////////////////////////////////////////
 //  Teilnehmer.cpp
 //  Implementation of the Class Teilnehmer
-//  Created on:      27-Mai-2021 14:19:33
-//  Original author: Simon Ruttmann
 ///////////////////////////////////////////////////////////
 
 #include "Teilnehmer.h"
 #include "I_DAO_Teilnehmer.h"
-#include "Qt_DAO_Teilnehmer.h"
-#include "Qt_DAO_Teilnehmerdaten.h"
+#include "DAO_QT_Teilnehmer.h"
+#include "DAO_QT_Teilnehmerdaten.h"
 
     Teilnehmer::Teilnehmer(Teilnehmerdaten teilnehmerdaten){
         this->aktuelleTeilnehmerdaten = &teilnehmerdaten;
-
-        this->TeilnehmerDAO = new Qt_DAO_Teilnehmer();
-        this->TeilnehmerdatenDAO = new Qt_DAO_Teilnehmerdaten();
-
-        this->Teilnehmerdatenliste = new list<Teilnehmerdaten*>();
+        this->TeilnehmerdatenDAO = new DAO_QT_Teilnehmerdaten();
     };
 
     Teilnehmer::Teilnehmer(){
-        this->TeilnehmerDAO = new Qt_DAO_Teilnehmer();
-        this->TeilnehmerdatenDAO = new Qt_DAO_Teilnehmerdaten();
-
+        this->TeilnehmerdatenDAO = new DAO_QT_Teilnehmerdaten();
         this->aktuelleTeilnehmerdaten = new Teilnehmerdaten();
-        this->Teilnehmerdatenliste = new list<Teilnehmerdaten*>();
+
     };
 
     Teilnehmer::~Teilnehmer(){
-        delete this->Teilnehmerdatenliste;
+
         delete this->aktuelleTeilnehmerdaten;
-        delete this->TeilnehmerDAO;
+        list<Teilnehmerdaten*>::iterator it = this->Teilnehmerdatenliste.begin();
+
+        while(it != Teilnehmerdatenliste.end()){
+            this->Teilnehmerdatenliste.erase(it);
+            delete(*it);
+            //it++;
+        }
     };
 
     Teilnehmerdaten* Teilnehmer::getAktuelleTeilnehmerdaten(){
@@ -44,21 +42,23 @@
     };
 
     list<Teilnehmerdaten*>* Teilnehmer::getAlleTeilnehmerdaten(){
-        this->TeilnehmerdatenDAO->selectAllOfTeilnehmer()
+        return &(this->Teilnehmerdatenliste);
     };
-    list<Teilnehmerdaten*>* Teilnehmer::alleTeilnehmerdatenErstellen(){};
 
 
-    int Teilnehmer::getTeilnehmerkey()const{};
-    void Teilnehmer::setTeilnehmerkey(int newVal){};
+    list<Teilnehmerdaten*>* Teilnehmer::alleTeilnehmerdatenErstellen(){
+         this->TeilnehmerdatenDAO->selectAllOfTeilnehmer(this->teilnehmerkey, this->Teilnehmerdatenliste);
+         return &(this->Teilnehmerdatenliste);
+    };
 
-    bool Teilnehmer::pruefePasswort(string passwort, string email){};
 
-//private:
-//    Qt_DAO_Teilnehmer* TeilnehmerDAO;
-//    list<Teilnehmerdaten*>* Teilnehmerdatenliste;
+    int Teilnehmer::getTeilnehmerkey()const{
+        return this->teilnehmerkey;
+    };
 
-//	int teilnehmerkey;
+    void Teilnehmer::setTeilnehmerkey(int neuerTeilnehmerkey){
+        this->teilnehmerkey = neuerTeilnehmerkey;
+    };
 
 
 

@@ -1,14 +1,12 @@
 ///////////////////////////////////////////////////////////
 //  Teilnehmerdaten.h
 //  Implementation of the Class Teilnehmerdaten
-//  Created on:      27-Mai-2021 14:19:33
-//  Original author: Simon Ruttmann
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_B0DBE83D_D464_48b5_89B7_8DFF0896E9D3__INCLUDED_)
-#define EA_B0DBE83D_D464_48b5_89B7_8DFF0896E9D3__INCLUDED_
+#ifndef TEILNEHMERDATEN_H
+#define TEILNEHMERDATEN_H
 
-//#include "Qt_DAO_Teilnehmerdaten.h"
+
 #include "Datum.h"
 #include "Adresse.h"
 #include <list>
@@ -17,50 +15,58 @@ class Teilnehmerdaten
 
 public:
 	Teilnehmerdaten();
-        //Qt_DAO_Teilnehmerdaten *TeilnehmerdatenDao;
 
 	Teilnehmerdaten(int teilnehmerdatenkey, int teilnehmerkey);
-	~Teilnehmerdaten();
 
-	int getTeilnehmerdatenkey();
-        int getTeilnehmerkey();
-        void setTeilnehmerkey(int teilnehmerkey);
-        string getPostleitzahl() const;
-        string getNachname() const;
-        void setNachname(string newVal);
-        int getTeilnehmerdatenkey() const;
-        void setTeilnehmerdatenkey(int newVal);
-        string getEMail() const;
-        void setEmail(string newVal);
-        Adresse getAdresse()const;
-        void setAdresse(Adresse &newVal);
-        string getVorname()const;
-        void setVorname(string newVal);
-        string getSchulname()const;
-        void setSchulname(string newVal);
-        Datum getDatum()const;
-        void setDatum(Datum &newVal);
+    int getTeilnehmerdatenkey() const;
+    void setTeilnehmerdatenkey(int newVal);
 
-        list<string>* getWeitereTelefonnummern();
-        void setWeitereTelefonnummern(list<string>* newVal);
+    int getTeilnehmerkey() const;
+    void setTeilnehmerkey(int teilnehmerkey);
 
-        string getHaupttelefonnummer()const;
-        void setHaupttelefonnummer(string newVal);
+    string getVorname()const;
+    void setVorname(string newVal);
 
-        string getKommentar();
-        void setKommentar(string kommentar);
+    string getNachname() const;
+    void setNachname(string newVal);
+
+    string getSchulname()const;
+    void setSchulname(string newVal);
+
+    string getEMail() const;
+    void setEmail(string newVal);
+
+    Datum getDatum()const;
+    void setDatum(Datum newVal);
+
+    Adresse getAdresse()const;
+    void setAdresse(Adresse newVal);
+
+
+    list<string> getWeitereTelefonnummern() const;
+    void setWeitereTelefonnummern(list<string>& newVal);
+
+    string getHaupttelefonnummer()const;
+    void setHaupttelefonnummer(string newVal);
+
+    string getKommentar() const;
+    void setKommentar(string newVal);
+
+    int getErstellerKey() const;
+    void setErstellerKey(int newVal);
 private:
-        string kommentar;
+    string kommentar;
 	int teilnehmerdatenkey;
-        string Email;
-        Adresse* adresse;
-        string vorname;
-        string nachname;
-	int schulname;
-        Datum* datum;
-        list<string>* weitere_telefonnummern;
-        string haupttelefonnummer;
+    string Email;
+    Adresse adresse;
+    string vorname;
+    string nachname;
+    string schulname;
+    Datum datum;
+    list<string> weitere_telefonnummern;
+    string haupttelefonnummer;
 	int teilnehmerKey;
+    int erstellerKey;
 
 };
-#endif // !defined(EA_B0DBE83D_D464_48b5_89B7_8DFF0896E9D3__INCLUDED_)
+#endif // TEILNEHMERDATEN_H
