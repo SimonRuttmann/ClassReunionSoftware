@@ -13,8 +13,7 @@ class view_teilnehmerliste : public QWidget
     Q_OBJECT
 
 public:
-    view_teilnehmerliste();
-    explicit view_teilnehmerliste(QWidget *parent = nullptr);
+    explicit view_teilnehmerliste(QWidget *parent = nullptr, Teilnehmerliste* teilnehmerliste = nullptr);
     ~view_teilnehmerliste();
 
     void onAusloggen();
@@ -30,20 +29,15 @@ private slots:
 
     void on_toolButton_clicked();
 
-    void on_toolButton_2_clicked();
-
-    void on_toolButton_3_clicked();
-
-    void on_pushButton_3_clicked();
-
-    void on_pushButton_2_clicked();
-
-    void on_pushButton_4_clicked();
-
 private:
     Ui::view_teilnehmerliste *ui;
 
     Teilnehmerliste* teilnehmerList;
+
+    void addEingeklapptesFeld(string name, string email);
+    void addAusgeklapptesFeld(string name, string email, string schulname, string adresse, string land, string telefonnummer, string kommentar);
+    void removeEingeklapptesFeld(string email);
+    void removeAusgeklapptesFeld(string email);
 };
 
 #endif // VIEW_TEILNEHMERLISTE_H
