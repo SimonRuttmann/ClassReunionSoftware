@@ -17,35 +17,39 @@ view_teilnehmerliste::view_teilnehmerliste(QWidget *parent, Teilnehmerliste* tei
 
     list<Teilnehmer*>::iterator it;
 
-    for (it = teilnehmerList->getTeilnehmerliste()->begin(); it != teilnehmerList->getTeilnehmerliste()->end(); it++) {
-        Teilnehmerdaten* daten = (*it)->getAktuelleTeilnehmerdaten();
+    if (teilnehmerList != nullptr) {
+        for (it = teilnehmerList->getTeilnehmerliste()->begin(); it != teilnehmerList->getTeilnehmerliste()->end(); it++) {
+            Teilnehmerdaten* daten = (*it)->getAktuelleTeilnehmerdaten();
 
-        string adresse = "", telefonnummern = "";
+            string adresse = "", telefonnummern = "";
 
-        adresse = adresse + daten->getAdresse().strasse;
-        adresse = adresse + " " + to_string(daten->getAdresse().haussnummer);
-        adresse = adresse + " " + to_string(daten->getAdresse().postleitzahl);
-        adresse = adresse + " " + daten->getAdresse().stadt;
+            adresse = adresse + daten->getAdresse().strasse;
+            adresse = adresse + " " + to_string(daten->getAdresse().haussnummer);
+            adresse = adresse + " " + to_string(daten->getAdresse().postleitzahl);
+            adresse = adresse + " " + daten->getAdresse().stadt;
 
-        telefonnummern = telefonnummern + daten->getHaupttelefonnummer();
-        list<string>::iterator itNummern;
+            telefonnummern = telefonnummern + daten->getHaupttelefonnummer();
+            list<string>::iterator itNummern;
 
-        for (itNummern = daten->getWeitereTelefonnummern().begin(); itNummern != daten->getWeitereTelefonnummern().end(); itNummern++) {
-            if (telefonnummern == "") {
-                telefonnummern = (*itNummern);
-                continue;
+            for (itNummern = daten->getWeitereTelefonnummern().begin(); itNummern != daten->getWeitereTelefonnummern().end(); itNummern++) {
+                if (telefonnummern == "") {
+                    telefonnummern = (*itNummern);
+                    continue;
+                }
+
+                telefonnummern = telefonnummern + ", " + (*itNummern);
             }
 
-            telefonnummern = telefonnummern + ", " + (*itNummern);
+            addAusgeklapptesFeld(daten->getNachname(), daten->getEMail(), daten->getSchulname(), adresse, daten->getAdresse().land, telefonnummern, daten->getKommentar());
         }
-
-        addAusgeklapptesFeld(daten->getNachname(), daten->getEMail(), daten->getSchulname(), adresse, daten->getAdresse().land, telefonnummern, daten->getKommentar());
     }
 
     //gib mir teilnehmerdaten
 
-    addAusgeklapptesFeld("", "", "", "", "", "", "");
-    addEingeklapptesFeld("", "");
+    addAusgeklapptesFeld("test1", "test2", "test3", "test4", "test5", "test6", "test7");
+    addEingeklapptesFeld("test8", "test9");
+
+    removeFeld("test10");
 }
 
 view_teilnehmerliste::~view_teilnehmerliste()
@@ -56,6 +60,10 @@ view_teilnehmerliste::~view_teilnehmerliste()
 void view_teilnehmerliste::addEingeklapptesFeld(string name ,string email) {
     //add normales
     QHBoxLayout* layout = new QHBoxLayout();
+
+    QToolButton *qtoolbutton = new QToolButton();
+    qtoolbutton->icon().addFile("Resources/arrow_down.png");
+
     //keine ahnung was die parameter sind
     layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
     layout->addWidget(new QToolButton());
@@ -94,12 +102,12 @@ void view_teilnehmerliste::addAusgeklapptesFeld(string name, string email, strin
     buttons->addWidget(new QPushButton("als Organisator hinzufügen"));
 
     QVBoxLayout* daten = new QVBoxLayout();
-    daten->addWidget(new QLabel(QString::fromStdString(schulname)));
-    daten->addWidget(new QLabel(QString::fromStdString(adresse)));
-    daten->addWidget(new QLabel(QString::fromStdString(email)));
-    daten->addWidget(new QLabel(QString::fromStdString(land)));
-    daten->addWidget(new QLabel(QString::fromStdString(telefonnummer)));
-    daten->addWidget(new QLabel(QString::fromStdString(kommentar)));
+    daten->addWidget(new QLabel("\tSchulname: \t\t" + QString::fromStdString(schulname)));
+    daten->addWidget(new QLabel("\tAdresse: \t\t\t" + QString::fromStdString(adresse)));
+    daten->addWidget(new QLabel("\tE-Mail: \t\t\t" + QString::fromStdString(email)));
+    daten->addWidget(new QLabel("\tLand: \t\t\t" + QString::fromStdString(land)));
+    daten->addWidget(new QLabel("\tTelefonnummer: \t\t" + QString::fromStdString(telefonnummer)));
+    daten->addWidget(new QLabel("\tKommentar: \t\t" + QString::fromStdString(kommentar)));
 
     QHBoxLayout* combine = new QHBoxLayout();
     combine->addLayout(daten);
@@ -109,10 +117,16 @@ void view_teilnehmerliste::addAusgeklapptesFeld(string name, string email, strin
 
     uiglobal->liste->addLayout(layout1);
 }
-void view_teilnehmerliste::removeEingeklapptesFeld(string email){
-    cout << "remove email" << email;
-}
-void view_teilnehmerliste::removeAusgeklapptesFeld(string email){
+void view_teilnehmerliste::removeFeld(string email){
+    QVBoxLayout *liste = ui->liste;
+    cout << liste->children().count() << endl;
+
+    QList<QObject*>::const_iterator it;
+
+    for (it = liste->children().begin(); it != liste->children().end(); it++) {
+        //such email und tu des weg
+    }
+
     cout << "remove email" << email;
 }
 

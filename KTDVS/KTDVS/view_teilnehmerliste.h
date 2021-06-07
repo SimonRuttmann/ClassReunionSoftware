@@ -36,8 +36,7 @@ private:
 
     void addEingeklapptesFeld(string name, string email);
     void addAusgeklapptesFeld(string name, string email, string schulname, string adresse, string land, string telefonnummer, string kommentar);
-    void removeEingeklapptesFeld(string email);
-    void removeAusgeklapptesFeld(string email);
+    void removeFeld(string email);
 };
 
 #endif // VIEW_TEILNEHMERLISTE_H
