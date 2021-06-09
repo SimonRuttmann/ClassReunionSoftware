@@ -17,10 +17,10 @@ public:
     ~view_teilnehmerliste();
 
     void onAusloggen();
-    void onTeilnehmerdatenAendern();
-    void onTeilnehmerHinzufuegen();
-    void onAlsOrganisatorHinzufuegen();
-    void onVersionsverlaufAnzeigen();
+    void onTeilnehmerdatenAendern(string email);
+    void onTeilnehmerHinzufuegen(Teilnehmer* teilnehmer);
+    void onAlsOrganisatorHinzufuegen(string email);
+    void onVersionsverlaufAnzeigen(string email);
     void onUpdate();
     void onInit();
 
@@ -29,13 +29,15 @@ private slots:
 
     void on_toolButton_clicked();
 
+    void test(string email);
+
 private:
     Ui::view_teilnehmerliste *ui;
 
     Teilnehmerliste* teilnehmerList;
 
-    void addEingeklapptesFeld(string name, string email);
-    void addAusgeklapptesFeld(string name, string email, string schulname, string adresse, string land, string telefonnummer, string kommentar);
+    void addEingeklapptesFeld(Teilnehmerdaten* daten);
+    void addAusgeklapptesFeld(Teilnehmerdaten* daten);
     void removeFeld(string email);
 };
 

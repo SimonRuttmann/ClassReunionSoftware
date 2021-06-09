@@ -15,41 +15,7 @@ view_teilnehmerliste::view_teilnehmerliste(QWidget *parent, Teilnehmerliste* tei
 
     this->teilnehmerList = teilnehmerliste;
 
-    list<Teilnehmer*>::iterator it;
-
-    if (teilnehmerList != nullptr) {
-        for (it = teilnehmerList->getTeilnehmerliste()->begin(); it != teilnehmerList->getTeilnehmerliste()->end(); it++) {
-            Teilnehmerdaten* daten = (*it)->getAktuelleTeilnehmerdaten();
-
-            string adresse = "", telefonnummern = "";
-
-            adresse = adresse + daten->getAdresse().strasse;
-            adresse = adresse + " " + to_string(daten->getAdresse().haussnummer);
-            adresse = adresse + " " + to_string(daten->getAdresse().postleitzahl);
-            adresse = adresse + " " + daten->getAdresse().stadt;
-
-            telefonnummern = telefonnummern + daten->getHaupttelefonnummer();
-            list<string>::iterator itNummern;
-
-            for (itNummern = daten->getWeitereTelefonnummern().begin(); itNummern != daten->getWeitereTelefonnummern().end(); itNummern++) {
-                if (telefonnummern == "") {
-                    telefonnummern = (*itNummern);
-                    continue;
-                }
-
-                telefonnummern = telefonnummern + ", " + (*itNummern);
-            }
-
-            addAusgeklapptesFeld(daten->getNachname(), daten->getEMail(), daten->getSchulname(), adresse, daten->getAdresse().land, telefonnummern, daten->getKommentar());
-        }
-    }
-
-    //gib mir teilnehmerdaten
-
-    addAusgeklapptesFeld("test1", "test2", "test3", "test4", "test5", "test6", "test7");
-    addEingeklapptesFeld("test8", "test9");
-
-    removeFeld("test10");
+    onInit();
 }
 
 view_teilnehmerliste::~view_teilnehmerliste()
@@ -57,7 +23,9 @@ view_teilnehmerliste::~view_teilnehmerliste()
     delete ui;
 }
 
-void view_teilnehmerliste::addEingeklapptesFeld(string name ,string email) {
+void view_teilnehmerliste::addEingeklapptesFeld(Teilnehmerdaten* daten) {
+    string name = daten->getVorname() + " " + daten->getNachname();
+
     //add normales
     QHBoxLayout* layout = new QHBoxLayout();
 
@@ -72,12 +40,33 @@ void view_teilnehmerliste::addEingeklapptesFeld(string name ,string email) {
     layout->addWidget(new QLabel(QString::fromStdString(name)));
     layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
     layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    layout->addWidget(new QLabel(QString::fromStdString(email)));
+    layout->addWidget(new QLabel(QString::fromStdString(daten->getEMail())));
     layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
 
     uiglobal->liste->addLayout(layout);
 }
-void view_teilnehmerliste::addAusgeklapptesFeld(string name, string email, string schulname, string adresse, string land, string telefonnummer, string kommentar){
+void view_teilnehmerliste::addAusgeklapptesFeld(Teilnehmerdaten* daten){
+    string name = daten->getVorname() + " " + daten->getNachname();
+
+    string adresse = "", telefonnummern = "";
+
+    adresse = adresse + daten->getAdresse().strasse;
+    adresse = adresse + " " + to_string(daten->getAdresse().haussnummer);
+    adresse = adresse + " " + to_string(daten->getAdresse().postleitzahl);
+    adresse = adresse + " " + daten->getAdresse().stadt;
+
+    telefonnummern = telefonnummern + daten->getHaupttelefonnummer();
+    list<string>::iterator itNummern;
+
+    for (itNummern = daten->getWeitereTelefonnummern().begin(); itNummern != daten->getWeitereTelefonnummern().end(); itNummern++) {
+        if (telefonnummern == "") {
+            telefonnummern = (*itNummern);
+            continue;
+        }
+
+        telefonnummern = telefonnummern + ", " + (*itNummern);
+    }
+
     //add normales
     QHBoxLayout* layout = new QHBoxLayout();
     //keine ahnung was die parameter sind
@@ -88,7 +77,7 @@ void view_teilnehmerliste::addAusgeklapptesFeld(string name, string email, strin
     layout->addWidget(new QLabel(QString::fromStdString(name)));
     layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
     layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    layout->addWidget(new QLabel(QString::fromStdString(email)));
+    layout->addWidget(new QLabel(QString::fromStdString(daten->getEMail())));
     layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
 
     //add großes
@@ -97,20 +86,29 @@ void view_teilnehmerliste::addAusgeklapptesFeld(string name, string email, strin
 
     //die müssen noch die methoden aufrufen können
     QVBoxLayout* buttons = new QVBoxLayout();
-    buttons->addWidget(new QPushButton("Versionsverlauf"));
-    buttons->addWidget(new QPushButton("Daten ändern"));
-    buttons->addWidget(new QPushButton("als Organisator hinzufügen"));
 
-    QVBoxLayout* daten = new QVBoxLayout();
-    daten->addWidget(new QLabel("\tSchulname: \t\t" + QString::fromStdString(schulname)));
-    daten->addWidget(new QLabel("\tAdresse: \t\t\t" + QString::fromStdString(adresse)));
-    daten->addWidget(new QLabel("\tE-Mail: \t\t\t" + QString::fromStdString(email)));
-    daten->addWidget(new QLabel("\tLand: \t\t\t" + QString::fromStdString(land)));
-    daten->addWidget(new QLabel("\tTelefonnummer: \t\t" + QString::fromStdString(telefonnummer)));
-    daten->addWidget(new QLabel("\tKommentar: \t\t" + QString::fromStdString(kommentar)));
+    QPushButton* buttonVerlauf = new QPushButton("Versionsverlauf");
+    QPushButton* buttonDaten = new QPushButton("Daten ändern");
+    QPushButton* buttonOrganisator = new QPushButton("als Organisator hinzufügen");
+
+    connect(buttonDaten, SIGNAL(clicked()), this, SLOT(test("daten")));
+    connect(buttonVerlauf, SIGNAL(clicked()), this, SLOT(test("verlauf")));
+    connect(buttonOrganisator, SIGNAL(clicked()), this, SLOT(test("organisator")));
+
+    buttons->addWidget(buttonVerlauf);
+    buttons->addWidget(buttonDaten);
+    buttons->addWidget(buttonOrganisator);
+
+    QVBoxLayout* datenLayout = new QVBoxLayout();
+    datenLayout->addWidget(new QLabel("\tSchulname: \t\t" + QString::fromStdString(daten->getSchulname())));
+    datenLayout->addWidget(new QLabel("\tAdresse: \t\t\t" + QString::fromStdString(adresse)));
+    datenLayout->addWidget(new QLabel("\tE-Mail: \t\t\t" + QString::fromStdString(daten->getEMail())));
+    datenLayout->addWidget(new QLabel("\tLand: \t\t\t" + QString::fromStdString(daten->getAdresse().land)));
+    datenLayout->addWidget(new QLabel("\tTelefonnummer: \t\t" + QString::fromStdString(telefonnummern)));
+    datenLayout->addWidget(new QLabel("\tKommentar: \t\t" + QString::fromStdString(daten->getKommentar())));
 
     QHBoxLayout* combine = new QHBoxLayout();
-    combine->addLayout(daten);
+    combine->addLayout(datenLayout);
     combine->addLayout(buttons);
 
     layout1->addLayout(combine);
@@ -127,27 +125,45 @@ void view_teilnehmerliste::removeFeld(string email){
         //such email und tu des weg
     }
 
-    cout << "remove email" << email;
+    cout << "remove email" << email << endl;
 }
 
 void view_teilnehmerliste::onAusloggen(){
-    cout << "Ausloggen!";
+    cout << "Ausloggen!" << endl;
 }
 
-void view_teilnehmerliste::onTeilnehmerdatenAendern(){
-
+void view_teilnehmerliste::test(string email){
+    cout << email << endl;
 }
 
-void view_teilnehmerliste::onTeilnehmerHinzufuegen(){
+void view_teilnehmerliste::onTeilnehmerdatenAendern(string email){
+    QVBoxLayout *liste = ui->liste;
+    cout << liste->children().count() << endl;
 
+    QList<QObject*>::const_iterator it;
+
+    for (it = liste->children().begin(); it != liste->children().end(); it++) {
+        //such email und änder des
+    }
 }
 
-void view_teilnehmerliste::onAlsOrganisatorHinzufuegen(){
-
+void view_teilnehmerliste::onTeilnehmerHinzufuegen(Teilnehmer* teilnehmer){
+    addEingeklapptesFeld(teilnehmer->getAktuelleTeilnehmerdaten());
 }
 
-void view_teilnehmerliste::onVersionsverlaufAnzeigen(){
+void view_teilnehmerliste::onAlsOrganisatorHinzufuegen(string email){
+    QVBoxLayout *liste = ui->liste;
+    cout << liste->children().count() << endl;
 
+    QList<QObject*>::const_iterator it;
+
+    for (it = liste->children().begin(); it != liste->children().end(); it++) {
+        //such email und füg den teilnehmer als orga hinzu
+    }
+}
+
+void view_teilnehmerliste::onVersionsverlaufAnzeigen(string email){
+    cout << "Versionsverlauf!" << endl;
 }
 
 void view_teilnehmerliste::onUpdate(){
@@ -155,12 +171,19 @@ void view_teilnehmerliste::onUpdate(){
 }
 
 void view_teilnehmerliste::onInit(){
+    list<Teilnehmer*>::iterator it;
 
+    if (teilnehmerList != nullptr) {
+        for (it = teilnehmerList->getTeilnehmerliste()->begin(); it != teilnehmerList->getTeilnehmerliste()->end(); it++) {
+            Teilnehmerdaten* daten = (*it)->getAktuelleTeilnehmerdaten();
+            addAusgeklapptesFeld(daten);
+        }
+    }
 }
 
 void view_teilnehmerliste::on_pushButton_clicked()
 {
-    cout << "geh zurück!";
+    cout << "füg teilnehmer hinzu!" << endl;
 }
 
 
