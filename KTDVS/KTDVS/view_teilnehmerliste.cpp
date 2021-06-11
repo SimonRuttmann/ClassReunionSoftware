@@ -16,11 +16,71 @@ view_teilnehmerliste::view_teilnehmerliste(QWidget *parent, Teilnehmerliste* tei
     this->teilnehmerList = teilnehmerliste;
 
     onInit();
+
+    addAusgeklapptesFeld("test");
 }
 
 view_teilnehmerliste::~view_teilnehmerliste()
 {
     delete ui;
+}
+
+void view_teilnehmerliste::addAusgeklapptesFeld(string test){
+    string name = test + " " + test;
+
+    string adresse = "", telefonnummern = "";
+
+    adresse = adresse + test;
+
+    telefonnummern = telefonnummern + test;
+    list<string>::iterator itNummern;
+
+    //add normales
+    QHBoxLayout* layout = new QHBoxLayout();
+    //keine ahnung was die parameter sind
+    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
+    layout->addWidget(new QToolButton());
+    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
+    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
+    layout->addWidget(new QLabel(QString::fromStdString(name)));
+    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
+    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
+    layout->addWidget(new QLabel(QString::fromStdString(test)));
+    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
+
+    //add großes
+    QVBoxLayout* layout1 = new QVBoxLayout();
+    layout1->addLayout(layout);
+
+    //die müssen noch die methoden aufrufen können
+    QVBoxLayout* buttons = new QVBoxLayout();
+
+    QPushButton* buttonVerlauf = new QPushButton("Versionsverlauf");
+    QPushButton* buttonDaten = new QPushButton("Daten ändern");
+    QPushButton* buttonOrganisator = new QPushButton("als Organisator hinzufügen");
+
+    //des tut noch nicht .....
+    connect(buttonDaten, SIGNAL(clicked()), this, SLOT(test("test")));
+
+    buttons->addWidget(buttonVerlauf);
+    buttons->addWidget(buttonDaten);
+    buttons->addWidget(buttonOrganisator);
+
+    QVBoxLayout* datenLayout = new QVBoxLayout();
+    datenLayout->addWidget(new QLabel("\tSchulname: \t\t" + QString::fromStdString(test)));
+    datenLayout->addWidget(new QLabel("\tAdresse: \t\t\t" + QString::fromStdString(adresse)));
+    datenLayout->addWidget(new QLabel("\tE-Mail: \t\t\t" + QString::fromStdString(test)));
+    datenLayout->addWidget(new QLabel("\tLand: \t\t\t" + QString::fromStdString(test)));
+    datenLayout->addWidget(new QLabel("\tTelefonnummer: \t\t" + QString::fromStdString(telefonnummern)));
+    datenLayout->addWidget(new QLabel("\tKommentar: \t\t" + QString::fromStdString(test)));
+
+    QHBoxLayout* combine = new QHBoxLayout();
+    combine->addLayout(datenLayout);
+    combine->addLayout(buttons);
+
+    layout1->addLayout(combine);
+
+    uiglobal->liste->addLayout(layout1);
 }
 
 void view_teilnehmerliste::addEingeklapptesFeld(Teilnehmerdaten* daten) {
@@ -90,10 +150,6 @@ void view_teilnehmerliste::addAusgeklapptesFeld(Teilnehmerdaten* daten){
     QPushButton* buttonVerlauf = new QPushButton("Versionsverlauf");
     QPushButton* buttonDaten = new QPushButton("Daten ändern");
     QPushButton* buttonOrganisator = new QPushButton("als Organisator hinzufügen");
-
-    connect(buttonDaten, SIGNAL(clicked()), this, SLOT(test("daten")));
-    connect(buttonVerlauf, SIGNAL(clicked()), this, SLOT(test("verlauf")));
-    connect(buttonOrganisator, SIGNAL(clicked()), this, SLOT(test("organisator")));
 
     buttons->addWidget(buttonVerlauf);
     buttons->addWidget(buttonDaten);
@@ -176,7 +232,7 @@ void view_teilnehmerliste::onInit(){
     if (teilnehmerList != nullptr) {
         for (it = teilnehmerList->getTeilnehmerliste()->begin(); it != teilnehmerList->getTeilnehmerliste()->end(); it++) {
             Teilnehmerdaten* daten = (*it)->getAktuelleTeilnehmerdaten();
-            addAusgeklapptesFeld(daten);
+            addEingeklapptesFeld(daten);
         }
     }
 }

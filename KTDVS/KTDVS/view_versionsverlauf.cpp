@@ -5,7 +5,7 @@
 
 using namespace std;
 
-view_versionsverlauf::view_versionsverlauf(QWidget *parent) :
+view_versionsverlauf::view_versionsverlauf(QWidget *parent, Teilnehmer* teilnehmer) :
     QWidget(parent),
     ui(new Ui::view_versionsverlauf)
 {
@@ -13,6 +13,8 @@ view_versionsverlauf::view_versionsverlauf(QWidget *parent) :
     listeTeilnehmer = ui->tableWidget;
     zurueck = ui->pushButton;
     ausloggen = ui->toolButton;
+
+    this->teilnehmer = teilnehmer;
 
     onInit();
 }
@@ -54,25 +56,35 @@ void view_versionsverlauf::onUpdate(){
     listeTeilnehmer->clear();
     listeTeilnehmer->setRowCount(0);
 
+    list<Teilnehmerdaten*>::iterator it;
+    int counter = 0;
+
     cout << "add all new items" << endl;
     //get items from teilnehmerliste
-    for (int i = 0; i <  10; i++) {
+    for (it = teilnehmer->getAlleTeilnehmerdaten()->begin(); it != teilnehmer->getAlleTeilnehmerdaten()->end(); it++) {
         listeTeilnehmer->setRowCount(listeTeilnehmer->rowCount() + 1);
-        listeTeilnehmer->setItem(i,0, new QTableWidgetItem("datumNew"));
-        listeTeilnehmer->setItem(i,1, new QTableWidgetItem("personNew"));
-        listeTeilnehmer->setItem(i,2, new QTableWidgetItem("organisatorNew"));
-        listeTeilnehmer->setItem(i,3, new QTableWidgetItem("detailsNew"));
+        listeTeilnehmer->setItem(counter,0, new QTableWidgetItem((*it)->getDatum().jahr)); //muss noch richtig gemacht werden
+        listeTeilnehmer->setItem(counter,1, new QTableWidgetItem(QString::fromStdString((*it)->getVorname()) + " " + QString::fromStdString((*it)->getNachname())));
+        listeTeilnehmer->setItem(counter,2, new QTableWidgetItem((*it)->getErstellerKey()));
+        listeTeilnehmer->setItem(counter,3, new QTableWidgetItem("click for details"));
+
+        counter++;
     }
 }
 
 void view_versionsverlauf::onInit(){
+    list<Teilnehmerdaten*>::iterator it;
+    int counter = 0;
+
     cout << "add all start items" << endl;
     //get items from teilnehmerliste
-    for (int i = 0; i < 10; i++) {
+    for (it = teilnehmer->getAlleTeilnehmerdaten()->begin(); it != teilnehmer->getAlleTeilnehmerdaten()->end(); it++) {
         listeTeilnehmer->setRowCount(listeTeilnehmer->rowCount() + 1);
-        listeTeilnehmer->setItem(i,0, new QTableWidgetItem("datum"));
-        listeTeilnehmer->setItem(i,1, new QTableWidgetItem("person"));
-        listeTeilnehmer->setItem(i,2, new QTableWidgetItem("organisator"));
-        listeTeilnehmer->setItem(i,3, new QTableWidgetItem("details"));
+        listeTeilnehmer->setItem(counter,0, new QTableWidgetItem((*it)->getDatum().jahr)); //muss noch richtig gemacht werden
+        listeTeilnehmer->setItem(counter,1, new QTableWidgetItem(QString::fromStdString((*it)->getVorname()) + " " + QString::fromStdString((*it)->getNachname())));
+        listeTeilnehmer->setItem(counter,2, new QTableWidgetItem((*it)->getErstellerKey()));
+        listeTeilnehmer->setItem(counter,3, new QTableWidgetItem("click for details"));
+
+        counter++;
     }
 }

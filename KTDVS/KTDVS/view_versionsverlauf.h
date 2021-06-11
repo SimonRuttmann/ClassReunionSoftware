@@ -5,6 +5,7 @@
 #include <QTableWidget>
 #include <QPushButton>
 #include <QToolButton>
+#include "Teilnehmerliste.h"
 
 namespace Ui {
 class view_versionsverlauf;
@@ -15,7 +16,7 @@ class view_versionsverlauf : public QWidget
     Q_OBJECT
 
 public:
-    explicit view_versionsverlauf(QWidget *parent = nullptr);
+    explicit view_versionsverlauf(QWidget *parent = nullptr, Teilnehmer* teilnehmer = nullptr);
     ~view_versionsverlauf();
 
     void onUpdate();
@@ -29,6 +30,8 @@ private slots:
 
 private:
     Ui::view_versionsverlauf *ui;
+
+    Teilnehmer* teilnehmer;
 
     QTableWidget *listeTeilnehmer;
     QPushButton *zurueck;
