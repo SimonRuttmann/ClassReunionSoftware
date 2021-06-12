@@ -1,7 +1,7 @@
 #include "View_TeilnehmerTeilnehmerHinzufuegen.h"
 #include "View_Versionsverlauf.h"
 
-
+#include "View_Teilnehmerliste.h"
 #include "ui_View_TeilnehmerTeilnehmerHinzufuegen.h"
 
 #include <iostream>
@@ -40,6 +40,8 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
 
     if(this->hauptorgErstellen) {
         ui->zurueck_2->setVisible(false);
+        ui->Versionsverlauf->setEnabled(false);
+        ui->OrganisatorrechteEntfernen->setEnabled(false);
     }
 
     //kein neuer Teilnehmer, bisherige Daten anzeigen
@@ -154,6 +156,12 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_Speichern_clicked(){ //Die Teilneh
         teilnehmerdaten->setWeitereTelefonnummern(weitereTeleList);
         teilnehmerdaten->setKommentar(ui->Komentar->toPlainText().toStdString());
         teilnehmer->neuenTDEintragEinfuegen(teilnehmerdaten);
+
+        //Szenenuebergang -> View Teilnehmerliste
+        View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->vater);
+        tl->show();
+        this->hide();
+
     }
 }
 

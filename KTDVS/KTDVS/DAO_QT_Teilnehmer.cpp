@@ -18,8 +18,11 @@ DAO_QT_Teilnehmer::DAO_QT_Teilnehmer(){
 
     last_insert_id_query.prepare
     (
-    "SELECT last_rowid();"
+    "SELECT last_insert_rowid();"
     );
+    //(
+   // "SELECT last_rowid();"
+   // );
 
     update_query.prepare
     (

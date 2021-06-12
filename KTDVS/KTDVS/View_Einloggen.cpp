@@ -24,6 +24,8 @@ View_Einloggen::~View_Einloggen()
 void View_Einloggen::onInit(){
     if(this->isNeu){
         ui ->Login ->setText("Hauptorganisator erstellen");
+        ui->EMail->setVisible(false);
+        ui->Labl1->setVisible(false);
     }
     ui ->Fehlerausgabe -> setVisible(false);
     ui ->FalschesPasswort -> setVisible(false);
@@ -75,7 +77,7 @@ void View_Einloggen::on_Login_clicked()
                 org -> setVersuch(0);
                  //SZENE wechseln zu Teilnehmerliste
                 Teilnehmerliste::instance()->aktiverNutzer = org;
-                View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent, nullptr);
+                View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent);
                 tl->show();
                 this->hide();
                 return;

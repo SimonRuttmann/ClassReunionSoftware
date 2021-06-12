@@ -3,6 +3,10 @@
 
 #include <QWidget>
 #include "Teilnehmerliste.h"
+#include "Teilnehmer.h"
+#include "View_Versionsverlauf.h"
+#include "View_TeilnehmerTeilnehmerHinzufuegen.h"
+
 
 namespace Ui {
 class View_Teilnehmerliste;
@@ -13,7 +17,7 @@ class View_Teilnehmerliste : public QWidget
     Q_OBJECT
 
 public:
-    explicit View_Teilnehmerliste(QWidget *parent = nullptr, Teilnehmerliste* teilnehmerliste = nullptr);
+    explicit View_Teilnehmerliste(QWidget *parent = nullptr);
     ~View_Teilnehmerliste();
 
     void onAusloggen();
@@ -35,7 +39,8 @@ private:
     Ui::View_Teilnehmerliste *ui;
 
     Teilnehmerliste* teilnehmerList;
-
+    Teilnehmer* ausgewaehlerTeilnehmer;
+    QWidget* vater;
     void addEingeklapptesFeld(Teilnehmerdaten* daten);
     void addAusgeklapptesFeld(Teilnehmerdaten* daten);
     void addAusgeklapptesFeld(string test);

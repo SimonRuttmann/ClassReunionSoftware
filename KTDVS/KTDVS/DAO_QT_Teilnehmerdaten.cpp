@@ -31,8 +31,11 @@ DAO_QT_Teilnehmerdaten::DAO_QT_Teilnehmerdaten(){
 
     last_insert_id_query.prepare
          (
-          "SELECT last_rowid();"
+          "SELECT last_insert_rowid();"
           );
+    //(
+    // "SELECT last_rowid();"
+    // );
 
     remove_query.prepare
          (
@@ -89,12 +92,21 @@ bool DAO_QT_Teilnehmerdaten::insert(Teilnehmerdaten& teilnehmerdaten){
     insert_query.bindValue(":kommentar", QString::fromStdString(teilnehmerdaten.getKommentar()));
     insert_query.bindValue(":erstellerkey", teilnehmerdaten.getErstellerKey());
 
-    if(insert_query.exec()) return false;
-    if(last_insert_id_query.exec())return false;
-    if(last_insert_id_query.first())return false;
+    if(!insert_query.exec()) return false;
+    if(!last_insert_id_query.exec())return false;
+    if(!last_insert_id_query.next())return false;
     int teilnehmerdatenkey = last_insert_id_query.value(0).toInt();
 
+    qDebug()<<"TeilnehmerDATENkey"<<teilnehmerdatenkey;
 
+    //Haupttelefonnummer
+    insert_query_tel.bindValue(":teilnehmerdatenkey", teilnehmerdatenkey);
+    insert_query_tel.bindValue(":telefonnummer", QString::fromStdString(teilnehmerdaten.getHaupttelefonnummer()));
+    insert_query_tel.bindValue(":isHaupttelefonnummer", true);
+
+    if(!insert_query_tel.exec()) return false;
+
+    //weitere Telefonnummern
     list<string> weitereTel = teilnehmerdaten.getWeitereTelefonnummern();
     list<string>::iterator iterator;
 
@@ -105,15 +117,10 @@ bool DAO_QT_Teilnehmerdaten::insert(Teilnehmerdaten& teilnehmerdaten){
         insert_query_tel.bindValue(":telefonnummer", QString::fromStdString(aktuelleTelefon));
         insert_query_tel.bindValue(":isHaupttelefonnummer", false);
 
-        if(insert_query_tel.exec()) return false;
+        if(!insert_query_tel.exec()) return false;
     }
 
 
-    insert_query_tel.bindValue(":teilnehmerdatenkey", teilnehmerdatenkey);
-    insert_query_tel.bindValue(":telefonnummer", QString::fromStdString(teilnehmerdaten.getHaupttelefonnummer()));
-    insert_query_tel.bindValue(":isHaupttelefonnummer", true);
-
-    if(insert_query_tel.exec()) return false;
 
     return true;
 }

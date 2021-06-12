@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include "View_Teilnehmerliste.h"
 #include "View_ErsterSystemstart.h"
-
+#include "View_Einloggen.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -32,12 +32,24 @@ MainWindow::MainWindow(QWidget *parent)
 
     //View_Teilnehmerliste* l = new View_Teilnehmerliste(this, nullptr);
 
+
+
+
+
+    /* PROOOOOOOOOOOOOODUKTIIIIIIIIIIIIIIIIIIIIIIIIIIVVVVVVVVVVVVVVVVVVVVVVVVVVVVVCCCCCCCCCCCCCCCCCCCOOOOOOOOOOODDDDDDDDDDDDEEEEEEEE*/
+
+
+
+    //if(!Teilnehmerliste::instance()->getTeilnehmerliste()->empty()){
+     //   View_Einloggen* beitretenStart = new View_Einloggen(this, false); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
+     //   beitretenStart->show();
+     //   this->hide();
+    //}
+    //else{
     View_ErsterSystemstart* ersterSystemstart = new View_ErsterSystemstart(this);
     ersterSystemstart->show();
+    //}
 
-    //l->show();
-    //this->hide();
-    this->destroy(true);
 
 }
 

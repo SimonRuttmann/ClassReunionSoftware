@@ -12,6 +12,7 @@
 #include <string>
 #include <QString>
 #include "View_TeilnehmerTeilnehmerHinzufuegen.h"
+#include "View_Teilnehmerliste.h"
 
 namespace Ui {
 class View_Einloggen;

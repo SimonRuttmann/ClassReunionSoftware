@@ -9,6 +9,8 @@ View_ErsterSystemstart::View_ErsterSystemstart(QWidget *parent) :
 {
     this->parent = parent;
     ui->setupUi(this);
+
+
 }
 
 View_ErsterSystemstart::~View_ErsterSystemstart()

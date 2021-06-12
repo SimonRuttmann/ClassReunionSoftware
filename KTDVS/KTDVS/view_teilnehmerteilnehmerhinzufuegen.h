@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include "View_Passwortaenderung.h"
-#include "View_Teilnehmerliste.h"
+class View_Teilnehmerliste;
 
 namespace Ui {
 class View_TeilnehmerTeilnehmerHinzufuegen;

@@ -1,23 +1,25 @@
 #include "View_Teilnehmerliste.h"
 #include "iostream"
 #include "ui_View_Teilnehmerliste.h"
+#include <QDebug>
 
 using namespace std;
 
 Ui::View_Teilnehmerliste* uiglobal;
 
-View_Teilnehmerliste::View_Teilnehmerliste(QWidget *parent, Teilnehmerliste* teilnehmerliste) :
+View_Teilnehmerliste::View_Teilnehmerliste(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::View_Teilnehmerliste)
 {
+    this->vater = parent;
     ui->setupUi(this);
     uiglobal = ui;
 
-    this->teilnehmerList = teilnehmerliste;
+    this->teilnehmerList = Teilnehmerliste::instance();
 
     onInit();
 
-    addAusgeklapptesFeld("test");
+    //addAusgeklapptesFeld("test");
 }
 
 View_Teilnehmerliste::~View_Teilnehmerliste()
@@ -117,8 +119,15 @@ void View_Teilnehmerliste::addAusgeklapptesFeld(Teilnehmerdaten* daten){
 
     telefonnummern = telefonnummern + daten->getHaupttelefonnummer();
     list<string>::iterator itNummern;
-
+    qDebug("TEEEEST1");
     for (itNummern = daten->getWeitereTelefonnummern().begin(); itNummern != daten->getWeitereTelefonnummern().end(); itNummern++) {
+
+       if(itNummern->empty() || (*itNummern)=="") continue;
+        //Logik errors weil *it = ??
+       qDebug("TEEEEST2");
+       string telenummer = *itNummern;
+       qDebug()<<QString::fromStdString(telenummer);
+
         if (telefonnummern == "") {
             telefonnummern = (*itNummern);
             continue;
@@ -177,19 +186,29 @@ void View_Teilnehmerliste::addAusgeklapptesFeld(Teilnehmerdaten* daten){
 }
 
 void View_Teilnehmerliste::onAusloggen(){
+    QApplication::quit();
     cout << "Ausloggen!" << endl;
 }
 
-void View_Teilnehmerliste::test(string email){
+void View_Teilnehmerliste::test(string email){  //Test???
     cout << email << endl;
 }
 
-void View_Teilnehmerliste::onTeilnehmerdatenAendern(string email){
+void View_Teilnehmerliste::onTeilnehmerdatenAendern(string email){  //Teilnehmer
     onUpdate();
+
+    View_TeilnehmerTeilnehmerHinzufuegen* viewTtH =
+            new View_TeilnehmerTeilnehmerHinzufuegen(this->vater, this->ausgewaehlerTeilnehmer, false, false);
+    viewTtH->show();
+    this->hide();
 }
 
 void View_Teilnehmerliste::onTeilnehmerHinzufuegen(Teilnehmer* teilnehmer){
     addAusgeklapptesFeld(teilnehmer->getAktuelleTeilnehmerdaten());
+    View_TeilnehmerTeilnehmerHinzufuegen* viewTtH =
+            new View_TeilnehmerTeilnehmerHinzufuegen(this->vater, this->ausgewaehlerTeilnehmer, true, false);
+    viewTtH->show();
+    this->hide();
 }
 
 void View_Teilnehmerliste::onAlsOrganisatorHinzufuegen(string email){
@@ -199,13 +218,17 @@ void View_Teilnehmerliste::onAlsOrganisatorHinzufuegen(string email){
 
     for (it = teilnehmerList->getTeilnehmerliste()->begin(); it != teilnehmerList->getTeilnehmerliste()->end(); it++) {
         if ((*it)->getAktuelleTeilnehmerdaten()->getEMail() == email) {
-            //mach den organisator
+            //mach den organisator//Falsch Systempasswort fehlt
+            //Teilnehmerliste::instance()->vonTeilnZuOrg("Teilnehmerobjekt", "Systempasswort");
             break;
         }
     }
 }
 
 void View_Teilnehmerliste::onVersionsverlaufAnzeigen(string email){
+    View_Versionsverlauf* vv = new View_Versionsverlauf(this->vater, this->ausgewaehlerTeilnehmer);
+    vv->show();
+    this->hide();
     cout << "Versionsverlauf!" << endl;
 }
 
@@ -227,6 +250,7 @@ void View_Teilnehmerliste::onInit(){
 
 void View_Teilnehmerliste::on_pushButton_clicked()
 {
+    this->onTeilnehmerHinzufuegen(this->ausgewaehlerTeilnehmer);
     cout << "füg teilnehmer hinzu!" << endl;
 }
 
