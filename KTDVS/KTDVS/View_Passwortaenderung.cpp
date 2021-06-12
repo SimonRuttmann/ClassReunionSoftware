@@ -1,7 +1,7 @@
-#include "View_Passwortaenderung_test.h"
+#include "View_Passwortaenderung.h"
 #include "ui_View_Passwortaenderung_test.h"
 
-View_Passwortaenderung::View_Passwortaenderung(QWidget *parent) :
+View_Passwortaenderung::View_Passwortaenderung(QWidget *parent, Organisator* teilnehmer) :
     QWidget(parent),
     ui(new Ui::View_Passwortaenderung)
 {

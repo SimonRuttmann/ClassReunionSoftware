@@ -1,73 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>View_ErsterSystemStart</class>
- <widget class="QMainWindow" name="View_ErsterSystemStart">
+ <class>View_ErsterSystemstart_test</class>
+ <widget class="QWidget" name="View_ErsterSystemstart_test">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>400</width>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Form</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="Beitreten_Button">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>140</y>
-      <width>191</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Bestehendem System beitreten</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="NeuesSystem_Button">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>140</y>
-      <width>191</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Neues System erstellen</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>-4</x>
-      <y>0</y>
-      <width>811</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(121, 121, 121);</string>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;KTDVS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
+  <widget class="QPushButton" name="NeuesSystem">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>21</height>
+     <x>10</x>
+     <y>70</y>
+     <width>171</width>
+     <height>111</height>
     </rect>
    </property>
+   <property name="text">
+    <string>Neues System erstellen</string>
+   </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QPushButton" name="Beitreten">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>70</y>
+     <width>171</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Bestehendem System beitreten</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

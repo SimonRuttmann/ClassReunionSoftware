@@ -11,29 +11,33 @@ CONFIG += c++11
 SOURCES += \
     DAO_QT_Teilnehmer.cpp \
     DAO_QT_Teilnehmerdaten.cpp \
-    View_Einloggen_test.cpp \
-    View_Erstersystemstart_test.cpp \
-    View_Passwortaenderung_test.cpp \
+    View_Einloggen.cpp \
+    View_Erstersystemstart.cpp \
+    View_Passwortaenderung.cpp \
+    View_TeilnehmerTeilnehmerHinzufuegen.cpp \
+    View_Teilnehmerliste.cpp \
+    View_Versionsverlauf.cpp \
+    View_VersionsverlaufDetailliert.cpp \
     main.cpp \
     mainwindow.cpp \
     Controller_Einloggen.cpp \
     Organisator.cpp \
     Teilnehmer.cpp \
     Teilnehmerliste.cpp \
-    Teilnehmerdaten.cpp \
-    view_teilnehmerliste.cpp \
-    view_teilnehmerteilnehmerhinzufuegen.cpp \
-    view_versionsverlauf.cpp \
-    view_versionsverlaufdetailliert.cpp
+    Teilnehmerdaten.cpp
 
 HEADERS += \
     Adresse.h \
     DAO_QT_Teilnehmer.h \
     DAO_QT_Teilnehmerdaten.h \
     Datum.h \
-    View_Einloggen_test.h \
-    View_Erstersystemstart_test.h \
-    View_Passwortaenderung_test.h \
+    View_Einloggen.h \
+    View_Erstersystemstart.h \
+    View_Passwortaenderung.h \
+    View_TeilnehmerTeilnehmerHinzufuegen.h \
+    View_Teilnehmerliste.h \
+    View_Versionsverlauf.h \
+    View_VersionsverlaufDetailliert.h \
     mainwindow.h \
     Controller_Einloggen.h \
     Organisator.h \
@@ -41,20 +45,16 @@ HEADERS += \
     Teilnehmerliste.h \
     I_DAO_Teilnehmer.h \
     I_DAO_Teilnehmerdaten.h\
-    Teilnehmerdaten.h \
-    view_teilnehmerliste.h \
-    view_teilnehmerteilnehmerhinzufuegen.h \
-    view_versionsverlauf.h \
-    view_versionsverlaufdetailliert.h
+    Teilnehmerdaten.h
 FORMS += \
-    View_Einloggen_test.ui \
-    View_Erstersystemstart_test.ui \
-    View_Passwortaenderung_test.ui \
-    mainwindow.ui \
-    view_teilnehmerliste.ui \
-    view_teilnehmerteilnehmerhinzufuegen.ui \
-    view_versionsverlauf.ui \
-    view_versionsverlaufdetailliert.ui
+    View_Einloggen.ui \
+    View_Erstersystemstart.ui \
+    View_Passwortaenderung.ui \
+    View_TeilnehmerTeilnehmerHinzufuegen.ui \
+    View_Teilnehmerliste.ui \
+    View_Versionsverlauf.ui \
+    View_VersionsverlaufDetailliert.ui \
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -1,6 +1,6 @@
-#include "View_Einloggen_test.h"
+#include "View_Einloggen.h"
 #include "ui_View_Einloggen_test.h"
-
+#include "Teilnehmerliste.h"
 //puerefeee
 #include "Organisator.h"
 
@@ -39,10 +39,11 @@ void View_Einloggen::on_Login_clicked()
     // Fall:Hauptorganisator erstellen  Hier grade sehr viel Rechnerei
     if(neuesSystem){
         passwort = ui ->Passwort -> text();
-        eMail = ui -> EMail -> text();
+       // eMail = ui -> EMail -> text();
         passwortString =passwort.toStdString();
-        eMailDatenbank =eMail.toStdString();
-        Haupt = new Organisator();
+       // eMailDatenbank =eMail.toStdString();
+        Haupt = Teilnehmerliste::instance()->organisatorErstellen(passwortString, true);
+
         // !! noch nicht fertig hier
 
         // wechsel zu Daten Eingeben vom HAuptorganisator

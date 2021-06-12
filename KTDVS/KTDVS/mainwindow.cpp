@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "view_teilnehmerliste.h"
+#include "View_Teilnehmerliste.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

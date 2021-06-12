@@ -9,7 +9,6 @@
 #include <list>
 #include <string>
 
-#include <Organisator.h> //Vero
 
 #include "Teilnehmerdaten.h"
 class I_DAO_Teilnehmer;
@@ -21,19 +20,17 @@ class Teilnehmer
 {
 
 public:
-	Teilnehmer(Teilnehmerdaten teilnehmerdaten);
+    Teilnehmer(Teilnehmerdaten* teilnehmerdaten);
     Teilnehmer();
 
     ~Teilnehmer();
+    void neuenTDEintragEinfuegen(Teilnehmerdaten*);
 
     Teilnehmerdaten* getAktuelleTeilnehmerdaten();
-    Teilnehmerdaten* aktuelleTeilnehmerdatenErstellen();
+    Teilnehmerdaten* aktuelleTeilnehmerdatenVonDBErhalten();
 
     list<Teilnehmerdaten*>* getAlleTeilnehmerdaten();
     list<Teilnehmerdaten*>* alleTeilnehmerdatenErstellen();
-
-    Organisator* login(string email, string passwort); //VERo
-    list<Organisator*> orglist; //Vero
 
     int getTeilnehmerkey()const;
     void setTeilnehmerkey(int newVal);
@@ -44,7 +41,7 @@ protected:
     list<Teilnehmerdaten*> Teilnehmerdatenliste;
     I_DAO_Teilnehmerdaten* TeilnehmerdatenDAO;
 	int teilnehmerkey;
-    Organisator *org; //VERo
+
 
 
 };

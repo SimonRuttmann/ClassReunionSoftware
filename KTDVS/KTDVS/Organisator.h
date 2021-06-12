@@ -8,8 +8,6 @@
 
 #include "Teilnehmer.h"
 #include <string>
-
-
 class Organisator : public Teilnehmer
 {
 public:

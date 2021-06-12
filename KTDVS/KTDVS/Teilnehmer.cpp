@@ -8,8 +8,8 @@
 #include "DAO_QT_Teilnehmer.h"
 #include "DAO_QT_Teilnehmerdaten.h"
 
-    Teilnehmer::Teilnehmer(Teilnehmerdaten teilnehmerdaten){
-        this->aktuelleTeilnehmerdaten = &teilnehmerdaten;
+    Teilnehmer::Teilnehmer(Teilnehmerdaten* teilnehmerdaten){
+        this->aktuelleTeilnehmerdaten = teilnehmerdaten;
         this->TeilnehmerdatenDAO = new DAO_QT_Teilnehmerdaten();
     };
 
@@ -35,7 +35,7 @@
         return this->aktuelleTeilnehmerdaten;
     };
 
-    Teilnehmerdaten* Teilnehmer::aktuelleTeilnehmerdatenErstellen(){
+    Teilnehmerdaten* Teilnehmer::aktuelleTeilnehmerdatenVonDBErhalten(){
 
         this->TeilnehmerdatenDAO->selectFirstOfTeilnehmer(this->teilnehmerkey, *this->aktuelleTeilnehmerdaten);
         return this->aktuelleTeilnehmerdaten;
@@ -60,30 +60,11 @@
         this->teilnehmerkey = neuerTeilnehmerkey;
     };
 
-    Organisator* Teilnehmer::login(string email, string passwort){
-        DAO_QT_Teilnehmer* DAOTeil;
-        DAOTeil ->selectAllOrganisatoren(orglist);
-        list<Organisator*>::iterator it;
-
-        for (it = orglist.begin();it != orglist.end();it++){
-            org = *it;
-            Organisator::Pruefung test = org ->pruefePasswort(email,passwort);
-            if (test == Organisator::Pruefung::EMailZutreffendPwRichtig ){
-                org -> setVersuch(0);
-                return org;
-            }
-            if(test ==  Organisator::Pruefung::EmailZutreffendPwFalsch){
-               int Versuche = org->getVersuch();
-               if(Versuche < 4){
-               org -> incVersuch();
-               }
-               return org;
-            }
-
-        }
-        Organisator* fail = NULL;
-        return fail;
-    }
+    void Teilnehmer::neuenTDEintragEinfuegen(Teilnehmerdaten* td){
+        this->aktuelleTeilnehmerdaten = td;
+        this->TeilnehmerdatenDAO->insert(*td);
+        this->Teilnehmerdatenliste.push_front(td);
+    };
 
 
 

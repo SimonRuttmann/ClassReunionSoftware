@@ -1,9 +1,9 @@
-#ifndef VIEW_EINLOGGEN_TEST_H
-#define VIEW_EINLOGGEN_TEST_H
+#ifndef VIEW_EINLOGGEN_H
+#define VIEW_EINLOGGEN_H
 
 #include <QWidget>
 
-//prÃ¼fen ob ich noch brauche alles
+//prÃƒÂ¼fen ob ich noch brauche alles
 #include <QMainWindow>
 #include <QLineEdit>
 #include <QPushButton>
@@ -31,9 +31,9 @@ public:
     void onSchliessen();
     void onErstelleHauptorganisator();// buttontext
     void onInit();
-    bool neuesSystem=true; // !!! wie Ã¼bergreifend?
+    bool neuesSystem=true; // !!! wie ÃƒÂ¼bergreifend?
     Organisator* org;
-    Organisator Haupt;
+    Organisator* Haupt;
 
 
 private slots:
@@ -51,7 +51,7 @@ private:
 
     };
 
-#endif // VIEW_EINLOGGEN_TEST_H
+#endif // VIEW_EINLOGGEN_H
 
 
 

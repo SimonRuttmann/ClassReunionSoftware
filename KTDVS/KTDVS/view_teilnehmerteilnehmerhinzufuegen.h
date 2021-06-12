@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "View_Passwortaenderung.h"
+#include "View_Teilnehmerliste.h"
 
 namespace Ui {
 class View_TeilnehmerTeilnehmerHinzufuegen;
@@ -13,7 +14,7 @@ class View_TeilnehmerTeilnehmerHinzufuegen : public QWidget
     Q_OBJECT
 
 public:
-    explicit View_TeilnehmerTeilnehmerHinzufuegen(QWidget *parent = nullptr, Teilnehmerdaten *daten, boolean neuer Teilnehmer);
+    explicit View_TeilnehmerTeilnehmerHinzufuegen(QWidget *parent = nullptr, Teilnehmer* aktuellerTeilnehmer = nullptr, bool neuerTeilnehmer = false);
     ~View_TeilnehmerTeilnehmerHinzufuegen();
 
 private slots:
@@ -23,9 +24,17 @@ private slots:
     void on_Speichern_clicked();
     void on_zurueck_clicked();
     void on_logout_clicked();
+    template<typename Base, typename T>
+    inline bool instanceof(const T*) {
+        return std::is_base_of<Base, T>::value;
+    }
 
 private:
     Ui::View_TeilnehmerTeilnehmerHinzufuegen *ui;
+    bool neuerTn;
+    Teilnehmerdaten daten;
+    Teilnehmer* teiln;
+    QWidget* vater;
 };
 
 #endif // VIEW_TEILNEHMERTEILNEHMERHINZUFUEGEN_H

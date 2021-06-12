@@ -7,7 +7,6 @@
 #define TEILNEHMERLISTE_H
 
 #include "Teilnehmer.h"
-//#include "ListeTeilnehmer.java"
 #include "DAO_QT_Teilnehmer.h"
 
 class Teilnehmerliste

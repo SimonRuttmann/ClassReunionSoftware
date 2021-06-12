@@ -1,31 +1,37 @@
-#include "View_ErsterSystemstart.h"
-#include "ui_View_Erstersystemstart.h"
-#include "View_Einloggen_test.h"
+#include "View_Erstersystemstart.h"
+#include "ui_View_Erstersystemstart_test.h"
 
-View_ErsterSystemStart::View_ErsterSystemStart(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::View_ErsterSystemStart)
+
+
+View_ErsterSystemstart_test::View_ErsterSystemstart_test(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::View_ErsterSystemstart_test)
 {
     ui->setupUi(this);
 }
 
-View_ErsterSystemStart::~View_ErsterSystemStart()
+View_ErsterSystemstart_test::~View_ErsterSystemstart_test()
 {
     delete ui;
 }
 
-void View_ErsterSystemStart::on_NeuesSystem_Button_clicked()
-{
-    View_Einloggen * w = new View_Einloggen();
-    w -> neuesSystem = true;
-    this -> hide();
-    //w -> show();
-    // hier parameter übergeben NeueHaupt an einloggfenster
+
+// Weiterleitung zum erstellen des Hauptorganisators
+void View_ErsterSystemstart_test::on_NeuesSystem_clicked()
+{ // Parameter neues System noch setzen
+    View_Einloggen * w;
+    w = new View_Einloggen(this);
+    w ->show();
+
+
 }
 
-
-void View_ErsterSystemStart::on_Beitreten_Button_clicked()
+// Weiterleitung zum Normalen einloggen
+void View_ErsterSystemstart_test::on_Beitreten_clicked()
 {
-
+    View_Einloggen *scene= new View_Einloggen(this); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
+    scene->neuesSystem = false;
+    this->destroy(true);
+    scene->show();
 }
 

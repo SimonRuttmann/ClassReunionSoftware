@@ -1,5 +1,5 @@
-#ifndef VIEW_PASSWORTAENDERUNG_TEST_H
-#define VIEW_PASSWORTAENDERUNG_TEST_H
+#ifndef VIEW_PASSWORTAENDERUNG_H
+#define VIEW_PASSWORTAENDERUNG_H
 
 #include <QWidget>
 #include "Organisator.h"
@@ -15,7 +15,7 @@ class View_Passwortaenderung : public QWidget
     Q_OBJECT
 
 public:
-    explicit View_Passwortaenderung(QWidget *parent = nullptr);
+    explicit View_Passwortaenderung(QWidget *parent = nullptr, Organisator* teilnehmer =0);
     ~View_Passwortaenderung();
 
     void onInit(Organisator * OrgMitNeuPas, bool erstanmeldung);
@@ -35,4 +35,4 @@ private:
     QString neuPasEingabe;
 };
 
-#endif // VIEW_PASSWORTAENDERUNG_TEST_H
+#endif // VIEW_PASSWORTAENDERUNG_H
