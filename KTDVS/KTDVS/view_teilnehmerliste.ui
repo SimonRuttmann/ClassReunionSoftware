@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>view_teilnehmerliste</class>
- <widget class="QWidget" name="view_teilnehmerliste">
+ <class>View_Teilnehmerliste</class>
+ <widget class="QWidget" name="View_Teilnehmerliste">
   <property name="geometry">
    <rect>
     <x>0</x>

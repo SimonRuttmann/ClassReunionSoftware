@@ -45,7 +45,7 @@ public:
         View_Passwortaenderung->resize(400, 300);
         Zurueck = new QPushButton(View_Passwortaenderung);
         Zurueck->setObjectName(QString::fromUtf8("Zurueck"));
-        Zurueck->setGeometry(QRect(20, 20, 80, 22));
+        Zurueck->setGeometry(QRect(30, 20, 80, 22));
         verticalLayoutWidget = new QWidget(View_Passwortaenderung);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(70, 90, 241, 181));

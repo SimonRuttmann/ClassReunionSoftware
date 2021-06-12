@@ -22,9 +22,13 @@ private slots:
     void on_OrganisatorrechteEntfernen_clicked();
     void on_PwAndern_clicked();
     void on_Speichern_clicked();
-    void on_zurueck_clicked();
-    void on_logout_clicked();
+  //  void on_zurueck_clicked();
+  //  void on_logout_clicked();
 
+
+    void on_zurueck_2_clicked();
+
+    void on_logout_2_clicked();
 
 private:
     Ui::View_TeilnehmerTeilnehmerHinzufuegen *ui;

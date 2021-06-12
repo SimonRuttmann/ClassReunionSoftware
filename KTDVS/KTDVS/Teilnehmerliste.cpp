@@ -4,13 +4,22 @@
 ///////////////////////////////////////////////////////////
 
 #include "Teilnehmerliste.h"
-
+#include <QDebug>
 
 Teilnehmerliste::Teilnehmerliste(){
     this->TeilnehmerDAO = new DAO_QT_Teilnehmer();
 
-    this->TeilnehmerDAO->selectAllTeilnehmer(teilnehmerliste);
-    this->TeilnehmerDAO->selectAllOrganisatoren(organisatorliste);
+    if(!this->TeilnehmerDAO->selectAllTeilnehmer(teilnehmerliste))qDebug()<<"Fehler Seelect";
+    if(!this->TeilnehmerDAO->selectAllOrganisatoren(organisatorliste)) qDebug()<<"Fehler Select";
+
+    list<Teilnehmer*>::iterator it = this->teilnehmerliste.begin();
+
+    while(it != teilnehmerliste.end()){
+        qDebug()<<(*it)->getTeilnehmerkey();
+
+
+        it++;
+    }
 }
 
 

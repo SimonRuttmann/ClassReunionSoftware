@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>View_ErsterSystemstart_test</class>
- <widget class="QWidget" name="View_ErsterSystemstart_test">
+ <class>View_ErsterSystemstart</class>
+ <widget class="QWidget" name="View_ErsterSystemstart">
   <property name="geometry">
    <rect>
     <x>0</x>

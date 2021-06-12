@@ -1,5 +1,5 @@
 /********************************************************************************
-** Form generated from reading UI file 'View_Erstersystemstart.ui'
+** Form generated from reading UI file 'View_ErsterSystemstart.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.15.0
 **
@@ -22,28 +22,28 @@ public:
     QPushButton *NeuesSystem;
     QPushButton *Beitreten;
 
-    void setupUi(QWidget *View_ErsterSystemstart_test)
+    void setupUi(QWidget *View_ErsterSystemstart)
     {
-        if (View_ErsterSystemstart_test->objectName().isEmpty())
-            View_ErsterSystemstart_test->setObjectName(QString::fromUtf8("View_ErsterSystemstart_test"));
-        View_ErsterSystemstart_test->resize(400, 300);
-        NeuesSystem = new QPushButton(View_ErsterSystemstart_test);
+        if (View_ErsterSystemstart->objectName().isEmpty())
+            View_ErsterSystemstart->setObjectName(QString::fromUtf8("View_ErsterSystemstart"));
+        View_ErsterSystemstart->resize(400, 300);
+        NeuesSystem = new QPushButton(View_ErsterSystemstart);
         NeuesSystem->setObjectName(QString::fromUtf8("NeuesSystem"));
         NeuesSystem->setGeometry(QRect(10, 70, 171, 111));
-        Beitreten = new QPushButton(View_ErsterSystemstart_test);
+        Beitreten = new QPushButton(View_ErsterSystemstart);
         Beitreten->setObjectName(QString::fromUtf8("Beitreten"));
         Beitreten->setGeometry(QRect(210, 70, 171, 111));
 
-        retranslateUi(View_ErsterSystemstart_test);
+        retranslateUi(View_ErsterSystemstart);
 
-        QMetaObject::connectSlotsByName(View_ErsterSystemstart_test);
+        QMetaObject::connectSlotsByName(View_ErsterSystemstart);
     } // setupUi
 
-    void retranslateUi(QWidget *View_ErsterSystemstart_test)
+    void retranslateUi(QWidget *View_ErsterSystemstart)
     {
-        View_ErsterSystemstart_test->setWindowTitle(QCoreApplication::translate("View_ErsterSystemstart_test", "Form", nullptr));
-        NeuesSystem->setText(QCoreApplication::translate("View_ErsterSystemstart_test", "Neues System erstellen", nullptr));
-        Beitreten->setText(QCoreApplication::translate("View_ErsterSystemstart_test", "Bestehendem System beitreten", nullptr));
+        View_ErsterSystemstart->setWindowTitle(QCoreApplication::translate("View_ErsterSystemstart", "Form", nullptr));
+        NeuesSystem->setText(QCoreApplication::translate("View_ErsterSystemstart", "Neues System erstellen", nullptr));
+        Beitreten->setText(QCoreApplication::translate("View_ErsterSystemstart", "Bestehendem System beitreten", nullptr));
     } // retranslateUi
 
 };

@@ -40,12 +40,12 @@ public:
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *liste;
 
-    void setupUi(QWidget *view_teilnehmerliste)
+    void setupUi(QWidget *View_Teilnehmerliste)
     {
-        if (view_teilnehmerliste->objectName().isEmpty())
-            view_teilnehmerliste->setObjectName(QString::fromUtf8("view_teilnehmerliste"));
-        view_teilnehmerliste->resize(1080, 720);
-        horizontalLayoutWidget = new QWidget(view_teilnehmerliste);
+        if (View_Teilnehmerliste->objectName().isEmpty())
+            View_Teilnehmerliste->setObjectName(QString::fromUtf8("View_Teilnehmerliste"));
+        View_Teilnehmerliste->resize(1080, 720);
+        horizontalLayoutWidget = new QWidget(View_Teilnehmerliste);
         horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
         horizontalLayoutWidget->setGeometry(QRect(10, 10, 1061, 61));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
@@ -106,24 +106,24 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer_4);
 
-        verticalLayoutWidget_2 = new QWidget(view_teilnehmerliste);
+        verticalLayoutWidget_2 = new QWidget(View_Teilnehmerliste);
         verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
         verticalLayoutWidget_2->setGeometry(QRect(10, 80, 1061, 631));
         liste = new QVBoxLayout(verticalLayoutWidget_2);
         liste->setObjectName(QString::fromUtf8("liste"));
         liste->setContentsMargins(0, 0, 0, 0);
 
-        retranslateUi(view_teilnehmerliste);
+        retranslateUi(View_Teilnehmerliste);
 
-        QMetaObject::connectSlotsByName(view_teilnehmerliste);
+        QMetaObject::connectSlotsByName(View_Teilnehmerliste);
     } // setupUi
 
-    void retranslateUi(QWidget *view_teilnehmerliste)
+    void retranslateUi(QWidget *View_Teilnehmerliste)
     {
-        view_teilnehmerliste->setWindowTitle(QCoreApplication::translate("view_teilnehmerliste", "Form", nullptr));
-        pushButton->setText(QCoreApplication::translate("view_teilnehmerliste", "Teilnehmer hinzuf\303\274gen", nullptr));
-        label->setText(QCoreApplication::translate("view_teilnehmerliste", "KTDVS", nullptr));
-        toolButton->setText(QCoreApplication::translate("view_teilnehmerliste", "...", nullptr));
+        View_Teilnehmerliste->setWindowTitle(QCoreApplication::translate("View_Teilnehmerliste", "Form", nullptr));
+        pushButton->setText(QCoreApplication::translate("View_Teilnehmerliste", "Teilnehmer hinzuf\303\274gen", nullptr));
+        label->setText(QCoreApplication::translate("View_Teilnehmerliste", "KTDVS", nullptr));
+        toolButton->setText(QCoreApplication::translate("View_Teilnehmerliste", "...", nullptr));
     } // retranslateUi
 
 };

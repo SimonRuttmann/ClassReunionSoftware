@@ -8,7 +8,8 @@
 #include "DAO_QT_Teilnehmer.h"
 #include <QVariant>
 
-
+#include <QDebug>
+#include <iostream>
 DAO_QT_Teilnehmer::DAO_QT_Teilnehmer(){
     insert_query.prepare
     (
@@ -106,12 +107,22 @@ bool DAO_QT_Teilnehmer::insertOrganisator(Organisator &organisator){
     int versuch = organisator.getVersuch();
     bool isSystempasswort = organisator.isSystempasswort();
 
-    insert_query.bindValue(":passwort", passwort);
-    insert_query.bindValue(":isHauptorganisator",isHauptorganisator);
-    insert_query.bindValue(":versuch", versuch);
-    insert_query.bindValue(":isSystempasswort", isSystempasswort);
+    qDebug()<< "INSERT MIT pw: "+passwort+" isHaupt: " + isHauptorganisator + " versuch: "+ versuch +" Systempw: "+ isSystempasswort;
 
-    if(!insert_query.exec()) return false;
+//    insert_query.bindValue(":passwort", passwort);
+//    insert_query.bindValue(":isHauptorganisator",isHauptorganisator);
+//    insert_query.bindValue(":versuch", versuch);
+//    insert_query.bindValue(":isSystempasswort", isSystempasswort);
+    insert_query.bindValue(":passwort", 123);
+    insert_query.bindValue(":isHauptorganisator",1);
+    insert_query.bindValue(":versuch", 1);
+    insert_query.bindValue(":isSystempasswort", 1);
+    //qDebug("Test"); //<< "INSERT MIT pw: "; // << passwort.toStdString() << " isHaupt: " << isHauptorganisator << " versuch: " << versuch <<" Systempw: "<< isSystempasswort;
+
+    if(!insert_query.exec()) {
+        qDebug("insert fehlgeschlagen");
+        return false;
+    }
 
     if(!last_insert_id_query.exec()) return false;
     if(!last_insert_id_query.next()) return false;

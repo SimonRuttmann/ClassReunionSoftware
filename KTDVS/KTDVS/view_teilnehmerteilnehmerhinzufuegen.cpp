@@ -4,11 +4,14 @@
 
 #include "ui_View_TeilnehmerTeilnehmerHinzufuegen.h"
 
+#include <iostream>
+
 View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(QWidget* parent, Teilnehmer* aktuellerTeilnehmer,bool neuerTeilnehmer) :
     QWidget(parent),
     ui(new Ui::View_TeilnehmerTeilnehmerHinzufuegen)
 {
-
+    ui->setupUi(this);
+    std::cout << 20;
     if(instanceof<Organisator>(aktuellerTeilnehmer)){
         //Enable button
         ui->PwAndern->setEnabled(true);
@@ -16,6 +19,7 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(QWidg
     else{
         //Disable button
         ui->PwAndern->setEnabled(false);
+
         ui->OrganisatorrechteEntfernen->setText("Organisatorrechte erteilen");
     }
 
@@ -25,7 +29,7 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(QWidg
         ui->OrganisatorrechteEntfernen->setVisible(false);
     }
 
-    ui->setupUi(this);
+
     neuerTn=neuerTeilnehmer;
     teiln = aktuellerTeilnehmer;
     teilnehmerdaten = teiln->aktuelleTeilnehmerdatenVonDBErhalten();
@@ -137,13 +141,26 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_Speichern_clicked(){ //Die Teilneh
 }
 
 
-void View_TeilnehmerTeilnehmerHinzufuegen::on_zurueck_clicked(){
+//void View_TeilnehmerTeilnehmerHinzufuegen::on_zurueck_clicked(){
+ //   View_Teilnehmerliste* tl = new View_Teilnehmerliste(vater);
+ //   tl->show();
+  //  this->close();
+//}
+
+//void View_TeilnehmerTeilnehmerHinzufuegen::on_logout_clicked(){
+  //  this->destroy();
+  //  this->close();
+//}
+
+void View_TeilnehmerTeilnehmerHinzufuegen::on_zurueck_2_clicked()
+{
     View_Teilnehmerliste* tl = new View_Teilnehmerliste(vater);
     tl->show();
     this->close();
 }
 
-void View_TeilnehmerTeilnehmerHinzufuegen::on_logout_clicked(){
+void View_TeilnehmerTeilnehmerHinzufuegen::on_logout_2_clicked()
+{
     this->destroy();
     this->close();
 }

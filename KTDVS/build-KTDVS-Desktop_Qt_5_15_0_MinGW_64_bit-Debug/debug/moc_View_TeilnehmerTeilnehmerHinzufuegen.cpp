@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_View_TeilnehmerTeilnehmerHinzufuegen_t {
     QByteArrayData data[8];
-    char stringdata0[181];
+    char stringdata0[185];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,15 +38,15 @@ QT_MOC_LITERAL(2, 64, 0), // ""
 QT_MOC_LITERAL(3, 65, 37), // "on_OrganisatorrechteEntfernen..."
 QT_MOC_LITERAL(4, 103, 19), // "on_PwAndern_clicked"
 QT_MOC_LITERAL(5, 123, 20), // "on_Speichern_clicked"
-QT_MOC_LITERAL(6, 144, 18), // "on_zurueck_clicked"
-QT_MOC_LITERAL(7, 163, 17) // "on_logout_clicked"
+QT_MOC_LITERAL(6, 144, 20), // "on_zurueck_2_clicked"
+QT_MOC_LITERAL(7, 165, 19) // "on_logout_2_clicked"
 
     },
     "View_TeilnehmerTeilnehmerHinzufuegen\0"
     "on_Versionsverlauf_clicked\0\0"
     "on_OrganisatorrechteEntfernen_clicked\0"
     "on_PwAndern_clicked\0on_Speichern_clicked\0"
-    "on_zurueck_clicked\0on_logout_clicked"
+    "on_zurueck_2_clicked\0on_logout_2_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -92,8 +92,8 @@ void View_TeilnehmerTeilnehmerHinzufuegen::qt_static_metacall(QObject *_o, QMeta
         case 1: _t->on_OrganisatorrechteEntfernen_clicked(); break;
         case 2: _t->on_PwAndern_clicked(); break;
         case 3: _t->on_Speichern_clicked(); break;
-        case 4: _t->on_zurueck_clicked(); break;
-        case 5: _t->on_logout_clicked(); break;
+        case 4: _t->on_zurueck_2_clicked(); break;
+        case 5: _t->on_logout_2_clicked(); break;
         default: ;
         }
     }
