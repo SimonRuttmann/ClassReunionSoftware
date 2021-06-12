@@ -1,6 +1,6 @@
 #include "View_ErsterSystemstart.h"
 #include "ui_View_Erstersystemstart.h"
-#include "View_Einloggen.h"
+#include "View_Einloggen_test.h"
 
 View_ErsterSystemStart::View_ErsterSystemStart(QWidget *parent) :
     QMainWindow(parent),
@@ -19,7 +19,8 @@ void View_ErsterSystemStart::on_NeuesSystem_Button_clicked()
     View_Einloggen * w = new View_Einloggen();
     w -> neuesSystem = true;
     this -> hide();
-    w -> show();
+    //w -> show();
+    // hier parameter übergeben NeueHaupt an einloggfenster
 }
 
 

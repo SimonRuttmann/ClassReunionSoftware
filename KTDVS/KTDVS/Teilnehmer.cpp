@@ -60,5 +60,32 @@
         this->teilnehmerkey = neuerTeilnehmerkey;
     };
 
+    Organisator* Teilnehmer::login(string email, string passwort){
+        DAO_QT_Teilnehmer* DAOTeil;
+        DAOTeil ->selectAllOrganisatoren(orglist);
+        list<Organisator*>::iterator it;
+
+        for (it = orglist.begin();it != orglist.end();it++){
+            org = *it;
+            Organisator::Pruefung test = org ->pruefePasswort(email,passwort);
+            if (test == Organisator::Pruefung::EMailZutreffendPwRichtig ){
+                org -> setVersuch(0);
+                return org;
+            }
+            if(test ==  Organisator::Pruefung::EmailZutreffendPwFalsch){
+               int Versuche = org->getVersuch();
+               if(Versuche < 4){
+               org -> incVersuch();
+               }
+               return org;
+            }
+
+        }
+        Organisator* fail = NULL;
+        return fail;
+    }
+
+
+
 
 
