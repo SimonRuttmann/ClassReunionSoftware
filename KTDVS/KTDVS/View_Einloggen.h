@@ -11,6 +11,7 @@
 #include "Teilnehmerliste.h"
 #include <string>
 #include <QString>
+#include "View_TeilnehmerTeilnehmerHinzufuegen.h"
 
 namespace Ui {
 class View_Einloggen;
@@ -21,7 +22,7 @@ class View_Einloggen : public QWidget
     Q_OBJECT
 
 public:
-    explicit View_Einloggen(QWidget *parent = nullptr);
+    explicit View_Einloggen(QWidget *parent = nullptr, bool isNeu = false);
     ~View_Einloggen();
 
     Teilnehmer *subjekt;
@@ -31,7 +32,7 @@ public:
     void onSchliessen();
     void onErstelleHauptorganisator();// buttontext
     void onInit();
-    bool neuesSystem=true; // !!! wie ÃƒÂ¼bergreifend?
+
     Organisator* org;
     Organisator* Haupt;
 
@@ -41,6 +42,8 @@ private slots:
     void on_zurueck_clicked();
 
 private:
+    QWidget* parent;
+    bool isNeu;
     Ui::View_Einloggen *ui;
     QString passwort;
     QString eMail;

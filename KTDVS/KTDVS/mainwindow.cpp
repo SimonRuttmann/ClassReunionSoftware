@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "View_Teilnehmerliste.h"
+#include "View_ErsterSystemstart.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -29,13 +30,15 @@ MainWindow::MainWindow(QWidget *parent)
 //    Teilnehmer *teilnehmer = new Teilnehmer(*teilnehmerdaten);
 //    liste->getTeilnehmerliste()->push_back(teilnehmer);
 
-    View_Teilnehmerliste* l = new View_Teilnehmerliste(nullptr, nullptr);
+    //View_Teilnehmerliste* l = new View_Teilnehmerliste(this, nullptr);
 
+    View_ErsterSystemstart* ersterSystemstart = new View_ErsterSystemstart(this);
+    ersterSystemstart->show();
 
+    //l->show();
+    //this->hide();
+    this->destroy(true);
 
-
-    l->show();
-    this->hide();
 }
 
 MainWindow::~MainWindow()

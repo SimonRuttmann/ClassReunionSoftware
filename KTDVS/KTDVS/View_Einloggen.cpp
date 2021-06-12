@@ -6,11 +6,14 @@
 
 // -> ui-> Fehlermeldung -> setVisible(false);
 
-View_Einloggen::View_Einloggen(QWidget *parent) :
+View_Einloggen::View_Einloggen(QWidget *parent, bool isNeu) :
     QWidget(parent),
     ui(new Ui::View_Einloggen)
 {
+    this->parent = parent;
+    this->isNeu = isNeu;
     ui->setupUi(this);
+    this->onInit();
 }
 
 View_Einloggen::~View_Einloggen()
@@ -19,7 +22,7 @@ View_Einloggen::~View_Einloggen()
 }
 
 void View_Einloggen::onInit(){
-    if(neuesSystem){
+    if(this->isNeu){
         ui ->Login ->setText("Hauptorganisator erstellen");
     }
     ui ->Fehlerausgabe -> setVisible(false);
@@ -37,17 +40,16 @@ void View_Einloggen::on_Login_clicked()
     ui ->FalschesPasswort -> setVisible(false);
     ui ->Gesperrt ->setVisible(false);
     // Fall:Hauptorganisator erstellen  Hier grade sehr viel Rechnerei
-    if(neuesSystem){
+    if(this->isNeu){
         passwort = ui ->Passwort -> text();
        // eMail = ui -> EMail -> text();
         passwortString =passwort.toStdString();
        // eMailDatenbank =eMail.toStdString();
         Haupt = Teilnehmerliste::instance()->organisatorErstellen(passwortString, true);
-
-        // !! noch nicht fertig hier
-
-        // wechsel zu Daten Eingeben vom HAuptorganisator
-
+//TODO!
+        View_TeilnehmerTeilnehmerHinzufuegen* teilHin = new View_TeilnehmerTeilnehmerHinzufuegen(this->parent, Haupt, true);
+        teilHin->show();
+        this->destroy(true);
     }
     else{
 
@@ -71,6 +73,9 @@ void View_Einloggen::on_Login_clicked()
             if (test == Organisator::Pruefung::EMailZutreffendPwRichtig && org->getVersuch() < 3){
                 org -> setVersuch(0);
                  //SZENE wechseln zu Teilnehmerliste
+                View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent, nullptr);
+                tl->show();
+                this->destroy(true);
                 return;
             }
             //Falsches PW

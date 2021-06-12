@@ -2,7 +2,7 @@
 #include "View_Versionsverlauf.h"
 
 
-#include "ui_view_teilnehmerteilnehmerhinzufuegen.h"
+#include "ui_View_TeilnehmerTeilnehmerHinzufuegen.h"
 
 View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(QWidget* parent, Teilnehmer* aktuellerTeilnehmer,bool neuerTeilnehmer) :
     QWidget(parent),

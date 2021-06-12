@@ -23,6 +23,7 @@ private slots:
     void on_Beitreten_clicked();
 
 private:
+    QWidget* parent;
     Ui::View_ErsterSystemstart *ui;
 };
 
