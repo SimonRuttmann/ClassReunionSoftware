@@ -89,12 +89,12 @@ void view_teilnehmerliste::addEingeklapptesFeld(Teilnehmerdaten* daten) {
     //add normales
     QHBoxLayout* layout = new QHBoxLayout();
 
-    QToolButton *qtoolbutton = new QToolButton();
-    qtoolbutton->icon().addFile("Resources/arrow_down.png");
+    //QToolButton *qtoolbutton = new QToolButton();
+    //qtoolbutton->icon().addFile("Resources/arrow_down.png");
 
     //keine ahnung was die parameter sind
     layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    layout->addWidget(new QToolButton());
+    //layout->addWidget(qtoolbutton);
     layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
     layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
     layout->addWidget(new QLabel(QString::fromStdString(name)));
@@ -129,9 +129,13 @@ void view_teilnehmerliste::addAusgeklapptesFeld(Teilnehmerdaten* daten){
 
     //add normales
     QHBoxLayout* layout = new QHBoxLayout();
+
+    //QToolButton *qtoolbutton = new QToolButton();
+    //qtoolbutton->icon().addFile("Resources/arrow_down.png");
+
     //keine ahnung was die parameter sind
     layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    layout->addWidget(new QToolButton());
+    //layout->addWidget(qtoolbutton);
     layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
     layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
     layout->addWidget(new QLabel(QString::fromStdString(name)));
@@ -171,18 +175,6 @@ void view_teilnehmerliste::addAusgeklapptesFeld(Teilnehmerdaten* daten){
 
     uiglobal->liste->addLayout(layout1);
 }
-void view_teilnehmerliste::removeFeld(string email){
-    QVBoxLayout *liste = ui->liste;
-    cout << liste->children().count() << endl;
-
-    QList<QObject*>::const_iterator it;
-
-    for (it = liste->children().begin(); it != liste->children().end(); it++) {
-        //such email und tu des weg
-    }
-
-    cout << "remove email" << email << endl;
-}
 
 void view_teilnehmerliste::onAusloggen(){
     cout << "Ausloggen!" << endl;
@@ -193,28 +185,23 @@ void view_teilnehmerliste::test(string email){
 }
 
 void view_teilnehmerliste::onTeilnehmerdatenAendern(string email){
-    QVBoxLayout *liste = ui->liste;
-    cout << liste->children().count() << endl;
-
-    QList<QObject*>::const_iterator it;
-
-    for (it = liste->children().begin(); it != liste->children().end(); it++) {
-        //such email und änder des
-    }
+    onUpdate();
 }
 
 void view_teilnehmerliste::onTeilnehmerHinzufuegen(Teilnehmer* teilnehmer){
-    addEingeklapptesFeld(teilnehmer->getAktuelleTeilnehmerdaten());
+    addAusgeklapptesFeld(teilnehmer->getAktuelleTeilnehmerdaten());
 }
 
 void view_teilnehmerliste::onAlsOrganisatorHinzufuegen(string email){
-    QVBoxLayout *liste = ui->liste;
-    cout << liste->children().count() << endl;
+    cout << "Füge als Organisator hinzu!" << endl;
 
-    QList<QObject*>::const_iterator it;
+    list<Teilnehmer*>::iterator it;
 
-    for (it = liste->children().begin(); it != liste->children().end(); it++) {
-        //such email und füg den teilnehmer als orga hinzu
+    for (it = teilnehmerList->getTeilnehmerliste()->begin(); it != teilnehmerList->getTeilnehmerliste()->end(); it++) {
+        if ((*it)->getAktuelleTeilnehmerdaten()->getEMail() == email) {
+            //mach den organisator
+            break;
+        }
     }
 }
 
@@ -223,7 +210,8 @@ void view_teilnehmerliste::onVersionsverlaufAnzeigen(string email){
 }
 
 void view_teilnehmerliste::onUpdate(){
-
+    //reset liste
+    onInit();
 }
 
 void view_teilnehmerliste::onInit(){
@@ -232,7 +220,7 @@ void view_teilnehmerliste::onInit(){
     if (teilnehmerList != nullptr) {
         for (it = teilnehmerList->getTeilnehmerliste()->begin(); it != teilnehmerList->getTeilnehmerliste()->end(); it++) {
             Teilnehmerdaten* daten = (*it)->getAktuelleTeilnehmerdaten();
-            addEingeklapptesFeld(daten);
+            addAusgeklapptesFeld(daten);
         }
     }
 }

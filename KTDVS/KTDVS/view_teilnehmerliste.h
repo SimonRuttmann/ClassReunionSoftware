@@ -39,7 +39,6 @@ private:
     void addEingeklapptesFeld(Teilnehmerdaten* daten);
     void addAusgeklapptesFeld(Teilnehmerdaten* daten);
     void addAusgeklapptesFeld(string test);
-    void removeFeld(string email);
 };
 
 #endif // VIEW_TEILNEHMERLISTE_H
