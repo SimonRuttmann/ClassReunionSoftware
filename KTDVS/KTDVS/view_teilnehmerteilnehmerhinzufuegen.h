@@ -14,7 +14,7 @@ class View_TeilnehmerTeilnehmerHinzufuegen : public QWidget
     Q_OBJECT
 
 public:
-    explicit View_TeilnehmerTeilnehmerHinzufuegen(QWidget *parent = nullptr, Teilnehmer* aktuellerTeilnehmer = nullptr, bool neuerTeilnehmer = false);
+    explicit View_TeilnehmerTeilnehmerHinzufuegen(QWidget *parent = nullptr, Teilnehmer* aktuellerTeilnehmer = nullptr, bool neuerTeilnehmer = false, bool hauptorganisatorErstellen = false);
     ~View_TeilnehmerTeilnehmerHinzufuegen();
 
 private slots:
@@ -33,6 +33,7 @@ private slots:
 private:
     Ui::View_TeilnehmerTeilnehmerHinzufuegen *ui;
     bool neuerTn;
+    bool hauptorgErstellen;
     Teilnehmerdaten* teilnehmerdaten;
     Teilnehmer* teiln;
     QWidget* vater;

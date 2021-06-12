@@ -47,10 +47,10 @@ void View_Einloggen::on_Login_clicked()
        // eMailDatenbank =eMail.toStdString();
         Haupt = Teilnehmerliste::instance()->organisatorErstellen(passwortString, true);
         Teilnehmerliste::instance()->aktiverNutzer = Haupt;
-//TODO!
-        View_TeilnehmerTeilnehmerHinzufuegen* teilHin = new View_TeilnehmerTeilnehmerHinzufuegen(this->parent, Haupt, true);
+
+        View_TeilnehmerTeilnehmerHinzufuegen* teilHin = new View_TeilnehmerTeilnehmerHinzufuegen(this->parent, Haupt, true, true);
         teilHin->show();
-        this->destroy(true);
+        this->hide();
     }
     else{
 
@@ -77,7 +77,7 @@ void View_Einloggen::on_Login_clicked()
                 Teilnehmerliste::instance()->aktiverNutzer = org;
                 View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent, nullptr);
                 tl->show();
-                this->destroy(true);
+                this->hide();
                 return;
             }
             //Falsches PW

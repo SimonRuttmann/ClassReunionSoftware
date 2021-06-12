@@ -11,7 +11,7 @@
 #include <sstream>
 #include <vector>
 #include <iterator>
-
+#include <QDebug>
 
 using namespace std;
 DAO_QT_Teilnehmerdaten::DAO_QT_Teilnehmerdaten(){
@@ -21,7 +21,7 @@ DAO_QT_Teilnehmerdaten::DAO_QT_Teilnehmerdaten(){
          "(teilnehmerkey, vorname, nachname, schulname, "
          "email, datum, postleitzahl, hausnummer, stadt, strasse, land, kommentar, erstellerkey)"
          "VALUES (:teilnehmerkey, :vorname, :nachname, :schulname,"
-         ":email, :datum, :postleitzahl, :hausnumemr, :stadt, :strasse, :land, :kommentar, :erstellerkey);"
+         ":email, :datum, :postleitzahl, :hausnummer, :stadt, :strasse, :land, :kommentar, :erstellerkey);"
          );
     insert_query_tel.prepare
          (
@@ -73,6 +73,8 @@ DAO_QT_Teilnehmerdaten::DAO_QT_Teilnehmerdaten(){
 //bool Qt_DAO_Teilnehmerdaten::remove(int teilnehmerkey){return false;};
 
 bool DAO_QT_Teilnehmerdaten::insert(Teilnehmerdaten& teilnehmerdaten){
+
+
     insert_query.bindValue(":teilnehmerkey", teilnehmerdaten.getTeilnehmerkey());
     insert_query.bindValue(":vorname", QString::fromStdString(teilnehmerdaten.getVorname()));
     insert_query.bindValue(":nachname", QString::fromStdString(teilnehmerdaten.getNachname()));
@@ -84,12 +86,12 @@ bool DAO_QT_Teilnehmerdaten::insert(Teilnehmerdaten& teilnehmerdaten){
     insert_query.bindValue(":stadt", QString::fromStdString(teilnehmerdaten.getAdresse().stadt));
     insert_query.bindValue(":strasse", QString::fromStdString(teilnehmerdaten.getAdresse().strasse));
     insert_query.bindValue(":land", QString::fromStdString(teilnehmerdaten.getAdresse().land));
-    insert_query.bindValue(":land", QString::fromStdString(teilnehmerdaten.getKommentar()));
+    insert_query.bindValue(":kommentar", QString::fromStdString(teilnehmerdaten.getKommentar()));
     insert_query.bindValue(":erstellerkey", teilnehmerdaten.getErstellerKey());
 
     if(insert_query.exec()) return false;
     if(last_insert_id_query.exec())return false;
-    if(last_insert_id_query.next())return false;
+    if(last_insert_id_query.first())return false;
     int teilnehmerdatenkey = last_insert_id_query.value(0).toInt();
 
 
@@ -121,7 +123,7 @@ bool DAO_QT_Teilnehmerdaten::insert(Teilnehmerdaten& teilnehmerdaten){
 bool DAO_QT_Teilnehmerdaten::selectFirstOfTeilnehmer(int teilnehmerkey, Teilnehmerdaten& teilnehmerdaten){
     select_query_first.bindValue(":teilnehmerkey", teilnehmerkey);
 
-    if(select_query_first.exec())return false;
+    if(!select_query_first.exec())return false;
 
     teilnehmerdaten.setTeilnehmerkey(teilnehmerkey);
 
@@ -142,23 +144,17 @@ bool DAO_QT_Teilnehmerdaten::selectFirstOfTeilnehmer(int teilnehmerkey, Teilnehm
 
     string datumString = select_query_first.value(6).toString().toStdString();
 
-    char leer = ' ';
-    istringstream iss(datumString);
-    string item;
 
-    getline(iss,item, leer); string tag = item;
-    getline(iss,item, leer); string monat = item;
-    getline(iss,item, leer); string jahr = item;
-    getline(iss,item, leer); string stunde = item;
-    getline(iss,item, leer); string min = item;
-    getline(iss,item, leer); string sekunde = item;
+    QString datumQString = QString::fromStdString(datumString);
+    QStringList data = datumQString.split(" ");
+
     Datum* datum = new Datum();
-    datum->tag = stoi(tag);
-    datum->monat = stoi(monat);
-    datum->jahr = stoi(jahr);
-    datum->stunde = stoi(stunde);
-    datum->min = stoi(min);
-    datum->sekunde = stoi(sekunde);
+    datum->tag = data[0].toInt();
+    datum->monat = data[1].toInt();
+    datum->jahr = data[2].toInt();
+    datum->stunde = data[3].toInt();
+    datum->min = data[4].toInt();
+    datum->sekunde = data[5].toInt();
 
     teilnehmerdaten.setDatum(*datum);
 
@@ -232,24 +228,17 @@ bool DAO_QT_Teilnehmerdaten::selectAllOfTeilnehmer(int teilnehmerkey,  list<Teil
         teilnehmerdaten->setEmail(email);
 
         string datumString = select_query_ofTeilnehmer.value(6).toString().toStdString();
+        QString datumQString = QString::fromStdString(datumString);
+        QStringList data = datumQString.split(" ");
 
-        char leer = ' ';
-        istringstream iss(datumString);
-        string item;
-
-        getline(iss,item, leer); string tag = item;
-        getline(iss,item, leer); string monat = item;
-        getline(iss,item, leer); string jahr = item;
-        getline(iss,item, leer); string stunde = item;
-        getline(iss,item, leer); string min = item;
-        getline(iss,item, leer); string sekunde = item;
         Datum* datum = new Datum();
-        datum->tag = stoi(tag);
-        datum->monat = stoi(monat);
-        datum->jahr = stoi(jahr);
-        datum->stunde = stoi(stunde);
-        datum->min = stoi(min);
-        datum->sekunde = stoi(sekunde);
+        datum->tag = data[0].toInt();
+        datum->monat = data[1].toInt();
+        datum->jahr = data[2].toInt();
+        datum->stunde = data[3].toInt();
+        datum->min = data[4].toInt();
+        datum->sekunde = data[5].toInt();
+
 
         teilnehmerdaten->setDatum(*datum);
 
@@ -329,24 +318,17 @@ bool DAO_QT_Teilnehmerdaten::selectAll(list<Teilnehmerdaten*>& teilnehmerdatenli
         teilnehmerdaten->setEmail(email);
 
         string datumString = select_query_all.value(6).toString().toStdString();
+        QString datumQString = QString::fromStdString(datumString);
+        QStringList data = datumQString.split(" ");
 
-        char leer = ' ';
-        istringstream iss(datumString);
-        string item;
-
-        getline(iss,item, leer); string tag = item;
-        getline(iss,item, leer); string monat = item;
-        getline(iss,item, leer); string jahr = item;
-        getline(iss,item, leer); string stunde = item;
-        getline(iss,item, leer); string min = item;
-        getline(iss,item, leer); string sekunde = item;
         Datum* datum = new Datum();
-        datum->tag = stoi(tag);
-        datum->monat = stoi(monat);
-        datum->jahr = stoi(jahr);
-        datum->stunde = stoi(stunde);
-        datum->min = stoi(min);
-        datum->sekunde = stoi(sekunde);
+        datum->tag = data[0].toInt();
+        datum->monat = data[1].toInt();
+        datum->jahr = data[2].toInt();
+        datum->stunde = data[3].toInt();
+        datum->min = data[4].toInt();
+        datum->sekunde = data[5].toInt();
+
 
         teilnehmerdaten->setDatum(*datum);
 

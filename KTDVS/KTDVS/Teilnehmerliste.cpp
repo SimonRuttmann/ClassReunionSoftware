@@ -9,7 +9,7 @@
 Teilnehmerliste::Teilnehmerliste(){
     this->TeilnehmerDAO = new DAO_QT_Teilnehmer();
 
-    if(!this->TeilnehmerDAO->selectAllTeilnehmer(teilnehmerliste))qDebug()<<"Fehler Seelect";
+    if(!this->TeilnehmerDAO->selectAllTeilnehmer(teilnehmerliste)){qDebug()<<"Fehler Seelect";}else{qDebug()<<"SelectFunktioniert";}
     if(!this->TeilnehmerDAO->selectAllOrganisatoren(organisatorliste)) qDebug()<<"Fehler Select";
 
     list<Teilnehmer*>::iterator it = this->teilnehmerliste.begin();

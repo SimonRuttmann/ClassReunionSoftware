@@ -5,13 +5,16 @@
 #include "ui_View_TeilnehmerTeilnehmerHinzufuegen.h"
 
 #include <iostream>
+//Hauptorganisator wird erstellt -> Teilnehemr = HO, "neuer Teilnehmer = true, da keine TD
+View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
+    QWidget* parent, Teilnehmer* aktuellerTeilnehmer,
+    bool neuerTeilnehmer, bool hauptorganisatorErstellen) :
 
-View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(QWidget* parent, Teilnehmer* aktuellerTeilnehmer,bool neuerTeilnehmer) :
     QWidget(parent),
     ui(new Ui::View_TeilnehmerTeilnehmerHinzufuegen)
 {
     ui->setupUi(this);
-    std::cout << 20;
+
     if(instanceof<Organisator>(aktuellerTeilnehmer)){
         //Enable button
         ui->PwAndern->setEnabled(true);
@@ -32,10 +35,22 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(QWidg
 
     neuerTn=neuerTeilnehmer;
     teiln = aktuellerTeilnehmer;
+    this->hauptorgErstellen = hauptorganisatorErstellen;
+    vater = parent;
+
+    if(this->hauptorgErstellen) {
+        ui->zurueck_2->setVisible(false);
+    }
+
+    //kein neuer Teilnehmer, bisherige Daten anzeigen
+    if(!neuerTeilnehmer){
+
+    ui->Versionsverlauf->setEnabled(false);
+
+    //Kein neuer Teilnehmer -> Teilnehmerdaten sind erhalten
     teilnehmerdaten = teiln->aktuelleTeilnehmerdatenVonDBErhalten();
 
-    vater = parent;
-    if(!neuerTeilnehmer){
+
     ui->lineEdit_11->setText(QString::fromStdString(teilnehmerdaten->getVorname()));
     ui->lineEdit_12->setText(QString::fromStdString(teilnehmerdaten->getNachname()));
     ui->lineEdit_13->setText(QString::fromStdString(teilnehmerdaten->getSchulname()));
@@ -68,13 +83,14 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_PwAndern_clicked(){
     Teilnehmer* a =this->teiln;
     Organisator* b = (Organisator*) a;
     View_Passwortaenderung *pwa = new View_Passwortaenderung(vater,b); //da muss die richtige übergabe noch rein
-    this->destroy(true);
+    this->hide();
     pwa->show();
+
 }
 
 void View_TeilnehmerTeilnehmerHinzufuegen::on_Versionsverlauf_clicked(){
-    View_Versionsverlauf *vv = new View_Versionsverlauf(vater);
-    this->destroy(true);
+    View_Versionsverlauf *vv = new View_Versionsverlauf(vater,this->teiln);
+    this->hide();
     vv->show();
 }
 
@@ -103,7 +119,7 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_Speichern_clicked(){ //Die Teilneh
 
         teilnehmerdaten = new Teilnehmerdaten();
 
-        if(neuerTn){
+        if(neuerTn && !hauptorgErstellen){
 
             teilnehmer = Teilnehmerliste::instance()->teilnehmerErstellen();
 
@@ -136,7 +152,8 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_Speichern_clicked(){ //Die Teilneh
         }
 
         teilnehmerdaten->setWeitereTelefonnummern(weitereTeleList);
-        if(neuerTn)teilnehmer->neuenTDEintragEinfuegen(teilnehmerdaten);
+        teilnehmerdaten->setKommentar(ui->Komentar->toPlainText().toStdString());
+        teilnehmer->neuenTDEintragEinfuegen(teilnehmerdaten);
     }
 }
 
@@ -156,11 +173,10 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_zurueck_2_clicked()
 {
     View_Teilnehmerliste* tl = new View_Teilnehmerliste(vater);
     tl->show();
-    this->close();
+    this->hide();
 }
 
 void View_TeilnehmerTeilnehmerHinzufuegen::on_logout_2_clicked()
 {
-    this->destroy();
-    this->close();
+    QApplication::quit();
 }

@@ -38,7 +38,7 @@ private:
     QPushButton *zurueck;
     //QPushButton *details;
     QToolButton *ausloggen;
-
+    QWidget* vater;
     void onInit();
 };
 

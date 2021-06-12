@@ -7,14 +7,13 @@
 
 #include "DAO_QT_Teilnehmer.h"
 #include <QVariant>
-
+#include <QtSql>
 #include <QDebug>
 #include <iostream>
 DAO_QT_Teilnehmer::DAO_QT_Teilnehmer(){
     insert_query.prepare
     (
-    "INSERT INTO Teilnehmer (passwort, isHauptorganisator, versuch, isSystempasswort)"
-    "VALUES (:passwort, :isHauptorganistor, :versuch, :isSystempasswort);"
+    "INSERT INTO Teilnehmer (passwort, isHauptorganisator, versuch, isSystempasswort) VALUES (:passwort, :isHauptorganisator, :versuch, :isSystempasswort);"
     );
 
     last_insert_id_query.prepare
@@ -86,9 +85,13 @@ bool DAO_QT_Teilnehmer::updateTeilnehmer(const Teilnehmer& teilnehmer){
 
 
 bool DAO_QT_Teilnehmer::selectAllTeilnehmer(list<Teilnehmer*>& teilnehmerliste){
-    if(!select_query_all.exec()) return false;
+    if(!select_query_all.exec()){
+        qDebug() << "Fehler" ;
+        return false;
+    };
 
     while(select_query_all.next()){
+        qDebug()<<"Wert erhalten!!!!!!!!!!!!";
         int teilnehmerkey = select_query_all.value(0).toInt();
         Teilnehmer* teilnehmer = new Teilnehmer();
         teilnehmer->setTeilnehmerkey(teilnehmerkey);
@@ -109,14 +112,11 @@ bool DAO_QT_Teilnehmer::insertOrganisator(Organisator &organisator){
 
     qDebug()<< "INSERT MIT pw: "+passwort+" isHaupt: " + isHauptorganisator + " versuch: "+ versuch +" Systempw: "+ isSystempasswort;
 
-//    insert_query.bindValue(":passwort", passwort);
-//    insert_query.bindValue(":isHauptorganisator",isHauptorganisator);
-//    insert_query.bindValue(":versuch", versuch);
-//    insert_query.bindValue(":isSystempasswort", isSystempasswort);
-    insert_query.bindValue(":passwort", 123);
-    insert_query.bindValue(":isHauptorganisator",1);
-    insert_query.bindValue(":versuch", 1);
-    insert_query.bindValue(":isSystempasswort", 1);
+    insert_query.bindValue(":passwort", passwort);
+    insert_query.bindValue(":isHauptorganisator",isHauptorganisator);
+    insert_query.bindValue(":versuch", versuch);
+    insert_query.bindValue(":isSystempasswort", isSystempasswort);
+
     //qDebug("Test"); //<< "INSERT MIT pw: "; // << passwort.toStdString() << " isHaupt: " << isHauptorganisator << " versuch: " << versuch <<" Systempw: "<< isSystempasswort;
 
     if(!insert_query.exec()) {

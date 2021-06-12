@@ -1,6 +1,6 @@
 #include "View_Versionsverlauf.h"
 #include "ui_View_Versionsverlauf.h"
-
+#include "View_Teilnehmerliste.h"
 #include <iostream>
 
 using namespace std;
@@ -15,7 +15,7 @@ View_Versionsverlauf::View_Versionsverlauf(QWidget *parent, Teilnehmer* teilnehm
     ausloggen = ui->toolButton;
 
     this->teilnehmer = teilnehmer;
-
+    this->vater = parent;
     onInit();
 }
 
@@ -26,14 +26,19 @@ View_Versionsverlauf::~View_Versionsverlauf()
 
 void View_Versionsverlauf::on_pushButton_clicked()
 {
+    View_Teilnehmerliste* viewListe = new View_Teilnehmerliste(this->vater);
+    this->hide();
+    viewListe->show();
     cout << "go back" << endl;
-    this->close();
+
 }
 
 void View_Versionsverlauf::on_toolButton_clicked()
 {
-    cout << "logout" << endl;
-    this->close();
+
+    QApplication::quit();
+//    cout << "logout" << endl;
+//    this->close();
 }
 
 void View_Versionsverlauf::on_tableWidget_cellClicked(int row, int column)

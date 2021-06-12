@@ -1348,7 +1348,8 @@ release/DAO_QT_Teilnehmer.o: ../KTDVS/DAO_QT_Teilnehmer.cpp ../KTDVS/DAO_QT_Teil
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qset.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcontiguouscache.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qsharedpointer.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qsharedpointer_impl.h
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\DAO_QT_Teilnehmer.o ..\KTDVS\DAO_QT_Teilnehmer.cpp
 
 release/DAO_QT_Teilnehmerdaten.o: ../KTDVS/DAO_QT_Teilnehmerdaten.cpp ../KTDVS/DAO_QT_Teilnehmerdaten.h \
@@ -1563,7 +1564,24 @@ release/View_Einloggen.o: ../KTDVS/View_Einloggen.cpp ../KTDVS/View_Einloggen.h 
 		../KTDVS/View_TeilnehmerTeilnehmerHinzufuegen.h \
 		../KTDVS/View_Passwortaenderung.h \
 		../KTDVS/View_Teilnehmerliste.h \
-		ui_View_Einloggen.h
+		ui_View_Einloggen.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/QVariant \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qeventloop.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QLabel \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QSpacerItem \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\View_Einloggen.o ..\KTDVS\View_Einloggen.cpp
 
 release/View_ErsterSystemstart.o: ../KTDVS/View_ErsterSystemstart.cpp ../KTDVS/View_ErsterSystemstart.h \
@@ -1702,7 +1720,15 @@ release/View_ErsterSystemstart.o: ../KTDVS/View_ErsterSystemstart.cpp ../KTDVS/V
 		../KTDVS/View_TeilnehmerTeilnehmerHinzufuegen.h \
 		../KTDVS/View_Passwortaenderung.h \
 		../KTDVS/View_Teilnehmerliste.h \
-		ui_View_ErsterSystemstart.h
+		ui_View_ErsterSystemstart.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/QVariant \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qeventloop.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qinputmethod.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\View_ErsterSystemstart.o ..\KTDVS\View_ErsterSystemstart.cpp
 
 release/View_Passwortaenderung.o: ../KTDVS/View_Passwortaenderung.cpp ../KTDVS/View_Passwortaenderung.h \
@@ -1815,7 +1841,34 @@ release/View_Passwortaenderung.o: ../KTDVS/View_Passwortaenderung.cpp ../KTDVS/V
 		../KTDVS/Datum.h \
 		../KTDVS/Adresse.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/QString \
-		ui_View_Passwortaenderung.h
+		ui_View_Passwortaenderung.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/QVariant \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qeventloop.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QLabel \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtextformat.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qpen.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtextoption.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QPushButton \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qicon.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\View_Passwortaenderung.o ..\KTDVS\View_Passwortaenderung.cpp
 
 release/View_TeilnehmerTeilnehmerHinzufuegen.o: ../KTDVS/View_TeilnehmerTeilnehmerHinzufuegen.cpp ../KTDVS/View_TeilnehmerTeilnehmerHinzufuegen.h \
@@ -1964,7 +2017,33 @@ release/View_TeilnehmerTeilnehmerHinzufuegen.o: ../KTDVS/View_TeilnehmerTeilnehm
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QToolButton \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qtoolbutton.h \
-		ui_View_TeilnehmerTeilnehmerHinzufuegen.h
+		ui_View_TeilnehmerTeilnehmerHinzufuegen.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/QVariant \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qeventloop.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QGridLayout \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QLabel \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtextformat.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qpen.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtextoption.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QTextEdit \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qtextedit.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtextdocument.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\View_TeilnehmerTeilnehmerHinzufuegen.o ..\KTDVS\View_TeilnehmerTeilnehmerHinzufuegen.cpp
 
 release/View_Teilnehmerliste.o: ../KTDVS/View_Teilnehmerliste.cpp ../KTDVS/View_Teilnehmerliste.h \
@@ -2084,7 +2163,32 @@ release/View_Teilnehmerliste.o: ../KTDVS/View_Teilnehmerliste.cpp ../KTDVS/View_
 		C:/Qt/5.15.0/mingw81_64/include/QtSql/qtsqlglobal.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtSql/qtsql-config.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtSql/qsqldatabase.h \
-		ui_View_Teilnehmerliste.h
+		ui_View_Teilnehmerliste.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/QVariant \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/QIcon \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qicon.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qeventloop.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QLabel \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QPushButton \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QSpacerItem \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QToolButton \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qtoolbutton.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\View_Teilnehmerliste.o ..\KTDVS\View_Teilnehmerliste.cpp
 
 release/View_Versionsverlauf.o: ../KTDVS/View_Versionsverlauf.cpp ../KTDVS/View_Versionsverlauf.h \
@@ -2229,15 +2333,33 @@ release/View_Versionsverlauf.o: ../KTDVS/View_Versionsverlauf.cpp ../KTDVS/View_
 		C:/Qt/5.15.0/mingw81_64/include/QtSql/qtsqlglobal.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtSql/qtsql-config.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtSql/qsqldatabase.h \
-		ui_View_Versionsverlauf.h
+		ui_View_Versionsverlauf.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/QVariant \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/QIcon \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qeventloop.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QHeaderView \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qheaderview.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QLabel \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QSpacerItem \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\View_Versionsverlauf.o ..\KTDVS\View_Versionsverlauf.cpp
 
 release/View_VersionsverlaufDetailliert.o: ../KTDVS/View_VersionsverlaufDetailliert.cpp ui_View_VersionsverlaufDetailliert.h \
-		../KTDVS/View_VersionsverlaufDetailliert.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QWidget \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qwidget.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtguiglobal.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/QVariant \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qvariant.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qatomic.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qglobal.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qconfig.h \
@@ -2249,37 +2371,29 @@ release/View_VersionsverlaufDetailliert.o: ../KTDVS/View_VersionsverlaufDetailli
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qsysinfo.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qlogging.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qflags.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qatomic.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qglobalstatic.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qmutex.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qnumeric.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qversiontagging.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qbasicatomic.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qatomic_bootstrap.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qgenericatomic.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qatomic_cxx11.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qatomic_msvc.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qglobalstatic.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qmutex.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qnumeric.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qversiontagging.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtgui-config.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qtwidgets-config.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtGui/qwindowdefs.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qobjectdefs.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qnamespace.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qobjectdefs_impl.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtGui/qwindowdefs_win.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qobject.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstring.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qchar.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qbytearray.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qrefcount.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qnamespace.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qarraydata.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstringliteral.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstringalgorithms.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstringview.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstringbuilder.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qlist.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qalgorithms.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qiterator.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qhashfunctions.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstring.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qchar.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstringliteral.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstringalgorithms.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstringview.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstringbuilder.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qpair.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qvector.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcontainertools_impl.h \
@@ -2288,16 +2402,43 @@ release/View_VersionsverlaufDetailliert.o: ../KTDVS/View_VersionsverlaufDetailli
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstringlist.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qregexp.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstringmatcher.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcoreevent.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qscopedpointer.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qmetatype.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qvarlengtharray.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcontainerfwd.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qobjectdefs.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qmap.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qdebug.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qhash.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qtextstream.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qiodevice.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qobject.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcoreevent.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qscopedpointer.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qobject_impl.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qlocale.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qshareddata.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qset.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcontiguouscache.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qsharedpointer.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtguiglobal.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtgui-config.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qeventloop.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qwindowdefs.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qsize.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qmargins.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qcursor.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qwidget.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qpaintdevice.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qrect.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qsize.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qpalette.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qcolor.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qrgb.h \
@@ -2307,36 +2448,57 @@ release/View_VersionsverlaufDetailliert.o: ../KTDVS/View_VersionsverlaufDetailli
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qpolygon.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qregion.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qdatastream.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qiodevice.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qline.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtransform.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qimage.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qpixelformat.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qpixmap.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qsharedpointer.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qshareddata.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qhash.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qsharedpointer_impl.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qfont.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qfontmetrics.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qfontinfo.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qsizepolicy.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtGui/qcursor.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qkeysequence.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qevent.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qvariant.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qmap.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qdebug.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qtextstream.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qlocale.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qset.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcontiguouscache.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qurl.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qurlquery.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qfile.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtouchdevice.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QLabel \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtextformat.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qpen.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtextoption.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QMenuBar \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qmenubar.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qmenu.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qicon.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qaction.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qactiongroup.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QPushButton \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QStatusBar \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qstatusbar.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QTextEdit \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qtextedit.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtextdocument.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QWidget \
+		../KTDVS/View_VersionsverlaufDetailliert.h \
 		../KTDVS/Teilnehmerdaten.h \
 		../KTDVS/Datum.h \
 		../KTDVS/Adresse.h \
@@ -2345,8 +2507,6 @@ release/View_VersionsverlaufDetailliert.o: ../KTDVS/View_VersionsverlaufDetailli
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qtablewidget.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qtableview.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qframe.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -2354,16 +2514,12 @@ release/View_VersionsverlaufDetailliert.o: ../KTDVS/View_VersionsverlaufDetailli
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qabstractspinbox.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qvalidator.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qregularexpression.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtGui/qicon.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qslider.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qabstractslider.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qstyle.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qtabbar.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qrubberband.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QPushButton \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QToolButton \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qtoolbutton.h \
 		../KTDVS/Teilnehmerliste.h \
@@ -2376,7 +2532,11 @@ release/View_VersionsverlaufDetailliert.o: ../KTDVS/View_VersionsverlaufDetailli
 		C:/Qt/5.15.0/mingw81_64/include/QtSql/qtsqlglobal.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtSql/qtsql-config.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtSql/qsqldatabase.h \
-		ui_View_Versionsverlauf.h
+		ui_View_Versionsverlauf.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/QIcon \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QHeaderView \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qheaderview.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QSpacerItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\View_VersionsverlaufDetailliert.o ..\KTDVS\View_VersionsverlaufDetailliert.cpp
 
 release/main.o: ../KTDVS/main.cpp ../KTDVS/mainwindow.h \
@@ -2650,7 +2810,12 @@ release/main.o: ../KTDVS/main.cpp ../KTDVS/mainwindow.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtSql/qsqlrelationaltablemodel.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtSql/qsqlresult.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtSql/qtsqlversion.h
+		C:/Qt/5.15.0/mingw81_64/include/QtSql/qtsqlversion.h \
+		../KTDVS/Organisator.h \
+		../KTDVS/Teilnehmer.h \
+		../KTDVS/Teilnehmerdaten.h \
+		../KTDVS/Datum.h \
+		../KTDVS/Adresse.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\KTDVS\main.cpp
 
 release/mainwindow.o: ../KTDVS/mainwindow.cpp ../KTDVS/mainwindow.h \
@@ -2761,8 +2926,23 @@ release/mainwindow.o: ../KTDVS/mainwindow.cpp ../KTDVS/mainwindow.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qicon.h \
 		ui_mainwindow.h \
-		../KTDVS/View_Teilnehmerliste.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/QVariant \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qeventloop.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QMenuBar \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qmenubar.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qmenu.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qaction.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qactiongroup.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QStatusBar \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qstatusbar.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QWidget \
+		../KTDVS/View_Teilnehmerliste.h \
 		../KTDVS/Teilnehmerliste.h \
 		../KTDVS/Teilnehmer.h \
 		../KTDVS/Teilnehmerdaten.h \
@@ -2891,7 +3071,41 @@ release/Teilnehmerliste.o: ../KTDVS/Teilnehmerliste.cpp ../KTDVS/Teilnehmerliste
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstringliteral.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstringalgorithms.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstringview.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstringbuilder.h
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/QDebug \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qdebug.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qalgorithms.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qhash.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qiterator.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qlist.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qhashfunctions.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qpair.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qvector.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcontainertools_impl.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qpoint.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qbytearraylist.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstringlist.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qregexp.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qstringmatcher.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qmap.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qtextstream.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qiodevice.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qobject.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qobjectdefs.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcoreevent.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qscopedpointer.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qmetatype.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qvarlengtharray.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcontainerfwd.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qobject_impl.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qlocale.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qvariant.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qshareddata.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qset.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcontiguouscache.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qsharedpointer.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Teilnehmerliste.o ..\KTDVS\Teilnehmerliste.cpp
 
 release/Teilnehmerdaten.o: ../KTDVS/Teilnehmerdaten.cpp ../KTDVS/Teilnehmerdaten.h \
