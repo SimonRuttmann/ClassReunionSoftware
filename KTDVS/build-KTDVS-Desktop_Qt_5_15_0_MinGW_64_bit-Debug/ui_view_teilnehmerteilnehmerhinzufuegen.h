@@ -1,7 +1,7 @@
 /********************************************************************************
-** Form generated from reading UI file 'view_teilnehmerteilnehmerhinzufuegen.ui'
+** Form generated from reading UI file 'View_TeilnehmerTeilnehmerHinzufuegen.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.2
+** Created by: Qt User Interface Compiler version 5.15.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -65,7 +65,7 @@ public:
     QLineEdit *lineEdit_19;
     QHBoxLayout *horizontalLayout_10;
     QLabel *label;
-    QLineEdit *lineEdit;
+    QLineEdit *lineEdit_21;
     QHBoxLayout *horizontalLayout_39;
     QPushButton *AddTelnumber;
     QHBoxLayout *Seitenheader_2;
@@ -273,10 +273,10 @@ public:
 
         horizontalLayout_10->addWidget(label);
 
-        lineEdit = new QLineEdit(gridLayoutWidget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEdit_21 = new QLineEdit(gridLayoutWidget);
+        lineEdit_21->setObjectName(QString::fromUtf8("lineEdit_21"));
 
-        horizontalLayout_10->addWidget(lineEdit);
+        horizontalLayout_10->addWidget(lineEdit_21);
 
 
         Daten->addLayout(horizontalLayout_10);
