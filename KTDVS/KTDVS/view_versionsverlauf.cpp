@@ -38,6 +38,8 @@ void view_versionsverlauf::on_toolButton_clicked()
 
 void view_versionsverlauf::on_tableWidget_cellClicked(int row, int column)
 {
+    list<Teilnehmerdaten*>::iterator it;
+
     if (column == 3) {
         cout << "go to details" << endl;
 
@@ -45,10 +47,18 @@ void view_versionsverlauf::on_tableWidget_cellClicked(int row, int column)
         string person = listeTeilnehmer->item(row, 1)->text().toStdString();
         string organisator = listeTeilnehmer->item(row, 2)->text().toStdString();
 
-        //cout << row << endl;
-        cout << date << endl;
-        cout << person << endl;
-        cout << organisator << endl;
+        for (it = teilnehmer->getAlleTeilnehmerdaten()->begin(); it != teilnehmer->getAlleTeilnehmerdaten()->end(); it++) {
+            string datum = to_string((*it)->getDatum().tag) + "." + to_string((*it)->getDatum().monat) + "." + to_string((*it)->getDatum().jahr);
+            datum = datum + " " + to_string((*it)->getDatum().stunde) + ":" + to_string((*it)->getDatum().min) + ":" + to_string((*it)->getDatum().sekunde);
+
+            string name = (*it)->getVorname() + " " + (*it)->getNachname();
+
+            if (date == datum && person == name && organisator == to_string((*it)->getErstellerKey())) {
+                Teilnehmerdaten* teilnehmerdaten = (*it);
+                //ruf details auf mit den teilnehmerdaten
+                break;
+            }
+        }
     }
 }
 
@@ -63,7 +73,11 @@ void view_versionsverlauf::onUpdate(){
     //get items from teilnehmerliste
     for (it = teilnehmer->getAlleTeilnehmerdaten()->begin(); it != teilnehmer->getAlleTeilnehmerdaten()->end(); it++) {
         listeTeilnehmer->setRowCount(listeTeilnehmer->rowCount() + 1);
-        listeTeilnehmer->setItem(counter,0, new QTableWidgetItem((*it)->getDatum().jahr)); //muss noch richtig gemacht werden
+
+        string datum = to_string((*it)->getDatum().tag) + "." + to_string((*it)->getDatum().monat) + "." + to_string((*it)->getDatum().jahr);
+        datum = datum + " " + to_string((*it)->getDatum().stunde) + ":" + to_string((*it)->getDatum().min) + ":" + to_string((*it)->getDatum().sekunde);
+
+        listeTeilnehmer->setItem(counter,0, new QTableWidgetItem(QString::fromStdString(datum)));
         listeTeilnehmer->setItem(counter,1, new QTableWidgetItem(QString::fromStdString((*it)->getVorname()) + " " + QString::fromStdString((*it)->getNachname())));
         listeTeilnehmer->setItem(counter,2, new QTableWidgetItem((*it)->getErstellerKey()));
         listeTeilnehmer->setItem(counter,3, new QTableWidgetItem("click for details"));
