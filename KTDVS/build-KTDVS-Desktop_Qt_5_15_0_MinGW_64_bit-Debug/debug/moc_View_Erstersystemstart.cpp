@@ -1,5 +1,5 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'View_Erstersystemstart.h'
+** Meta object code from reading C++ file 'View_ErsterSystemstart.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.0)
 **
@@ -7,11 +7,11 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../KTDVS/View_Erstersystemstart.h"
+#include "../../KTDVS/View_ErsterSystemstart.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'View_Erstersystemstart.h' doesn't include <QObject>."
+#error "The header file 'View_ErsterSystemstart.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.15.0. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -21,29 +21,29 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_View_ErsterSystemstart_test_t {
+struct qt_meta_stringdata_View_ErsterSystemstart_t {
     QByteArrayData data[4];
-    char stringdata0[73];
+    char stringdata0[68];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_View_ErsterSystemstart_test_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_View_ErsterSystemstart_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_View_ErsterSystemstart_test_t qt_meta_stringdata_View_ErsterSystemstart_test = {
+static const qt_meta_stringdata_View_ErsterSystemstart_t qt_meta_stringdata_View_ErsterSystemstart = {
     {
-QT_MOC_LITERAL(0, 0, 27), // "View_ErsterSystemstart_test"
-QT_MOC_LITERAL(1, 28, 22), // "on_NeuesSystem_clicked"
-QT_MOC_LITERAL(2, 51, 0), // ""
-QT_MOC_LITERAL(3, 52, 20) // "on_Beitreten_clicked"
+QT_MOC_LITERAL(0, 0, 22), // "View_ErsterSystemstart"
+QT_MOC_LITERAL(1, 23, 22), // "on_NeuesSystem_clicked"
+QT_MOC_LITERAL(2, 46, 0), // ""
+QT_MOC_LITERAL(3, 47, 20) // "on_Beitreten_clicked"
 
     },
-    "View_ErsterSystemstart_test\0"
-    "on_NeuesSystem_clicked\0\0on_Beitreten_clicked"
+    "View_ErsterSystemstart\0on_NeuesSystem_clicked\0"
+    "\0on_Beitreten_clicked"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_View_ErsterSystemstart_test[] = {
+static const uint qt_meta_data_View_ErsterSystemstart[] = {
 
  // content:
        8,       // revision
@@ -67,10 +67,10 @@ static const uint qt_meta_data_View_ErsterSystemstart_test[] = {
        0        // eod
 };
 
-void View_ErsterSystemstart_test::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void View_ErsterSystemstart::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<View_ErsterSystemstart_test *>(_o);
+        auto *_t = static_cast<View_ErsterSystemstart *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_NeuesSystem_clicked(); break;
@@ -81,30 +81,30 @@ void View_ErsterSystemstart_test::qt_static_metacall(QObject *_o, QMetaObject::C
     Q_UNUSED(_a);
 }
 
-QT_INIT_METAOBJECT const QMetaObject View_ErsterSystemstart_test::staticMetaObject = { {
+QT_INIT_METAOBJECT const QMetaObject View_ErsterSystemstart::staticMetaObject = { {
     QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_meta_stringdata_View_ErsterSystemstart_test.data,
-    qt_meta_data_View_ErsterSystemstart_test,
+    qt_meta_stringdata_View_ErsterSystemstart.data,
+    qt_meta_data_View_ErsterSystemstart,
     qt_static_metacall,
     nullptr,
     nullptr
 } };
 
 
-const QMetaObject *View_ErsterSystemstart_test::metaObject() const
+const QMetaObject *View_ErsterSystemstart::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *View_ErsterSystemstart_test::qt_metacast(const char *_clname)
+void *View_ErsterSystemstart::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_View_ErsterSystemstart_test.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_View_ErsterSystemstart.stringdata0))
         return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
-int View_ErsterSystemstart_test::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int View_ErsterSystemstart::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)

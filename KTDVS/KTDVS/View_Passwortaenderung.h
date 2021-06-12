@@ -17,7 +17,7 @@ class View_Passwortaenderung : public QWidget
 public:
     explicit View_Passwortaenderung(QWidget *parent = nullptr, Organisator* teilnehmer =0);
     ~View_Passwortaenderung();
-
+    explicit View_Passwortaenderung(QWidget *parent = nullptr, Teilnehmer* teilnehmer =0);
     void onInit(Organisator * OrgMitNeuPas, bool erstanmeldung);
 
 private slots:

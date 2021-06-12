@@ -1,5 +1,5 @@
 #include "View_Passwortaenderung.h"
-#include "ui_View_Passwortaenderung_test.h"
+#include "ui_View_Passwortaenderung.h"
 
 View_Passwortaenderung::View_Passwortaenderung(QWidget *parent, Organisator* teilnehmer) :
     QWidget(parent),
@@ -7,6 +7,15 @@ View_Passwortaenderung::View_Passwortaenderung(QWidget *parent, Organisator* tei
 {
     ui->setupUi(this);
 }
+//Konstruktoraufruf -> Teilnehmer zu Organisator befördern
+View_Passwortaenderung::View_Passwortaenderung(QWidget *parent, Teilnehmer* teilnehmer) :
+    QWidget(parent),
+    ui(new Ui::View_Passwortaenderung)
+{
+    ui->setupUi(this);
+    //Teilnehmerliste::instance()->vonTeilnZuOrg(teiln,"SYSTEMPASSWORT");
+}
+
 
 View_Passwortaenderung::~View_Passwortaenderung()
 {

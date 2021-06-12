@@ -1,5 +1,5 @@
 /********************************************************************************
-** Form generated from reading UI file 'view_versionsverlauf.ui'
+** Form generated from reading UI file 'View_Versionsverlauf.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.15.0
 **
@@ -24,7 +24,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_view_versionsverlauf
+class Ui_View_Versionsverlauf
 {
 public:
     QWidget *horizontalLayoutWidget;
@@ -44,12 +44,12 @@ public:
     QVBoxLayout *verticalLayout;
     QTableWidget *tableWidget;
 
-    void setupUi(QWidget *view_versionsverlauf)
+    void setupUi(QWidget *View_Versionsverlauf)
     {
-        if (view_versionsverlauf->objectName().isEmpty())
-            view_versionsverlauf->setObjectName(QString::fromUtf8("view_versionsverlauf"));
-        view_versionsverlauf->resize(1080, 720);
-        horizontalLayoutWidget = new QWidget(view_versionsverlauf);
+        if (View_Versionsverlauf->objectName().isEmpty())
+            View_Versionsverlauf->setObjectName(QString::fromUtf8("View_Versionsverlauf"));
+        View_Versionsverlauf->resize(1080, 720);
+        horizontalLayoutWidget = new QWidget(View_Versionsverlauf);
         horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
         horizontalLayoutWidget->setGeometry(QRect(10, 10, 1061, 61));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
@@ -114,7 +114,7 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer_4);
 
-        verticalLayoutWidget = new QWidget(view_versionsverlauf);
+        verticalLayoutWidget = new QWidget(View_Versionsverlauf);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(10, 80, 1061, 631));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
@@ -141,29 +141,29 @@ public:
         verticalLayout->addWidget(tableWidget);
 
 
-        retranslateUi(view_versionsverlauf);
+        retranslateUi(View_Versionsverlauf);
 
-        QMetaObject::connectSlotsByName(view_versionsverlauf);
+        QMetaObject::connectSlotsByName(View_Versionsverlauf);
     } // setupUi
 
-    void retranslateUi(QWidget *view_versionsverlauf)
+    void retranslateUi(QWidget *View_Versionsverlauf)
     {
-        view_versionsverlauf->setWindowTitle(QCoreApplication::translate("view_versionsverlauf", "Form", nullptr));
-        pushButton->setText(QCoreApplication::translate("view_versionsverlauf", "zur\303\274ck", nullptr));
-        label->setText(QCoreApplication::translate("view_versionsverlauf", "KTDVS", nullptr));
-        toolButton->setText(QCoreApplication::translate("view_versionsverlauf", "...", nullptr));
+        View_Versionsverlauf->setWindowTitle(QCoreApplication::translate("View_Versionsverlauf", "Form", nullptr));
+        pushButton->setText(QCoreApplication::translate("View_Versionsverlauf", "zur\303\274ck", nullptr));
+        label->setText(QCoreApplication::translate("View_Versionsverlauf", "KTDVS", nullptr));
+        toolButton->setText(QCoreApplication::translate("View_Versionsverlauf", "...", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QCoreApplication::translate("view_versionsverlauf", "\303\204nderungsdatum", nullptr));
+        ___qtablewidgetitem->setText(QCoreApplication::translate("View_Versionsverlauf", "\303\204nderungsdatum", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QCoreApplication::translate("view_versionsverlauf", "ge\303\244nderte Person", nullptr));
+        ___qtablewidgetitem1->setText(QCoreApplication::translate("View_Versionsverlauf", "ge\303\244nderte Person", nullptr));
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QCoreApplication::translate("view_versionsverlauf", "Organisator", nullptr));
+        ___qtablewidgetitem2->setText(QCoreApplication::translate("View_Versionsverlauf", "Organisator", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class view_versionsverlauf: public Ui_view_versionsverlauf {};
+    class View_Versionsverlauf: public Ui_View_Versionsverlauf {};
 } // namespace Ui
 
 QT_END_NAMESPACE

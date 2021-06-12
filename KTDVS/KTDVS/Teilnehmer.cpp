@@ -7,6 +7,7 @@
 #include "I_DAO_Teilnehmer.h"
 #include "DAO_QT_Teilnehmer.h"
 #include "DAO_QT_Teilnehmerdaten.h"
+#include "Teilnehmerliste.h"
 
     Teilnehmer::Teilnehmer(Teilnehmerdaten* teilnehmerdaten){
         this->aktuelleTeilnehmerdaten = teilnehmerdaten;
@@ -61,9 +62,13 @@
     };
 
     void Teilnehmer::neuenTDEintragEinfuegen(Teilnehmerdaten* td){
+        int erstellerkey = Teilnehmerliste::instance()->aktiverNutzer->getTeilnehmerkey();
+        td->setTeilnehmerkey(this->teilnehmerkey);
+        td->setErstellerKey(erstellerkey);
         this->aktuelleTeilnehmerdaten = td;
-        this->TeilnehmerdatenDAO->insert(*td);
         this->Teilnehmerdatenliste.push_front(td);
+        this->TeilnehmerdatenDAO->insert(*td);
+
     };
 
 

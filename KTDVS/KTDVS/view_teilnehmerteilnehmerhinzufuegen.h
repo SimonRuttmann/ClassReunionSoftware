@@ -24,17 +24,18 @@ private slots:
     void on_Speichern_clicked();
     void on_zurueck_clicked();
     void on_logout_clicked();
-    template<typename Base, typename T>
-    inline bool instanceof(const T*) {
-        return std::is_base_of<Base, T>::value;
-    }
+
 
 private:
     Ui::View_TeilnehmerTeilnehmerHinzufuegen *ui;
     bool neuerTn;
-    Teilnehmerdaten daten;
+    Teilnehmerdaten* teilnehmerdaten;
     Teilnehmer* teiln;
     QWidget* vater;
+    template<typename Base, typename T>
+    inline bool instanceof(const T*) {
+        return std::is_base_of<Base, T>::value;
+    }
 };
 
 #endif // VIEW_TEILNEHMERTEILNEHMERHINZUFUEGEN_H

@@ -1,5 +1,5 @@
 /********************************************************************************
-** Form generated from reading UI file 'view_teilnehmerliste.ui'
+** Form generated from reading UI file 'View_Teilnehmerliste.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.15.0
 **
@@ -22,7 +22,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_view_teilnehmerliste
+class Ui_View_Teilnehmerliste
 {
 public:
     QWidget *horizontalLayoutWidget;
@@ -129,7 +129,7 @@ public:
 };
 
 namespace Ui {
-    class view_teilnehmerliste: public Ui_view_teilnehmerliste {};
+    class View_Teilnehmerliste: public Ui_View_Teilnehmerliste {};
 } // namespace Ui
 
 QT_END_NAMESPACE

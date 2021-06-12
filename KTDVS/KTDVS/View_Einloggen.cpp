@@ -1,5 +1,5 @@
 #include "View_Einloggen.h"
-#include "ui_View_Einloggen_test.h"
+#include "ui_View_Einloggen.h"
 #include "Teilnehmerliste.h"
 //puerefeee
 #include "Organisator.h"
@@ -51,34 +51,50 @@ void View_Einloggen::on_Login_clicked()
     }
     else{
 
-    // Fall : normales Anmelden
-    passwort = ui ->Passwort -> text();
-    eMail = ui -> EMail -> text();
-    passwortString =passwort.toStdString();
-    eMailDatenbank =eMail.toStdString();
-    org = subjekt ->login(eMailDatenbank,passwortString);
-    if(org == NULL){
+        // Fall : normales Anmelden
+        passwort = ui ->Passwort -> text();
+        eMail = ui -> EMail -> text();
+        passwortString =passwort.toStdString();
+        eMailString =eMail.toStdString();
+        //org = subjekt ->login(eMailDatenbank,passwortString);
 
+
+        list<Organisator*>* orglist = Teilnehmerliste::instance()->getOrganisatorliste();
+        list<Organisator*>::iterator it;
+
+        for (it = (*orglist).begin();it != (*orglist).end();it++)
+        {
+            org = *it;
+            Organisator::Pruefung test = org ->pruefePasswort(eMailString,passwortString);
+
+            //Richtes PW
+            if (test == Organisator::Pruefung::EMailZutreffendPwRichtig && org->getVersuch() < 3){
+                org -> setVersuch(0);
+                 //SZENE wechseln zu Teilnehmerliste
+                return;
+            }
+            //Falsches PW
+            if(test ==  Organisator::Pruefung::EmailZutreffendPwFalsch){
+               int Versuche = org->getVersuch();
+
+               //Gesperrt
+               if(Versuche >= 2){
+                    org -> incVersuch(); //Versuch auf 3 gesetzt -> Gesperrt
+                    ui->Gesperrt -> setVisible(true);
+                    return;
+               }
+
+               //Fehleingabe
+               ui ->FalschesPasswort -> setVisible(true);
+               return;
+            }
+        }   //Ende For
         ui ->Fehlerausgabe -> setVisible(true);
-    }
-    int i =org -> getVersuch();
-    if(i != 0 && i < 4  ){
-        //Passwort falsch nur
-
-        ui ->FalschesPasswort -> setVisible(true);
-    }
-    if(i == 4){
-        //Nutzer wurde gesperrt
-       ui->Gesperrt -> setVisible(true);
-    }
-    if(i == 0){
-        //SZENE wechseln zu Teilnehmerliste
-
-    }
-    }
-
-
-
-
+    }   //Ende Else
 }
 
+
+void View_Einloggen::on_zurueck_clicked()
+{
+
+}

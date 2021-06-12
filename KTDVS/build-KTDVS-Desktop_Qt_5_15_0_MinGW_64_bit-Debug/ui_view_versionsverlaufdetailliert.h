@@ -1,5 +1,5 @@
 /********************************************************************************
-** Form generated from reading UI file 'view_versionsverlaufdetailliert.ui'
+** Form generated from reading UI file 'View_VersionsverlaufDetailliert.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.15.0
 **

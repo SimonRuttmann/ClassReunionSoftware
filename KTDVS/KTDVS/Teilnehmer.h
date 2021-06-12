@@ -34,7 +34,6 @@ public:
 
     int getTeilnehmerkey()const;
     void setTeilnehmerkey(int newVal);
-    bool existiertHauptOrg();
 
 protected:
     Teilnehmerdaten* aktuelleTeilnehmerdaten;

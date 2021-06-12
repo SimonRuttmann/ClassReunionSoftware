@@ -1,7 +1,7 @@
 release/DAO_QT_Teilnehmer.o
 release/DAO_QT_Teilnehmerdaten.o
 release/View_Einloggen.o
-release/View_Erstersystemstart.o
+release/View_ErsterSystemstart.o
 release/View_Passwortaenderung.o
 release/View_TeilnehmerTeilnehmerHinzufuegen.o
 release/View_Teilnehmerliste.o
@@ -9,13 +9,12 @@ release/View_Versionsverlauf.o
 release/View_VersionsverlaufDetailliert.o
 release/main.o
 release/mainwindow.o
-release/Controller_Einloggen.o
 release/Organisator.o
 release/Teilnehmer.o
 release/Teilnehmerliste.o
 release/Teilnehmerdaten.o
 release/moc_View_Einloggen.o
-release/moc_View_Erstersystemstart.o
+release/moc_View_ErsterSystemstart.o
 release/moc_View_Passwortaenderung.o
 release/moc_View_TeilnehmerTeilnehmerHinzufuegen.o
 release/moc_View_Teilnehmerliste.o

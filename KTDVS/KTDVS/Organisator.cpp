@@ -11,6 +11,8 @@
 Organisator::Organisator(string passwort, bool isHauptorganisator):Teilnehmer(){
     this->passwort = passwort;
     this->hauptorganisator = isHauptorganisator;
+    this->systempasswort = true;
+    this->versuch = 0;
 };
 
 Organisator::Pruefung Organisator::pruefePasswort(string passwort, string email){

@@ -21,18 +21,18 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_view_teilnehmerliste_t {
+struct qt_meta_stringdata_View_Teilnehmerliste_t {
     QByteArrayData data[7];
     char stringdata0[84];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_view_teilnehmerliste_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_View_Teilnehmerliste_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_view_teilnehmerliste_t qt_meta_stringdata_view_teilnehmerliste = {
+static const qt_meta_stringdata_View_Teilnehmerliste_t qt_meta_stringdata_View_Teilnehmerliste = {
     {
-QT_MOC_LITERAL(0, 0, 20), // "view_teilnehmerliste"
+QT_MOC_LITERAL(0, 0, 20), // "View_Teilnehmerliste"
 QT_MOC_LITERAL(1, 21, 21), // "on_pushButton_clicked"
 QT_MOC_LITERAL(2, 43, 0), // ""
 QT_MOC_LITERAL(3, 44, 21), // "on_toolButton_clicked"
@@ -41,13 +41,13 @@ QT_MOC_LITERAL(5, 71, 6), // "string"
 QT_MOC_LITERAL(6, 78, 5) // "email"
 
     },
-    "view_teilnehmerliste\0on_pushButton_clicked\0"
+    "View_Teilnehmerliste\0on_pushButton_clicked\0"
     "\0on_toolButton_clicked\0test\0string\0"
     "email"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_view_teilnehmerliste[] = {
+static const uint qt_meta_data_View_Teilnehmerliste[] = {
 
  // content:
        8,       // revision
@@ -73,10 +73,10 @@ static const uint qt_meta_data_view_teilnehmerliste[] = {
        0        // eod
 };
 
-void view_teilnehmerliste::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void View_Teilnehmerliste::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<view_teilnehmerliste *>(_o);
+        auto *_t = static_cast<View_Teilnehmerliste *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_pushButton_clicked(); break;
@@ -87,30 +87,30 @@ void view_teilnehmerliste::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
     }
 }
 
-QT_INIT_METAOBJECT const QMetaObject view_teilnehmerliste::staticMetaObject = { {
+QT_INIT_METAOBJECT const QMetaObject View_Teilnehmerliste::staticMetaObject = { {
     QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_meta_stringdata_view_teilnehmerliste.data,
-    qt_meta_data_view_teilnehmerliste,
+    qt_meta_stringdata_View_Teilnehmerliste.data,
+    qt_meta_data_View_Teilnehmerliste,
     qt_static_metacall,
     nullptr,
     nullptr
 } };
 
 
-const QMetaObject *view_teilnehmerliste::metaObject() const
+const QMetaObject *View_Teilnehmerliste::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *view_teilnehmerliste::qt_metacast(const char *_clname)
+void *View_Teilnehmerliste::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_view_teilnehmerliste.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_View_Teilnehmerliste.stringdata0))
         return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
-int view_teilnehmerliste::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int View_Teilnehmerliste::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)

@@ -1,9 +1,9 @@
 #include "View_TeilnehmerTeilnehmerHinzufuegen.h"
 #include "View_Versionsverlauf.h"
-#include "Teilnehmerdaten.h"
+
+
 #include "ui_view_teilnehmerteilnehmerhinzufuegen.h"
-#include "Teilnehmerliste.h"
-#include "Organisator.h"
+
 View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(QWidget* parent, Teilnehmer* aktuellerTeilnehmer,bool neuerTeilnehmer) :
     QWidget(parent),
     ui(new Ui::View_TeilnehmerTeilnehmerHinzufuegen)
@@ -16,27 +16,34 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(QWidg
     else{
         //Disable button
         ui->PwAndern->setEnabled(false);
+        ui->OrganisatorrechteEntfernen->setText("Organisatorrechte erteilen");
+    }
+
+    Organisator* nutzer = Teilnehmerliste::instance()->getAktiverNutzer();
+    if(!nutzer->isHauptorganisator()){
+        //hier muss geprüft werden ob man aktuell als hauptorganisator angemeldet ist, wenn nein dann des
+        ui->OrganisatorrechteEntfernen->setVisible(false);
     }
 
     ui->setupUi(this);
     neuerTn=neuerTeilnehmer;
     teiln = aktuellerTeilnehmer;
-    daten = *teiln->aktuelleTeilnehmerdatenVonDBErhalten();
+    teilnehmerdaten = teiln->aktuelleTeilnehmerdatenVonDBErhalten();
 
     vater = parent;
     if(!neuerTeilnehmer){
-    ui->lineEdit_11->setText(QString::fromStdString(daten.getVorname()));
-    ui->lineEdit_12->setText(QString::fromStdString(daten.getNachname()));
-    ui->lineEdit_13->setText(QString::fromStdString(daten.getSchulname()));
-    ui->lineEdit_14->setText(QString::fromStdString(daten.getAdresse().strasse));
-    ui->lineEdit_15->setText(QString::number(daten.getAdresse().haussnummer));
-    ui->lineEdit_16->setText(QString::number(daten.getAdresse().postleitzahl));
-    ui->lineEdit_17->setText(QString::fromStdString(daten.getAdresse().stadt));
-    ui->lineEdit_18->setText(QString::fromStdString(daten.getAdresse().land));
-    ui->lineEdit_19->setText(QString::fromStdString(daten.getHaupttelefonnummer()));
-    ui->lineEdit_20->setText(QString::fromStdString(daten.getEMail()));
+    ui->lineEdit_11->setText(QString::fromStdString(teilnehmerdaten->getVorname()));
+    ui->lineEdit_12->setText(QString::fromStdString(teilnehmerdaten->getNachname()));
+    ui->lineEdit_13->setText(QString::fromStdString(teilnehmerdaten->getSchulname()));
+    ui->lineEdit_14->setText(QString::fromStdString(teilnehmerdaten->getAdresse().strasse));
+    ui->lineEdit_15->setText(QString::number(teilnehmerdaten->getAdresse().haussnummer));
+    ui->lineEdit_16->setText(QString::number(teilnehmerdaten->getAdresse().postleitzahl));
+    ui->lineEdit_17->setText(QString::fromStdString(teilnehmerdaten->getAdresse().stadt));
+    ui->lineEdit_18->setText(QString::fromStdString(teilnehmerdaten->getAdresse().land));
+    ui->lineEdit_19->setText(QString::fromStdString(teilnehmerdaten->getHaupttelefonnummer()));
+    ui->lineEdit_20->setText(QString::fromStdString(teilnehmerdaten->getEMail()));
     string teles = "";
-    list<string> teleList = daten.getWeitereTelefonnummern();
+    list<string> teleList = teilnehmerdaten->getWeitereTelefonnummern();
     list<string>::iterator it = teleList.begin();
     while (it != teleList.end()){
         teles.append((*it));
@@ -62,54 +69,76 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_PwAndern_clicked(){
 }
 
 void View_TeilnehmerTeilnehmerHinzufuegen::on_Versionsverlauf_clicked(){
-    view_versionsverlauf *vv = new view_versionsverlauf(vater);
+    View_Versionsverlauf *vv = new View_Versionsverlauf(vater);
     this->destroy(true);
     vv->show();
 }
 
 void View_TeilnehmerTeilnehmerHinzufuegen::on_OrganisatorrechteEntfernen_clicked(){
+    if(!instanceof<Organisator>(this->teiln)){
+              Teilnehmerliste::instance()->vonOrgZuTeilnehmer((Organisator*)this->teiln);
+          }else{
+              View_Passwortaenderung* tl = new View_Passwortaenderung(vater, teiln);
+              tl->show();
+              this->close();
+          }
+
 //Muss extern abgeändert werden
 }
 
 void View_TeilnehmerTeilnehmerHinzufuegen::on_Speichern_clicked(){ //Die Teilnehmerdaten müssen da richtig abgeändert werden
-Teilnehmerdaten* teilnehmerdaten;
-Teilnehmer* teilnehmer;
+    if(ui->lineEdit_11->text()!=NULL && ui->lineEdit_13->text()!=NULL
+            && ui->lineEdit_14->text()!=NULL && ui->lineEdit_15->text()!=NULL
+            && ui->lineEdit_16->text()!=NULL && ui->lineEdit_17->text()!=NULL
+            && ui->lineEdit_18->text()!=NULL && ui->lineEdit_19->text()!=NULL
+            && ui->lineEdit_20->text()!=NULL)
+    {
+        //Vorsicht, diese teilnehmerdaten sind nicht this->teilnehmerdaten (this->teilnehmerdaten Linke Seite, teilnehmerdaten Recht Seite)
+        Teilnehmerdaten* teilnehmerdaten;
+        Teilnehmer* teilnehmer;
 
-    if(neuerTn){
         teilnehmerdaten = new Teilnehmerdaten();
-        teilnehmer = Teilnehmerliste::instance()->teilnehmerErstellen();
-        daten = *teilnehmerdaten;
 
+        if(neuerTn){
+
+            teilnehmer = Teilnehmerliste::instance()->teilnehmerErstellen();
+
+        }
+        //Neue Teilnehmerdaten zu einem bestehenden Teilnehmer hinzufügen
+        else{
+
+            teilnehmer = this->teiln;
+        }
+
+        teilnehmerdaten->setVorname(ui->lineEdit_11->text().toStdString());
+        teilnehmerdaten->setNachname(ui->lineEdit_12->text().toStdString());
+        teilnehmerdaten->setSchulname(ui->lineEdit_13->text().toStdString());
+        Adresse adresse;
+        adresse.strasse = ui->lineEdit_14->text().toStdString();
+        adresse.haussnummer = ui->lineEdit_15->text().toInt();
+        adresse.postleitzahl = ui->lineEdit_16->text().toInt();
+        adresse.stadt = ui->lineEdit_17->text().toStdString();
+        adresse.land = ui->lineEdit_18->text().toStdString();
+
+        teilnehmerdaten->setAdresse(adresse);
+        teilnehmerdaten->setHaupttelefonnummer(ui->lineEdit_19->text().toStdString());
+        teilnehmerdaten->setEmail(ui->lineEdit_20->text().toStdString());
+        QString teleString = ui->lineEdit_21->text();
+        QStringList weitereTele = teleString.split(", ");
+        list<string> weitereTeleList;
+
+        foreach(QString tel, weitereTele){
+            weitereTeleList.push_front(tel.toStdString());
+        }
+
+        teilnehmerdaten->setWeitereTelefonnummern(weitereTeleList);
+        if(neuerTn)teilnehmer->neuenTDEintragEinfuegen(teilnehmerdaten);
     }
-
-    daten.setVorname(ui->lineEdit_11->text().toStdString());
-    daten.setNachname(ui->lineEdit_12->text().toStdString());
-    daten.setSchulname(ui->lineEdit_13->text().toStdString());
-    Adresse adresse;
-    adresse.strasse = ui->lineEdit_14->text().toStdString();
-    adresse.haussnummer = ui->lineEdit_15->text().toInt();
-    adresse.postleitzahl = ui->lineEdit_16->text().toInt();
-    adresse.stadt = ui->lineEdit_17->text().toStdString();
-    adresse.land = ui->lineEdit_18->text().toStdString();
-
-    daten.setAdresse(adresse);
-    daten.setHaupttelefonnummer(ui->lineEdit_19->text().toStdString());
-    daten.setEmail(ui->lineEdit_20->text().toStdString());
-    QString teleString = ui->lineEdit_21->text();
-    QStringList weitereTele = teleString.split(", ");
-    list<string> weitereTeleList;
-
-    foreach(QString tel, weitereTele){
-        weitereTeleList.push_front(tel.toStdString());
-    }
-
-    daten.setWeitereTelefonnummern(weitereTeleList);
-    if(neuerTn)(teilnehmer->neuenTDEintragEinfuegen(teilnehmerdaten));
 }
 
 
 void View_TeilnehmerTeilnehmerHinzufuegen::on_zurueck_clicked(){
-    view_teilnehmerliste* tl = new view_teilnehmerliste(vater);
+    View_Teilnehmerliste* tl = new View_Teilnehmerliste(vater);
     tl->show();
     this->close();
 }

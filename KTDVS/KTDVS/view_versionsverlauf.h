@@ -6,18 +6,19 @@
 #include <QPushButton>
 #include <QToolButton>
 #include "Teilnehmerliste.h"
-
+#include "Teilnehmerdaten.h"
+#include "Organisator.h"
 namespace Ui {
-class view_versionsverlauf;
+class View_Versionsverlauf;
 }
 
-class view_versionsverlauf : public QWidget
+class View_Versionsverlauf : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit view_versionsverlauf(QWidget *parent = nullptr, Teilnehmer* teilnehmer = nullptr);
-    ~view_versionsverlauf();
+    explicit View_Versionsverlauf(QWidget *parent = nullptr, Teilnehmer* teilnehmer = nullptr);
+    ~View_Versionsverlauf();
 
     void onUpdate();
 
@@ -29,7 +30,7 @@ private slots:
     void on_tableWidget_cellClicked(int row, int column);
 
 private:
-    Ui::view_versionsverlauf *ui;
+    Ui::View_Versionsverlauf *ui;
 
     Teilnehmer* teilnehmer;
 

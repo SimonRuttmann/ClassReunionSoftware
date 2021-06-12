@@ -12,7 +12,7 @@ SOURCES += \
     DAO_QT_Teilnehmer.cpp \
     DAO_QT_Teilnehmerdaten.cpp \
     View_Einloggen.cpp \
-    View_Erstersystemstart.cpp \
+    View_ErsterSystemstart.cpp \
     View_Passwortaenderung.cpp \
     View_TeilnehmerTeilnehmerHinzufuegen.cpp \
     View_Teilnehmerliste.cpp \
@@ -20,7 +20,6 @@ SOURCES += \
     View_VersionsverlaufDetailliert.cpp \
     main.cpp \
     mainwindow.cpp \
-    Controller_Einloggen.cpp \
     Organisator.cpp \
     Teilnehmer.cpp \
     Teilnehmerliste.cpp \
@@ -32,7 +31,7 @@ HEADERS += \
     DAO_QT_Teilnehmerdaten.h \
     Datum.h \
     View_Einloggen.h \
-    View_Erstersystemstart.h \
+    View_ErsterSystemstart.h \
     View_Passwortaenderung.h \
     View_TeilnehmerTeilnehmerHinzufuegen.h \
     View_Teilnehmerliste.h \
@@ -48,7 +47,7 @@ HEADERS += \
     Teilnehmerdaten.h
 FORMS += \
     View_Einloggen.ui \
-    View_Erstersystemstart.ui \
+    View_ErsterSystemstart.ui \
     View_Passwortaenderung.ui \
     View_TeilnehmerTeilnehmerHinzufuegen.ui \
     View_Teilnehmerliste.ui \

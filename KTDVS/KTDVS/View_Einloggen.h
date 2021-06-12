@@ -3,7 +3,7 @@
 
 #include <QWidget>
 
-//prÃƒÂ¼fen ob ich noch brauche alles
+//pruefen ob ich noch brauche alles
 #include <QMainWindow>
 #include <QLineEdit>
 #include <QPushButton>
@@ -35,18 +35,17 @@ public:
     Organisator* org;
     Organisator* Haupt;
 
-
 private slots:
-    void on_pushButton_clicked();
-
     void on_Login_clicked();
+
+    void on_zurueck_clicked();
 
 private:
     Ui::View_Einloggen *ui;
     QString passwort;
     QString eMail;
     string passwortString;
-    string eMailDatenbank;
+    string eMailString;
     Teilnehmer teilnehmer;
 
     };

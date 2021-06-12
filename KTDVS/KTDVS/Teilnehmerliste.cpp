@@ -33,8 +33,8 @@ Teilnehmerliste::~Teilnehmerliste(){
 
 
 
-Teilnehmer* Teilnehmerliste::getAktiverNutzer(){return this->aktiverNutzer;};
-void Teilnehmerliste::setAktiverNutzer(Teilnehmer* newVal) {this->aktiverNutzer = newVal;};
+Organisator* Teilnehmerliste::getAktiverNutzer(){return this->aktiverNutzer;};
+void Teilnehmerliste::setAktiverNutzer(Organisator* newVal) {this->aktiverNutzer = newVal;};
 
 Teilnehmer* Teilnehmerliste::teilnehmerErstellen(){
     Teilnehmer* teilnehmer = new Teilnehmer();
@@ -74,6 +74,77 @@ bool Teilnehmerliste::updateTeilnehmer(Teilnehmer& teilnehmer){
     return this->TeilnehmerDAO->updateTeilnehmer(teilnehmer);
 };
 
+
+
+Teilnehmer* Teilnehmerliste::vonOrgZuTeilnehmer(Organisator* org){
+    org->setHauptorganisator(false);
+    org->setIsSystempasswort(false);
+    org->setPasswort(NULL);
+    org->setVersuch(0);
+    this->TeilnehmerDAO->updateTeilnehmer(*org);
+
+    Teilnehmer* teiln = new Teilnehmer();
+    int tkey = org->getTeilnehmerkey();
+
+    //Pop in Teilnehmerliste
+    list<Teilnehmer*>::iterator itTeilnehmer = this->teilnehmerliste.begin();
+    while(itTeilnehmer != this->teilnehmerliste.end()){
+        if( (*itTeilnehmer)->getTeilnehmerkey() == tkey){
+            this->teilnehmerliste.erase(itTeilnehmer);
+            break;
+        }
+        itTeilnehmer++;
+    }
+
+    //Pop in Organisatorliste
+    list<Organisator*>::iterator itOrg = this->organisatorliste.begin();
+    while(itOrg != this->organisatorliste.end()){
+        if( (*itOrg)->getTeilnehmerkey() == tkey){
+            this->organisatorliste.erase(itOrg);
+            break;
+        }
+        itOrg++;
+    }
+
+    //Push neuen Teilnehmer
+    teiln->setTeilnehmerkey(tkey);
+    this->teilnehmerliste.push_back(teiln);
+
+    delete org;
+    return teiln;
+};
+
+Organisator* Teilnehmerliste::vonTeilnZuOrg(Teilnehmer* teiln, string systempasswort){
+    Organisator * org = new Organisator();
+    org->setHauptorganisator(false);
+    org->setIsSystempasswort(true);
+    org->setPasswort(systempasswort);
+    org->setVersuch(0);
+    org->setTeilnehmerkey(teiln->getTeilnehmerkey());
+    this->TeilnehmerDAO->updateTeilnehmer(*org);
+
+    int tkey = org->getTeilnehmerkey();
+
+    //Pop in Teilnehmerliste
+    list<Teilnehmer*>::iterator itTeilnehmer = this->teilnehmerliste.begin();
+    while(itTeilnehmer != this->teilnehmerliste.end()){
+        if( (*itTeilnehmer)->getTeilnehmerkey() == tkey){
+            this->teilnehmerliste.erase(itTeilnehmer);
+            break;
+        }
+        itTeilnehmer++;
+    }
+
+    //Push neuen Organisator
+    teiln->setTeilnehmerkey(tkey);
+    this->organisatorliste.push_back(org);
+    this->teilnehmerliste.push_back(org);
+
+    delete teiln;
+    return org;
+
+};
+
 list<Organisator*>* Teilnehmerliste::getOrganisatorliste(){return &(this->organisatorliste);};
 
 list<Teilnehmer*>* Teilnehmerliste::getTeilnehmerliste(){return &(this->teilnehmerliste);};
@@ -83,34 +154,3 @@ list<Teilnehmer*>* Teilnehmerliste::getTeilnehmerliste(){return &(this->teilnehm
 //          |
 //      Pointer Teilnehmer zeigt auf 3843, hat 934934
 //
-/*
-Organisator* Teilnehmer::login(string email, string passwort){
-    DAO_QT_Teilnehmer* DAOTeil;
-    DAOTeil ->selectAllOrganisatoren(orglist);
-    list<Organisator*>::iterator it;
-
-    for (it = orglist.begin();it != orglist.end();it++){
-        org = *it;
-        Organisator::Pruefung test = org ->pruefePasswort(email,passwort);
-        if (test == Organisator::Pruefung::EMailZutreffendPwRichtig ){
-            org -> setVersuch(0);
-            return org;
-        }
-        if(test ==  Organisator::Pruefung::EmailZutreffendPwFalsch){
-           int Versuche = org->getVersuch();
-           if(Versuche < 4){
-           org -> incVersuch();
-           }
-           return org;
-        }
-
-    }
-    Organisator* fail = NULL;
-    return fail;
-}
-
-
-Organisator* login(string email, string passwort); //VERo
-list<Organisator*> orglist; //Vero
-Organisator *org; //VERo
-*/

@@ -21,18 +21,18 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_view_versionsverlauf_t {
+struct qt_meta_stringdata_View_Versionsverlauf_t {
     QByteArrayData data[7];
     char stringdata0[104];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_view_versionsverlauf_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_View_Versionsverlauf_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_view_versionsverlauf_t qt_meta_stringdata_view_versionsverlauf = {
+static const qt_meta_stringdata_View_Versionsverlauf_t qt_meta_stringdata_View_Versionsverlauf = {
     {
-QT_MOC_LITERAL(0, 0, 20), // "view_versionsverlauf"
+QT_MOC_LITERAL(0, 0, 20), // "View_Versionsverlauf"
 QT_MOC_LITERAL(1, 21, 21), // "on_pushButton_clicked"
 QT_MOC_LITERAL(2, 43, 0), // ""
 QT_MOC_LITERAL(3, 44, 21), // "on_toolButton_clicked"
@@ -41,13 +41,13 @@ QT_MOC_LITERAL(5, 93, 3), // "row"
 QT_MOC_LITERAL(6, 97, 6) // "column"
 
     },
-    "view_versionsverlauf\0on_pushButton_clicked\0"
+    "View_Versionsverlauf\0on_pushButton_clicked\0"
     "\0on_toolButton_clicked\0"
     "on_tableWidget_cellClicked\0row\0column"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_view_versionsverlauf[] = {
+static const uint qt_meta_data_View_Versionsverlauf[] = {
 
  // content:
        8,       // revision
@@ -73,10 +73,10 @@ static const uint qt_meta_data_view_versionsverlauf[] = {
        0        // eod
 };
 
-void view_versionsverlauf::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void View_Versionsverlauf::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<view_versionsverlauf *>(_o);
+        auto *_t = static_cast<View_Versionsverlauf *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_pushButton_clicked(); break;
@@ -87,30 +87,30 @@ void view_versionsverlauf::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
     }
 }
 
-QT_INIT_METAOBJECT const QMetaObject view_versionsverlauf::staticMetaObject = { {
+QT_INIT_METAOBJECT const QMetaObject View_Versionsverlauf::staticMetaObject = { {
     QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_meta_stringdata_view_versionsverlauf.data,
-    qt_meta_data_view_versionsverlauf,
+    qt_meta_stringdata_View_Versionsverlauf.data,
+    qt_meta_data_View_Versionsverlauf,
     qt_static_metacall,
     nullptr,
     nullptr
 } };
 
 
-const QMetaObject *view_versionsverlauf::metaObject() const
+const QMetaObject *View_Versionsverlauf::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *view_versionsverlauf::qt_metacast(const char *_clname)
+void *View_Versionsverlauf::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_view_versionsverlauf.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_View_Versionsverlauf.stringdata0))
         return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
-int view_versionsverlauf::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int View_Versionsverlauf::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)

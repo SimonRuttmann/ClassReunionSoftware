@@ -1,14 +1,14 @@
 #include "View_Teilnehmerliste.h"
-#include "ui_view_teilnehmerliste.h"
 #include "iostream"
+#include "ui_View_Teilnehmerliste.h"
 
 using namespace std;
 
-Ui::view_teilnehmerliste* uiglobal;
+Ui::View_Teilnehmerliste* uiglobal;
 
-view_teilnehmerliste::view_teilnehmerliste(QWidget *parent, Teilnehmerliste* teilnehmerliste) :
+View_Teilnehmerliste::View_Teilnehmerliste(QWidget *parent, Teilnehmerliste* teilnehmerliste) :
     QWidget(parent),
-    ui(new Ui::view_teilnehmerliste)
+    ui(new Ui::View_Teilnehmerliste)
 {
     ui->setupUi(this);
     uiglobal = ui;
@@ -20,12 +20,12 @@ view_teilnehmerliste::view_teilnehmerliste(QWidget *parent, Teilnehmerliste* tei
     addAusgeklapptesFeld("test");
 }
 
-view_teilnehmerliste::~view_teilnehmerliste()
+View_Teilnehmerliste::~View_Teilnehmerliste()
 {
     delete ui;
 }
 
-void view_teilnehmerliste::addAusgeklapptesFeld(string test){
+void View_Teilnehmerliste::addAusgeklapptesFeld(string test){
     string name = test + " " + test;
 
     string adresse = "", telefonnummern = "";
@@ -60,7 +60,7 @@ void view_teilnehmerliste::addAusgeklapptesFeld(string test){
     QPushButton* buttonOrganisator = new QPushButton("als Organisator hinzufügen");
 
     //des tut noch nicht .....
-    connect(buttonDaten, SIGNAL(clicked()), this, SLOT(test("test")));
+   // connect(buttonDaten, SIGNAL(clicked()), this, SLOT(test("test")));
 
     buttons->addWidget(buttonVerlauf);
     buttons->addWidget(buttonDaten);
@@ -83,7 +83,7 @@ void view_teilnehmerliste::addAusgeklapptesFeld(string test){
     uiglobal->liste->addLayout(layout1);
 }
 
-void view_teilnehmerliste::addEingeklapptesFeld(Teilnehmerdaten* daten) {
+void View_Teilnehmerliste::addEingeklapptesFeld(Teilnehmerdaten* daten) {
     string name = daten->getVorname() + " " + daten->getNachname();
 
     //add normales
@@ -105,7 +105,7 @@ void view_teilnehmerliste::addEingeklapptesFeld(Teilnehmerdaten* daten) {
 
     uiglobal->liste->addLayout(layout);
 }
-void view_teilnehmerliste::addAusgeklapptesFeld(Teilnehmerdaten* daten){
+void View_Teilnehmerliste::addAusgeklapptesFeld(Teilnehmerdaten* daten){
     string name = daten->getVorname() + " " + daten->getNachname();
 
     string adresse = "", telefonnummern = "";
@@ -176,23 +176,23 @@ void view_teilnehmerliste::addAusgeklapptesFeld(Teilnehmerdaten* daten){
     uiglobal->liste->addLayout(layout1);
 }
 
-void view_teilnehmerliste::onAusloggen(){
+void View_Teilnehmerliste::onAusloggen(){
     cout << "Ausloggen!" << endl;
 }
 
-void view_teilnehmerliste::test(string email){
+void View_Teilnehmerliste::test(string email){
     cout << email << endl;
 }
 
-void view_teilnehmerliste::onTeilnehmerdatenAendern(string email){
+void View_Teilnehmerliste::onTeilnehmerdatenAendern(string email){
     onUpdate();
 }
 
-void view_teilnehmerliste::onTeilnehmerHinzufuegen(Teilnehmer* teilnehmer){
+void View_Teilnehmerliste::onTeilnehmerHinzufuegen(Teilnehmer* teilnehmer){
     addAusgeklapptesFeld(teilnehmer->getAktuelleTeilnehmerdaten());
 }
 
-void view_teilnehmerliste::onAlsOrganisatorHinzufuegen(string email){
+void View_Teilnehmerliste::onAlsOrganisatorHinzufuegen(string email){
     cout << "Füge als Organisator hinzu!" << endl;
 
     list<Teilnehmer*>::iterator it;
@@ -205,16 +205,16 @@ void view_teilnehmerliste::onAlsOrganisatorHinzufuegen(string email){
     }
 }
 
-void view_teilnehmerliste::onVersionsverlaufAnzeigen(string email){
+void View_Teilnehmerliste::onVersionsverlaufAnzeigen(string email){
     cout << "Versionsverlauf!" << endl;
 }
 
-void view_teilnehmerliste::onUpdate(){
+void View_Teilnehmerliste::onUpdate(){
     //reset liste
     onInit();
 }
 
-void view_teilnehmerliste::onInit(){
+void View_Teilnehmerliste::onInit(){
     list<Teilnehmer*>::iterator it;
 
     if (teilnehmerList != nullptr) {
@@ -225,13 +225,13 @@ void view_teilnehmerliste::onInit(){
     }
 }
 
-void view_teilnehmerliste::on_pushButton_clicked()
+void View_Teilnehmerliste::on_pushButton_clicked()
 {
     cout << "füg teilnehmer hinzu!" << endl;
 }
 
 
-void view_teilnehmerliste::on_toolButton_clicked()
+void View_Teilnehmerliste::on_toolButton_clicked()
 {
     onAusloggen();
 }

@@ -16,14 +16,18 @@ public:
 	Teilnehmerliste();
     ~Teilnehmerliste();
 
-    Teilnehmer* getAktiverNutzer();
-    void setAktiverNutzer(Teilnehmer* newVal);
+    Organisator* getAktiverNutzer();
+    void setAktiverNutzer(Organisator* newVal);
 
 	Teilnehmer* teilnehmerErstellen();
-    //void teilnehmerLoeschen();
+   // void teilnehmerLoeschen();
 
     Organisator* organisatorErstellen(string passwort, bool isHauptorganisator);
-    //void organisatorLoeschen();
+   // void organisatorLoeschen();
+
+    Teilnehmer* vonOrgZuTeilnehmer(Organisator* org);
+
+    Organisator* vonTeilnZuOrg(Teilnehmer* teiln, string systempasswort);
 
     static Teilnehmerliste* instance();
 
@@ -38,7 +42,7 @@ public:
 
 public:
     static Teilnehmerliste* uniqueInstance;
-    Teilnehmer* aktiverNutzer;
+    Organisator* aktiverNutzer;
     list<Teilnehmer*> teilnehmerliste;
     list<Organisator*> organisatorliste;
     I_DAO_Teilnehmer* TeilnehmerDAO;

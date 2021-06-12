@@ -1,13 +1,13 @@
 #include "View_Versionsverlauf.h"
-#include "ui_view_versionsverlauf.h"
+#include "ui_View_Versionsverlauf.h"
+
 #include <iostream>
-#include "Teilnehmerdaten.h"
 
 using namespace std;
 
-view_versionsverlauf::view_versionsverlauf(QWidget *parent, Teilnehmer* teilnehmer) :
+View_Versionsverlauf::View_Versionsverlauf(QWidget *parent, Teilnehmer* teilnehmer) :
     QWidget(parent),
-    ui(new Ui::view_versionsverlauf)
+    ui(new Ui::View_Versionsverlauf)
 {
     ui->setupUi(this);
     listeTeilnehmer = ui->tableWidget;
@@ -19,24 +19,24 @@ view_versionsverlauf::view_versionsverlauf(QWidget *parent, Teilnehmer* teilnehm
     onInit();
 }
 
-view_versionsverlauf::~view_versionsverlauf()
+View_Versionsverlauf::~View_Versionsverlauf()
 {
     delete ui;
 }
 
-void view_versionsverlauf::on_pushButton_clicked()
+void View_Versionsverlauf::on_pushButton_clicked()
 {
     cout << "go back" << endl;
     this->close();
 }
 
-void view_versionsverlauf::on_toolButton_clicked()
+void View_Versionsverlauf::on_toolButton_clicked()
 {
     cout << "logout" << endl;
     this->close();
 }
 
-void view_versionsverlauf::on_tableWidget_cellClicked(int row, int column)
+void View_Versionsverlauf::on_tableWidget_cellClicked(int row, int column)
 {
     list<Teilnehmerdaten*>::iterator it;
 
@@ -62,7 +62,7 @@ void view_versionsverlauf::on_tableWidget_cellClicked(int row, int column)
     }
 }
 
-void view_versionsverlauf::onUpdate(){
+void View_Versionsverlauf::onUpdate(){
     listeTeilnehmer->clear();
     listeTeilnehmer->setRowCount(0);
 
@@ -86,7 +86,7 @@ void view_versionsverlauf::onUpdate(){
     }
 }
 
-void view_versionsverlauf::onInit(){
+void View_Versionsverlauf::onInit(){
     list<Teilnehmerdaten*>::iterator it;
     int counter = 0;
 

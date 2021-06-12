@@ -16,7 +16,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_View_ErsterSystemstart_test
+class Ui_View_ErsterSystemstart
 {
 public:
     QPushButton *NeuesSystem;
@@ -49,7 +49,7 @@ public:
 };
 
 namespace Ui {
-    class View_ErsterSystemstart_test: public Ui_View_ErsterSystemstart_test {};
+    class View_ErsterSystemstart: public Ui_View_ErsterSystemstart {};
 } // namespace Ui
 
 QT_END_NAMESPACE

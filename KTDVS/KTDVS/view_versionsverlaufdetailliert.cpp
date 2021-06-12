@@ -1,5 +1,6 @@
+#include "ui_View_VersionsverlaufDetailliert.h"
 #include "View_VersionsverlaufDetailliert.h"
-#include "ui_view_versionsverlaufdetailliert.h"
+#include "ui_View_Versionsverlauf.h"
 
 Teilnehmerdaten *altdaten;
 Teilnehmerdaten *neudaten;
@@ -74,7 +75,7 @@ View_VersionsverlaufDetailliert::~View_VersionsverlaufDetailliert()
 
 void View_VersionsverlaufDetailliert::on_zurueck_clicked()
 {
-    view_versionsverlauf *scene= new view_versionsverlauf(this); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
+    View_Versionsverlauf *scene= new View_Versionsverlauf(this); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
 
     this->destroy(true);
     scene->show();

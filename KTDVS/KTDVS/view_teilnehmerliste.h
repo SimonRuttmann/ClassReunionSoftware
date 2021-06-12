@@ -5,16 +5,16 @@
 #include "Teilnehmerliste.h"
 
 namespace Ui {
-class view_teilnehmerliste;
+class View_Teilnehmerliste;
 }
 
-class view_teilnehmerliste : public QWidget
+class View_Teilnehmerliste : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit view_teilnehmerliste(QWidget *parent = nullptr, Teilnehmerliste* teilnehmerliste = nullptr);
-    ~view_teilnehmerliste();
+    explicit View_Teilnehmerliste(QWidget *parent = nullptr, Teilnehmerliste* teilnehmerliste = nullptr);
+    ~View_Teilnehmerliste();
 
     void onAusloggen();
     void onTeilnehmerdatenAendern(string email);
@@ -32,7 +32,7 @@ private slots:
     void test(string email);
 
 private:
-    Ui::view_teilnehmerliste *ui;
+    Ui::View_Teilnehmerliste *ui;
 
     Teilnehmerliste* teilnehmerList;
 
