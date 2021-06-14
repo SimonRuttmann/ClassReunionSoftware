@@ -31,7 +31,17 @@ int main(int argc, char *argv[])
     exit(2);
     }
 
-//    QSqlQuery teest;
+
+    QSqlQuery test;
+    test.prepare(
+    "SELECT * FROM teilnehmer WHERE passwort != NULL AND passwort != '';"
+    );
+    if(!test.exec()){
+        qDebug()<<"Nix";
+    };
+    qDebug()<<test.next();
+    qDebug() << test.value(0);
+    //    QSqlQuery teest;
 //    teest.prepare("SELECT * FROM Telefonnummer WHERE teilnehmerdatenkey = :teilnehmerdatenkey;");
 //    teest.bindValue(":teilnehmerdatenkey", 34);
 //    teest.exec();

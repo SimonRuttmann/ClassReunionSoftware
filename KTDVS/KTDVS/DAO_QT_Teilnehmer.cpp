@@ -50,7 +50,7 @@ DAO_QT_Teilnehmer::DAO_QT_Teilnehmer(){
     );
 
     select_query_allOrg.prepare(
-    "SELECT * FROM teilnehmer WHERE passwort != NULL AND passwort != '';"
+    "SELECT * FROM teilnehmer WHERE passwort IS NOT NULL AND passwort != '' ;"
     );
 }
 

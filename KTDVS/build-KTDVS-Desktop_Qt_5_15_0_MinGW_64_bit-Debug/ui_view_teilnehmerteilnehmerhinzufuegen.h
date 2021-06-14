@@ -15,7 +15,6 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -25,7 +24,7 @@ QT_BEGIN_NAMESPACE
 class Ui_View_TeilnehmerTeilnehmerHinzufuegen
 {
 public:
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_5;
     QHBoxLayout *Seitenheader_2;
     QPushButton *zurueck_2;
@@ -34,7 +33,6 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout_3;
-    QSpacerItem *verticalSpacer;
     QVBoxLayout *verticalLayout_2;
     QLabel *label_13;
     QLabel *label_14;
@@ -60,7 +58,6 @@ public:
     QLineEdit *lineEdit_19;
     QLineEdit *lineEdit_21;
     QHBoxLayout *horizontalLayout;
-    QSpacerItem *verticalSpacer_2;
     QPushButton *AddPhoneNumber;
     QLabel *label_2;
     QHBoxLayout *horizontalLayout_2;
@@ -76,21 +73,21 @@ public:
         if (View_TeilnehmerTeilnehmerHinzufuegen->objectName().isEmpty())
             View_TeilnehmerTeilnehmerHinzufuegen->setObjectName(QString::fromUtf8("View_TeilnehmerTeilnehmerHinzufuegen"));
         View_TeilnehmerTeilnehmerHinzufuegen->resize(1168, 689);
-        widget = new QWidget(View_TeilnehmerTeilnehmerHinzufuegen);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(11, 11, 705, 367));
-        verticalLayout_5 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(View_TeilnehmerTeilnehmerHinzufuegen);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(11, 11, 705, 387));
+        verticalLayout_5 = new QVBoxLayout(layoutWidget);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
         Seitenheader_2 = new QHBoxLayout();
         Seitenheader_2->setSpacing(200);
         Seitenheader_2->setObjectName(QString::fromUtf8("Seitenheader_2"));
-        zurueck_2 = new QPushButton(widget);
+        zurueck_2 = new QPushButton(layoutWidget);
         zurueck_2->setObjectName(QString::fromUtf8("zurueck_2"));
 
         Seitenheader_2->addWidget(zurueck_2);
 
-        KTDVS_2 = new QLabel(widget);
+        KTDVS_2 = new QLabel(layoutWidget);
         KTDVS_2->setObjectName(QString::fromUtf8("KTDVS_2"));
         QFont font;
         font.setFamily(QString::fromUtf8("Arial Black"));
@@ -102,7 +99,7 @@ public:
 
         Seitenheader_2->addWidget(KTDVS_2);
 
-        logout_2 = new QPushButton(widget);
+        logout_2 = new QPushButton(layoutWidget);
         logout_2->setObjectName(QString::fromUtf8("logout_2"));
 
         Seitenheader_2->addWidget(logout_2);
@@ -116,63 +113,59 @@ public:
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        horizontalLayout_3->addItem(verticalSpacer);
-
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        label_13 = new QLabel(widget);
+        label_13 = new QLabel(layoutWidget);
         label_13->setObjectName(QString::fromUtf8("label_13"));
 
         verticalLayout_2->addWidget(label_13);
 
-        label_14 = new QLabel(widget);
+        label_14 = new QLabel(layoutWidget);
         label_14->setObjectName(QString::fromUtf8("label_14"));
 
         verticalLayout_2->addWidget(label_14);
 
-        label_15 = new QLabel(widget);
+        label_15 = new QLabel(layoutWidget);
         label_15->setObjectName(QString::fromUtf8("label_15"));
 
         verticalLayout_2->addWidget(label_15);
 
-        label_16 = new QLabel(widget);
+        label_16 = new QLabel(layoutWidget);
         label_16->setObjectName(QString::fromUtf8("label_16"));
 
         verticalLayout_2->addWidget(label_16);
 
-        label_17 = new QLabel(widget);
+        label_17 = new QLabel(layoutWidget);
         label_17->setObjectName(QString::fromUtf8("label_17"));
 
         verticalLayout_2->addWidget(label_17);
 
-        label_18 = new QLabel(widget);
+        label_18 = new QLabel(layoutWidget);
         label_18->setObjectName(QString::fromUtf8("label_18"));
 
         verticalLayout_2->addWidget(label_18);
 
-        label_19 = new QLabel(widget);
+        label_19 = new QLabel(layoutWidget);
         label_19->setObjectName(QString::fromUtf8("label_19"));
 
         verticalLayout_2->addWidget(label_19);
 
-        label_20 = new QLabel(widget);
+        label_20 = new QLabel(layoutWidget);
         label_20->setObjectName(QString::fromUtf8("label_20"));
 
         verticalLayout_2->addWidget(label_20);
 
-        label_22 = new QLabel(widget);
+        label_22 = new QLabel(layoutWidget);
         label_22->setObjectName(QString::fromUtf8("label_22"));
 
         verticalLayout_2->addWidget(label_22);
 
-        label_21 = new QLabel(widget);
+        label_21 = new QLabel(layoutWidget);
         label_21->setObjectName(QString::fromUtf8("label_21"));
 
         verticalLayout_2->addWidget(label_21);
 
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QString::fromUtf8("label"));
 
         verticalLayout_2->addWidget(label);
@@ -182,59 +175,59 @@ public:
 
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        lineEdit_11 = new QLineEdit(widget);
+        lineEdit_11 = new QLineEdit(layoutWidget);
         lineEdit_11->setObjectName(QString::fromUtf8("lineEdit_11"));
         lineEdit_11->setEnabled(true);
 
         verticalLayout_3->addWidget(lineEdit_11);
 
-        lineEdit_12 = new QLineEdit(widget);
+        lineEdit_12 = new QLineEdit(layoutWidget);
         lineEdit_12->setObjectName(QString::fromUtf8("lineEdit_12"));
 
         verticalLayout_3->addWidget(lineEdit_12);
 
-        lineEdit_13 = new QLineEdit(widget);
+        lineEdit_13 = new QLineEdit(layoutWidget);
         lineEdit_13->setObjectName(QString::fromUtf8("lineEdit_13"));
 
         verticalLayout_3->addWidget(lineEdit_13);
 
-        lineEdit_14 = new QLineEdit(widget);
+        lineEdit_14 = new QLineEdit(layoutWidget);
         lineEdit_14->setObjectName(QString::fromUtf8("lineEdit_14"));
 
         verticalLayout_3->addWidget(lineEdit_14);
 
-        lineEdit_15 = new QLineEdit(widget);
+        lineEdit_15 = new QLineEdit(layoutWidget);
         lineEdit_15->setObjectName(QString::fromUtf8("lineEdit_15"));
 
         verticalLayout_3->addWidget(lineEdit_15);
 
-        lineEdit_16 = new QLineEdit(widget);
+        lineEdit_16 = new QLineEdit(layoutWidget);
         lineEdit_16->setObjectName(QString::fromUtf8("lineEdit_16"));
 
         verticalLayout_3->addWidget(lineEdit_16);
 
-        lineEdit_17 = new QLineEdit(widget);
+        lineEdit_17 = new QLineEdit(layoutWidget);
         lineEdit_17->setObjectName(QString::fromUtf8("lineEdit_17"));
 
         verticalLayout_3->addWidget(lineEdit_17);
 
-        lineEdit_18 = new QLineEdit(widget);
+        lineEdit_18 = new QLineEdit(layoutWidget);
         lineEdit_18->setObjectName(QString::fromUtf8("lineEdit_18"));
 
         verticalLayout_3->addWidget(lineEdit_18);
 
-        lineEdit_20 = new QLineEdit(widget);
+        lineEdit_20 = new QLineEdit(layoutWidget);
         lineEdit_20->setObjectName(QString::fromUtf8("lineEdit_20"));
 
         verticalLayout_3->addWidget(lineEdit_20);
 
-        lineEdit_19 = new QLineEdit(widget);
+        lineEdit_19 = new QLineEdit(layoutWidget);
         lineEdit_19->setObjectName(QString::fromUtf8("lineEdit_19"));
         lineEdit_19->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         verticalLayout_3->addWidget(lineEdit_19);
 
-        lineEdit_21 = new QLineEdit(widget);
+        lineEdit_21 = new QLineEdit(layoutWidget);
         lineEdit_21->setObjectName(QString::fromUtf8("lineEdit_21"));
 
         verticalLayout_3->addWidget(lineEdit_21);
@@ -247,16 +240,12 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        horizontalLayout->addItem(verticalSpacer_2);
-
-        AddPhoneNumber = new QPushButton(widget);
+        AddPhoneNumber = new QPushButton(layoutWidget);
         AddPhoneNumber->setObjectName(QString::fromUtf8("AddPhoneNumber"));
 
         horizontalLayout->addWidget(AddPhoneNumber);
 
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setAlignment(Qt::AlignCenter);
 
@@ -270,7 +259,7 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        Komentar = new QTextEdit(widget);
+        Komentar = new QTextEdit(layoutWidget);
         Komentar->setObjectName(QString::fromUtf8("Komentar"));
         Komentar->setMaximumSize(QSize(150, 16777215));
 
@@ -278,22 +267,22 @@ public:
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        Versionsverlauf = new QPushButton(widget);
+        Versionsverlauf = new QPushButton(layoutWidget);
         Versionsverlauf->setObjectName(QString::fromUtf8("Versionsverlauf"));
 
         verticalLayout->addWidget(Versionsverlauf);
 
-        Speichern = new QPushButton(widget);
+        Speichern = new QPushButton(layoutWidget);
         Speichern->setObjectName(QString::fromUtf8("Speichern"));
 
         verticalLayout->addWidget(Speichern);
 
-        PwAndern = new QPushButton(widget);
+        PwAndern = new QPushButton(layoutWidget);
         PwAndern->setObjectName(QString::fromUtf8("PwAndern"));
 
         verticalLayout->addWidget(PwAndern);
 
-        OrganisatorrechteEntfernen = new QPushButton(widget);
+        OrganisatorrechteEntfernen = new QPushButton(layoutWidget);
         OrganisatorrechteEntfernen->setObjectName(QString::fromUtf8("OrganisatorrechteEntfernen"));
         OrganisatorrechteEntfernen->setLayoutDirection(Qt::LeftToRight);
         OrganisatorrechteEntfernen->setAutoFillBackground(false);
