@@ -47,7 +47,7 @@ private:
     bool intcheck(string teststr);
     void fehlermeldung();
     bool isValid;
+    string oldEmail = "";
 };
 
 #endif // VIEW_TEILNEHMERTEILNEHMERHINZUFUEGEN_H
-

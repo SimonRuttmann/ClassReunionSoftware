@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Ui::View_Teilnehmerliste* uiglobal;
+
 
 View_Teilnehmerliste::View_Teilnehmerliste(QWidget *parent) :
     QWidget(parent),
@@ -13,7 +13,7 @@ View_Teilnehmerliste::View_Teilnehmerliste(QWidget *parent) :
 {
     this->vater = parent;
     ui->setupUi(this);
-    uiglobal = ui;
+
 
     this->listeTeilnehmer = ui->Teilnehmertabelle;
 

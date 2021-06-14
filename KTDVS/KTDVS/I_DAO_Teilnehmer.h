@@ -34,7 +34,7 @@ public:
     virtual bool searchOrganisator(Organisator& organisator)=0;
 
     virtual bool remove(int teilnehmerkey)=0;
-
+    //NUR TEILNEHMER
     virtual bool selectAllTeilnehmer(list<Teilnehmer*>& teilnehmerliste)=0;
     virtual bool selectHo(Organisator& organisator)=0;
     virtual bool selectAllOrganisatoren(list<Organisator*>& organisatorliste)=0;

@@ -43,8 +43,13 @@ public:
 public:
     static Teilnehmerliste* uniqueInstance;
     Organisator* aktiverNutzer;
+    //Liste ALLER Teilnehmer
     list<Teilnehmer*> teilnehmerliste;
+    //Liste aller Organsiatoren
     list<Organisator*> organisatorliste;
+    //Liste NUR Teilnehmer
+    list<Teilnehmer*> nurTeilnehmerliste;
+
     I_DAO_Teilnehmer* TeilnehmerDAO;
 
 

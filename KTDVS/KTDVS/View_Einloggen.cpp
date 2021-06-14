@@ -3,7 +3,7 @@
 #include "Teilnehmerliste.h"
 //puerefeee
 #include "Organisator.h"
-
+#include <QDebug>
 // -> ui-> Fehlermeldung -> setVisible(false);
 
 View_Einloggen::View_Einloggen(QWidget *parent, bool isNeu) :
@@ -70,14 +70,15 @@ void View_Einloggen::on_Login_clicked()
         for (it = (*orglist).begin();it != (*orglist).end();it++)
         {
             org = *it;
-            Organisator::Pruefung test = org ->pruefePasswort(eMailString,passwortString);
+            qDebug() << "EMAIL: " << QString::fromStdString(org->getAktuelleTeilnehmerdaten()->getEMail())<< "PW" << QString::fromStdString(org->getPasswort());
+            Organisator::Pruefung test = org ->pruefePasswort(passwortString,eMailString);
 
             //Richtes PW
             if (test == Organisator::Pruefung::EMailZutreffendPwRichtig && org->getVersuch() < 3){
                 org -> setVersuch(0);
                 Teilnehmerliste::instance()->aktiverNutzer = org;
                  //SZENE wechseln zu Teilnehmerliste
-                if(org->isSystempasswort()){
+                if(org->isSystempasswort() && !org->isHauptorganisator()){
 
 
                     View_Passwortaenderung* pa = new View_Passwortaenderung(this->parent,org);
