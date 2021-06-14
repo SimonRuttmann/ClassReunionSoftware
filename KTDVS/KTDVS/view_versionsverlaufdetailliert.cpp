@@ -46,8 +46,8 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     }
 
     if(altdaten == nullptr){
-        ui->vornameAlt->setText(QString("Daten NEU eingefügt"));
-        ui->nachnameAlt->setText(QString(""));
+      //  ui->vornameAlt->setText(QString("Daten NEU eingefügt"));
+      //  ui->nachnameAlt->setText(QString(""));
 
         ui->lineEdit_1->setText(QString("-"));
         ui->lineEdit_2->setText(QString("-"));
@@ -63,8 +63,8 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     else{
 
     //Labels
-    ui->vornameAlt->setText(QString::fromStdString(altdaten->getVorname()));
-    ui->nachnameAlt->setText(QString::fromStdString(altdaten->getNachname()));
+    //ui->vornameAlt->setText(QString::fromStdString(altdaten->getVorname()));
+    //ui->nachnameAlt->setText(QString::fromStdString(altdaten->getNachname()));
     //QLineEdits
     ui->lineEdit_1->setText(QString::fromStdString(altdaten->getVorname()));
     ui->lineEdit_2->setText(QString::fromStdString(altdaten->getNachname()));
@@ -110,8 +110,8 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     }
 
     //Setze Eigenschaften der neuen Daten Reihe
-    ui->vornameNeu->setText(QString::fromStdString(neudaten->getVorname()));
-    ui->nachnameNeu->setText(QString::fromStdString(neudaten->getVorname()));
+  //  ui->vornameNeu->setText(QString::fromStdString(neudaten->getVorname()));
+ //   ui->nachnameNeu->setText(QString::fromStdString(neudaten->getVorname()));
     ui->lineEdit_21->setReadOnly(true);
     ui->lineEdit_22->setReadOnly(true);
     ui->lineEdit_23->setReadOnly(true);
