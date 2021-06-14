@@ -43,8 +43,8 @@ void View_Versionsverlauf::on_toolButton_clicked()
 
 void View_Versionsverlauf::on_tableWidget_cellClicked(int row, int column)
 {
-    Teilnehmerdaten* aktuell = nullptr;
-    Teilnehmerdaten* alt = nullptr;
+    Teilnehmerdaten* vorherige = nullptr;
+    Teilnehmerdaten* pressedOne = nullptr;
 
     list<Teilnehmerdaten*>::iterator it;
 
@@ -56,23 +56,27 @@ void View_Versionsverlauf::on_tableWidget_cellClicked(int row, int column)
         string organisator = listeTeilnehmer->item(row, 2)->text().toStdString();
 
         for (it = teilnehmer->getAlleTeilnehmerdaten()->begin(); it != teilnehmer->getAlleTeilnehmerdaten()->end(); it++) {
+            if (pressedOne != nullptr) {
+                vorherige = *it;
+                break;
+            }
+
             string datum = to_string((*it)->getDatum().tag) + "." + to_string((*it)->getDatum().monat) + "." + to_string((*it)->getDatum().jahr);
             datum = datum + " " + to_string((*it)->getDatum().stunde) + ":" + to_string((*it)->getDatum().min) + ":" + to_string((*it)->getDatum().sekunde);
 
             string name = (*it)->getVorname() + " " + (*it)->getNachname();
 
             if (date == datum && person == name && organisator == to_string((*it)->getErstellerKey())) {
-                alt = *it;
+                pressedOne = *it;
+                //break;
             }
+
+            //neuer = *it;
         }
 
-        aktuell = teilnehmer->getAktuelleTeilnehmerdaten();
-
-        if (alt != nullptr && aktuell != nullptr) {
-            View_VersionsverlaufDetailliert* vd = new View_VersionsverlaufDetailliert(this->vater, alt, aktuell);
-            vd->show();
-            this->hide();
-        }
+        View_VersionsverlaufDetailliert* vd = new View_VersionsverlaufDetailliert(this->vater, vorherige, pressedOne, teilnehmer);
+        vd->show();
+        this->hide();
     }
 }
 
