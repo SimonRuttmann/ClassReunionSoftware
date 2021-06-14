@@ -125,6 +125,7 @@ public:
         Teilnehmertabelle->setHorizontalHeaderItem(6, __qtablewidgetitem6);
         Teilnehmertabelle->setObjectName(QString::fromUtf8("Teilnehmertabelle"));
         Teilnehmertabelle->setGeometry(QRect(10, 80, 1061, 611));
+        Teilnehmertabelle->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
         retranslateUi(View_Teilnehmerliste);
 

@@ -141,7 +141,7 @@ bool DAO_QT_Teilnehmer::updateOrganisator(const Organisator &organisator){
 
     update_query.bindValue(":passwort", passwort);
     update_query.bindValue(":isHauptorganisator",organisator.isHauptorganisator());
-    update_query.bindValue(":teilenhmerkey", organisator.getTeilnehmerkey());
+    update_query.bindValue(":teilnehmerkey", organisator.getTeilnehmerkey());
     update_query.bindValue(":versuch", organisator.getVersuch());
     update_query.bindValue(":isSystempasswort", organisator.isSystempasswort());
 

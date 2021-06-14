@@ -13,6 +13,7 @@ View_Passwortaenderung::View_Passwortaenderung(QWidget *parent, Organisator* tei
     QWidget(parent),
     ui(new Ui::View_Passwortaenderung)
 {
+    this->parent = parent;
     ui->setupUi(this);
     qDebug() <<"View_Passwortaenderung";
     org = teilnehmer;
@@ -85,7 +86,8 @@ void View_Passwortaenderung::on_pushButton_clicked()
                 neuPasEingabe = ui ->neuesPasEdit -> text();
                 org ->setPasswort(neuPasEingabe.toStdString());
                 org ->setIsSystempasswort(false);
-
+                bool updated = Teilnehmerliste::instance()->updateOrganisator(*org);
+                qDebug()<<"MUHAHAHAHAHHAHAHAHAHAHAHHAHAH"<<updated;
                 View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
                 tl->show();
                 this->hide();
@@ -100,6 +102,8 @@ void View_Passwortaenderung::on_pushButton_clicked()
             neuPasEingabe = ui ->neuesPasEdit -> text();
             qDebug() <<"Passwort wurde aus der Gui geholt";
             org =Teilnehmerliste::instance()->vonTeilnZuOrg(teil,neuPasEingabe.toStdString());
+            bool updated = Teilnehmerliste::instance()->updateOrganisator(*org);
+            qDebug()<<"MUHAHAHAHAHHAHAHAHAHAHAHHAHAH"<<updated;
             qDebug() <<"Teilnehmer wurde zum Organisator gemacht";
             View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
             tl->show();
@@ -111,7 +115,8 @@ void View_Passwortaenderung::on_pushButton_clicked()
             neuPasEingabe = ui ->neuesPasEdit -> text();
             org->setPasswort(neuPasEingabe.toStdString());
             org->setIsSystempasswort(true);
-
+            bool updated = Teilnehmerliste::instance()->updateOrganisator(*org);
+            qDebug()<<"MUHAHAHAHAHHAHAHAHAHAHAHHAHAH"<<updated;
             View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
             tl->show();
             this->hide();
