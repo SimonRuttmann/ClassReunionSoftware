@@ -71,13 +71,15 @@ void View_Einloggen::on_Login_clicked()
         for (it = (*orglist).begin();it != (*orglist).end();it++)
         {
             org = *it;
-            qDebug() << "EMAIL: " << QString::fromStdString(org->getAktuelleTeilnehmerdaten()->getEMail())<< "PW" << QString::fromStdString(org->getPasswort());
+            //qDebug() << "EMAIL: " << QString::fromStdString(org->getAktuelleTeilnehmerdaten()->getEMail())<< "PW" << QString::fromStdString(org->getPasswort());
             Organisator::Pruefung test = org ->pruefePasswort(passwortString,eMailString);
 
             //Richtes PW
             if (test == Organisator::Pruefung::EMailZutreffendPwRichtig && org->getVersuch() < 3){
                 org -> setVersuch(0);
                 Teilnehmerliste::instance()->aktiverNutzer = org;
+                qDebug() << "Passwort wurde richtig eingegeben";
+
 
 
                  //SZENE wechseln zu Teilnehmerliste
@@ -103,16 +105,20 @@ void View_Einloggen::on_Login_clicked()
             //Falsches PW
             if(test ==  Organisator::Pruefung::EmailZutreffendPwFalsch){
                int Versuche = org->getVersuch();
+                qDebug() << "Fehlversuch";
+                qDebug() << Versuche;
 
                //Gesperrt
-               if(Versuche >= 2){
+               if(Versuche >= 2 && !org->isHauptorganisator()){
                     org -> incVersuch(); //Versuch auf 3 gesetzt -> Gesperrt
                     ui->Gesperrt -> setVisible(true);
+                     qDebug() << "Gesperrt";
                     return;
                }
 
                //Fehleingabe
                ui ->FalschesPasswort -> setVisible(true);
+               org -> incVersuch();
                return;
             }
         }   //Ende For
