@@ -15,7 +15,12 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
 {
     qDebug()<< "object erstellt";
     ui->setupUi(this);
-    if(instanceof<Organisator>(aktuellerTeilnehmer)){
+
+    bool isOrg = true;
+    Organisator* murks = (Organisator*)aktuellerTeilnehmer;
+    try{murks->getPasswort();}catch(exception e){isOrg = false;}
+
+    if(isOrg){
         //Enable button
         ui->PwAndern->setEnabled(true);
     }

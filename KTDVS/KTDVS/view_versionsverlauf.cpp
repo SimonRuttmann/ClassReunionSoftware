@@ -101,7 +101,7 @@ void View_Versionsverlauf::onInit(){
 
         listeTeilnehmer->setItem(counter,0, new QTableWidgetItem(QString::fromStdString(datum)));
         listeTeilnehmer->setItem(counter,1, new QTableWidgetItem(QString::fromStdString((*it)->getVorname()) + " " + QString::fromStdString((*it)->getNachname())));
-        listeTeilnehmer->setItem(counter,2, new QTableWidgetItem((*it)->getErstellerKey()));
+        listeTeilnehmer->setItem(counter,2, new QTableWidgetItem(QString::fromStdString(to_string((*it)->getErstellerKey()))));
         listeTeilnehmer->setItem(counter,3, new QTableWidgetItem("click for details"));
 
         counter++;
