@@ -26,6 +26,8 @@ public:
     QPushButton *Zurueck;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout_4;
+    QLabel *KeineEingabe;
     QHBoxLayout *horizontalLayout_3;
     QLabel *Fehlermeldung;
     QHBoxLayout *horizontalLayout;
@@ -48,10 +50,20 @@ public:
         Zurueck->setGeometry(QRect(30, 20, 80, 22));
         verticalLayoutWidget = new QWidget(View_Passwortaenderung);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(70, 90, 241, 181));
+        verticalLayoutWidget->setGeometry(QRect(70, 60, 271, 231));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        KeineEingabe = new QLabel(verticalLayoutWidget);
+        KeineEingabe->setObjectName(QString::fromUtf8("KeineEingabe"));
+
+        horizontalLayout_4->addWidget(KeineEingabe);
+
+
+        verticalLayout->addLayout(horizontalLayout_4);
+
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         Fehlermeldung = new QLabel(verticalLayoutWidget);
@@ -117,6 +129,7 @@ public:
     {
         View_Passwortaenderung->setWindowTitle(QCoreApplication::translate("View_Passwortaenderung", "Form", nullptr));
         Zurueck->setText(QCoreApplication::translate("View_Passwortaenderung", "Zur\303\274ck", nullptr));
+        KeineEingabe->setText(QCoreApplication::translate("View_Passwortaenderung", "<html><head/><body><p align=\"center\"><span style=\" color:#aa0000;\">Bitte f\303\274llen Sie die Felder erst alle aus.</span></p></body></html>", nullptr));
         Fehlermeldung->setText(QCoreApplication::translate("View_Passwortaenderung", "<html><head/><body><p align=\"center\"><span style=\" color:#aa0000;\">Das alte Passwort wurde falsch eingegeben.</span></p><p align=\"center\"><span style=\" color:#aa0000;\">Bitte Versuchen Sie es nochmal.</span></p></body></html>", nullptr));
         altesPas->setText(QCoreApplication::translate("View_Passwortaenderung", "altes Passwort", nullptr));
         label_2->setText(QCoreApplication::translate("View_Passwortaenderung", "Neues Passwort", nullptr));

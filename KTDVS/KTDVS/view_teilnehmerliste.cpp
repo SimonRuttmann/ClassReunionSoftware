@@ -60,7 +60,7 @@ void View_Teilnehmerliste::onTeilnehmerdatenAendern(){
 
 void View_Teilnehmerliste::onTeilnehmerHinzufuegen(){
     View_TeilnehmerTeilnehmerHinzufuegen* viewTtH =
-            new View_TeilnehmerTeilnehmerHinzufuegen(this->vater, this->ausgewaehlerTeilnehmer, true, false);
+            new View_TeilnehmerTeilnehmerHinzufuegen(this->vater, nullptr, true, false);
     viewTtH->show();
     this->hide();
 }

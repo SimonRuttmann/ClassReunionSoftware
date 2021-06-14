@@ -10,15 +10,47 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
     QWidget* parent, Teilnehmer* aktuellerTeilnehmer,
     bool neuerTeilnehmer, bool hauptorganisatorErstellen) :
 
+
     QWidget(parent),
     ui(new Ui::View_TeilnehmerTeilnehmerHinzufuegen)
 {
     qDebug()<< "object erstellt";
     ui->setupUi(this);
 
-    bool isOrg = true;
-    Organisator* murks = (Organisator*)aktuellerTeilnehmer;
-    try{murks->getPasswort();}catch(exception e){isOrg = false;}
+    //qDebug() << aktuellerTeilnehmer->getTeilnehmerkey();
+    //bool isOrg = true;
+    //qDebug() << "teseest";
+//    if(aktuellerTeilnehmer != nullptr && aktuellerTeilnehmer != NULL){
+//        Organisator* murks = (Organisator*)aktuellerTeilnehmer;
+//        try{murks->getPasswort();}catch(exception e){isOrg = false;}
+//    }
+//    else{
+//        isOrg = false;
+//    }
+//    bool isOrg = false;
+//    //dynamic_cast
+//    Organisator* org = static_cast<Organisator*>(aktuellerTeilnehmer);
+//    if(org){
+//        isOrg = true;
+//    }
+
+
+    //Check if Organisator
+    bool isOrg = false;
+    if(aktuellerTeilnehmer != nullptr){
+        list<Organisator*> orgsl = *Teilnehmerliste::instance()->getOrganisatorliste();
+        list<Organisator*>::iterator it;
+        for (it = orgsl.begin(); it!=orgsl.end(); it++){
+            if( (*it)->getTeilnehmerkey() == aktuellerTeilnehmer->getTeilnehmerkey()){
+                isOrg = true;
+                break;
+            }
+        }
+    }
+
+
+
+    qDebug() << "isOrg: " <<isOrg;
 
     if(isOrg){
         //Enable button
@@ -39,7 +71,9 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
 
 
     neuerTn = neuerTeilnehmer;
+    if(aktuellerTeilnehmer != nullptr){
     teiln = aktuellerTeilnehmer;
+}
     this->hauptorgErstellen = hauptorganisatorErstellen;
     vater = parent;
 
@@ -85,6 +119,11 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
             ui->lineEdit_21->setText(QString::fromStdString(teles));
 
         }
+    }
+    else{
+         ui->Versionsverlauf->setEnabled(false);
+         ui->OrganisatorrechteEntfernen->setEnabled(false);
+         ui->PwAndern->setEnabled(false);
     }
 }
 
