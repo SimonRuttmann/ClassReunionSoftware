@@ -1,7 +1,9 @@
 #include "ui_View_VersionsverlaufDetailliert.h"
 #include "View_VersionsverlaufDetailliert.h"
 #include "ui_View_Versionsverlauf.h"
+#include "iostream"
 
+using namespace std;
 Teilnehmerdaten *altdaten;
 Teilnehmerdaten *neudaten;
 View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent,Teilnehmerdaten *alt,Teilnehmerdaten *neu,Teilnehmer *teilnehmer) :
@@ -16,12 +18,10 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     neudaten=neu;
     this->teilnehmer=teilnehmer;
 
-    if(altdaten==NULL || neudaten== NULL) return;
     //Möglicher Fehler durch umbennung der Elemente in .ui
 
     //Setze Eigenschaften der alten
-    ui->vornameAlt->setText(QString::fromStdString(altdaten->getVorname()));
-    ui->nachnameAlt->setText(QString::fromStdString(altdaten->getNachname()));
+
     ui->lineEdit_1->setReadOnly(true);
     ui->lineEdit_2->setReadOnly(true);
     ui->lineEdit_3->setReadOnly(true);
@@ -33,6 +33,20 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_9->setReadOnly(true);
     ui->lineEdit_10->setReadOnly(true);
 
+    if(neudaten== nullptr){
+        cout << "Neudaten wurden mit Nullpointer übergeben";
+        return;
+    }
+
+    if(altdaten == nullptr){
+        ui->vornameAlt->setText(QString("Daten NEU eingefügt"));
+    }
+    else{
+
+    //Labels
+    ui->vornameAlt->setText(QString::fromStdString(altdaten->getVorname()));
+    ui->nachnameAlt->setText(QString::fromStdString(altdaten->getNachname()));
+    //QLineEdits
     ui->lineEdit_1->setText(QString::fromStdString(altdaten->getVorname()));
     ui->lineEdit_2->setText(QString::fromStdString(altdaten->getNachname()));
     ui->lineEdit_3->setText(QString::fromStdString(altdaten->getSchulname()));
@@ -43,6 +57,8 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_8->setText(QString::fromStdString(altdaten->getAdresse().land));
     ui->lineEdit_9->setText(QString::fromStdString(altdaten->getHaupttelefonnummer()));
     ui->lineEdit_10->setText(QString::fromStdString(altdaten->getEMail()));
+
+
 
     //Generiert Dynamisch Felder für alle zusätzlichen Nummern
     /*
@@ -75,6 +91,8 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
         hLayout->addWidget(edit);
         ui->alteVersion_2->addLayout(hLayout);
         */
+    }
+
     //Setze Eigenschaften der neuen Daten Reihe
     ui->vornameNeu->setText(QString::fromStdString(neudaten->getVorname()));
     ui->nachnameNeu->setText(QString::fromStdString(neudaten->getVorname()));
