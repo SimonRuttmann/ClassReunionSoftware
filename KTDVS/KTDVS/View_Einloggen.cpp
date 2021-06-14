@@ -31,6 +31,7 @@ void View_Einloggen::onInit(){
     ui ->Fehlerausgabe -> setVisible(false);
     ui ->FalschesPasswort -> setVisible(false);
     ui ->Gesperrt ->setVisible(false);
+    ui ->KeineEingabe->setVisible(false);
 }
 
 //ggf. Strings konvertieren: QString::fromStdString(ss), qs.toStdString(ss)
@@ -42,8 +43,14 @@ void View_Einloggen::on_Login_clicked()
     ui ->Fehlerausgabe -> setVisible(false);
     ui ->FalschesPasswort -> setVisible(false);
     ui ->Gesperrt ->setVisible(false);
+    ui ->KeineEingabe->setVisible(false);
     // Fall:Hauptorganisator erstellen  Hier grade sehr viel Rechnerei
     if(this->isNeu){
+        if(ui ->Passwort ->text().isEmpty()){
+            qDebug() <<"blockiert weil String empty";
+            ui ->KeineEingabe->setVisible(true);
+            return;
+        }
         passwort = ui ->Passwort -> text();
        // eMail = ui -> EMail -> text();
         passwortString =passwort.toStdString();
@@ -56,8 +63,12 @@ void View_Einloggen::on_Login_clicked()
         this->hide();
     }
     else{
-
         // Fall : normales Anmelden
+        if(ui ->Passwort ->text().isEmpty()||ui->EMail->text().isEmpty()){
+            qDebug() <<"blockiert weil String empty";
+            ui ->KeineEingabe->setVisible(true);
+            return;
+        }
         passwort = ui ->Passwort -> text();
         eMail = ui -> EMail -> text();
         passwortString =passwort.toStdString();

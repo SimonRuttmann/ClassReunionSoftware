@@ -53,6 +53,7 @@ void View_Passwortaenderung::onInit( bool erstanmeldung){
 
     erstan = erstanmeldung;
     ui -> Fehlermeldung -> setVisible(false);
+    ui ->KeineEingabe -> setVisible(false);
     if(erstan){ // Wenn passwort vom ORg geändert werden muss
         ui ->Zurueck -> setDisabled(true);
         ui ->Zurueck -> setVisible(false);
@@ -77,9 +78,15 @@ void View_Passwortaenderung::on_Zurueck_clicked()
 void View_Passwortaenderung::on_pushButton_clicked()
 {
     qDebug() <<"View_Passwortaenderung: Button wird geklickt";
+    ui ->KeineEingabe->setVisible(true);
     switch(fall){
         case 1: // Fall1= Org muss Passwort ändern beim ersten Anmelden
         {   qDebug() <<"case1";
+            if(ui ->altesPasEdit ->text().isEmpty()||ui->neuesPasEdit->text().isEmpty()){
+                qDebug() <<"blockiert weil String empty";
+                ui ->KeineEingabe -> setVisible(true);
+                return;
+            }
             altPas = org ->getPasswort();
             altPasEingabe = ui ->altesPasEdit ->text();
             if(altPas == altPasEingabe.toStdString()){
@@ -99,6 +106,11 @@ void View_Passwortaenderung::on_pushButton_clicked()
         }
         case 2:  // Fall2= Hauptorg ändert Teilnehmer auf Org
         {   qDebug() <<"case2";
+            if(ui->neuesPasEdit->text().isEmpty()){
+                qDebug() <<"blockiert weil String empty";
+                ui ->KeineEingabe -> setVisible(true);
+                return;
+            }
             neuPasEingabe = ui ->neuesPasEdit -> text();
             qDebug() <<"Passwort wurde aus der Gui geholt";
             org =Teilnehmerliste::instance()->vonTeilnZuOrg(teil,neuPasEingabe.toStdString());
@@ -112,6 +124,11 @@ void View_Passwortaenderung::on_pushButton_clicked()
         }
         case 3: //Fall3= Hauptorg ändert Passwort von ORg
         {   qDebug() <<"case3";
+            if(ui->neuesPasEdit->text().isEmpty()){
+                qDebug() <<"blockiert weil String empty";
+                ui ->KeineEingabe -> setVisible(true);
+                return;
+            }
             neuPasEingabe = ui ->neuesPasEdit -> text();
             org->setPasswort(neuPasEingabe.toStdString());
             org->setIsSystempasswort(true);
