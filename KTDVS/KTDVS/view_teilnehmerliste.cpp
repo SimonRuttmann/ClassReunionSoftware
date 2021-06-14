@@ -5,8 +5,6 @@
 
 using namespace std;
 
-
-
 View_Teilnehmerliste::View_Teilnehmerliste(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::View_Teilnehmerliste)
@@ -44,7 +42,7 @@ void View_Teilnehmerliste::addFeld(Teilnehmerdaten* daten){
     listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,2, new QTableWidgetItem(QString::fromStdString(daten->getEMail())));
     listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,3, new QTableWidgetItem(QString::fromStdString(daten->getHaupttelefonnummer())));
     listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,4, new QTableWidgetItem(QString::fromStdString("Versionsverlauf")));
-    listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,5, new QTableWidgetItem(QString::fromStdString("Daten ändern")));
+    listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,5, new QTableWidgetItem(QString::fromStdString("Daten anzeigen")));
     listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,6, new QTableWidgetItem(QString::fromStdString("als Organisator")));
 }
 
@@ -107,10 +105,6 @@ void View_Teilnehmerliste::on_toolButton_clicked()
 {
     onAusloggen();
 }
-
-
-
-
 
 void View_Teilnehmerliste::on_Teilnehmertabelle_cellClicked(int row, int column)
 {
