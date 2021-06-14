@@ -18,10 +18,6 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     neudaten=neu;
     this->teilnehmer=teilnehmer;
 
-    int anzNummern; //Setze auf Anzahl zusätzlicher Nummern
-    QHBoxLayout *hLayout;
-    QLabel *label;
-    QLineEdit *lEdit;
 
     //Möglicher Fehler durch umbennung der Elemente in .ui
 
@@ -41,13 +37,11 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     //altdaten=nullptr;
     if(neudaten== nullptr){
         cout << "Neudaten wurden mit Nullpointer übergeben";
-
         return;
     }
 
     if(altdaten == nullptr){
-        ui->vornameAlt->setText(QString("Daten NEU eingefügt"));
-        ui->nachnameAlt->setText(QString(""));
+        ui->label_2->setText("Daten wurden neu hinzugefügt");
 
         ui->lineEdit_1->setText(QString("-"));
         ui->lineEdit_2->setText(QString("-"));
@@ -55,7 +49,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
         ui->lineEdit_4->setText(QString("-"));
         ui->lineEdit_5->setText(QString("-"));
         ui->lineEdit_6->setText(QString("-"));
-        ui->lineEdit_7->setText(QString("-")); //Ort fehlt in Teilnehmerdaten
+        ui->lineEdit_7->setText(QString("-"));
         ui->lineEdit_8->setText(QString("-"));
         ui->lineEdit_9->setText(QString("-"));
         ui->lineEdit_10->setText(QString("-"));
@@ -63,8 +57,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     else{
 
     //Labels
-    ui->vornameAlt->setText(QString::fromStdString(altdaten->getVorname()));
-    ui->nachnameAlt->setText(QString::fromStdString(altdaten->getNachname()));
+    ui->label_2->setText("alte Version");
     //QLineEdits
     ui->lineEdit_1->setText(QString::fromStdString(altdaten->getVorname()));
     ui->lineEdit_2->setText(QString::fromStdString(altdaten->getNachname()));
@@ -72,46 +65,33 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_4->setText(QString::fromStdString(altdaten->getAdresse().strasse));
     ui->lineEdit_5->setText(QString::number(altdaten->getAdresse().haussnummer));
     ui->lineEdit_6->setText(QString::number(altdaten->getAdresse().postleitzahl));
-    ui->lineEdit_7->setText(QString::fromStdString(altdaten->getAdresse().stadt)); //Ort fehlt in Teilnehmerdaten
+    ui->lineEdit_7->setText(QString::fromStdString(altdaten->getAdresse().stadt));
     ui->lineEdit_8->setText(QString::fromStdString(altdaten->getAdresse().land));
     ui->lineEdit_9->setText(QString::fromStdString(altdaten->getHaupttelefonnummer()));
     ui->lineEdit_10->setText(QString::fromStdString(altdaten->getEMail()));
 
 
-    /*
+
     //Generiert Dynamisch Felder für alle zusätzlichen Nummern
-        anzNummern=0; //Setze auf Anzahl zusätzlicher Nummern
 
         list<string> weitereTel=altdaten->getWeitereTelefonnummern();
-
+        ui->comboBox_alt->clear();
         for(list<string>::iterator i =weitereTel.begin();i!=weitereTel.end();i++){
-            hLayout= new QHBoxLayout;
-            label= new QLabel;
-            lEdit = new QLineEdit;
-
-            label->setText(QString("ZusätzlicheTel")+QString::number(anzNummern));
-
-            lEdit->setReadOnly(true);
-            lEdit->setText(QString::fromStdString(*i));
-
-            hLayout->addWidget(label);
-            hLayout->addWidget(lEdit);
-
-            ui->alteVersion_2->addLayout(hLayout);
+            ui->comboBox_alt->addItem(QString::fromStdString(*i));
         }
 
+        /*
         //Kommentarfeld hinzufügen
         hLayout= new QHBoxLayout;
         QTextEdit *edit = new QTextEdit;
         edit->setReadOnly(true);
         edit->setText(QString(QString::fromStdString(altdaten->getKommentar())));
         hLayout->addWidget(edit);
-        ui->alteVersion_2->addLayout(hLayout);*/
+        ui->alteVersion_2->addLayout(hLayout);
+        */
     }
 
     //Setze Eigenschaften der neuen Daten Reihe
-    ui->vornameNeu->setText(QString::fromStdString(neudaten->getVorname()));
-    ui->nachnameNeu->setText(QString::fromStdString(neudaten->getVorname()));
     ui->lineEdit_21->setReadOnly(true);
     ui->lineEdit_22->setReadOnly(true);
     ui->lineEdit_23->setReadOnly(true);
@@ -129,38 +109,26 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_24->setText(QString::fromStdString(neudaten->getAdresse().strasse));
     ui->lineEdit_25->setText(QString::number(neudaten->getAdresse().haussnummer));
     ui->lineEdit_26->setText(QString::number(neudaten->getAdresse().postleitzahl));
-    ui->lineEdit_27->setText(QString::fromStdString(neudaten->getAdresse().stadt)); //Ort fehlt im Datensatz?
+    ui->lineEdit_27->setText(QString::fromStdString(neudaten->getAdresse().stadt));
     ui->lineEdit_28->setText(QString::fromStdString(neudaten->getAdresse().land));
     ui->lineEdit_29->setText(QString::fromStdString(neudaten->getHaupttelefonnummer()));
     ui->lineEdit_30->setText(QString::fromStdString(neudaten->getEMail()));
-    /*
-    anzNummern=0; //Setze auf Anzahl zusätzlicher Nummern
 
     list<string> weitereTel=neudaten->getWeitereTelefonnummern();
 
     for(list<string>::iterator i =weitereTel.begin();i!=weitereTel.end();i++){
-        hLayout= new QHBoxLayout;
-        label= new QLabel;
-        lEdit = new QLineEdit;
-
-        label->setText(QString("ZusätzlicheTel")+QString::number(anzNummern++));
-
-        lEdit->setReadOnly(true);
-        lEdit->setText(QString::fromStdString(*i));
-
-        hLayout->addWidget(label);
-        hLayout->addWidget(lEdit);
-
-        ui->neueVersion_2->addLayout(hLayout);
+        ui->comboBox_neu->addItem(QString::fromStdString(*i));
     }
 
+    /*
     //Kommentarfeld hinzufügen
     hLayout= new QHBoxLayout;
     QTextEdit *edit = new QTextEdit;
     edit->setReadOnly(true);
     edit->setText(QString(QString::fromStdString(neudaten->getKommentar())));
     hLayout->addWidget(edit);
-    ui->neueVersion_2->addLayout(hLayout);*/
+    ui->neueVersion_2->addLayout(hLayout);
+    */
 }
 
 View_VersionsverlaufDetailliert::~View_VersionsverlaufDetailliert()
@@ -172,7 +140,7 @@ View_VersionsverlaufDetailliert::~View_VersionsverlaufDetailliert()
 
 void View_VersionsverlaufDetailliert::on_zurueck_clicked()
 {
-    View_Versionsverlauf *scene= new View_Versionsverlauf(vater,teilnehmer); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
+    View_Versionsverlauf *scene= new View_Versionsverlauf(vater,teilnehmer);
 
     this->hide();
     scene->show();
