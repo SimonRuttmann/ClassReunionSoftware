@@ -250,23 +250,6 @@
            </item>
           </layout>
          </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_39">
-           <item>
-            <widget class="QTextEdit" name="Aenderungskommentar_3">
-             <property name="maximumSize">
-              <size>
-               <width>150</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="placeholderText">
-              <string>Änderungskommentar</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
         </layout>
        </item>
        <item>
@@ -433,23 +416,6 @@
            </item>
            <item>
             <widget class="QLineEdit" name="lineEdit_30"/>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_50">
-           <item>
-            <widget class="QTextEdit" name="Aenderungskommentar_5">
-             <property name="maximumSize">
-              <size>
-               <width>150</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="placeholderText">
-              <string>Änderungskommentar</string>
-             </property>
-            </widget>
            </item>
           </layout>
          </item>

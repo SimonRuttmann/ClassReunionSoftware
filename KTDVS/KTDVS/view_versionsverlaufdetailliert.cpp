@@ -18,6 +18,11 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     neudaten=neu;
     this->teilnehmer=teilnehmer;
 
+    int anzNummern; //Setze auf Anzahl zusätzlicher Nummern
+    QHBoxLayout *hLayout;
+    QLabel *label;
+    QLineEdit *lEdit;
+
     //Möglicher Fehler durch umbennung der Elemente in .ui
 
     //Setze Eigenschaften der alten
@@ -33,13 +38,27 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_9->setReadOnly(true);
     ui->lineEdit_10->setReadOnly(true);
 
+    //altdaten=nullptr;
     if(neudaten== nullptr){
         cout << "Neudaten wurden mit Nullpointer übergeben";
+
         return;
     }
 
     if(altdaten == nullptr){
         ui->vornameAlt->setText(QString("Daten NEU eingefügt"));
+        ui->nachnameAlt->setText(QString(""));
+
+        ui->lineEdit_1->setText(QString("-"));
+        ui->lineEdit_2->setText(QString("-"));
+        ui->lineEdit_3->setText(QString("-"));
+        ui->lineEdit_4->setText(QString("-"));
+        ui->lineEdit_5->setText(QString("-"));
+        ui->lineEdit_6->setText(QString("-"));
+        ui->lineEdit_7->setText(QString("-")); //Ort fehlt in Teilnehmerdaten
+        ui->lineEdit_8->setText(QString("-"));
+        ui->lineEdit_9->setText(QString("-"));
+        ui->lineEdit_10->setText(QString("-"));
     }
     else{
 
@@ -61,11 +80,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
 
 
     //Generiert Dynamisch Felder für alle zusätzlichen Nummern
-    /*
-        int anzNummern=0; //Setze auf Anzahl zusätzlicher Nummern
-        QHBoxLayout *hLayout;
-        QLabel *label;
-        QLineEdit *lEdit;
+        anzNummern=0; //Setze auf Anzahl zusätzlicher Nummern
 
         list<string> weitereTel=altdaten->getWeitereTelefonnummern();
 
@@ -88,9 +103,10 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
         //Kommentarfeld hinzufügen
         hLayout= new QHBoxLayout;
         QTextEdit *edit = new QTextEdit;
+        edit->setReadOnly(true);
+        edit->setText(QString(QString::fromStdString(altdaten->getKommentar())));
         hLayout->addWidget(edit);
         ui->alteVersion_2->addLayout(hLayout);
-        */
     }
 
     //Setze Eigenschaften der neuen Daten Reihe
@@ -117,6 +133,34 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_28->setText(QString::fromStdString(neudaten->getAdresse().land));
     ui->lineEdit_29->setText(QString::fromStdString(neudaten->getHaupttelefonnummer()));
     ui->lineEdit_30->setText(QString::fromStdString(neudaten->getEMail()));
+
+    anzNummern=0; //Setze auf Anzahl zusätzlicher Nummern
+
+    list<string> weitereTel=neudaten->getWeitereTelefonnummern();
+
+    for(list<string>::iterator i =weitereTel.begin();i!=weitereTel.end();i++){
+        hLayout= new QHBoxLayout;
+        label= new QLabel;
+        lEdit = new QLineEdit;
+
+        label->setText(QString("ZusätzlicheTel")+QString::number(anzNummern++));
+
+        lEdit->setReadOnly(true);
+        lEdit->setText(QString::fromStdString(*i));
+
+        hLayout->addWidget(label);
+        hLayout->addWidget(lEdit);
+
+        ui->neueVersion_2->addLayout(hLayout);
+    }
+
+    //Kommentarfeld hinzufügen
+    hLayout= new QHBoxLayout;
+    QTextEdit *edit = new QTextEdit;
+    edit->setReadOnly(true);
+    edit->setText(QString(QString::fromStdString(neudaten->getKommentar())));
+    hLayout->addWidget(edit);
+    ui->neueVersion_2->addLayout(hLayout);
 }
 
 View_VersionsverlaufDetailliert::~View_VersionsverlaufDetailliert()
