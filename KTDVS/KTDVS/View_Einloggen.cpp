@@ -3,6 +3,7 @@
 #include "Teilnehmerliste.h"
 //puerefeee
 #include "Organisator.h"
+#include "View_ErsterSystemstart.h"
 #include <QDebug>
 // -> ui-> Fehlermeldung -> setVisible(false);
 
@@ -77,6 +78,8 @@ void View_Einloggen::on_Login_clicked()
             if (test == Organisator::Pruefung::EMailZutreffendPwRichtig && org->getVersuch() < 3){
                 org -> setVersuch(0);
                 Teilnehmerliste::instance()->aktiverNutzer = org;
+
+
                  //SZENE wechseln zu Teilnehmerliste
                 if(org->isSystempasswort() && !org->isHauptorganisator()){
 
@@ -120,5 +123,7 @@ void View_Einloggen::on_Login_clicked()
 
 void View_Einloggen::on_zurueck_clicked()
 {
-
+    View_ErsterSystemstart* ersterSystemstart = new View_ErsterSystemstart(parent);
+    ersterSystemstart->show();
+    this->hide();
 }

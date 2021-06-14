@@ -52,12 +52,13 @@ void View_Passwortaenderung::onInit( bool erstanmeldung){
 
     erstan = erstanmeldung;
     ui -> Fehlermeldung -> setVisible(false);
-    if(!erstan){ // Wenn HO PASSWORT ändert
-        ui -> altesPas -> setVisible(false);
-        ui -> altesPasEdit -> setVisible(false);
+    if(erstan){ // Wenn passwort vom ORg geändert werden muss
         ui ->Zurueck -> setDisabled(true);
         ui ->Zurueck -> setVisible(false);
-       }
+       }else{
+        ui -> altesPas -> setVisible(false);
+        ui -> altesPasEdit -> setVisible(false);
+    }
 
 }
 
@@ -65,7 +66,9 @@ void View_Passwortaenderung::onInit( bool erstanmeldung){
 // wechsel zurück auf den Bildschirm von vorher
 void View_Passwortaenderung::on_Zurueck_clicked()
 {
-
+    View_Teilnehmerliste* tl = new View_Teilnehmerliste(parent);
+    tl->show();
+    this->hide();
 }
 
 
