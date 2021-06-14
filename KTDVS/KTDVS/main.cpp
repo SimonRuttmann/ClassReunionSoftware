@@ -32,10 +32,12 @@ int main(int argc, char *argv[])
     }
 
 //    QSqlQuery teest;
-//    teest.prepare("SELECT * FROM Teilnehmer");
+//    teest.prepare("SELECT * FROM Telefonnummer WHERE teilnehmerdatenkey = :teilnehmerdatenkey;");
+//    teest.bindValue(":teilnehmerdatenkey", 34);
 //    teest.exec();
+
 //    while(teest.next()){
-//        qDebug() <<
+//        qDebug() << teest.value(0) << " " << teest.value(1) << " " << teest.value(2) << " " << teest.value(3);
 //    }
 
 //    QSqlQuery test;

@@ -238,13 +238,19 @@ bool DAO_QT_Teilnehmerdaten::selectFirstOfTeilnehmer(int teilnehmerkey, Teilnehm
     int erstellerkey = select_query_first.value(13).toInt();
     teilnehmerdaten.setErstellerKey(erstellerkey);
 
-    select_telefonNr_ofTeilnehmerdaten.bindValue(":teilnehmerdaten", teilnehmerdatenkey);
+    //"SELECT * FROM Telefonnummer WHERE teilnehmerdatenkey = :teilnehmerdatenkey;"
+    qDebug()<<"Telefonnummern mit TDK: " << teilnehmerdatenkey;
+    select_telefonNr_ofTeilnehmerdaten.bindValue(":teilnehmerdatenkey", teilnehmerdatenkey);
 
-    if(select_telefonNr_ofTeilnehmerdaten.exec()) return false;
+    if(!select_telefonNr_ofTeilnehmerdaten.exec()){
+        qDebug()<<"Telenummerselect scheitert";
+        return false;
+    }
 
     list<string>* telefonnummerliste = new list<string>();
 
     while(select_telefonNr_ofTeilnehmerdaten.next()){
+        qDebug()<<"Hole Telefonnummern";
         bool hauptnummer = select_telefonNr_ofTeilnehmerdaten.value(2).toBool();
         string nummer = select_telefonNr_ofTeilnehmerdaten.value(3).toString().toStdString();
 
