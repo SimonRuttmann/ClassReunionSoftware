@@ -113,7 +113,8 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_Speichern_clicked(){ //Die Teilneh
             && ui->lineEdit_14->text()!=NULL && ui->lineEdit_15->text()!=NULL
             && ui->lineEdit_16->text()!=NULL && ui->lineEdit_17->text()!=NULL
             && ui->lineEdit_18->text()!=NULL && ui->lineEdit_19->text()!=NULL
-            && ui->lineEdit_20->text()!=NULL)
+            && ui->lineEdit_20->text()!=NULL && intcheck(ui->lineEdit_15->text().toStdString())
+            && intcheck(ui->lineEdit_16->text().toStdString()))
     {
         //Vorsicht, diese teilnehmerdaten sind nicht this->teilnehmerdaten (this->teilnehmerdaten Linke Seite, teilnehmerdaten Recht Seite)
         Teilnehmerdaten* teilnehmerdaten;
@@ -187,4 +188,16 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_zurueck_2_clicked()
 void View_TeilnehmerTeilnehmerHinzufuegen::on_logout_2_clicked()
 {
     QApplication::quit();
+}
+
+bool View_TeilnehmerTeilnehmerHinzufuegen::intcheck(string teststr)
+{
+    int i = 0;
+    for(char& c : teststr){
+        if(!isdigit(teststr[i])){
+            return false;
+        }
+        i++;
+    }
+    return true;
 }
