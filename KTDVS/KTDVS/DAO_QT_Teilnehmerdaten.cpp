@@ -272,7 +272,7 @@ bool DAO_QT_Teilnehmerdaten::selectFirstOfTeilnehmer(int teilnehmerkey, Teilnehm
 //Leere Liste an Teilnehmerdaten wird übergeben
 bool DAO_QT_Teilnehmerdaten::selectAllOfTeilnehmer(int teilnehmerkey,  list<Teilnehmerdaten*>& teilnehmerdatenliste){
     select_query_ofTeilnehmer.bindValue(":teilnehmerkey", teilnehmerkey);
-    if(select_query_ofTeilnehmer.exec()) return false;
+    if(!select_query_ofTeilnehmer.exec()) return false;
 
     while(select_query_ofTeilnehmer.next()){
         Teilnehmerdaten* teilnehmerdaten = new Teilnehmerdaten();
@@ -333,7 +333,7 @@ bool DAO_QT_Teilnehmerdaten::selectAllOfTeilnehmer(int teilnehmerkey,  list<Teil
 
         select_telefonNr_ofTeilnehmerdaten.bindValue(":teilnehmerdaten", teilnehmerdatenkey);
 
-        if(select_telefonNr_ofTeilnehmerdaten.exec()) return false;
+        if(!select_telefonNr_ofTeilnehmerdaten.exec()) return false;
 
         list<string>* telefonnummerliste = new list<string>();
 

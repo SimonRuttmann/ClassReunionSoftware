@@ -55,7 +55,10 @@ void View_Versionsverlauf::on_tableWidget_cellClicked(int row, int column)
         string person = listeTeilnehmer->item(row, 1)->text().toStdString();
         string organisator = listeTeilnehmer->item(row, 2)->text().toStdString();
 
-        for (it = teilnehmer->getAlleTeilnehmerdaten()->begin(); it != teilnehmer->getAlleTeilnehmerdaten()->end(); it++) {
+        teilnehmer->getAlleTeilnehmerdaten()->clear();
+        list<Teilnehmerdaten*>* teilnehmerDaten = teilnehmer->alleTeilnehmerdatenErstellen();
+
+        for (it = teilnehmerDaten->begin(); it != teilnehmerDaten->end(); it++) {
             if (pressedOne != nullptr) {
                 vorherige = *it;
                 break;
@@ -66,7 +69,18 @@ void View_Versionsverlauf::on_tableWidget_cellClicked(int row, int column)
 
             string name = (*it)->getVorname() + " " + (*it)->getNachname();
 
-            if (date == datum && person == name && organisator == to_string((*it)->getErstellerKey())) {
+            string orga;
+
+            list<Organisator*>::iterator it1;
+            Teilnehmerliste* teilnehmerListeInstance = Teilnehmerliste::instance();
+
+            for (it1 = teilnehmerListeInstance->getOrganisatorliste()->begin(); it1 != teilnehmerListeInstance->getOrganisatorliste()->end(); it1++) {
+                if ((*it1)->getTeilnehmerkey() == (*it)->getErstellerKey()) {
+                    orga = (*it1)->getAktuelleTeilnehmerdaten()->getVorname() + " " + (*it1)->getAktuelleTeilnehmerdaten()->getNachname();
+                }
+            }
+
+            if (date == datum && person == name && organisator == orga) {
                 pressedOne = *it;
                 //break;
             }
@@ -92,8 +106,12 @@ void View_Versionsverlauf::onInit(){
     int counter = 0;
 
     cout << "add all start items" << endl;
+
+    teilnehmer->getAlleTeilnehmerdaten()->clear();
+    list<Teilnehmerdaten*>* teilnehmerDaten = teilnehmer->alleTeilnehmerdatenErstellen();
+
     //get items from teilnehmerliste
-    for (it = teilnehmer->getAlleTeilnehmerdaten()->begin(); it != teilnehmer->getAlleTeilnehmerdaten()->end(); it++) {
+    for (it = teilnehmerDaten->begin(); it != teilnehmerDaten->end(); it++) {
         listeTeilnehmer->setRowCount(listeTeilnehmer->rowCount() + 1);
 
         string datum = to_string((*it)->getDatum().tag) + "." + to_string((*it)->getDatum().monat) + "." + to_string((*it)->getDatum().jahr);
@@ -101,7 +119,20 @@ void View_Versionsverlauf::onInit(){
 
         listeTeilnehmer->setItem(counter,0, new QTableWidgetItem(QString::fromStdString(datum)));
         listeTeilnehmer->setItem(counter,1, new QTableWidgetItem(QString::fromStdString((*it)->getVorname()) + " " + QString::fromStdString((*it)->getNachname())));
-        listeTeilnehmer->setItem(counter,2, new QTableWidgetItem(QString::fromStdString(to_string((*it)->getErstellerKey()))));
+
+        string orga;
+
+        list<Organisator*>::iterator it1;
+        Teilnehmerliste* teilnehmerListeInstance = Teilnehmerliste::instance();
+
+        for (it1 = teilnehmerListeInstance->getOrganisatorliste()->begin(); it1 != teilnehmerListeInstance->getOrganisatorliste()->end(); it1++) {
+            if ((*it1)->getTeilnehmerkey() == (*it)->getErstellerKey()) {
+                orga = (*it1)->getAktuelleTeilnehmerdaten()->getVorname() + " " + (*it1)->getAktuelleTeilnehmerdaten()->getNachname();
+            }
+        }
+
+        //listeTeilnehmer->setItem(counter,2, new QTableWidgetItem(QString::fromStdString(to_string((*it)->getErstellerKey()))));
+        listeTeilnehmer->setItem(counter,2, new QTableWidgetItem(QString::fromStdString(orga)));
         listeTeilnehmer->setItem(counter,3, new QTableWidgetItem("click for details"));
 
         counter++;
