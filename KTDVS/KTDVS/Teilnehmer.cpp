@@ -65,6 +65,7 @@
     };
 
     void Teilnehmer::neuenTDEintragEinfuegen(Teilnehmerdaten* td){
+        qDebug() << "Teilnehmerdaten werden eingefuegt: Vorname: " << QString::fromStdString(td->getVorname() )<< "Email: " << QString::fromStdString(td->getEMail()) ;
         int erstellerkey = Teilnehmerliste::instance()->aktiverNutzer->getTeilnehmerkey();
         td->setTeilnehmerkey(this->teilnehmerkey);
         td->setErstellerKey(erstellerkey);

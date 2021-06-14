@@ -91,7 +91,7 @@ DAO_QT_Teilnehmerdaten::DAO_QT_Teilnehmerdaten(){
 
 bool DAO_QT_Teilnehmerdaten::insert(Teilnehmerdaten& teilnehmerdaten){
 
-
+    qDebug()<<"1";
     insert_query.bindValue(":teilnehmerkey", teilnehmerdaten.getTeilnehmerkey());
     insert_query.bindValue(":vorname", QString::fromStdString(teilnehmerdaten.getVorname()));
     insert_query.bindValue(":nachname", QString::fromStdString(teilnehmerdaten.getNachname()));
@@ -105,10 +105,13 @@ bool DAO_QT_Teilnehmerdaten::insert(Teilnehmerdaten& teilnehmerdaten){
     insert_query.bindValue(":land", QString::fromStdString(teilnehmerdaten.getAdresse().land));
     insert_query.bindValue(":kommentar", QString::fromStdString(teilnehmerdaten.getKommentar()));
     insert_query.bindValue(":erstellerkey", teilnehmerdaten.getErstellerKey());
-
+    qDebug()<<"2";
     if(!insert_query.exec()) return false;
+    qDebug()<<"3";
     if(!last_insert_id_query.exec())return false;
+    qDebug()<<"4";
     if(!last_insert_id_query.next())return false;
+    qDebug()<<"5";
     int teilnehmerdatenkey = last_insert_id_query.value(0).toInt();
 
     qDebug()<<"TeilnehmerDATENkey"<<teilnehmerdatenkey;

@@ -14,7 +14,6 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextEdit>
@@ -110,7 +109,6 @@ public:
     QTextEdit *Aenderungskommentar_5;
     QTextEdit *Aenderungskommentar_6;
     QStatusBar *statusbar;
-    QMenuBar *menubar;
 
     void setupUi(QWidget *View_VersionsverlaufDetailliert)
     {
@@ -119,6 +117,7 @@ public:
         View_VersionsverlaufDetailliert->resize(800, 600);
         centralwidget = new QWidget(View_VersionsverlaufDetailliert);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        centralwidget->setGeometry(QRect(0, 0, 771, 561));
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(0, 0, 771, 561));
@@ -540,9 +539,7 @@ public:
 
         statusbar = new QStatusBar(View_VersionsverlaufDetailliert);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        menubar = new QMenuBar(View_VersionsverlaufDetailliert);
-        menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 20));
+        statusbar->setGeometry(QRect(0, 0, 3, 22));
 
         retranslateUi(View_VersionsverlaufDetailliert);
 
