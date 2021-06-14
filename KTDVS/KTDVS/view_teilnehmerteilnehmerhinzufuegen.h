@@ -22,6 +22,7 @@ private slots:
     void on_OrganisatorrechteEntfernen_clicked();
     void on_PwAndern_clicked();
     void on_Speichern_clicked();
+    void on_AddPhoneNumber_clicked();
   //  void on_zurueck_clicked();
   //  void on_logout_clicked();
 
@@ -34,6 +35,8 @@ private:
     Ui::View_TeilnehmerTeilnehmerHinzufuegen *ui;
     bool neuerTn;
     bool hauptorgErstellen;
+    QString addnumber = "";
+    int addnumberamount = 0;
     Teilnehmerdaten* teilnehmerdaten;
     Teilnehmer* teiln;
     QWidget* vater;

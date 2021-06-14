@@ -33,13 +33,13 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
     }
 
 
-    neuerTn=neuerTeilnehmer;
+    neuerTn = neuerTeilnehmer;
     teiln = aktuellerTeilnehmer;
     this->hauptorgErstellen = hauptorganisatorErstellen;
     vater = parent;
 
     if(this->hauptorgErstellen) {
-        ui->zurueck_2->setVisible(false);
+        ui->zurueck_2->setEnabled(false);
         ui->Versionsverlauf->setEnabled(false);
         ui->OrganisatorrechteEntfernen->setEnabled(false);
     }
@@ -51,8 +51,6 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
 
     //Kein neuer Teilnehmer -> Teilnehmerdaten sind erhalten
     teilnehmerdaten = teiln->aktuelleTeilnehmerdatenVonDBErhalten();
-
-
     ui->lineEdit_11->setText(QString::fromStdString(teilnehmerdaten->getVorname()));
     ui->lineEdit_12->setText(QString::fromStdString(teilnehmerdaten->getNachname()));
     ui->lineEdit_13->setText(QString::fromStdString(teilnehmerdaten->getSchulname()));
@@ -63,15 +61,25 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
     ui->lineEdit_18->setText(QString::fromStdString(teilnehmerdaten->getAdresse().land));
     ui->lineEdit_19->setText(QString::fromStdString(teilnehmerdaten->getHaupttelefonnummer()));
     ui->lineEdit_20->setText(QString::fromStdString(teilnehmerdaten->getEMail()));
+    if(teilnehmerdaten->getKommentar() != ""){
+        ui->Komentar->setText(QString::fromStdString(teilnehmerdaten->getKommentar()));
+    }
     string teles = "";
     list<string> teleList = teilnehmerdaten->getWeitereTelefonnummern();
     list<string>::iterator it = teleList.begin();
+    string teleListarray[(int)teleList.size()];
+    int i=0;
     while (it != teleList.end()){
         teles.append((*it));
         teles.append(", ");
+        teleListarray[i]= *it;
+        i++;
         it++;
     }
 
+    //for(int i=1 ; i < (int)teleList.size();i++){
+     //   layout.addWidget(new QLineEdit());
+    //}
     ui->lineEdit_21->setText(QString::fromStdString(teles));
     }
 }
@@ -146,12 +154,25 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_Speichern_clicked(){ //Die Teilneh
         teilnehmerdaten->setAdresse(adresse);
         teilnehmerdaten->setHaupttelefonnummer(ui->lineEdit_19->text().toStdString());
         teilnehmerdaten->setEmail(ui->lineEdit_20->text().toStdString());
-        QString teleString = ui->lineEdit_21->text();
+        teilnehmerdaten -> setKommentar(ui->Komentar->toPlainText().toStdString());
+
+        QString teleString;
+        if(addnumberamount == 0){
+           teleString = ui->lineEdit_21->text();
+        }else{
+            if(ui->lineEdit_21->text()!= NULL && ui->lineEdit_21->text().toStdString() != ""){
+                addnumber.append(", " +ui->lineEdit_21->text());
+            }
+            teleString = addnumber;
+        }
+
         QStringList weitereTele = teleString.split(", ");
         list<string> weitereTeleList;
 
         foreach(QString tel, weitereTele){
-            weitereTeleList.push_front(tel.toStdString());
+            if(tel.toStdString() != "" && tel != NULL){
+             weitereTeleList.push_front(tel.toStdString());
+            }
         }
 
         teilnehmerdaten->setWeitereTelefonnummern(weitereTeleList);
@@ -190,14 +211,24 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_logout_2_clicked()
     QApplication::quit();
 }
 
+void View_TeilnehmerTeilnehmerHinzufuegen::on_AddPhoneNumber_clicked(){
+    if(ui->lineEdit_21->text() == NULL || ui->lineEdit_21->text().toStdString() == ""){
+        return;
+    }
+   addnumberamount++;
+   addnumber.append(ui->lineEdit_21->text()+ ", ");
+   ui->lineEdit_21->setText("");
+   ui->label_2->setText("Hinzugefügte weitere Telefonnummern: " + QString::fromStdString(to_string(addnumberamount)));
+}
+
 bool View_TeilnehmerTeilnehmerHinzufuegen::intcheck(string teststr)
 {
-    int i = 0;
-    for(char& c : teststr){
+
+    for(int i=0 ; i<(int)teststr.size();i++){
         if(!isdigit(teststr[i])){
             return false;
         }
-        i++;
+
     }
     return true;
 }
