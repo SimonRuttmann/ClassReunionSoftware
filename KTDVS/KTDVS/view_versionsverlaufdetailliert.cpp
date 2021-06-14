@@ -33,6 +33,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_8->setReadOnly(true);
     ui->lineEdit_9->setReadOnly(true);
     ui->lineEdit_10->setReadOnly(true);
+    ui->textEdit_alt->setReadOnly(true);
 
     //altdaten=nullptr;
     if(neudaten== nullptr){
@@ -41,7 +42,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     }
 
     if(altdaten == nullptr){
-        ui->label_2->setText("Daten wurden neu hinzugefügt");
+        ui->label_4->setText("Daten wurden neu hinzugefügt");
 
         ui->lineEdit_1->setText(QString("-"));
         ui->lineEdit_2->setText(QString("-"));
@@ -53,11 +54,12 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
         ui->lineEdit_8->setText(QString("-"));
         ui->lineEdit_9->setText(QString("-"));
         ui->lineEdit_10->setText(QString("-"));
+        ui->textEdit_alt->setText(QString::fromStdString("-"));
     }
     else{
 
     //Labels
-    ui->label_2->setText("alte Version");
+    ui->label_4->setText("ältere Version");
     //QLineEdits
     ui->lineEdit_1->setText(QString::fromStdString(altdaten->getVorname()));
     ui->lineEdit_2->setText(QString::fromStdString(altdaten->getNachname()));
@@ -69,16 +71,13 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_8->setText(QString::fromStdString(altdaten->getAdresse().land));
     ui->lineEdit_9->setText(QString::fromStdString(altdaten->getHaupttelefonnummer()));
     ui->lineEdit_10->setText(QString::fromStdString(altdaten->getEMail()));
+    ui->textEdit_alt->setText(QString::fromStdString(altdaten->getKommentar()));
 
-
-
-    //Generiert Dynamisch Felder für alle zusätzlichen Nummern
-
-        list<string> weitereTel=altdaten->getWeitereTelefonnummern();
-        ui->comboBox_alt->clear();
-        for(list<string>::iterator i =weitereTel.begin();i!=weitereTel.end();i++){
-            ui->comboBox_alt->addItem(QString::fromStdString(*i));
-        }
+    list<string> weitereTel=altdaten->getWeitereTelefonnummern();
+    ui->comboBox_alt->clear();
+    for(list<string>::iterator i =weitereTel.begin();i!=weitereTel.end();i++){
+        ui->comboBox_alt->addItem(QString::fromStdString(*i));
+    }
 
         /*
         //Kommentarfeld hinzufügen
@@ -102,6 +101,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_28->setReadOnly(true);
     ui->lineEdit_29->setReadOnly(true);
     ui->lineEdit_30->setReadOnly(true);
+    ui->textEdit_neu->setReadOnly(true);
 
     ui->lineEdit_21->setText(QString::fromStdString(neudaten->getVorname()));
     ui->lineEdit_22->setText(QString::fromStdString(neudaten->getNachname()));
@@ -113,9 +113,10 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_28->setText(QString::fromStdString(neudaten->getAdresse().land));
     ui->lineEdit_29->setText(QString::fromStdString(neudaten->getHaupttelefonnummer()));
     ui->lineEdit_30->setText(QString::fromStdString(neudaten->getEMail()));
+    ui->textEdit_neu->setText(QString::fromStdString(neudaten->getKommentar()));
 
     list<string> weitereTel=neudaten->getWeitereTelefonnummern();
-
+    ui->comboBox_neu->clear();
     for(list<string>::iterator i =weitereTel.begin();i!=weitereTel.end();i++){
         ui->comboBox_neu->addItem(QString::fromStdString(*i));
     }
