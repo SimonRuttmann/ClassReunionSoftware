@@ -68,19 +68,15 @@ void View_Teilnehmerliste::onTeilnehmerHinzufuegen(){
 }
 
 void View_Teilnehmerliste::onAlsOrganisatorHinzufuegen(){
-    cout << "Füge als Organisator hinzu!" << endl;
-
-    View_Passwortaenderung* pw = new View_Passwortaenderung(this->vater, ausgewaehlerTeilnehmer);
+    View_Passwortaenderung* pw = new View_Passwortaenderung(this->vater, this->ausgewaehlerTeilnehmer);
     pw->show();
     this->hide();
 }
 
 void View_Teilnehmerliste::onVersionsverlaufAnzeigen(){
-    qDebug()<<"HURRAAA";
     View_Versionsverlauf* vv = new View_Versionsverlauf(this->vater, this->ausgewaehlerTeilnehmer);
     vv->show();
     this->hide();
-    cout << "Versionsverlauf!" << endl;
 }
 
 void View_Teilnehmerliste::onUpdate(){
@@ -120,7 +116,7 @@ void View_Teilnehmerliste::on_Teilnehmertabelle_cellClicked(int row, int column)
 {
     list<Teilnehmer*>::iterator it;
 
-    string email = listeTeilnehmer->item(row, 3)->text().toStdString();
+    string email = listeTeilnehmer->item(row, 2)->text().toStdString();
 
     for (it = teilnehmerList->getTeilnehmerliste()->begin(); it != teilnehmerList->getTeilnehmerliste()->end(); it++) {
 
