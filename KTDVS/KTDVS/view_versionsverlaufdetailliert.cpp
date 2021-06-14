@@ -120,6 +120,6 @@ void View_VersionsverlaufDetailliert::on_zurueck_clicked()
 void View_VersionsverlaufDetailliert::on_logout_clicked()
 {
     //Hier könnten noch Sessionparameter gelöscht werden
-     this->destroy(true);
+     QApplication::quit();
 }
 
