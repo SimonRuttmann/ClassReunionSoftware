@@ -8,7 +8,7 @@
 #include "DAO_QT_Teilnehmer.h"
 #include "DAO_QT_Teilnehmerdaten.h"
 #include "Teilnehmerliste.h"
-#include <qDebug>
+#include <QDebug>
 
     Teilnehmer::Teilnehmer(Teilnehmerdaten* teilnehmerdaten){
         this->aktuelleTeilnehmerdaten = teilnehmerdaten;

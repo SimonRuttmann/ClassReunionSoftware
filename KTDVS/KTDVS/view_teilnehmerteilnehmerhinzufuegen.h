@@ -45,6 +45,9 @@ private:
         return std::is_base_of<Base, T>::value;
     }
     bool intcheck(string teststr);
+    void fehlermeldung();
+    bool isValid;
 };
 
 #endif // VIEW_TEILNEHMERTEILNEHMERHINZUFUEGEN_H
+

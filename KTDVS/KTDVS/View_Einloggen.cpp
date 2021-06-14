@@ -75,12 +75,26 @@ void View_Einloggen::on_Login_clicked()
             //Richtes PW
             if (test == Organisator::Pruefung::EMailZutreffendPwRichtig && org->getVersuch() < 3){
                 org -> setVersuch(0);
-                 //SZENE wechseln zu Teilnehmerliste
                 Teilnehmerliste::instance()->aktiverNutzer = org;
-                View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent);
-                tl->show();
-                this->hide();
-                return;
+                 //SZENE wechseln zu Teilnehmerliste
+                if(org->isSystempasswort()){
+
+
+                    View_Passwortaenderung* pa = new View_Passwortaenderung(this->parent,org);
+                    pa->show();
+                    this->hide();
+
+
+                    return;
+                }else{
+
+                    View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent);
+                    tl->show();
+                    this->hide();
+                    return;
+                }
+
+
             }
             //Falsches PW
             if(test ==  Organisator::Pruefung::EmailZutreffendPwFalsch){

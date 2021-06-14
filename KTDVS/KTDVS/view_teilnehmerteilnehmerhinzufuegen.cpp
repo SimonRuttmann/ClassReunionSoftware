@@ -47,40 +47,36 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
     //kein neuer Teilnehmer, bisherige Daten anzeigen
     if(!neuerTeilnehmer){
 
-    ui->Versionsverlauf->setEnabled(false);
+        ui->Versionsverlauf->setEnabled(false);
 
     //Kein neuer Teilnehmer -> Teilnehmerdaten sind erhalten
     teilnehmerdaten = teiln->aktuelleTeilnehmerdatenVonDBErhalten();
-    ui->lineEdit_11->setText(QString::fromStdString(teilnehmerdaten->getVorname()));
-    ui->lineEdit_12->setText(QString::fromStdString(teilnehmerdaten->getNachname()));
-    ui->lineEdit_13->setText(QString::fromStdString(teilnehmerdaten->getSchulname()));
-    ui->lineEdit_14->setText(QString::fromStdString(teilnehmerdaten->getAdresse().strasse));
-    ui->lineEdit_15->setText(QString::number(teilnehmerdaten->getAdresse().haussnummer));
-    ui->lineEdit_16->setText(QString::number(teilnehmerdaten->getAdresse().postleitzahl));
-    ui->lineEdit_17->setText(QString::fromStdString(teilnehmerdaten->getAdresse().stadt));
-    ui->lineEdit_18->setText(QString::fromStdString(teilnehmerdaten->getAdresse().land));
-    ui->lineEdit_19->setText(QString::fromStdString(teilnehmerdaten->getHaupttelefonnummer()));
-    ui->lineEdit_20->setText(QString::fromStdString(teilnehmerdaten->getEMail()));
-    if(teilnehmerdaten->getKommentar() != ""){
-        ui->Komentar->setText(QString::fromStdString(teilnehmerdaten->getKommentar()));
-    }
-    string teles = "";
-    list<string> teleList = teilnehmerdaten->getWeitereTelefonnummern();
-    list<string>::iterator it = teleList.begin();
-    string teleListarray[(int)teleList.size()];
-    int i=0;
-    while (it != teleList.end()){
-        teles.append((*it));
-        teles.append(", ");
-        teleListarray[i]= *it;
-        i++;
-        it++;
-    }
-
-    //for(int i=1 ; i < (int)teleList.size();i++){
-     //   layout.addWidget(new QLineEdit());
-    //}
-    ui->lineEdit_21->setText(QString::fromStdString(teles));
+        if(teilnehmerdaten->getVorname()!= "")ui->lineEdit_11->setText(QString::fromStdString(teilnehmerdaten->getVorname()));
+        if(teilnehmerdaten->getNachname()!= "")ui->lineEdit_12->setText(QString::fromStdString(teilnehmerdaten->getNachname()));
+        if(teilnehmerdaten->getSchulname()!= "")ui->lineEdit_13->setText(QString::fromStdString(teilnehmerdaten->getSchulname()));
+        if(teilnehmerdaten->getAdresse().strasse!= "")ui->lineEdit_14->setText(QString::fromStdString(teilnehmerdaten->getAdresse().strasse));
+        ui->lineEdit_15->setText(QString::number(teilnehmerdaten->getAdresse().haussnummer));
+        ui->lineEdit_16->setText(QString::number(teilnehmerdaten->getAdresse().postleitzahl));
+        if(teilnehmerdaten->getAdresse().stadt != "")ui->lineEdit_17->setText(QString::fromStdString(teilnehmerdaten->getAdresse().stadt));
+        if(teilnehmerdaten->getAdresse().land!= "")ui->lineEdit_18->setText(QString::fromStdString(teilnehmerdaten->getAdresse().land));
+        if(teilnehmerdaten->getHaupttelefonnummer()!= "")ui->lineEdit_19->setText(QString::fromStdString(teilnehmerdaten->getHaupttelefonnummer()));
+        if(teilnehmerdaten->getEMail()!= "")ui->lineEdit_20->setText(QString::fromStdString(teilnehmerdaten->getEMail()));
+        if(teilnehmerdaten->getKommentar() != "")ui->Komentar->setText(QString::fromStdString(teilnehmerdaten->getKommentar()));
+        if(!teilnehmerdaten->getWeitereTelefonnummern().empty()){
+            string teles = "";
+            list<string> teleList = teilnehmerdaten->getWeitereTelefonnummern();
+            list<string>::iterator it = teleList.begin();
+            string teleListarray[(int)teleList.size()];
+            int i=0;
+            while (it != teleList.end()){
+                teles.append((*it));
+                teles.append(", ");
+                teleListarray[i]= *it;
+                i++;
+                it++;
+            }
+            ui->lineEdit_21->setText(QString::fromStdString(teles));
+        }
     }
 }
 
@@ -117,13 +113,27 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_OrganisatorrechteEntfernen_clicked
 }
 
 void View_TeilnehmerTeilnehmerHinzufuegen::on_Speichern_clicked(){ //Die Teilnehmerdaten müssen da richtig abgeändert werden
+
+    list<Teilnehmer*> teilnehmerliste = *Teilnehmerliste::instance()->getTeilnehmerliste();
+    list<Teilnehmer*>::iterator i;
+    isValid=true;
+    for ( i = teilnehmerliste.begin(); i != teilnehmerliste.end(); i++)
+    {
+        if((*i)->getAktuelleTeilnehmerdaten()->getEMail() == ui->lineEdit_20->text().toStdString())
+        {
+            isValid = false;
+            break;
+        }
+    }
     if(ui->lineEdit_11->text()!=NULL && ui->lineEdit_13->text()!=NULL
             && ui->lineEdit_14->text()!=NULL && ui->lineEdit_15->text()!=NULL
             && ui->lineEdit_16->text()!=NULL && ui->lineEdit_17->text()!=NULL
             && ui->lineEdit_18->text()!=NULL && ui->lineEdit_19->text()!=NULL
             && ui->lineEdit_20->text()!=NULL && intcheck(ui->lineEdit_15->text().toStdString())
-            && intcheck(ui->lineEdit_16->text().toStdString()))
+            && intcheck(ui->lineEdit_16->text().toStdString()) && isValid)
     {
+
+
         //Vorsicht, diese teilnehmerdaten sind nicht this->teilnehmerdaten (this->teilnehmerdaten Linke Seite, teilnehmerdaten Recht Seite)
         Teilnehmerdaten* teilnehmerdaten;
         Teilnehmer* teilnehmer;
@@ -183,8 +193,9 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_Speichern_clicked(){ //Die Teilneh
         View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->vater);
         tl->show();
         this->hide();
-
+        return;
     }
+    fehlermeldung();
 }
 
 
@@ -221,14 +232,35 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_AddPhoneNumber_clicked(){
    ui->label_2->setText("Hinzugefügte weitere Telefonnummern: " + QString::fromStdString(to_string(addnumberamount)));
 }
 
-bool View_TeilnehmerTeilnehmerHinzufuegen::intcheck(string teststr)
+void View_TeilnehmerTeilnehmerHinzufuegen::fehlermeldung(){
+    if(ui->lineEdit_11->text()==NULL) ui->lineEdit_11->setPlaceholderText("Plichtangabe");
+    if(ui->lineEdit_13->text()==NULL) ui->lineEdit_13->setPlaceholderText("Plichtangabe");
+    if(ui->lineEdit_14->text()==NULL) ui->lineEdit_14->setPlaceholderText("Plichtangabe");
+    if(ui->lineEdit_15->text()==NULL) ui->lineEdit_15->setPlaceholderText("Plichtangabe");
+    if(ui->lineEdit_16->text()==NULL) ui->lineEdit_16->setPlaceholderText("Plichtangabe");
+    if(ui->lineEdit_17->text()==NULL) ui->lineEdit_17->setPlaceholderText("Plichtangabe");
+    if(ui->lineEdit_18->text()==NULL) ui->lineEdit_18->setPlaceholderText("Plichtangabe");
+    if(ui->lineEdit_19->text()==NULL) ui->lineEdit_19->setPlaceholderText("Plichtangabe");
+    if(ui->lineEdit_20->text()==NULL) ui->lineEdit_20->setPlaceholderText("Plichtangabe");
+    if(!isValid) ui->lineEdit_20->setPlaceholderText("Email schon vergeben");
+    if(!intcheck(ui->lineEdit_15->text().toStdString())){
+        ui->lineEdit_15->setText("");
+        ui->lineEdit_15->setPlaceholderText("Muss eine Zahl sein");
+    }
+    if(!intcheck(ui->lineEdit_16->text().toStdString())){
+        ui->lineEdit_16->setText("");
+        ui->lineEdit_16->setPlaceholderText("Muss eine Zahl sein");
+    }
+
+}
+
+bool View_TeilnehmerTeilnehmerHinzufuegen::intcheck(string teststr) //gibt true wenns eine Zahl ist
 {
 
     for(int i=0 ; i<(int)teststr.size();i++){
         if(!isdigit(teststr[i])){
             return false;
         }
-
     }
     return true;
 }
