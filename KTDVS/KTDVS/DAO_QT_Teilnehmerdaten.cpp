@@ -274,7 +274,13 @@ bool DAO_QT_Teilnehmerdaten::selectAllOfTeilnehmer(int teilnehmerkey,  list<Teil
     select_query_ofTeilnehmer.bindValue(":teilnehmerkey", teilnehmerkey);
     if(!select_query_ofTeilnehmer.exec()) return false;
 
+    select_query_ofTeilnehmer.bindValue(":teilnehmerkey", teilnehmerkey);
+    if(!select_query_ofTeilnehmer.exec()){
+        return false;
+    }
+    qDebug()<<"Select all ausgeführt";
     while(select_query_ofTeilnehmer.next()){
+
         Teilnehmerdaten* teilnehmerdaten = new Teilnehmerdaten();
         teilnehmerdaten->setTeilnehmerkey(teilnehmerkey);
 
