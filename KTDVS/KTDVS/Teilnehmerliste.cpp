@@ -8,13 +8,26 @@
 
 Teilnehmerliste::Teilnehmerliste(){
     this->TeilnehmerDAO = new DAO_QT_Teilnehmer();
-
-    if(!this->TeilnehmerDAO->selectAllTeilnehmer(teilnehmerliste)){qDebug()<<"Fehler Seelect";}else{qDebug()<<"SelectFunktioniert";}
+    if(!this->TeilnehmerDAO->selectAllTeilnehmer(nurTeilnehmerliste)){qDebug()<<"Fehler Seelect";}else{qDebug()<<"SelectFunktioniert";}
     if(!this->TeilnehmerDAO->selectAllOrganisatoren(organisatorliste)) qDebug()<<"Fehler Select";
 
+    //Der Teilnehmerliste Teilnehmer hinzufuegen
+    list<Teilnehmer*>::iterator teiln = nurTeilnehmerliste.begin();
+    while (teiln != nurTeilnehmerliste.end()){
+        this->teilnehmerliste.push_back( (*teiln) );
+        teiln++;
+    }
+
+    //Der Organisatorliste Organisatoren hinzufuegen
+    list<Organisator*>::iterator orgs = organisatorliste.begin();
+    while(orgs != organisatorliste.end()){
+        this->teilnehmerliste.push_back( (*orgs) );
+        orgs++;
+    }
+
+
+    //Allen Teilnehmern (teiln + org) aktuelle Datensaetze beschaffen
     list<Teilnehmer*>::iterator it = this->teilnehmerliste.begin();
-
-
     while(it != teilnehmerliste.end()){
         qDebug()<<(*it)->getTeilnehmerkey();
          (*it)->aktuelleTeilnehmerdatenVonDBErhalten();

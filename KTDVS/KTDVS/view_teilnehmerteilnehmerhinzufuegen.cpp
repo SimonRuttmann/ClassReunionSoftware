@@ -3,7 +3,7 @@
 
 #include "View_Teilnehmerliste.h"
 #include "ui_View_TeilnehmerTeilnehmerHinzufuegen.h"
-
+#include <QtDebug>
 #include <iostream>
 //Hauptorganisator wird erstellt -> Teilnehemr = HO, "neuer Teilnehmer = true, da keine TD
 View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
@@ -13,8 +13,8 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
     QWidget(parent),
     ui(new Ui::View_TeilnehmerTeilnehmerHinzufuegen)
 {
+    qDebug()<< "object erstellt";
     ui->setupUi(this);
-
     if(instanceof<Organisator>(aktuellerTeilnehmer)){
         //Enable button
         ui->PwAndern->setEnabled(true);
@@ -43,14 +43,15 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
         ui->Versionsverlauf->setEnabled(false);
         ui->OrganisatorrechteEntfernen->setEnabled(false);
     }
-
     //kein neuer Teilnehmer, bisherige Daten anzeigen
     if(!neuerTeilnehmer){
-
         ui->Versionsverlauf->setEnabled(false);
-
+        qDebug()<<"des neue tut dinge";
     //Kein neuer Teilnehmer -> Teilnehmerdaten sind erhalten
     teilnehmerdaten = teiln->aktuelleTeilnehmerdatenVonDBErhalten();
+        qDebug()<<"des Daten erhalten klappt";
+        oldEmail = teilnehmerdaten->getEMail();
+        qDebug()<<"getEmail hat geklappt";
         if(teilnehmerdaten->getVorname()!= "")ui->lineEdit_11->setText(QString::fromStdString(teilnehmerdaten->getVorname()));
         if(teilnehmerdaten->getNachname()!= "")ui->lineEdit_12->setText(QString::fromStdString(teilnehmerdaten->getNachname()));
         if(teilnehmerdaten->getSchulname()!= "")ui->lineEdit_13->setText(QString::fromStdString(teilnehmerdaten->getSchulname()));
@@ -62,6 +63,7 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
         if(teilnehmerdaten->getHaupttelefonnummer()!= "")ui->lineEdit_19->setText(QString::fromStdString(teilnehmerdaten->getHaupttelefonnummer()));
         if(teilnehmerdaten->getEMail()!= "")ui->lineEdit_20->setText(QString::fromStdString(teilnehmerdaten->getEMail()));
         if(teilnehmerdaten->getKommentar() != "")ui->Komentar->setText(QString::fromStdString(teilnehmerdaten->getKommentar()));
+        qDebug()<<"daten ohne weittelnr hat geklappt";
         if(!teilnehmerdaten->getWeitereTelefonnummern().empty()){
             string teles = "";
             list<string> teleList = teilnehmerdaten->getWeitereTelefonnummern();
@@ -76,6 +78,7 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
                 it++;
             }
             ui->lineEdit_21->setText(QString::fromStdString(teles));
+
         }
     }
 }
@@ -125,6 +128,8 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_Speichern_clicked(){ //Die Teilneh
             break;
         }
     }
+    if(ui->lineEdit_20->text().toStdString() == oldEmail) isValid=true;
+
     if(ui->lineEdit_11->text()!=NULL && ui->lineEdit_13->text()!=NULL
             && ui->lineEdit_14->text()!=NULL && ui->lineEdit_15->text()!=NULL
             && ui->lineEdit_16->text()!=NULL && ui->lineEdit_17->text()!=NULL
@@ -242,7 +247,10 @@ void View_TeilnehmerTeilnehmerHinzufuegen::fehlermeldung(){
     if(ui->lineEdit_18->text()==NULL) ui->lineEdit_18->setPlaceholderText("Plichtangabe");
     if(ui->lineEdit_19->text()==NULL) ui->lineEdit_19->setPlaceholderText("Plichtangabe");
     if(ui->lineEdit_20->text()==NULL) ui->lineEdit_20->setPlaceholderText("Plichtangabe");
-    if(!isValid) ui->lineEdit_20->setPlaceholderText("Email schon vergeben");
+    if(!isValid){
+            ui->lineEdit_20->setText("");
+            ui->lineEdit_20->setPlaceholderText("Email schon vergeben");
+    }
     if(!intcheck(ui->lineEdit_15->text().toStdString())){
         ui->lineEdit_15->setText("");
         ui->lineEdit_15->setPlaceholderText("Muss eine Zahl sein");

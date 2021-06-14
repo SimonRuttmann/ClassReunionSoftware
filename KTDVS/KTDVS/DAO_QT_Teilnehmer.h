@@ -36,6 +36,7 @@ public:
 
     bool insertTeilnehmer(Teilnehmer& teilnehmer);
     bool updateTeilnehmer(const Teilnehmer& teilnehmer);
+    //NUR TEILNEHMER
     bool selectAllTeilnehmer(list<Teilnehmer*>& teilnehmerliste);
 
     bool selectHo(Organisator& teilnehmer);

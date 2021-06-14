@@ -46,7 +46,7 @@ DAO_QT_Teilnehmer::DAO_QT_Teilnehmer(){
     );
 
     select_query_all.prepare(
-    "SELECT * FROM teilnehmer;"
+    "SELECT * FROM teilnehmer WHERE passwort IS NULL OR passwort = '';"
     );
 
     select_query_allOrg.prepare(
@@ -86,7 +86,7 @@ bool DAO_QT_Teilnehmer::updateTeilnehmer(const Teilnehmer& teilnehmer){
 };
 
 
-
+//NUR TEILNEHMER!
 bool DAO_QT_Teilnehmer::selectAllTeilnehmer(list<Teilnehmer*>& teilnehmerliste){
     if(!select_query_all.exec()){
         qDebug() << "Fehler" ;
