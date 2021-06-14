@@ -18,22 +18,22 @@
     <rect>
      <x>20</x>
      <y>10</y>
-     <width>771</width>
-     <height>561</height>
+     <width>781</width>
+     <height>591</height>
     </rect>
    </property>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>2</x>
-      <y>2</y>
-      <width>452</width>
-      <height>457</height>
+      <x>1</x>
+      <y>5</y>
+      <width>658</width>
+      <height>559</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_7">
+    <layout class="QVBoxLayout" name="verticalLayout_11">
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
        <item>
         <widget class="QPushButton" name="zurueck">
          <property name="text">
@@ -69,144 +69,159 @@
       </layout>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="alteVersion">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_6">
+        <layout class="QVBoxLayout" name="verticalLayout_9">
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_3">
-           <item>
-            <widget class="QLabel" name="label_2">
-             <property name="text">
-              <string>alte Version</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-          </layout>
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>ältere Version</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <layout class="QVBoxLayout" name="verticalLayout_8">
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout_3">
+            <layout class="QVBoxLayout" name="verticalLayout_5">
              <item>
-              <widget class="QLabel" name="vorname">
-               <property name="text">
-                <string>Vorname</string>
-               </property>
-              </widget>
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_3">
+                 <item>
+                  <widget class="QLabel" name="vorname">
+                   <property name="text">
+                    <string>Vorname</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="nachname_alt">
+                   <property name="text">
+                    <string>Nachname</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="schulname_alt">
+                   <property name="text">
+                    <string>Schulname</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="strasse_alt">
+                   <property name="text">
+                    <string>Straße</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="hausnummer_alt">
+                   <property name="text">
+                    <string>Hausnummer</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="plz_alt">
+                   <property name="text">
+                    <string>Plz</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="ort_alt">
+                   <property name="text">
+                    <string>Ort</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="land_alt">
+                   <property name="text">
+                    <string>Land</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="telefonnummern_alt">
+                   <property name="text">
+                    <string>Telefonnummer</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="weitereTel">
+                   <property name="text">
+                    <string>WeitereTel</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="email_alt">
+                   <property name="text">
+                    <string>Email</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_4">
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_1">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_2"/>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_3"/>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_4"/>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_5"/>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_6"/>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_7"/>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_8"/>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_9"/>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="comboBox_alt"/>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_10"/>
+                 </item>
+                </layout>
+               </item>
+              </layout>
              </item>
              <item>
-              <widget class="QLabel" name="nachname_alt">
-               <property name="text">
-                <string>Nachname</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="schulname_alt">
-               <property name="text">
-                <string>Schulname</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="strasse_alt">
-               <property name="text">
-                <string>Straße</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="hausnummer_alt">
-               <property name="text">
-                <string>Hausnummer</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="plz_alt">
-               <property name="text">
-                <string>Plz</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="ort_alt">
-               <property name="text">
-                <string>Ort</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="land_alt">
-               <property name="text">
-                <string>Land</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="telefonnummern_alt">
-               <property name="text">
-                <string>Telefonnummer</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="weitereTel">
-               <property name="text">
-                <string>WeitereTel</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="email_alt">
-               <property name="text">
-                <string>Email</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_4">
-             <item>
-              <widget class="QLineEdit" name="lineEdit_1">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_2"/>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_3"/>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_4"/>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_5"/>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_6"/>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_7"/>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_8"/>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_9"/>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBox_alt"/>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_10"/>
+              <layout class="QHBoxLayout" name="horizontalLayout">
+               <item>
+                <widget class="QTextEdit" name="textEdit_alt">
+                 <property name="placeholderText">
+                  <string>Kommentar...</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
             </layout>
            </item>
@@ -215,138 +230,149 @@
         </layout>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_5">
+        <layout class="QVBoxLayout" name="verticalLayout_7">
          <item>
-          <layout class="QHBoxLayout" name="ueberschriftAltVers_4">
-           <item>
-            <widget class="QLabel" name="label_35">
-             <property name="text">
-              <string>neue Version</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-          </layout>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>neuere Version</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout">
+          <layout class="QVBoxLayout" name="verticalLayout_6">
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout_2">
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
              <item>
-              <widget class="QLabel" name="vorname_neu">
-               <property name="text">
-                <string>Vorname</string>
-               </property>
-              </widget>
+              <layout class="QVBoxLayout" name="verticalLayout_2">
+               <item>
+                <widget class="QLabel" name="vorname_neu">
+                 <property name="text">
+                  <string>Vorname</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="nachname_neu">
+                 <property name="text">
+                  <string>Nachname</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="schulname_neu">
+                 <property name="text">
+                  <string>Schulname</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="strasse_neu">
+                 <property name="text">
+                  <string>Straße</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="hausnummer_neu">
+                 <property name="text">
+                  <string>Hausnummer</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="plz_neu">
+                 <property name="text">
+                  <string>Plz</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="ort_neu">
+                 <property name="text">
+                  <string>Ort</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="land_neu">
+                 <property name="text">
+                  <string>Land</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="telefonnummer_neu">
+                 <property name="text">
+                  <string>Telefonnummer</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="weitereTel_neu">
+                 <property name="text">
+                  <string>WeitereTel</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="email_neu">
+                 <property name="text">
+                  <string>Email</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
              <item>
-              <widget class="QLabel" name="nachname_neu">
-               <property name="text">
-                <string>Nachname</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="schulname_neu">
-               <property name="text">
-                <string>Schulname</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="strasse_neu">
-               <property name="text">
-                <string>Straße</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="hausnummer_neu">
-               <property name="text">
-                <string>Hausnummer</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="plz_neu">
-               <property name="text">
-                <string>Plz</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="ort_neu">
-               <property name="text">
-                <string>Ort</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="land_neu">
-               <property name="text">
-                <string>Land</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="telefonnummer_neu">
-               <property name="text">
-                <string>Telefonnummer</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="weitereTel_neu">
-               <property name="text">
-                <string>WeitereTel</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="email_neu">
-               <property name="text">
-                <string>Email</string>
-               </property>
-              </widget>
+              <layout class="QVBoxLayout" name="verticalLayout">
+               <item>
+                <widget class="QLineEdit" name="lineEdit_21"/>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_22"/>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_23"/>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_24"/>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_25"/>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_26"/>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_27"/>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_28"/>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_29"/>
+               </item>
+               <item>
+                <widget class="QComboBox" name="comboBox_neu"/>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_30"/>
+               </item>
+              </layout>
              </item>
             </layout>
            </item>
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout">
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
              <item>
-              <widget class="QLineEdit" name="lineEdit_21"/>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_22"/>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_23"/>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_24"/>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_25"/>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_26"/>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_27"/>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_28"/>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_29"/>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBox_neu"/>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_30"/>
+              <widget class="QTextEdit" name="textEdit_neu">
+               <property name="placeholderText">
+                <string extracomment="Kommentar...">Kommentar...</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
