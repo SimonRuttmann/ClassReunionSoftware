@@ -78,7 +78,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_10->setText(QString::fromStdString(altdaten->getEMail()));
 
 
-
+    /*
     //Generiert Dynamisch Felder für alle zusätzlichen Nummern
         anzNummern=0; //Setze auf Anzahl zusätzlicher Nummern
 
@@ -106,7 +106,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
         edit->setReadOnly(true);
         edit->setText(QString(QString::fromStdString(altdaten->getKommentar())));
         hLayout->addWidget(edit);
-        ui->alteVersion_2->addLayout(hLayout);
+        ui->alteVersion_2->addLayout(hLayout);*/
     }
 
     //Setze Eigenschaften der neuen Daten Reihe
@@ -133,7 +133,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_28->setText(QString::fromStdString(neudaten->getAdresse().land));
     ui->lineEdit_29->setText(QString::fromStdString(neudaten->getHaupttelefonnummer()));
     ui->lineEdit_30->setText(QString::fromStdString(neudaten->getEMail()));
-
+    /*
     anzNummern=0; //Setze auf Anzahl zusätzlicher Nummern
 
     list<string> weitereTel=neudaten->getWeitereTelefonnummern();
@@ -160,7 +160,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     edit->setReadOnly(true);
     edit->setText(QString(QString::fromStdString(neudaten->getKommentar())));
     hLayout->addWidget(edit);
-    ui->neueVersion_2->addLayout(hLayout);
+    ui->neueVersion_2->addLayout(hLayout);*/
 }
 
 View_VersionsverlaufDetailliert::~View_VersionsverlaufDetailliert()
