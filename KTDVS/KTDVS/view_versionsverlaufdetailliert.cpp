@@ -40,6 +40,35 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_9->setText(QString::fromStdString(altdaten->getHaupttelefonnummer()));
     ui->lineEdit_10->setText(QString::fromStdString(altdaten->getEMail()));
 
+    //Generiert Dynamisch Felder für alle zusätzlichen Nummern
+        int anzNummern=0; //Setze auf Anzahl zusätzlicher Nummern
+        QHBoxLayout *hLayout;
+        QLabel *label;
+        QLineEdit *lEdit;
+
+        list<string> weitereTel=altdaten->getWeitereTelefonnummern();
+
+        for(list<string>::iterator i =weitereTel.begin();i!=weitereTel.end();i++){
+            hLayout= new QHBoxLayout;
+            label= new QLabel;
+            lEdit = new QLineEdit;
+
+            label->setText(QString("ZusätzlicheTel")+QString::number(anzNummern));
+
+            lEdit->setReadOnly(true);
+            lEdit->setText(QString::fromStdString(*i));
+
+            hLayout->addWidget(label);
+            hLayout->addWidget(lEdit);
+
+            ui->alteVersion_2->addLayout(hLayout);
+        }
+
+        //Kommentarfeld hinzufügen
+        hLayout= new QHBoxLayout;
+        QTextEdit *edit = new QTextEdit;
+        hLayout->addWidget(edit);
+        ui->alteVersion_2->addLayout(hLayout);
     //Setze Eigenschaften der neuen Daten Reihe
     ui->vornameNeu->setText(QString::fromStdString(neudaten->getVorname()));
     ui->nachnameNeu->setText(QString::fromStdString(neudaten->getVorname()));
