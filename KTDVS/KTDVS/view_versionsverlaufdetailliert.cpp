@@ -4,14 +4,18 @@
 
 Teilnehmerdaten *altdaten;
 Teilnehmerdaten *neudaten;
-View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent,Teilnehmerdaten *alt,Teilnehmerdaten *neu) :
+View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent,Teilnehmerdaten *alt,Teilnehmerdaten *neu,Teilnehmer *teilnehmer) :
 
     QWidget(parent),
     ui(new Ui::View_VersionsverlaufDetailliert)
 {
     ui->setupUi(this);
+
+    vater = parent;
     altdaten=alt;
     neudaten=neu;
+    this->teilnehmer=teilnehmer;
+
     if(altdaten==NULL || neudaten== NULL) return;
     //Möglicher Fehler durch umbennung der Elemente in .ui
 
@@ -41,6 +45,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_10->setText(QString::fromStdString(altdaten->getEMail()));
 
     //Generiert Dynamisch Felder für alle zusätzlichen Nummern
+    /*
         int anzNummern=0; //Setze auf Anzahl zusätzlicher Nummern
         QHBoxLayout *hLayout;
         QLabel *label;
@@ -69,6 +74,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
         QTextEdit *edit = new QTextEdit;
         hLayout->addWidget(edit);
         ui->alteVersion_2->addLayout(hLayout);
+        */
     //Setze Eigenschaften der neuen Daten Reihe
     ui->vornameNeu->setText(QString::fromStdString(neudaten->getVorname()));
     ui->nachnameNeu->setText(QString::fromStdString(neudaten->getVorname()));
@@ -104,9 +110,9 @@ View_VersionsverlaufDetailliert::~View_VersionsverlaufDetailliert()
 
 void View_VersionsverlaufDetailliert::on_zurueck_clicked()
 {
-    View_Versionsverlauf *scene= new View_Versionsverlauf(this); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
+    View_Versionsverlauf *scene= new View_Versionsverlauf(vater,teilnehmer); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
 
-    this->destroy(true);
+    this->hide();
     scene->show();
 }
 

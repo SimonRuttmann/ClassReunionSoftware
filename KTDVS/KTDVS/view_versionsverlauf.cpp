@@ -67,7 +67,7 @@ void View_Versionsverlauf::on_tableWidget_cellClicked(int row, int column)
             }
         }
 
-        View_VersionsverlaufDetailliert* vd = new View_VersionsverlaufDetailliert(this->vater, &alt, &neu);
+        View_VersionsverlaufDetailliert* vd = new View_VersionsverlaufDetailliert(this->vater, &alt, &neu,teilnehmer);
         vd->show();
         this->hide();
     }

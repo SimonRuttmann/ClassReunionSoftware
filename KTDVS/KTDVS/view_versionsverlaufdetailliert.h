@@ -2,6 +2,7 @@
 #define VIEW_VERSIONSVERLAUFDETAILLIERT_H
 
 #include <QWidget>
+#include "Teilnehmer.h"
 #include "Teilnehmerdaten.h"
 #include "View_Versionsverlauf.h"
 
@@ -14,7 +15,7 @@ class View_VersionsverlaufDetailliert : public QWidget
     Q_OBJECT
 
 public:
-    explicit View_VersionsverlaufDetailliert(QWidget *parent = nullptr,Teilnehmerdaten *alt= nullptr, Teilnehmerdaten *neu=nullptr);
+    explicit View_VersionsverlaufDetailliert(QWidget *parent = nullptr,Teilnehmerdaten *alt= nullptr, Teilnehmerdaten *neu=nullptr, Teilnehmer *teilnehmer=nullptr);
     ~View_VersionsverlaufDetailliert();
 
 private slots:
@@ -28,6 +29,8 @@ private slots:
 
 private:
     Ui::View_VersionsverlaufDetailliert *ui;
+    QWidget *vater;
+    Teilnehmer *teilnehmer;
 };
 
 #endif // VIEW_VERSIONSVERLAUFDETAILLIERT_H
