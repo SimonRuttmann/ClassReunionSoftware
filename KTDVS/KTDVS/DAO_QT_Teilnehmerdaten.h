@@ -26,7 +26,8 @@ private:
                 select_telefonNr_ofTeilnehmerdaten,
                 select_query_all,
                 select_query_ofTeilnehmer,
-                select_query_first;
+                select_query_first,
+                select_query_first_subselect;
 public:
     //Konstruktor bereitet die Anfragen vor
     DAO_QT_Teilnehmerdaten();

@@ -8,6 +8,7 @@
 #include "DAO_QT_Teilnehmer.h"
 #include "DAO_QT_Teilnehmerdaten.h"
 #include "Teilnehmerliste.h"
+#include <qDebug>
 
     Teilnehmer::Teilnehmer(Teilnehmerdaten* teilnehmerdaten){
         this->aktuelleTeilnehmerdaten = teilnehmerdaten;
@@ -37,9 +38,11 @@
     };
 
     Teilnehmerdaten* Teilnehmer::aktuelleTeilnehmerdatenVonDBErhalten(){
-
+        qDebug()<<"Hole Teilnehmerdaten mit Teilnehmerkey: " << this->teilnehmerkey << " ";
         this->TeilnehmerdatenDAO->selectFirstOfTeilnehmer(this->teilnehmerkey, *this->aktuelleTeilnehmerdaten);
+        qDebug()<<"Erhalte TD mit Email: " << QString::fromStdString(aktuelleTeilnehmerdaten->getEMail()) << "teilnehmerkey: "<< getAktuelleTeilnehmerdaten()->getTeilnehmerkey();
         return this->aktuelleTeilnehmerdaten;
+
     };
 
     list<Teilnehmerdaten*>* Teilnehmer::getAlleTeilnehmerdaten(){

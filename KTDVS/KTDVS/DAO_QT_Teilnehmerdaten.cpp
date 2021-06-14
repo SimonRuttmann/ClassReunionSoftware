@@ -58,15 +58,29 @@ DAO_QT_Teilnehmerdaten::DAO_QT_Teilnehmerdaten(){
             );
     select_query_ofTeilnehmer.prepare
           (
-           "SELECT FROM Teilnehmerdaten WHERE teilnehmerkey = :teilnehmerkey"
+           "SELECT * FROM Teilnehmerdaten WHERE teilnehmerkey = :teilnehmerkey;"
            );
     select_query_first.prepare
           (
-           "SELECT * FROM Teilnehmerdaten"
-           "WHERE teilnehmerkey = :teilnehmerkey AND teilnehmerdatenkey >= ALL "
-           "(SELECT teilnehmerdatenkey FROM Teilnehmerdaten WHERE teilnehmerkey = :teilnehmerkey);"
+              "SELECT * FROM Teilnehmerdaten WHERE teilnehmerkey = :teilnehmerkey AND teilnehmerdatenkey = :tdErst;"
            );
 
+    select_query_first_subselect.prepare
+          (
+              "SELECT MAX(teilnehmerdatenkey) FROM Teilnehmerdaten WHERE teilnehmerkey = :teilnehmerkey;"
+           );
+    // Läuft auf sqlite db, aber nicht bei exec();
+   // "SELECT * FROM Teilnehmerdaten WHERE teilnehmerkey = 30 AND teilnehmerdatenkey = (SELECT MAX(teilnehmerdatenkey) FROM Teilnehmerdaten WHERE teilnehmerkey = 30);"
+
+
+
+    //"SELECT * FROM Teilnehmerdaten"
+    //"WHERE teilnehmerkey = 30 AND teilnehmerdatenkey >=  "
+    //"(SELECT MAX(teilnehmerdatenkey) FROM Teilnehmerdaten WHERE teilnehmerkey = 30);"
+
+    // "SELECT * FROM Teilnehmerdaten"
+   // "WHERE teilnehmerkey = :teilnehmerkey AND teilnehmerdatenkey >=  "
+   // "(SELECT MAX(teilnehmerdatenkey) FROM Teilnehmerdaten WHERE teilnehmerkey = :teilnehmerkey2);"
 }
 
 
@@ -128,9 +142,45 @@ bool DAO_QT_Teilnehmerdaten::insert(Teilnehmerdaten& teilnehmerdaten){
 
 
 bool DAO_QT_Teilnehmerdaten::selectFirstOfTeilnehmer(int teilnehmerkey, Teilnehmerdaten& teilnehmerdaten){
-    select_query_first.bindValue(":teilnehmerkey", teilnehmerkey);
 
-    if(!select_query_first.exec())return false;
+//    QSqlQuery test;
+//    test.prepare("SELECT MAX(teilnehmerdatenkey) FROM Teilnehmerdaten WHERE teilnehmerkey = 62;");
+//    test.exec();
+//    //test.first();
+//    qDebug() << test.first();
+
+    //"SELECT MAX(teilnehmerdatenkey) FROM Teilnehmerdaten WHERE teilnehmerkey = :teilnehmerkey;"
+    qDebug() <<"TK: " << teilnehmerkey;
+    select_query_first_subselect.bindValue(":teilnehmerkey", teilnehmerkey);
+
+    if(!select_query_first_subselect.exec()){
+        qDebug()<<"Select query first Subselect scheitert";
+        return false;
+    }
+    if(!select_query_first_subselect.first()){
+        qDebug()<<"Select query first Subselect NEXT scheitert";
+        return false;
+    }
+
+    int tdErst = select_query_first_subselect.value(0).toInt();
+    qDebug()<<"Erhalte tdErst: " << tdErst;
+
+    //Keine Teilnehmerdaten zu diesem Teilnehmer erhalten
+    if(tdErst == 0) return false;
+    //"SELECT * FROM Teilnehmerdaten WHERE teilnehmerkey = :teilnehmerkey AND teilnehmerdatenkey = :tdErst;"
+    select_query_first.bindValue(":teilnehmerkey", teilnehmerkey);
+    select_query_first.bindValue(":tdErst", tdErst);
+
+
+    if(!select_query_first.exec()){
+        qDebug()<<"Select query first scheitert";
+        return false;
+    }
+
+    if(!select_query_first.next()){
+        qDebug()<<"Select query first scheitert";
+        return false;
+    }
 
     teilnehmerdaten.setTeilnehmerkey(teilnehmerkey);
 

@@ -22,13 +22,27 @@ int main(int argc, char *argv[])
     qdir.cdUp();
     qdir.cdUp();
     QString path = qdir.absoluteFilePath("KTDVS_DB.db");
-     db.setDatabaseName(path);
+    db.setDatabaseName(path);
+
+
 
     if(!db.open()) {
     cerr<< "cannot open database" << endl;
     exit(2);
     }
 
+//    QSqlQuery teest;
+//    teest.prepare("SELECT * FROM Teilnehmer");
+//    teest.exec();
+//    while(teest.next()){
+//        qDebug() <<
+//    }
+
+//    QSqlQuery test;
+//    test.prepare("SELECT MAX(teilnehmerdatenkey) FROM Teilnehmerdaten WHERE teilnehmerkey = 62;");
+//    test.exec();
+//    qDebug() << test.first();
+//    qDebug() << test.value(0).toInt();
 
     MainWindow w;
     w.show();

@@ -14,9 +14,10 @@ Teilnehmerliste::Teilnehmerliste(){
 
     list<Teilnehmer*>::iterator it = this->teilnehmerliste.begin();
 
+
     while(it != teilnehmerliste.end()){
         qDebug()<<(*it)->getTeilnehmerkey();
-
+         (*it)->aktuelleTeilnehmerdatenVonDBErhalten();
 
         it++;
     }
