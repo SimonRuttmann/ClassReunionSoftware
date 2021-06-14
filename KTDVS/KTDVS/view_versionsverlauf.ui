@@ -204,21 +204,31 @@
        <number>0</number>
       </property>
       <property name="columnCount">
-       <number>4</number>
+       <number>6</number>
       </property>
       <column>
        <property name="text">
-        <string>Änderungsdatum</string>
+        <string>Vorname</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>geänderte Person</string>
+        <string>Nachname</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Organisator</string>
+        <string>E-Mail</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Vorname Bearbeiter</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Nachname Bearbeiter</string>
        </property>
       </column>
       <column>
