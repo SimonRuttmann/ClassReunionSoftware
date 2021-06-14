@@ -3,13 +3,16 @@
 #include "View_Teilnehmerliste.h"
 #include "View_ErsterSystemstart.h"
 #include "View_Einloggen.h"
+#include <QDebug>
+#include <QFile>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-
+    qDebug() << "Able to find main.cpp?..."
+             << QFile::exists(PROJECT_PATH "main.cpp");
 //    Teilnehmerliste *liste = new Teilnehmerliste();
 
 //    Adresse *adresse = new Adresse();

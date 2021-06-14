@@ -21,10 +21,10 @@ public:
     ~View_Teilnehmerliste();
 
     void onAusloggen();
-    void onTeilnehmerdatenAendern(string email);
-    void onTeilnehmerHinzufuegen(Teilnehmer* teilnehmer);
-    void onAlsOrganisatorHinzufuegen(string email);
-    void onVersionsverlaufAnzeigen(string email);
+    void onTeilnehmerdatenAendern();
+    void onTeilnehmerHinzufuegen();
+    void onAlsOrganisatorHinzufuegen();
+    void onVersionsverlaufAnzeigen();
     void onUpdate();
     void onInit();
 
@@ -33,17 +33,18 @@ private slots:
 
     void on_toolButton_clicked();
 
-    void test(string email);
+
+    void on_Teilnehmertabelle_cellClicked(int row, int column);
 
 private:
     Ui::View_Teilnehmerliste *ui;
 
+    QTableWidget* listeTeilnehmer;
+
     Teilnehmerliste* teilnehmerList;
     Teilnehmer* ausgewaehlerTeilnehmer;
     QWidget* vater;
-    void addEingeklapptesFeld(Teilnehmerdaten* daten);
-    void addAusgeklapptesFeld(Teilnehmerdaten* daten);
-    void addAusgeklapptesFeld(string test);
+    void addFeld(Teilnehmerdaten* daten);
 };
 
 #endif // VIEW_TEILNEHMERLISTE_H

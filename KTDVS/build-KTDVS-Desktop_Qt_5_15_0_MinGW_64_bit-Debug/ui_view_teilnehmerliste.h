@@ -13,11 +13,12 @@
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QToolButton>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -37,8 +38,7 @@ public:
     QSpacerItem *horizontalSpacer_6;
     QToolButton *toolButton;
     QSpacerItem *horizontalSpacer_4;
-    QWidget *verticalLayoutWidget_2;
-    QVBoxLayout *liste;
+    QTableWidget *Teilnehmertabelle;
 
     void setupUi(QWidget *View_Teilnehmerliste)
     {
@@ -106,12 +106,25 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer_4);
 
-        verticalLayoutWidget_2 = new QWidget(View_Teilnehmerliste);
-        verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(10, 80, 1061, 631));
-        liste = new QVBoxLayout(verticalLayoutWidget_2);
-        liste->setObjectName(QString::fromUtf8("liste"));
-        liste->setContentsMargins(0, 0, 0, 0);
+        Teilnehmertabelle = new QTableWidget(View_Teilnehmerliste);
+        if (Teilnehmertabelle->columnCount() < 7)
+            Teilnehmertabelle->setColumnCount(7);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        Teilnehmertabelle->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        Teilnehmertabelle->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
+        Teilnehmertabelle->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        Teilnehmertabelle->setHorizontalHeaderItem(3, __qtablewidgetitem3);
+        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
+        Teilnehmertabelle->setHorizontalHeaderItem(4, __qtablewidgetitem4);
+        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
+        Teilnehmertabelle->setHorizontalHeaderItem(5, __qtablewidgetitem5);
+        QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
+        Teilnehmertabelle->setHorizontalHeaderItem(6, __qtablewidgetitem6);
+        Teilnehmertabelle->setObjectName(QString::fromUtf8("Teilnehmertabelle"));
+        Teilnehmertabelle->setGeometry(QRect(10, 80, 1061, 611));
 
         retranslateUi(View_Teilnehmerliste);
 
@@ -124,6 +137,14 @@ public:
         pushButton->setText(QCoreApplication::translate("View_Teilnehmerliste", "Teilnehmer hinzuf\303\274gen", nullptr));
         label->setText(QCoreApplication::translate("View_Teilnehmerliste", "KTDVS", nullptr));
         toolButton->setText(QCoreApplication::translate("View_Teilnehmerliste", "...", nullptr));
+        QTableWidgetItem *___qtablewidgetitem = Teilnehmertabelle->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QCoreApplication::translate("View_Teilnehmerliste", "Vorname", nullptr));
+        QTableWidgetItem *___qtablewidgetitem1 = Teilnehmertabelle->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QCoreApplication::translate("View_Teilnehmerliste", "Nachname", nullptr));
+        QTableWidgetItem *___qtablewidgetitem2 = Teilnehmertabelle->horizontalHeaderItem(2);
+        ___qtablewidgetitem2->setText(QCoreApplication::translate("View_Teilnehmerliste", "EMail", nullptr));
+        QTableWidgetItem *___qtablewidgetitem3 = Teilnehmertabelle->horizontalHeaderItem(3);
+        ___qtablewidgetitem3->setText(QCoreApplication::translate("View_Teilnehmerliste", "Telefonnummer", nullptr));
     } // retranslateUi
 
 };

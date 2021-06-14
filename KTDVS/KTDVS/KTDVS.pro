@@ -7,6 +7,9 @@ CONFIG += c++11
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+# set PROJECT_PATH to the "project path" with a trailing slash
+DEFINES += PROJECT_PATH=\"\\\"$${_PRO_FILE_PWD_}/\\\"\"
+
 SOURCES += \
     DAO_QT_Teilnehmer.cpp \
     DAO_QT_Teilnehmerdaten.cpp \

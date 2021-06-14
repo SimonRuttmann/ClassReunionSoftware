@@ -15,11 +15,11 @@ View_Teilnehmerliste::View_Teilnehmerliste(QWidget *parent) :
     ui->setupUi(this);
     uiglobal = ui;
 
+    this->listeTeilnehmer = ui->Teilnehmertabelle;
+
     this->teilnehmerList = Teilnehmerliste::instance();
 
     onInit();
-
-    //addAusgeklapptesFeld("test");
 }
 
 View_Teilnehmerliste::~View_Teilnehmerliste()
@@ -27,89 +27,7 @@ View_Teilnehmerliste::~View_Teilnehmerliste()
     delete ui;
 }
 
-void View_Teilnehmerliste::addAusgeklapptesFeld(string test){
-    string name = test + " " + test;
-
-    string adresse = "", telefonnummern = "";
-
-    adresse = adresse + test;
-
-    telefonnummern = telefonnummern + test;
-    list<string>::iterator itNummern;
-
-    //add normales
-    QHBoxLayout* layout = new QHBoxLayout();
-    //keine ahnung was die parameter sind
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    layout->addWidget(new QToolButton());
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    layout->addWidget(new QLabel(QString::fromStdString(name)));
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    layout->addWidget(new QLabel(QString::fromStdString(test)));
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-
-    //add großes
-    QVBoxLayout* layout1 = new QVBoxLayout();
-    layout1->addLayout(layout);
-
-    //die müssen noch die methoden aufrufen können
-    QVBoxLayout* buttons = new QVBoxLayout();
-
-    QPushButton* buttonVerlauf = new QPushButton("Versionsverlauf");
-    QPushButton* buttonDaten = new QPushButton("Daten ändern");
-    QPushButton* buttonOrganisator = new QPushButton("als Organisator hinzufügen");
-
-    //des tut noch nicht .....
-   // connect(buttonDaten, SIGNAL(clicked()), this, SLOT(test("test")));
-
-    buttons->addWidget(buttonVerlauf);
-    buttons->addWidget(buttonDaten);
-    buttons->addWidget(buttonOrganisator);
-
-    QVBoxLayout* datenLayout = new QVBoxLayout();
-    datenLayout->addWidget(new QLabel("\tSchulname: \t\t" + QString::fromStdString(test)));
-    datenLayout->addWidget(new QLabel("\tAdresse: \t\t\t" + QString::fromStdString(adresse)));
-    datenLayout->addWidget(new QLabel("\tE-Mail: \t\t\t" + QString::fromStdString(test)));
-    datenLayout->addWidget(new QLabel("\tLand: \t\t\t" + QString::fromStdString(test)));
-    datenLayout->addWidget(new QLabel("\tTelefonnummer: \t\t" + QString::fromStdString(telefonnummern)));
-    datenLayout->addWidget(new QLabel("\tKommentar: \t\t" + QString::fromStdString(test)));
-
-    QHBoxLayout* combine = new QHBoxLayout();
-    combine->addLayout(datenLayout);
-    combine->addLayout(buttons);
-
-    layout1->addLayout(combine);
-
-    uiglobal->liste->addLayout(layout1);
-}
-
-void View_Teilnehmerliste::addEingeklapptesFeld(Teilnehmerdaten* daten) {
-    string name = daten->getVorname() + " " + daten->getNachname();
-
-    //add normales
-    QHBoxLayout* layout = new QHBoxLayout();
-
-    //QToolButton *qtoolbutton = new QToolButton();
-    //qtoolbutton->icon().addFile("Resources/arrow_down.png");
-
-    //keine ahnung was die parameter sind
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    //layout->addWidget(qtoolbutton);
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    layout->addWidget(new QLabel(QString::fromStdString(name)));
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    layout->addWidget(new QLabel(QString::fromStdString(daten->getEMail())));
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-
-    uiglobal->liste->addLayout(layout);
-}
-void View_Teilnehmerliste::addAusgeklapptesFeld(Teilnehmerdaten* daten){
-    string name = daten->getVorname() + " " + daten->getNachname();
-
+void View_Teilnehmerliste::addFeld(Teilnehmerdaten* daten){
     string adresse = "", telefonnummern = "";
 
     adresse = adresse + daten->getAdresse().strasse;
@@ -118,71 +36,16 @@ void View_Teilnehmerliste::addAusgeklapptesFeld(Teilnehmerdaten* daten){
     adresse = adresse + " " + daten->getAdresse().stadt;
 
     telefonnummern = telefonnummern + daten->getHaupttelefonnummer();
-    list<string>::iterator itNummern;
-    qDebug("TEEEEST1");
-    for (itNummern = daten->getWeitereTelefonnummern().begin(); itNummern != daten->getWeitereTelefonnummern().end(); itNummern++) {
 
-       if(itNummern->empty() || (*itNummern)=="") continue;
-        //Logik errors weil *it = ??
-       qDebug("TEEEEST2");
-       string telenummer = *itNummern;
-       qDebug()<<QString::fromStdString(telenummer);
+    listeTeilnehmer->setRowCount(listeTeilnehmer->rowCount() + 1);
 
-        if (telefonnummern == "") {
-            telefonnummern = (*itNummern);
-            continue;
-        }
-
-        telefonnummern = telefonnummern + ", " + (*itNummern);
-    }
-
-    //add normales
-    QHBoxLayout* layout = new QHBoxLayout();
-
-    //QToolButton *qtoolbutton = new QToolButton();
-    //qtoolbutton->icon().addFile("Resources/arrow_down.png");
-
-    //keine ahnung was die parameter sind
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    //layout->addWidget(qtoolbutton);
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    layout->addWidget(new QLabel(QString::fromStdString(name)));
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-    layout->addWidget(new QLabel(QString::fromStdString(daten->getEMail())));
-    layout->addItem(new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed));
-
-    //add großes
-    QVBoxLayout* layout1 = new QVBoxLayout();
-    layout1->addLayout(layout);
-
-    //die müssen noch die methoden aufrufen können
-    QVBoxLayout* buttons = new QVBoxLayout();
-
-    QPushButton* buttonVerlauf = new QPushButton("Versionsverlauf");
-    QPushButton* buttonDaten = new QPushButton("Daten ändern");
-    QPushButton* buttonOrganisator = new QPushButton("als Organisator hinzufügen");
-
-    buttons->addWidget(buttonVerlauf);
-    buttons->addWidget(buttonDaten);
-    buttons->addWidget(buttonOrganisator);
-
-    QVBoxLayout* datenLayout = new QVBoxLayout();
-    datenLayout->addWidget(new QLabel("\tSchulname: \t\t" + QString::fromStdString(daten->getSchulname())));
-    datenLayout->addWidget(new QLabel("\tAdresse: \t\t\t" + QString::fromStdString(adresse)));
-    datenLayout->addWidget(new QLabel("\tE-Mail: \t\t\t" + QString::fromStdString(daten->getEMail())));
-    datenLayout->addWidget(new QLabel("\tLand: \t\t\t" + QString::fromStdString(daten->getAdresse().land)));
-    datenLayout->addWidget(new QLabel("\tTelefonnummer: \t\t" + QString::fromStdString(telefonnummern)));
-    datenLayout->addWidget(new QLabel("\tKommentar: \t\t" + QString::fromStdString(daten->getKommentar())));
-
-    QHBoxLayout* combine = new QHBoxLayout();
-    combine->addLayout(datenLayout);
-    combine->addLayout(buttons);
-
-    layout1->addLayout(combine);
-
-    uiglobal->liste->addLayout(layout1);
+    listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,0, new QTableWidgetItem(QString::fromStdString(daten->getVorname())));
+    listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,1, new QTableWidgetItem(QString::fromStdString(daten->getNachname())));
+    listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,2, new QTableWidgetItem(QString::fromStdString(daten->getEMail())));
+    listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,3, new QTableWidgetItem(QString::fromStdString(daten->getHaupttelefonnummer())));
+    listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,4, new QTableWidgetItem(QString::fromStdString("Versionsverlauf")));
+    listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,5, new QTableWidgetItem(QString::fromStdString("Daten ändern")));
+    listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,6, new QTableWidgetItem(QString::fromStdString("als Organisator")));
 }
 
 void View_Teilnehmerliste::onAusloggen(){
@@ -190,42 +53,30 @@ void View_Teilnehmerliste::onAusloggen(){
     cout << "Ausloggen!" << endl;
 }
 
-void View_Teilnehmerliste::test(string email){  //Test???
-    cout << email << endl;
-}
-
-void View_Teilnehmerliste::onTeilnehmerdatenAendern(string email){  //Teilnehmer
-    onUpdate();
-
+void View_Teilnehmerliste::onTeilnehmerdatenAendern(){
     View_TeilnehmerTeilnehmerHinzufuegen* viewTtH =
             new View_TeilnehmerTeilnehmerHinzufuegen(this->vater, this->ausgewaehlerTeilnehmer, false, false);
     viewTtH->show();
     this->hide();
 }
 
-void View_Teilnehmerliste::onTeilnehmerHinzufuegen(Teilnehmer* teilnehmer){
-    addAusgeklapptesFeld(teilnehmer->getAktuelleTeilnehmerdaten());
+void View_Teilnehmerliste::onTeilnehmerHinzufuegen(){
     View_TeilnehmerTeilnehmerHinzufuegen* viewTtH =
             new View_TeilnehmerTeilnehmerHinzufuegen(this->vater, this->ausgewaehlerTeilnehmer, true, false);
     viewTtH->show();
     this->hide();
 }
 
-void View_Teilnehmerliste::onAlsOrganisatorHinzufuegen(string email){
+void View_Teilnehmerliste::onAlsOrganisatorHinzufuegen(){
     cout << "Füge als Organisator hinzu!" << endl;
 
-    list<Teilnehmer*>::iterator it;
-
-    for (it = teilnehmerList->getTeilnehmerliste()->begin(); it != teilnehmerList->getTeilnehmerliste()->end(); it++) {
-        if ((*it)->getAktuelleTeilnehmerdaten()->getEMail() == email) {
-            //mach den organisator//Falsch Systempasswort fehlt
-            //Teilnehmerliste::instance()->vonTeilnZuOrg("Teilnehmerobjekt", "Systempasswort");
-            break;
-        }
-    }
+    View_Passwortaenderung* pw = new View_Passwortaenderung(this->vater, ausgewaehlerTeilnehmer);
+    pw->show();
+    this->hide();
 }
 
-void View_Teilnehmerliste::onVersionsverlaufAnzeigen(string email){
+void View_Teilnehmerliste::onVersionsverlaufAnzeigen(){
+    qDebug()<<"HURRAAA";
     View_Versionsverlauf* vv = new View_Versionsverlauf(this->vater, this->ausgewaehlerTeilnehmer);
     vv->show();
     this->hide();
@@ -234,6 +85,8 @@ void View_Teilnehmerliste::onVersionsverlaufAnzeigen(string email){
 
 void View_Teilnehmerliste::onUpdate(){
     //reset liste
+    listeTeilnehmer->clear();
+
     onInit();
 }
 
@@ -243,15 +96,14 @@ void View_Teilnehmerliste::onInit(){
     if (teilnehmerList != nullptr) {
         for (it = teilnehmerList->getTeilnehmerliste()->begin(); it != teilnehmerList->getTeilnehmerliste()->end(); it++) {
             Teilnehmerdaten* daten = (*it)->getAktuelleTeilnehmerdaten();
-            addAusgeklapptesFeld(daten);
+            addFeld(daten);
         }
     }
 }
 
 void View_Teilnehmerliste::on_pushButton_clicked()
 {
-    this->onTeilnehmerHinzufuegen(this->ausgewaehlerTeilnehmer);
-    cout << "füg teilnehmer hinzu!" << endl;
+    onTeilnehmerHinzufuegen();
 }
 
 
@@ -260,3 +112,32 @@ void View_Teilnehmerliste::on_toolButton_clicked()
     onAusloggen();
 }
 
+
+
+
+
+void View_Teilnehmerliste::on_Teilnehmertabelle_cellClicked(int row, int column)
+{
+    list<Teilnehmer*>::iterator it;
+
+    string email = listeTeilnehmer->item(row, 3)->text().toStdString();
+
+    for (it = teilnehmerList->getTeilnehmerliste()->begin(); it != teilnehmerList->getTeilnehmerliste()->end(); it++) {
+
+        string emailTeilnehmer = (*it)->getAktuelleTeilnehmerdaten()->getEMail();
+
+        if (email == emailTeilnehmer) {
+            Teilnehmer* teilnehmer = (*it);
+            this->ausgewaehlerTeilnehmer = teilnehmer;
+            break;
+        }
+    }
+
+    if (column == 4) {
+        onVersionsverlaufAnzeigen();
+    } else if (column == 5) {
+        onTeilnehmerdatenAendern();
+    } else if (column == 6) {
+        onAlsOrganisatorHinzufuegen();
+    }
+}

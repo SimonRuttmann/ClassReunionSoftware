@@ -163,16 +163,50 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="verticalLayoutWidget_2">
+  <widget class="QTableWidget" name="Teilnehmertabelle">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>80</y>
      <width>1061</width>
-     <height>631</height>
+     <height>611</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="liste"/>
+   <column>
+    <property name="text">
+     <string>Vorname</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Nachname</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>EMail</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Telefonnummer</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string/>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string/>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string/>
+    </property>
+   </column>
   </widget>
  </widget>
  <resources/>

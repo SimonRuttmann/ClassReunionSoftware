@@ -5,6 +5,7 @@
 #include <iostream>
 #include <QDebug>
 
+
 using namespace std;
 //MainWindow w;
 #include "Organisator.h"
@@ -16,16 +17,15 @@ int main(int argc, char *argv[])
 
     //DB Anbindung
     QSqlDatabase db   = QSqlDatabase::addDatabase(DRIVER);
-    db.setDatabaseName("C:/Users/Simon Ruttmann/Desktop/SE Uebung3/KTDVS/KTDVS_DB.db");
-//    QSqlDatabase* dbp = &db;
 
-//    dbp->setHostName("isis.infotronik.htw-aalen.int");
-//    dbp->setDatabaseName("SoftwEng");
-//    dbp->setUserName("SoftwEng");
-//    dbp->setPassword("SoftwEng");
+    QDir qdir( QApplication::applicationDirPath());
+    qdir.cdUp();
+    qdir.cdUp();
+    QString path = qdir.absoluteFilePath("KTDVS_DB.db");
+     db.setDatabaseName(path);
 
     if(!db.open()) {
-    cerr<< "cannotopen database" << endl;
+    cerr<< "cannot open database" << endl;
     exit(2);
     }
 

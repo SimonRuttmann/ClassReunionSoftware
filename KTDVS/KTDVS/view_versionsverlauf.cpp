@@ -2,7 +2,7 @@
 #include "ui_View_Versionsverlauf.h"
 #include "View_Teilnehmerliste.h"
 #include <iostream>
-
+#include "View_VersionsverlaufDetailliert.h"
 using namespace std;
 
 View_Versionsverlauf::View_Versionsverlauf(QWidget *parent, Teilnehmer* teilnehmer) :
@@ -63,6 +63,7 @@ void View_Versionsverlauf::on_tableWidget_cellClicked(int row, int column)
                 //ruf details auf mit den teilnehmerdaten
                 break;
             }
+            //View_VersionsverlaufDetailliert* vvd = new View_VersionsverlaufDetailliert(this->vater, td1, td2);
         }
     }
 }
