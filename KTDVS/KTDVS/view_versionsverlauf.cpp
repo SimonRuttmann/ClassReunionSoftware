@@ -43,7 +43,8 @@ void View_Versionsverlauf::on_toolButton_clicked()
 
 void View_Versionsverlauf::on_tableWidget_cellClicked(int row, int column)
 {
-    Teilnehmerdaten alt, neu;
+    Teilnehmerdaten* aktuell = nullptr;
+    Teilnehmerdaten* alt = nullptr;
 
     list<Teilnehmerdaten*>::iterator it;
 
@@ -61,15 +62,17 @@ void View_Versionsverlauf::on_tableWidget_cellClicked(int row, int column)
             string name = (*it)->getVorname() + " " + (*it)->getNachname();
 
             if (date == datum && person == name && organisator == to_string((*it)->getErstellerKey())) {
-                alt = neu;
-                Teilnehmerdaten* teilnehmerdaten = (*it);
-                neu = *teilnehmerdaten;
+                alt = *it;
             }
         }
 
-        View_VersionsverlaufDetailliert* vd = new View_VersionsverlaufDetailliert(this->vater, &alt, &neu,teilnehmer);
-        vd->show();
-        this->hide();
+        aktuell = teilnehmer->getAktuelleTeilnehmerdaten();
+
+        if (alt != nullptr && aktuell != nullptr) {
+            View_VersionsverlaufDetailliert* vd = new View_VersionsverlaufDetailliert(this->vater, alt, aktuell);
+            vd->show();
+            this->hide();
+        }
     }
 }
 
