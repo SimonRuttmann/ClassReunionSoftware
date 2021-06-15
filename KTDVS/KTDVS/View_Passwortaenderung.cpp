@@ -78,7 +78,8 @@ void View_Passwortaenderung::on_Zurueck_clicked()
 void View_Passwortaenderung::on_pushButton_clicked()
 {
     qDebug() <<"View_Passwortaenderung: Button wird geklickt";
-    ui ->KeineEingabe->setVisible(true);
+    ui ->KeineEingabe->setVisible(false);
+    ui-> Fehlermeldung ->setVisible(false);
     switch(fall){
         case 1: // Fall1= Org muss Passwort ändern beim ersten Anmelden
         {   qDebug() <<"case1";
@@ -133,6 +134,7 @@ void View_Passwortaenderung::on_pushButton_clicked()
             neuPasEingabe = ui ->neuesPasEdit -> text();
             org->setPasswort(neuPasEingabe.toStdString());
             org->setIsSystempasswort(true);
+            org->setVersuch(0);
             bool updated = Teilnehmerliste::instance()->updateOrganisator(*org);
             qDebug()<<"MUHAHAHAHAHHAHAHAHAHAHAHHAHAH"<<updated;
             View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.

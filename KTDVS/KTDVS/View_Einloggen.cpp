@@ -30,8 +30,8 @@ void View_Einloggen::onInit(){
     }
     ui->LabelOben->setVisible(false);
     ui->LabelUnten->setVisible(false);
-    ui->LabelOben->setStyleSheet("Color:red");
-    ui->LabelUnten->setStyleSheet("Color:red");
+    ui->LabelOben->setStyleSheet("Color:yellow");
+    ui->LabelUnten->setStyleSheet("Color:yellow");
 }
 
 //ggf. Strings konvertieren: QString::fromStdString(ss), qs.toStdString(ss)
@@ -82,6 +82,8 @@ void View_Einloggen::on_Login_clicked()
 
         for (it = (*orglist).begin();it != (*orglist).end();it++)
         {
+            qDebug() << "ich kimme in die for schleife über die org liste";
+
             org = *it;
             //qDebug() << "EMAIL: " << QString::fromStdString(org->getAktuelleTeilnehmerdaten()->getEMail())<< "PW" << QString::fromStdString(org->getPasswort());
             Organisator::Pruefung test = org ->pruefePasswort(passwortString,eMailString);
@@ -89,6 +91,7 @@ void View_Einloggen::on_Login_clicked()
             //Richtes PW
             if (test == Organisator::Pruefung::EMailZutreffendPwRichtig && org->getVersuch() < 3){
                 org -> setVersuch(0);
+                bool updated = Teilnehmerliste::instance()->updateOrganisator(*org);
                 Teilnehmerliste::instance()->aktiverNutzer = org;
                 qDebug() << "Passwort wurde richtig eingegeben";
 
@@ -113,7 +116,7 @@ void View_Einloggen::on_Login_clicked()
                 }
 
 
-            }
+            } // ende if richtiger Passwort
             //Falsches PW
             if(test ==  Organisator::Pruefung::EmailZutreffendPwFalsch){
                int Versuche = org->getVersuch();
@@ -122,7 +125,8 @@ void View_Einloggen::on_Login_clicked()
 
                //Gesperrt
                if(Versuche >= 2 && !org->isHauptorganisator()){
-                    org -> incVersuch(); //Versuch auf 3 gesetzt -> Gesperrt
+                    //org -> incVersuch(); //Versuch auf 3 gesetzt -> Gesperrt
+                    //bool updated = Teilnehmerliste::instance()->updateOrganisator(*org);
                     ui->LabelOben->setText("Passwort wurde zu oft falsch Eingegeben.");
                     ui->LabelUnten->setText("Bitte melden Sie sich beim Hauptorganisator.");
                     ui->LabelOben->setVisible(true);
@@ -132,18 +136,56 @@ void View_Einloggen::on_Login_clicked()
                }
 
                //Fehleingabe
-               ui->LabelOben->setText("Falsches Passwort.");
+               org -> incVersuch();
+               bool updated = Teilnehmerliste::instance()->updateOrganisator(*org);
+               if(org->isHauptorganisator()){
+                   QString output= "Falsches Passwort. Das wird Ihr x Versuch sein";
+                   output.replace("x",QString::number( org ->getVersuch()+1));
+                   ui->LabelOben->setText(output);
+                    qDebug() << "Fehlereingabe ist ein HAuptorg";
+               }else{
+                   QString ausgabe= "Falsches Passwort.Das wird Ihr x/3 Versuch sein.";
+                   ausgabe.replace("x",QString::number( org ->getVersuch()+1));
+                    ui->LabelOben->setText(ausgabe);
+                    qDebug() << "Fehlereingabe ist ein org";
+               }
+
                ui->LabelUnten->setText("Bitte versuchen Sie es erneut.");
                ui->LabelOben->setVisible(true);
                ui->LabelUnten->setVisible(true);
-               org -> incVersuch();
+
                return;
+            }
+
+            if( test == Organisator::Pruefung::EMailZutreffendPwRichtig && org->getVersuch() >= 3 ){
+                if(!org->isHauptorganisator()){
+                    //ist schon gesperrt keine erhöhung nötig
+                    ui->LabelOben->setText("Passwort wurde zu oft falsch Eingegeben.");
+                    ui->LabelUnten->setText("Bitte melden Sie sich beim Hauptorganisator.");
+                    ui->LabelOben->setVisible(true);
+                    ui->LabelUnten->setVisible(true);
+                     qDebug() << "war schon gesperrt";
+
+                    return;
+                }else{
+                    org -> setVersuch(0);
+                    bool updated = Teilnehmerliste::instance()->updateOrganisator(*org);
+                    Teilnehmerliste::instance()->aktiverNutzer = org;
+                    qDebug() << "Passwort wurde richtig eingegeben bei Hauotorg der viele versuche braucht";
+                    View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent);
+                    tl->show();
+                    this->hide();
+                    return;
+                    return;
+                }
+
             }
         }   //Ende For
         ui->LabelOben->setText("Fehlerhafte Eingabe.");
         ui->LabelUnten->setText("Bitte versuchen Sie es erneut.");
         ui->LabelOben->setVisible(true);
         ui->LabelUnten->setVisible(true);
+        qDebug() << "Fehlerfafte eingabe- komme bis zum ende der Schleife";
     }   //Ende Else
 }
 
