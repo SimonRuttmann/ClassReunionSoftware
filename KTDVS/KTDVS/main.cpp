@@ -5,7 +5,6 @@
 #include <iostream>
 #include <QDebug>
 
-
 using namespace std;
 //MainWindow w;
 #include "Organisator.h"
@@ -24,6 +23,8 @@ int main(int argc, char *argv[])
     QString path = qdir.absoluteFilePath("KTDVS_DB.db");
     db.setDatabaseName(path);
 
+    qDebug() << "Kommandozeile: "+QString(argc) ;
+    qDebug() << "Kommandozeile: "+QCoreApplication::arguments().at(argc-1) ;
 
 
     if(!db.open()) {
@@ -51,6 +52,25 @@ int main(int argc, char *argv[])
     };
     qDebug()<<test.next();
     qDebug() << test.value(0);
+
+    if(argc==2){
+        QString arg = QCoreApplication::arguments().at(1);
+        if(arg==QString("clean")){
+            QSqlQuery cleanDb;
+            cleanDb.prepare("DELETE FROM Teilnehmer;");
+            cleanDb.exec();
+            cleanDb.clear();
+            cleanDb.prepare("DELETE FROM Teilnehmerdaten");
+            cleanDb.exec();
+            cleanDb.prepare("DELETE FROM Telefonnummer;");
+            cleanDb.exec();
+            cleanDb.clear();
+        }
+        else if(arg==QString("test")){
+
+        }
+        else qDebug() << "Kommandozeilenargument nicht bekannt";
+    }
     //    QSqlQuery teest;
 //    teest.prepare("SELECT * FROM Telefonnummer WHERE teilnehmerdatenkey = :teilnehmerdatenkey;");
 //    teest.bindValue(":teilnehmerdatenkey", 34);
@@ -69,6 +89,9 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
     return app.exec();
+}
+void leereDB(){
+
 }
 
 void testdaten(){
