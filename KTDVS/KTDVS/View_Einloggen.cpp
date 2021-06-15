@@ -28,10 +28,10 @@ void View_Einloggen::onInit(){
         ui->EMail->setVisible(false);
         ui->Labl1->setVisible(false);
     }
-    ui ->Fehlerausgabe -> setVisible(false);
-    ui ->FalschesPasswort -> setVisible(false);
-    ui ->Gesperrt ->setVisible(false);
-    ui ->KeineEingabe->setVisible(false);
+    ui->LabelOben->setVisible(false);
+    ui->LabelUnten->setVisible(false);
+    ui->LabelOben->setStyleSheet("Color:red");
+    ui->LabelUnten->setStyleSheet("Color:red");
 }
 
 //ggf. Strings konvertieren: QString::fromStdString(ss), qs.toStdString(ss)
@@ -40,15 +40,15 @@ void View_Einloggen::onInit(){
 void View_Einloggen::on_Login_clicked()
 {
     // alle Meldungen unsichbar machen, aus Sicherheit
-    ui ->Fehlerausgabe -> setVisible(false);
-    ui ->FalschesPasswort -> setVisible(false);
-    ui ->Gesperrt ->setVisible(false);
-    ui ->KeineEingabe->setVisible(false);
+    ui->LabelOben->setVisible(false);
+    ui->LabelUnten->setVisible(false);
     // Fall:Hauptorganisator erstellen  Hier grade sehr viel Rechnerei
     if(this->isNeu){
         if(ui ->Passwort ->text().isEmpty()){
             qDebug() <<"blockiert weil String empty";
-            ui ->KeineEingabe->setVisible(true);
+            ui->LabelOben->setText("Bitte füllen Sie alle Felder erst aus.");
+            ui->LabelOben->setVisible(true);
+
             return;
         }
         passwort = ui ->Passwort -> text();
@@ -66,7 +66,8 @@ void View_Einloggen::on_Login_clicked()
         // Fall : normales Anmelden
         if(ui ->Passwort ->text().isEmpty()||ui->EMail->text().isEmpty()){
             qDebug() <<"blockiert weil String empty";
-            ui ->KeineEingabe->setVisible(true);
+            ui->LabelOben->setText("Bitte füllen Sie alle Felder erst aus.");
+            ui->LabelOben->setVisible(true);
             return;
         }
         passwort = ui ->Passwort -> text();
@@ -122,18 +123,27 @@ void View_Einloggen::on_Login_clicked()
                //Gesperrt
                if(Versuche >= 2 && !org->isHauptorganisator()){
                     org -> incVersuch(); //Versuch auf 3 gesetzt -> Gesperrt
-                    ui->Gesperrt -> setVisible(true);
+                    ui->LabelOben->setText("Passwort wurde zu oft falsch Eingegeben.");
+                    ui->LabelUnten->setText("Bitte melden Sie sich beim Hauptorganisator.");
+                    ui->LabelOben->setVisible(true);
+                    ui->LabelUnten->setVisible(true);
                      qDebug() << "Gesperrt";
                     return;
                }
 
                //Fehleingabe
-               ui ->FalschesPasswort -> setVisible(true);
+               ui->LabelOben->setText("Falsches Passwort.");
+               ui->LabelUnten->setText("Bitte versuchen Sie es erneut.");
+               ui->LabelOben->setVisible(true);
+               ui->LabelUnten->setVisible(true);
                org -> incVersuch();
                return;
             }
         }   //Ende For
-        ui ->Fehlerausgabe -> setVisible(true);
+        ui->LabelOben->setText("Fehlerhafte Eingabe.");
+        ui->LabelUnten->setText("Bitte versuchen Sie es erneut.");
+        ui->LabelOben->setVisible(true);
+        ui->LabelUnten->setVisible(true);
     }   //Ende Else
 }
 

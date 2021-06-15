@@ -12,7 +12,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui(new Ui::View_VersionsverlaufDetailliert)
 {
     ui->setupUi(this);
-
+    list<string> weitereTel;
     vater = parent;
     altdaten=alt;
     neudaten=neu;
@@ -73,7 +73,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_10->setText(QString::fromStdString(altdaten->getEMail()));
     ui->textEdit_alt->setText(QString::fromStdString(altdaten->getKommentar()));
 
-    list<string> weitereTel=altdaten->getWeitereTelefonnummern();
+    weitereTel=altdaten->getWeitereTelefonnummern();
     ui->comboBox_alt->clear();
     for(list<string>::iterator i =weitereTel.begin();i!=weitereTel.end();i++){
         ui->comboBox_alt->addItem(QString::fromStdString(*i));
@@ -115,7 +115,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_30->setText(QString::fromStdString(neudaten->getEMail()));
     ui->textEdit_neu->setText(QString::fromStdString(neudaten->getKommentar()));
 
-    list<string> weitereTel=neudaten->getWeitereTelefonnummern();
+    weitereTel=neudaten->getWeitereTelefonnummern();
     ui->comboBox_neu->clear();
     for(list<string>::iterator i =weitereTel.begin();i!=weitereTel.end();i++){
         ui->comboBox_neu->addItem(QString::fromStdString(*i));
