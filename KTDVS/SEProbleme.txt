@@ -1,0 +1,9 @@
+-Bei System erstellen kann das das Passwort geändert werden
+-Telefonnummern (vermutlich zwei Fehler)
+-NeuesSystem->PW eingeben->Daten nicht ausfüllen->Ausloggen ->führt zu fehlerhaften DB Einträgen
+-(Organisator Ernennung)
+
+-Fenstergröße
+-Symboleinbindungen
+
+-(Testfälle schreiben)
