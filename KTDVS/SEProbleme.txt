@@ -3,4 +3,10 @@
 -Fenstergröße
 -Symboleinbindungen
 
+-Bei Teilnehmerliste View-> Button von Organisator rechte -> wechselt nicht Text
+- Man kann bei jedem gerade in den Details Passwort ändern
+   -> dann wird die PErson gleich als neuer ORg eingetragen
+-Disablen von Buttons wenn man den teilnehmer nciht angelget hat
+
+
 -(Testfälle schreiben)
