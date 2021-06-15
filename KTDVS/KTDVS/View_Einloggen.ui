@@ -337,21 +337,6 @@
      </layout>
     </item>
     <item>
-     <widget class="QLabel" name="LabelUnten">
-      <property name="styleSheet">
-       <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-}</string>
-      </property>
-      <property name="text">
-       <string>LabelUnten</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item>
      <widget class="QLabel" name="LabelOben">
       <property name="styleSheet">
        <string notr="true">QLabel{
@@ -360,6 +345,21 @@
       </property>
       <property name="text">
        <string>LabelOben</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="LabelUnten">
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string>LabelUnten</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>

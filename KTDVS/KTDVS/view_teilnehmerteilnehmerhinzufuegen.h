@@ -50,6 +50,7 @@ private:
     void fehlermeldung();
     bool isValid;
     string oldEmail = "";
+    bool isOrg = false;
 };
 
 #endif // VIEW_TEILNEHMERTEILNEHMERHINZUFUEGEN_H

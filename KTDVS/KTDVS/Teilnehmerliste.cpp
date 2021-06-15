@@ -100,6 +100,8 @@ bool Teilnehmerliste::updateTeilnehmer(Teilnehmer& teilnehmer){
 
 
 Teilnehmer* Teilnehmerliste::vonOrgZuTeilnehmer(Organisator* org){
+
+    //Datenbank auf Teilnehmer ausrichten
     org->setHauptorganisator(false);
     org->setIsSystempasswort(false);
     org->setPasswort(NULL);
@@ -107,12 +109,15 @@ Teilnehmer* Teilnehmerliste::vonOrgZuTeilnehmer(Organisator* org){
     this->TeilnehmerDAO->updateTeilnehmer(*org);
 
     Teilnehmer* teiln = new Teilnehmer();
-    int tkey = org->getTeilnehmerkey();
+    teiln->setTeilnehmerkey(org->getTeilnehmerkey());
+    teiln->aktuelleTeilnehmerdatenVonDBErhalten();
+
+    int okey = org->getTeilnehmerkey();
 
     //Pop in Teilnehmerliste
     list<Teilnehmer*>::iterator itTeilnehmer = this->teilnehmerliste.begin();
     while(itTeilnehmer != this->teilnehmerliste.end()){
-        if( (*itTeilnehmer)->getTeilnehmerkey() == tkey){
+        if( (*itTeilnehmer)->getTeilnehmerkey() == okey){
             this->teilnehmerliste.erase(itTeilnehmer);
             break;
         }
@@ -122,7 +127,7 @@ Teilnehmer* Teilnehmerliste::vonOrgZuTeilnehmer(Organisator* org){
     //Pop in Organisatorliste
     list<Organisator*>::iterator itOrg = this->organisatorliste.begin();
     while(itOrg != this->organisatorliste.end()){
-        if( (*itOrg)->getTeilnehmerkey() == tkey){
+        if( (*itOrg)->getTeilnehmerkey() == okey){
             this->organisatorliste.erase(itOrg);
             break;
         }
@@ -130,41 +135,59 @@ Teilnehmer* Teilnehmerliste::vonOrgZuTeilnehmer(Organisator* org){
     }
 
     //Push neuen Teilnehmer
-    teiln->setTeilnehmerkey(tkey);
     this->teilnehmerliste.push_back(teiln);
+    this->nurTeilnehmerliste.push_back(teiln);
 
     delete org;
     return teiln;
 };
 
 Organisator* Teilnehmerliste::vonTeilnZuOrg(Teilnehmer* teiln, string systempasswort){
+    qDebug() << "Transformiere Teilnehmer zu Organisator";
     Organisator * org = new Organisator();
     org->setHauptorganisator(false);
     org->setIsSystempasswort(true);
     org->setPasswort(systempasswort);
     org->setVersuch(0);
     org->setTeilnehmerkey(teiln->getTeilnehmerkey());
-    this->TeilnehmerDAO->updateTeilnehmer(*org);
 
+    qDebug() << "Crash";
+    this->TeilnehmerDAO->updateOrganisator(*org);
+    qDebug() << "Crash1";
+    //Dem Organisator die Teilnehmerdaten aus der DB holen
+    org->aktuelleTeilnehmerdatenVonDBErhalten();
+    //org->getAktuelleTeilnehmerdaten();
+    qDebug() << "Crash2";
     int tkey = org->getTeilnehmerkey();
 
-    //Pop in Teilnehmerliste
-    list<Teilnehmer*>::iterator itTeilnehmer = this->teilnehmerliste.begin();
-    while(itTeilnehmer != this->teilnehmerliste.end()){
+    //Teilnehmer aus nurTeilnehmerliste löschen
+    list<Teilnehmer*>::iterator itTeilnehmer = this->nurTeilnehmerliste.begin();
+    while(itTeilnehmer != this->nurTeilnehmerliste.end()){
         if( (*itTeilnehmer)->getTeilnehmerkey() == tkey){
-            this->teilnehmerliste.erase(itTeilnehmer);
+            this->nurTeilnehmerliste.erase(itTeilnehmer);
             break;
         }
         itTeilnehmer++;
     }
 
+    //Teilnehmer aus Teilnehmerliste löschen
+    list<Teilnehmer*>::iterator itTeilnehmer2 = this->teilnehmerliste.begin();
+    while(itTeilnehmer2 != this->teilnehmerliste.end()){
+        if( (*itTeilnehmer2)->getTeilnehmerkey() == tkey){
+            this->teilnehmerliste.erase(itTeilnehmer2);
+            break;
+        }
+        itTeilnehmer2++;
+    }
+
     //Push neuen Organisator
-    teiln->setTeilnehmerkey(tkey);
     this->organisatorliste.push_back(org);
     this->teilnehmerliste.push_back(org);
 
     delete teiln;
+    qDebug() << "Methodendruchlauf";
     return org;
+
 
 };
 
