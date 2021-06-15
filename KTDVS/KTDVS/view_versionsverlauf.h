@@ -34,6 +34,8 @@ private:
 
     Teilnehmer* teilnehmer;
 
+    list<Teilnehmerdaten*>* teilnehmerDaten;
+
     QTableWidget *listeTeilnehmer;
     QPushButton *zurueck;
     //QPushButton *details;

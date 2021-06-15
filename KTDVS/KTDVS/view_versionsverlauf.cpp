@@ -51,39 +51,15 @@ void View_Versionsverlauf::on_tableWidget_cellClicked(int row, int column)
     if (column == 5) {
         cout << "go to details" << endl;
 
-        string vorname = listeTeilnehmer->item(row, 0)->text().toStdString();
-        string nachname = listeTeilnehmer->item(row, 1)->text().toStdString();
-        string email = listeTeilnehmer->item(row, 2)->text().toStdString();
-        string vornameBearb = listeTeilnehmer->item(row, 3)->text().toStdString();
-        string nachnameBearb = listeTeilnehmer->item(row, 4)->text().toStdString();
-
-        teilnehmer->getAlleTeilnehmerdaten()->clear();
-        list<Teilnehmerdaten*>* teilnehmerDaten = teilnehmer->alleTeilnehmerdatenErstellen();
-
-        for (it = teilnehmerDaten->begin(); it != teilnehmerDaten->end(); it++) {
+        int index = 0;
+        for (it = this->teilnehmerDaten->begin(); it != this->teilnehmerDaten->end(); it++) {
             if (pressedOne != nullptr) {
                 vorherige = *it;
                 break;
             }
 
-            string vornameBearbSearch, nachnameBearbSearch;
-
-            list<Organisator*>::iterator it1;
-            Teilnehmerliste* teilnehmerListeInstance = Teilnehmerliste::instance();
-
-            for (it1 = teilnehmerListeInstance->getOrganisatorliste()->begin(); it1 != teilnehmerListeInstance->getOrganisatorliste()->end(); it1++) {
-                if ((*it1)->getTeilnehmerkey() == (*it)->getErstellerKey()) {
-                    vornameBearbSearch = (*it1)->getAktuelleTeilnehmerdaten()->getVorname();
-                    nachnameBearbSearch = (*it1)->getAktuelleTeilnehmerdaten()->getNachname();
-                }
-            }
-
-            if (vorname == (*it)->getVorname() && nachname == (*it)->getNachname() && email == (*it)->getEMail() && vornameBearb == vornameBearbSearch && nachnameBearb == nachnameBearbSearch) {
-                pressedOne = *it;
-                //break;
-            }
-
-            //neuer = *it;
+            if (index == row) pressedOne = *it;
+            index++;
         }
 
         View_VersionsverlaufDetailliert* vd = new View_VersionsverlaufDetailliert(this->vater, vorherige, pressedOne, teilnehmer);
@@ -106,7 +82,7 @@ void View_Versionsverlauf::onInit(){
     cout << "add all start items" << endl;
 
     teilnehmer->getAlleTeilnehmerdaten()->clear();
-    list<Teilnehmerdaten*>* teilnehmerDaten = teilnehmer->alleTeilnehmerdatenErstellen();
+    teilnehmerDaten = teilnehmer->alleTeilnehmerdatenErstellen();
 
     //get items from teilnehmerliste
     for (it = teilnehmerDaten->begin(); it != teilnehmerDaten->end(); it++) {

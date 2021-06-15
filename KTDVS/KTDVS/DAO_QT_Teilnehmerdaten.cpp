@@ -337,17 +337,23 @@ bool DAO_QT_Teilnehmerdaten::selectAllOfTeilnehmer(int teilnehmerkey,  list<Teil
         int erstellerkey = select_query_ofTeilnehmer.value(13).toInt();
         teilnehmerdaten->setErstellerKey(erstellerkey);
 
-        select_telefonNr_ofTeilnehmerdaten.bindValue(":teilnehmerdaten", teilnehmerdatenkey);
-
+        //Necessary, because QSqlQuery.bindValue() won't always refresh before qt 6.x;
+        QSqlQuery select_telefonNr_ofTeilnehmerdaten;
+        select_telefonNr_ofTeilnehmerdaten.prepare
+             (
+              "SELECT * FROM Telefonnummer WHERE teilnehmerdatenkey = :teilnehmerdatenkey;"
+              );
+        select_telefonNr_ofTeilnehmerdaten.bindValue(":teilnehmerdatenkey", teilnehmerdatenkey);
+        qDebug()<<"Tel Select Prepared!";
         if(!select_telefonNr_ofTeilnehmerdaten.exec()) return false;
-
+        qDebug()<<"Tel Select Ausgeführt!";
         list<string>* telefonnummerliste = new list<string>();
 
         //Telefonnummern erhalten
         while(select_telefonNr_ofTeilnehmerdaten.next()){
             bool hauptnummer = select_telefonNr_ofTeilnehmerdaten.value(2).toBool();
             string nummer = select_telefonNr_ofTeilnehmerdaten.value(3).toString().toStdString();
-
+            qDebug()<<"Hole Telefonnummer: " + QString::fromStdString(nummer);
             if(!hauptnummer){
                 telefonnummerliste->push_front(nummer);
             }
@@ -355,9 +361,10 @@ bool DAO_QT_Teilnehmerdaten::selectAllOfTeilnehmer(int teilnehmerkey,  list<Teil
                 teilnehmerdaten->setHaupttelefonnummer(nummer);
             }
         }
-
+        //select_telefonNr_ofTeilnehmerdaten.
         teilnehmerdaten->setWeitereTelefonnummern(*telefonnummerliste);
         teilnehmerdatenliste.push_front(teilnehmerdaten);
+
     }
     return true;
 };
@@ -427,7 +434,7 @@ bool DAO_QT_Teilnehmerdaten::selectAll(list<Teilnehmerdaten*>& teilnehmerdatenli
         int erstellerkey = select_query_ofTeilnehmer.value(13).toInt();
         teilnehmerdaten->setErstellerKey(erstellerkey);
 
-        select_telefonNr_ofTeilnehmerdaten.bindValue(":teilnehmerdaten", teilnehmerdatenkey);
+        select_telefonNr_ofTeilnehmerdaten.bindValue(":teilnehmerdatenkey", teilnehmerdatenkey);
 
         if(select_telefonNr_ofTeilnehmerdaten.exec()) return false;
 
