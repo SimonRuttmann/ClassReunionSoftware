@@ -21,17 +21,33 @@
 
     };
 
+
+
     Teilnehmer::~Teilnehmer(){
 
-        delete this->aktuelleTeilnehmerdaten;
-        list<Teilnehmerdaten*>::iterator it = this->Teilnehmerdatenliste.begin();
+//        list<Adresse*> adressen;
+//        list<Teilnehmerdaten*>::iterator it = this->Teilnehmerdatenliste.begin();
 
-        while(it != Teilnehmerdatenliste.end()){
-            this->Teilnehmerdatenliste.erase(it);
-            delete(*it);
-            //it++;
-        }
-    };
+//        //delete this->aktuelleTeilnehmerdaten;
+//        Teilnehmerdaten* td;
+
+        for (auto itr = this->Teilnehmerdatenliste.begin(); itr!=this->Teilnehmerdatenliste.end(); ++itr)
+            {
+                delete  *itr;
+            }
+
+//        while(it != Teilnehmerdatenliste.end()){
+//            td = *it;
+//            this->Teilnehmerdatenliste.erase(it);
+
+//        }
+
+
+//        while (!adressen.empty())
+//           delete (adressen.pop_front());
+//        }
+
+    }
 
     Teilnehmerdaten* Teilnehmer::getAktuelleTeilnehmerdaten(){
         return this->aktuelleTeilnehmerdaten;

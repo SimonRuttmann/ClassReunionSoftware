@@ -27,9 +27,8 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QVBoxLayout *verticalLayout_5;
-    QHBoxLayout *horizontalLayout_3;
-    QLabel *KeineEingabe;
-    QLabel *Fehlerausgabe;
+    QLabel *LabelOben;
+    QLabel *LabelUnten;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_4;
     QLabel *Labl1;
@@ -42,12 +41,6 @@ public:
     QSpacerItem *horizontalSpacer;
     QPushButton *Login;
     QPushButton *zurueck;
-    QWidget *verticalLayoutWidget_2;
-    QVBoxLayout *verticalLayout_2;
-    QLabel *FalschesPasswort;
-    QWidget *verticalLayoutWidget_6;
-    QVBoxLayout *verticalLayout_6;
-    QLabel *Gesperrt;
 
     void setupUi(QWidget *View_Einloggen)
     {
@@ -62,20 +55,15 @@ public:
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        KeineEingabe = new QLabel(verticalLayoutWidget);
-        KeineEingabe->setObjectName(QString::fromUtf8("KeineEingabe"));
+        LabelOben = new QLabel(verticalLayoutWidget);
+        LabelOben->setObjectName(QString::fromUtf8("LabelOben"));
 
-        horizontalLayout_3->addWidget(KeineEingabe);
+        verticalLayout_5->addWidget(LabelOben);
 
+        LabelUnten = new QLabel(verticalLayoutWidget);
+        LabelUnten->setObjectName(QString::fromUtf8("LabelUnten"));
 
-        verticalLayout_5->addLayout(horizontalLayout_3);
-
-        Fehlerausgabe = new QLabel(verticalLayoutWidget);
-        Fehlerausgabe->setObjectName(QString::fromUtf8("Fehlerausgabe"));
-
-        verticalLayout_5->addWidget(Fehlerausgabe);
+        verticalLayout_5->addWidget(LabelUnten);
 
 
         verticalLayout->addLayout(verticalLayout_5);
@@ -136,28 +124,6 @@ public:
         zurueck = new QPushButton(View_Einloggen);
         zurueck->setObjectName(QString::fromUtf8("zurueck"));
         zurueck->setGeometry(QRect(10, 30, 80, 22));
-        verticalLayoutWidget_2 = new QWidget(View_Einloggen);
-        verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(70, 60, 261, 61));
-        verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        FalschesPasswort = new QLabel(verticalLayoutWidget_2);
-        FalschesPasswort->setObjectName(QString::fromUtf8("FalschesPasswort"));
-
-        verticalLayout_2->addWidget(FalschesPasswort);
-
-        verticalLayoutWidget_6 = new QWidget(View_Einloggen);
-        verticalLayoutWidget_6->setObjectName(QString::fromUtf8("verticalLayoutWidget_6"));
-        verticalLayoutWidget_6->setGeometry(QRect(60, 50, 281, 80));
-        verticalLayout_6 = new QVBoxLayout(verticalLayoutWidget_6);
-        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
-        verticalLayout_6->setContentsMargins(0, 0, 0, 0);
-        Gesperrt = new QLabel(verticalLayoutWidget_6);
-        Gesperrt->setObjectName(QString::fromUtf8("Gesperrt"));
-
-        verticalLayout_6->addWidget(Gesperrt);
-
 
         retranslateUi(View_Einloggen);
 
@@ -167,14 +133,12 @@ public:
     void retranslateUi(QWidget *View_Einloggen)
     {
         View_Einloggen->setWindowTitle(QCoreApplication::translate("View_Einloggen", "Form", nullptr));
-        KeineEingabe->setText(QCoreApplication::translate("View_Einloggen", "<html><head/><body><p align=\"center\"><span style=\" color:#aa0000;\">Bitte f\303\274llen Sie alle Felder erst aus.</span></p></body></html>", nullptr));
-        Fehlerausgabe->setText(QCoreApplication::translate("View_Einloggen", "<html><head/><body><p align=\"center\"><span style=\" color:#aa0000;\">Fehlerhafte Eingabe.</span></p><p align=\"center\"><span style=\" color:#aa0000;\">Bitte versuchen Sie es erneut.</span></p></body></html>", nullptr));
+        LabelOben->setText(QCoreApplication::translate("View_Einloggen", "<html><head/><body><p align=\"center\"><br/></p></body></html>", nullptr));
+        LabelUnten->setText(QCoreApplication::translate("View_Einloggen", "<html><head/><body><p align=\"center\"><br/></p></body></html>", nullptr));
         Labl1->setText(QCoreApplication::translate("View_Einloggen", "E-Mail", nullptr));
         LAbl2->setText(QCoreApplication::translate("View_Einloggen", "Passwort", nullptr));
         Login->setText(QCoreApplication::translate("View_Einloggen", "Login", nullptr));
         zurueck->setText(QCoreApplication::translate("View_Einloggen", "Zur\303\274ck", nullptr));
-        FalschesPasswort->setText(QCoreApplication::translate("View_Einloggen", "<html><head/><body><p align=\"center\"><span style=\" color:#aa0000;\">Falsches Passwort.</span></p><p align=\"center\"><span style=\" color:#aa0000;\">Bitte versuchen Sie es erneut.</span></p></body></html>", nullptr));
-        Gesperrt->setText(QCoreApplication::translate("View_Einloggen", "<html><head/><body><p align=\"center\"><span style=\" color:#aa0000;\">Passwort wurde zu oft falsch Eingegeben.</span></p><p align=\"center\"><span style=\" color:#aa0000;\">Bitte melden Sie sich beim Hauptorganisator.</span></p><p align=\"center\"><span style=\" color:#aa0000;\">Er kann Ihr Passwort zur\303\274cksetzen.</span></p></body></html>", nullptr));
     } // retranslateUi
 
 };

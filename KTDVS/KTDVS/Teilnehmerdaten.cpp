@@ -5,6 +5,8 @@
 
 #include "Teilnehmerdaten.h"
 
+Teilnehmerdaten::~Teilnehmerdaten(){};
+
 Teilnehmerdaten::Teilnehmerdaten(){};
 
 Teilnehmerdaten::Teilnehmerdaten(int teilnehmerdatenkey, int teilnehmerkey){

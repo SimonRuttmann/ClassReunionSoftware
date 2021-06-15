@@ -138,33 +138,51 @@ Teilnehmer* Teilnehmerliste::vonOrgZuTeilnehmer(Organisator* org){
 };
 
 Organisator* Teilnehmerliste::vonTeilnZuOrg(Teilnehmer* teiln, string systempasswort){
+    qDebug() << "Transformiere Teilnehmer zu Organisator";
     Organisator * org = new Organisator();
     org->setHauptorganisator(false);
     org->setIsSystempasswort(true);
     org->setPasswort(systempasswort);
     org->setVersuch(0);
     org->setTeilnehmerkey(teiln->getTeilnehmerkey());
-    this->TeilnehmerDAO->updateTeilnehmer(*org);
 
+    qDebug() << "Crash";
+    this->TeilnehmerDAO->updateOrganisator(*org);
+    qDebug() << "Crash1";
+    //Dem Organisator die Teilnehmerdaten aus der DB holen
+    org->aktuelleTeilnehmerdatenVonDBErhalten();
+    //org->getAktuelleTeilnehmerdaten();
+    qDebug() << "Crash2";
     int tkey = org->getTeilnehmerkey();
 
-    //Pop in Teilnehmerliste
-    list<Teilnehmer*>::iterator itTeilnehmer = this->teilnehmerliste.begin();
-    while(itTeilnehmer != this->teilnehmerliste.end()){
+    //Teilnehmer aus nurTeilnehmerliste löschen
+    list<Teilnehmer*>::iterator itTeilnehmer = this->nurTeilnehmerliste.begin();
+    while(itTeilnehmer != this->nurTeilnehmerliste.end()){
         if( (*itTeilnehmer)->getTeilnehmerkey() == tkey){
-            this->teilnehmerliste.erase(itTeilnehmer);
+            this->nurTeilnehmerliste.erase(itTeilnehmer);
             break;
         }
         itTeilnehmer++;
     }
 
+    //Teilnehmer aus Teilnehmerliste löschen
+    list<Teilnehmer*>::iterator itTeilnehmer2 = this->teilnehmerliste.begin();
+    while(itTeilnehmer2 != this->teilnehmerliste.end()){
+        if( (*itTeilnehmer2)->getTeilnehmerkey() == tkey){
+            this->teilnehmerliste.erase(itTeilnehmer2);
+            break;
+        }
+        itTeilnehmer2++;
+    }
+
     //Push neuen Organisator
-    teiln->setTeilnehmerkey(tkey);
     this->organisatorliste.push_back(org);
     this->teilnehmerliste.push_back(org);
 
     delete teiln;
+    qDebug() << "Methodendruchlauf";
     return org;
+
 
 };
 

@@ -36,7 +36,7 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
 
 
     //Check if Organisator
-    bool isOrg = false;
+    this->isOrg = false;
     if(aktuellerTeilnehmer != nullptr){
         list<Organisator*> orgsl = *Teilnehmerliste::instance()->getOrganisatorliste();
         list<Organisator*>::iterator it;
@@ -148,7 +148,9 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_Versionsverlauf_clicked(){
 }
 
 void View_TeilnehmerTeilnehmerHinzufuegen::on_OrganisatorrechteEntfernen_clicked(){
-    if(!instanceof<Organisator>(this->teiln)){
+    //!instanceof<Organisator>(this->teiln)
+    if(this->isOrg){
+              qDebug()<<"Rufe von Org zu Teilnehmer auf";
               Teilnehmerliste::instance()->vonOrgZuTeilnehmer((Organisator*)this->teiln);
           }else{
               View_Passwortaenderung* tl = new View_Passwortaenderung(vater, teiln);

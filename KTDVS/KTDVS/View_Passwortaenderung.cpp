@@ -114,9 +114,10 @@ void View_Passwortaenderung::on_pushButton_clicked()
             neuPasEingabe = ui ->neuesPasEdit -> text();
             qDebug() <<"Passwort wurde aus der Gui geholt";
             org =Teilnehmerliste::instance()->vonTeilnZuOrg(teil,neuPasEingabe.toStdString());
+
             bool updated = Teilnehmerliste::instance()->updateOrganisator(*org);
             qDebug()<<"MUHAHAHAHAHHAHAHAHAHAHAHHAHAH"<<updated;
-            qDebug() <<"Teilnehmer wurde zum Organisator gemacht";
+            qDebug() <<"Teilnehmer wurde zum Organisator gemacht" << QString::fromStdString(org->getAktuelleTeilnehmerdaten()->getEMail());
             View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
             tl->show();
             this->hide();

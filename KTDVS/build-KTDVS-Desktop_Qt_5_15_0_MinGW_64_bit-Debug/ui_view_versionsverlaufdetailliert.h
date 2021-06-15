@@ -17,6 +17,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -27,15 +28,16 @@ class Ui_View_VersionsverlaufDetailliert
 public:
     QWidget *centralwidget;
     QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout_7;
-    QHBoxLayout *horizontalLayout_5;
+    QVBoxLayout *verticalLayout_11;
+    QHBoxLayout *horizontalLayout_7;
     QPushButton *zurueck;
     QLabel *KTDVS_2;
     QPushButton *logout;
-    QHBoxLayout *alteVersion;
-    QVBoxLayout *verticalLayout_6;
     QHBoxLayout *horizontalLayout_3;
-    QLabel *label_2;
+    QVBoxLayout *verticalLayout_9;
+    QLabel *label_4;
+    QVBoxLayout *verticalLayout_8;
+    QVBoxLayout *verticalLayout_5;
     QHBoxLayout *horizontalLayout_2;
     QVBoxLayout *verticalLayout_3;
     QLabel *vorname;
@@ -61,10 +63,12 @@ public:
     QLineEdit *lineEdit_9;
     QComboBox *comboBox_alt;
     QLineEdit *lineEdit_10;
-    QVBoxLayout *verticalLayout_5;
-    QHBoxLayout *ueberschriftAltVers_4;
-    QLabel *label_35;
     QHBoxLayout *horizontalLayout;
+    QTextEdit *textEdit_alt;
+    QVBoxLayout *verticalLayout_7;
+    QLabel *label_2;
+    QVBoxLayout *verticalLayout_6;
+    QHBoxLayout *horizontalLayout_4;
     QVBoxLayout *verticalLayout_2;
     QLabel *vorname_neu;
     QLabel *nachname_neu;
@@ -89,6 +93,8 @@ public:
     QLineEdit *lineEdit_29;
     QComboBox *comboBox_neu;
     QLineEdit *lineEdit_30;
+    QHBoxLayout *horizontalLayout_5;
+    QTextEdit *textEdit_neu;
     QStatusBar *statusbar;
 
     void setupUi(QWidget *View_VersionsverlaufDetailliert)
@@ -98,19 +104,19 @@ public:
         View_VersionsverlaufDetailliert->resize(1082, 687);
         centralwidget = new QWidget(View_VersionsverlaufDetailliert);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        centralwidget->setGeometry(QRect(20, 10, 771, 561));
+        centralwidget->setGeometry(QRect(20, 10, 781, 591));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(2, 2, 452, 457));
-        verticalLayout_7 = new QVBoxLayout(layoutWidget);
-        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
-        verticalLayout_7->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        layoutWidget->setGeometry(QRect(1, 5, 658, 559));
+        verticalLayout_11 = new QVBoxLayout(layoutWidget);
+        verticalLayout_11->setObjectName(QString::fromUtf8("verticalLayout_11"));
+        verticalLayout_11->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
         zurueck = new QPushButton(layoutWidget);
         zurueck->setObjectName(QString::fromUtf8("zurueck"));
 
-        horizontalLayout_5->addWidget(zurueck);
+        horizontalLayout_7->addWidget(zurueck);
 
         KTDVS_2 = new QLabel(layoutWidget);
         KTDVS_2->setObjectName(QString::fromUtf8("KTDVS_2"));
@@ -122,31 +128,30 @@ public:
         KTDVS_2->setFont(font);
         KTDVS_2->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_5->addWidget(KTDVS_2);
+        horizontalLayout_7->addWidget(KTDVS_2);
 
         logout = new QPushButton(layoutWidget);
         logout->setObjectName(QString::fromUtf8("logout"));
 
-        horizontalLayout_5->addWidget(logout);
+        horizontalLayout_7->addWidget(logout);
 
 
-        verticalLayout_7->addLayout(horizontalLayout_5);
+        verticalLayout_11->addLayout(horizontalLayout_7);
 
-        alteVersion = new QHBoxLayout();
-        alteVersion->setObjectName(QString::fromUtf8("alteVersion"));
-        verticalLayout_6 = new QVBoxLayout();
-        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        label_2 = new QLabel(layoutWidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setAlignment(Qt::AlignCenter);
+        verticalLayout_9 = new QVBoxLayout();
+        verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
+        label_4 = new QLabel(layoutWidget);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_3->addWidget(label_2);
+        verticalLayout_9->addWidget(label_4);
 
-
-        verticalLayout_6->addLayout(horizontalLayout_3);
-
+        verticalLayout_8 = new QVBoxLayout();
+        verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
+        verticalLayout_5 = new QVBoxLayout();
+        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         verticalLayout_3 = new QVBoxLayout();
@@ -271,26 +276,39 @@ public:
         horizontalLayout_2->addLayout(verticalLayout_4);
 
 
-        verticalLayout_6->addLayout(horizontalLayout_2);
-
-
-        alteVersion->addLayout(verticalLayout_6);
-
-        verticalLayout_5 = new QVBoxLayout();
-        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        ueberschriftAltVers_4 = new QHBoxLayout();
-        ueberschriftAltVers_4->setObjectName(QString::fromUtf8("ueberschriftAltVers_4"));
-        label_35 = new QLabel(layoutWidget);
-        label_35->setObjectName(QString::fromUtf8("label_35"));
-        label_35->setAlignment(Qt::AlignCenter);
-
-        ueberschriftAltVers_4->addWidget(label_35);
-
-
-        verticalLayout_5->addLayout(ueberschriftAltVers_4);
+        verticalLayout_5->addLayout(horizontalLayout_2);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        textEdit_alt = new QTextEdit(layoutWidget);
+        textEdit_alt->setObjectName(QString::fromUtf8("textEdit_alt"));
+
+        horizontalLayout->addWidget(textEdit_alt);
+
+
+        verticalLayout_5->addLayout(horizontalLayout);
+
+
+        verticalLayout_8->addLayout(verticalLayout_5);
+
+
+        verticalLayout_9->addLayout(verticalLayout_8);
+
+
+        horizontalLayout_3->addLayout(verticalLayout_9);
+
+        verticalLayout_7 = new QVBoxLayout();
+        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
+        label_2 = new QLabel(layoutWidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_7->addWidget(label_2);
+
+        verticalLayout_6 = new QVBoxLayout();
+        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         vorname_neu = new QLabel(layoutWidget);
@@ -349,7 +367,7 @@ public:
         verticalLayout_2->addWidget(email_neu);
 
 
-        horizontalLayout->addLayout(verticalLayout_2);
+        horizontalLayout_4->addLayout(verticalLayout_2);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -409,16 +427,29 @@ public:
         verticalLayout->addWidget(lineEdit_30);
 
 
-        horizontalLayout->addLayout(verticalLayout);
+        horizontalLayout_4->addLayout(verticalLayout);
 
 
-        verticalLayout_5->addLayout(horizontalLayout);
+        verticalLayout_6->addLayout(horizontalLayout_4);
+
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        textEdit_neu = new QTextEdit(layoutWidget);
+        textEdit_neu->setObjectName(QString::fromUtf8("textEdit_neu"));
+
+        horizontalLayout_5->addWidget(textEdit_neu);
 
 
-        alteVersion->addLayout(verticalLayout_5);
+        verticalLayout_6->addLayout(horizontalLayout_5);
 
 
-        verticalLayout_7->addLayout(alteVersion);
+        verticalLayout_7->addLayout(verticalLayout_6);
+
+
+        horizontalLayout_3->addLayout(verticalLayout_7);
+
+
+        verticalLayout_11->addLayout(horizontalLayout_3);
 
         statusbar = new QStatusBar(View_VersionsverlaufDetailliert);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -435,7 +466,7 @@ public:
         zurueck->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Zur\303\274ck", nullptr));
         KTDVS_2->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "KTDVS", nullptr));
         logout->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Logout(symbol)", nullptr));
-        label_2->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "alte Version", nullptr));
+        label_4->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "\303\244ltere Version", nullptr));
         vorname->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Vorname", nullptr));
         nachname_alt->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Nachname", nullptr));
         schulname_alt->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Schulname", nullptr));
@@ -447,7 +478,8 @@ public:
         telefonnummern_alt->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Telefonnummer", nullptr));
         weitereTel->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "WeitereTel", nullptr));
         email_alt->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Email", nullptr));
-        label_35->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "neue Version", nullptr));
+        textEdit_alt->setPlaceholderText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Kommentar...", nullptr));
+        label_2->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "neuere Version", nullptr));
         vorname_neu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Vorname", nullptr));
         nachname_neu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Nachname", nullptr));
         schulname_neu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Schulname", nullptr));
@@ -459,6 +491,7 @@ public:
         telefonnummer_neu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Telefonnummer", nullptr));
         weitereTel_neu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "WeitereTel", nullptr));
         email_neu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Email", nullptr));
+        textEdit_neu->setPlaceholderText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Kommentar...", nullptr));
     } // retranslateUi
 
 };

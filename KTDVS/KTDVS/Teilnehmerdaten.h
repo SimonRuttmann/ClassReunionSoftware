@@ -15,6 +15,7 @@ class Teilnehmerdaten
 
 public:
 	Teilnehmerdaten();
+    ~Teilnehmerdaten();
 
 	Teilnehmerdaten(int teilnehmerdatenkey, int teilnehmerkey);
 
