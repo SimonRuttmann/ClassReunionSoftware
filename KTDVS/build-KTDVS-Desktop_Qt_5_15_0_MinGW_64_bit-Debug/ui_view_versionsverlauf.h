@@ -122,8 +122,8 @@ public:
         verticalLayout->setSizeConstraint(QLayout::SetMaximumSize);
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         tableWidget = new QTableWidget(verticalLayoutWidget);
-        if (tableWidget->columnCount() < 4)
-            tableWidget->setColumnCount(4);
+        if (tableWidget->columnCount() < 6)
+            tableWidget->setColumnCount(6);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
@@ -132,11 +132,15 @@ public:
         tableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem2);
         QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem3);
+        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(4, __qtablewidgetitem4);
+        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(5, __qtablewidgetitem5);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
         tableWidget->setMaximumSize(QSize(1080, 720));
         tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
         tableWidget->setRowCount(0);
-        tableWidget->setColumnCount(4);
+        tableWidget->setColumnCount(6);
 
         verticalLayout->addWidget(tableWidget);
 
@@ -153,11 +157,15 @@ public:
         label->setText(QCoreApplication::translate("View_Versionsverlauf", "KTDVS", nullptr));
         toolButton->setText(QCoreApplication::translate("View_Versionsverlauf", "...", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QCoreApplication::translate("View_Versionsverlauf", "\303\204nderungsdatum", nullptr));
+        ___qtablewidgetitem->setText(QCoreApplication::translate("View_Versionsverlauf", "Vorname", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QCoreApplication::translate("View_Versionsverlauf", "ge\303\244nderte Person", nullptr));
+        ___qtablewidgetitem1->setText(QCoreApplication::translate("View_Versionsverlauf", "Nachname", nullptr));
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QCoreApplication::translate("View_Versionsverlauf", "Organisator", nullptr));
+        ___qtablewidgetitem2->setText(QCoreApplication::translate("View_Versionsverlauf", "E-Mail", nullptr));
+        QTableWidgetItem *___qtablewidgetitem3 = tableWidget->horizontalHeaderItem(3);
+        ___qtablewidgetitem3->setText(QCoreApplication::translate("View_Versionsverlauf", "Vorname Bearbeiter", nullptr));
+        QTableWidgetItem *___qtablewidgetitem4 = tableWidget->horizontalHeaderItem(4);
+        ___qtablewidgetitem4->setText(QCoreApplication::translate("View_Versionsverlauf", "Nachname Bearbeiter", nullptr));
     } // retranslateUi
 
 };

@@ -27,6 +27,8 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QVBoxLayout *verticalLayout_5;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *KeineEingabe;
     QLabel *Fehlerausgabe;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_4;
@@ -54,12 +56,22 @@ public:
         View_Einloggen->resize(400, 300);
         verticalLayoutWidget = new QWidget(View_Einloggen);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(70, 90, 261, 181));
+        verticalLayoutWidget->setGeometry(QRect(70, 70, 261, 201));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        KeineEingabe = new QLabel(verticalLayoutWidget);
+        KeineEingabe->setObjectName(QString::fromUtf8("KeineEingabe"));
+
+        horizontalLayout_3->addWidget(KeineEingabe);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_3);
+
         Fehlerausgabe = new QLabel(verticalLayoutWidget);
         Fehlerausgabe->setObjectName(QString::fromUtf8("Fehlerausgabe"));
 
@@ -155,6 +167,7 @@ public:
     void retranslateUi(QWidget *View_Einloggen)
     {
         View_Einloggen->setWindowTitle(QCoreApplication::translate("View_Einloggen", "Form", nullptr));
+        KeineEingabe->setText(QCoreApplication::translate("View_Einloggen", "<html><head/><body><p align=\"center\"><span style=\" color:#aa0000;\">Bitte f\303\274llen Sie alle Felder erst aus.</span></p></body></html>", nullptr));
         Fehlerausgabe->setText(QCoreApplication::translate("View_Einloggen", "<html><head/><body><p align=\"center\"><span style=\" color:#aa0000;\">Fehlerhafte Eingabe.</span></p><p align=\"center\"><span style=\" color:#aa0000;\">Bitte versuchen Sie es erneut.</span></p></body></html>", nullptr));
         Labl1->setText(QCoreApplication::translate("View_Einloggen", "E-Mail", nullptr));
         LAbl2->setText(QCoreApplication::translate("View_Einloggen", "Passwort", nullptr));

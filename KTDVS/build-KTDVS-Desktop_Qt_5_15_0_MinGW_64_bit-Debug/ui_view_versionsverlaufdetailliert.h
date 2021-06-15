@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -25,28 +26,29 @@ class Ui_View_VersionsverlaufDetailliert
 {
 public:
     QWidget *centralwidget;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_7;
     QHBoxLayout *horizontalLayout_5;
     QPushButton *zurueck;
     QLabel *KTDVS_2;
     QPushButton *logout;
-    QHBoxLayout *horizontalLayout_4;
+    QHBoxLayout *alteVersion;
     QVBoxLayout *verticalLayout_6;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_2;
     QHBoxLayout *horizontalLayout_2;
     QVBoxLayout *verticalLayout_3;
-    QLabel *label_13;
-    QLabel *label_14;
-    QLabel *label_15;
-    QLabel *label_16;
-    QLabel *label_17;
-    QLabel *label_18;
-    QLabel *label_19;
-    QLabel *label_20;
-    QLabel *label_21;
-    QLabel *label_22;
+    QLabel *vorname;
+    QLabel *nachname_alt;
+    QLabel *schulname_alt;
+    QLabel *strasse_alt;
+    QLabel *hausnummer_alt;
+    QLabel *plz_alt;
+    QLabel *ort_alt;
+    QLabel *land_alt;
+    QLabel *telefonnummern_alt;
+    QLabel *weitereTel;
+    QLabel *email_alt;
     QVBoxLayout *verticalLayout_4;
     QLineEdit *lineEdit_1;
     QLineEdit *lineEdit_2;
@@ -57,22 +59,24 @@ public:
     QLineEdit *lineEdit_7;
     QLineEdit *lineEdit_8;
     QLineEdit *lineEdit_9;
+    QComboBox *comboBox_alt;
     QLineEdit *lineEdit_10;
     QVBoxLayout *verticalLayout_5;
     QHBoxLayout *ueberschriftAltVers_4;
     QLabel *label_35;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
-    QLabel *label_36;
-    QLabel *label_37;
-    QLabel *label_38;
-    QLabel *label_39;
-    QLabel *label_40;
-    QLabel *label_41;
-    QLabel *label_42;
-    QLabel *label_43;
-    QLabel *label_44;
-    QLabel *label_45;
+    QLabel *vorname_neu;
+    QLabel *nachname_neu;
+    QLabel *schulname_neu;
+    QLabel *strasse_neu;
+    QLabel *hausnummer_neu;
+    QLabel *plz_neu;
+    QLabel *ort_neu;
+    QLabel *land_neu;
+    QLabel *telefonnummer_neu;
+    QLabel *weitereTel_neu;
+    QLabel *email_neu;
     QVBoxLayout *verticalLayout;
     QLineEdit *lineEdit_21;
     QLineEdit *lineEdit_22;
@@ -83,6 +87,7 @@ public:
     QLineEdit *lineEdit_27;
     QLineEdit *lineEdit_28;
     QLineEdit *lineEdit_29;
+    QComboBox *comboBox_neu;
     QLineEdit *lineEdit_30;
     QStatusBar *statusbar;
 
@@ -94,20 +99,20 @@ public:
         centralwidget = new QWidget(View_VersionsverlaufDetailliert);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setGeometry(QRect(20, 10, 771, 561));
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(2, 2, 452, 331));
-        verticalLayout_7 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(2, 2, 452, 457));
+        verticalLayout_7 = new QVBoxLayout(layoutWidget);
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
         verticalLayout_7->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        zurueck = new QPushButton(widget);
+        zurueck = new QPushButton(layoutWidget);
         zurueck->setObjectName(QString::fromUtf8("zurueck"));
 
         horizontalLayout_5->addWidget(zurueck);
 
-        KTDVS_2 = new QLabel(widget);
+        KTDVS_2 = new QLabel(layoutWidget);
         KTDVS_2->setObjectName(QString::fromUtf8("KTDVS_2"));
         QFont font;
         font.setFamily(QString::fromUtf8("Arial Black"));
@@ -119,7 +124,7 @@ public:
 
         horizontalLayout_5->addWidget(KTDVS_2);
 
-        logout = new QPushButton(widget);
+        logout = new QPushButton(layoutWidget);
         logout->setObjectName(QString::fromUtf8("logout"));
 
         horizontalLayout_5->addWidget(logout);
@@ -127,13 +132,13 @@ public:
 
         verticalLayout_7->addLayout(horizontalLayout_5);
 
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        alteVersion = new QHBoxLayout();
+        alteVersion->setObjectName(QString::fromUtf8("alteVersion"));
         verticalLayout_6 = new QVBoxLayout();
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setAlignment(Qt::AlignCenter);
 
@@ -146,108 +151,118 @@ public:
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        label_13 = new QLabel(widget);
-        label_13->setObjectName(QString::fromUtf8("label_13"));
+        vorname = new QLabel(layoutWidget);
+        vorname->setObjectName(QString::fromUtf8("vorname"));
 
-        verticalLayout_3->addWidget(label_13);
+        verticalLayout_3->addWidget(vorname);
 
-        label_14 = new QLabel(widget);
-        label_14->setObjectName(QString::fromUtf8("label_14"));
+        nachname_alt = new QLabel(layoutWidget);
+        nachname_alt->setObjectName(QString::fromUtf8("nachname_alt"));
 
-        verticalLayout_3->addWidget(label_14);
+        verticalLayout_3->addWidget(nachname_alt);
 
-        label_15 = new QLabel(widget);
-        label_15->setObjectName(QString::fromUtf8("label_15"));
+        schulname_alt = new QLabel(layoutWidget);
+        schulname_alt->setObjectName(QString::fromUtf8("schulname_alt"));
 
-        verticalLayout_3->addWidget(label_15);
+        verticalLayout_3->addWidget(schulname_alt);
 
-        label_16 = new QLabel(widget);
-        label_16->setObjectName(QString::fromUtf8("label_16"));
+        strasse_alt = new QLabel(layoutWidget);
+        strasse_alt->setObjectName(QString::fromUtf8("strasse_alt"));
 
-        verticalLayout_3->addWidget(label_16);
+        verticalLayout_3->addWidget(strasse_alt);
 
-        label_17 = new QLabel(widget);
-        label_17->setObjectName(QString::fromUtf8("label_17"));
+        hausnummer_alt = new QLabel(layoutWidget);
+        hausnummer_alt->setObjectName(QString::fromUtf8("hausnummer_alt"));
 
-        verticalLayout_3->addWidget(label_17);
+        verticalLayout_3->addWidget(hausnummer_alt);
 
-        label_18 = new QLabel(widget);
-        label_18->setObjectName(QString::fromUtf8("label_18"));
+        plz_alt = new QLabel(layoutWidget);
+        plz_alt->setObjectName(QString::fromUtf8("plz_alt"));
 
-        verticalLayout_3->addWidget(label_18);
+        verticalLayout_3->addWidget(plz_alt);
 
-        label_19 = new QLabel(widget);
-        label_19->setObjectName(QString::fromUtf8("label_19"));
+        ort_alt = new QLabel(layoutWidget);
+        ort_alt->setObjectName(QString::fromUtf8("ort_alt"));
 
-        verticalLayout_3->addWidget(label_19);
+        verticalLayout_3->addWidget(ort_alt);
 
-        label_20 = new QLabel(widget);
-        label_20->setObjectName(QString::fromUtf8("label_20"));
+        land_alt = new QLabel(layoutWidget);
+        land_alt->setObjectName(QString::fromUtf8("land_alt"));
 
-        verticalLayout_3->addWidget(label_20);
+        verticalLayout_3->addWidget(land_alt);
 
-        label_21 = new QLabel(widget);
-        label_21->setObjectName(QString::fromUtf8("label_21"));
+        telefonnummern_alt = new QLabel(layoutWidget);
+        telefonnummern_alt->setObjectName(QString::fromUtf8("telefonnummern_alt"));
 
-        verticalLayout_3->addWidget(label_21);
+        verticalLayout_3->addWidget(telefonnummern_alt);
 
-        label_22 = new QLabel(widget);
-        label_22->setObjectName(QString::fromUtf8("label_22"));
+        weitereTel = new QLabel(layoutWidget);
+        weitereTel->setObjectName(QString::fromUtf8("weitereTel"));
 
-        verticalLayout_3->addWidget(label_22);
+        verticalLayout_3->addWidget(weitereTel);
+
+        email_alt = new QLabel(layoutWidget);
+        email_alt->setObjectName(QString::fromUtf8("email_alt"));
+
+        verticalLayout_3->addWidget(email_alt);
 
 
         horizontalLayout_2->addLayout(verticalLayout_3);
 
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        lineEdit_1 = new QLineEdit(widget);
+        lineEdit_1 = new QLineEdit(layoutWidget);
         lineEdit_1->setObjectName(QString::fromUtf8("lineEdit_1"));
         lineEdit_1->setEnabled(true);
 
         verticalLayout_4->addWidget(lineEdit_1);
 
-        lineEdit_2 = new QLineEdit(widget);
+        lineEdit_2 = new QLineEdit(layoutWidget);
         lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
 
         verticalLayout_4->addWidget(lineEdit_2);
 
-        lineEdit_3 = new QLineEdit(widget);
+        lineEdit_3 = new QLineEdit(layoutWidget);
         lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
 
         verticalLayout_4->addWidget(lineEdit_3);
 
-        lineEdit_4 = new QLineEdit(widget);
+        lineEdit_4 = new QLineEdit(layoutWidget);
         lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
 
         verticalLayout_4->addWidget(lineEdit_4);
 
-        lineEdit_5 = new QLineEdit(widget);
+        lineEdit_5 = new QLineEdit(layoutWidget);
         lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
 
         verticalLayout_4->addWidget(lineEdit_5);
 
-        lineEdit_6 = new QLineEdit(widget);
+        lineEdit_6 = new QLineEdit(layoutWidget);
         lineEdit_6->setObjectName(QString::fromUtf8("lineEdit_6"));
 
         verticalLayout_4->addWidget(lineEdit_6);
 
-        lineEdit_7 = new QLineEdit(widget);
+        lineEdit_7 = new QLineEdit(layoutWidget);
         lineEdit_7->setObjectName(QString::fromUtf8("lineEdit_7"));
 
         verticalLayout_4->addWidget(lineEdit_7);
 
-        lineEdit_8 = new QLineEdit(widget);
+        lineEdit_8 = new QLineEdit(layoutWidget);
         lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
 
         verticalLayout_4->addWidget(lineEdit_8);
 
-        lineEdit_9 = new QLineEdit(widget);
+        lineEdit_9 = new QLineEdit(layoutWidget);
         lineEdit_9->setObjectName(QString::fromUtf8("lineEdit_9"));
 
         verticalLayout_4->addWidget(lineEdit_9);
 
-        lineEdit_10 = new QLineEdit(widget);
+        comboBox_alt = new QComboBox(layoutWidget);
+        comboBox_alt->setObjectName(QString::fromUtf8("comboBox_alt"));
+
+        verticalLayout_4->addWidget(comboBox_alt);
+
+        lineEdit_10 = new QLineEdit(layoutWidget);
         lineEdit_10->setObjectName(QString::fromUtf8("lineEdit_10"));
 
         verticalLayout_4->addWidget(lineEdit_10);
@@ -259,13 +274,13 @@ public:
         verticalLayout_6->addLayout(horizontalLayout_2);
 
 
-        horizontalLayout_4->addLayout(verticalLayout_6);
+        alteVersion->addLayout(verticalLayout_6);
 
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         ueberschriftAltVers_4 = new QHBoxLayout();
         ueberschriftAltVers_4->setObjectName(QString::fromUtf8("ueberschriftAltVers_4"));
-        label_35 = new QLabel(widget);
+        label_35 = new QLabel(layoutWidget);
         label_35->setObjectName(QString::fromUtf8("label_35"));
         label_35->setAlignment(Qt::AlignCenter);
 
@@ -278,107 +293,117 @@ public:
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        label_36 = new QLabel(widget);
-        label_36->setObjectName(QString::fromUtf8("label_36"));
+        vorname_neu = new QLabel(layoutWidget);
+        vorname_neu->setObjectName(QString::fromUtf8("vorname_neu"));
 
-        verticalLayout_2->addWidget(label_36);
+        verticalLayout_2->addWidget(vorname_neu);
 
-        label_37 = new QLabel(widget);
-        label_37->setObjectName(QString::fromUtf8("label_37"));
+        nachname_neu = new QLabel(layoutWidget);
+        nachname_neu->setObjectName(QString::fromUtf8("nachname_neu"));
 
-        verticalLayout_2->addWidget(label_37);
+        verticalLayout_2->addWidget(nachname_neu);
 
-        label_38 = new QLabel(widget);
-        label_38->setObjectName(QString::fromUtf8("label_38"));
+        schulname_neu = new QLabel(layoutWidget);
+        schulname_neu->setObjectName(QString::fromUtf8("schulname_neu"));
 
-        verticalLayout_2->addWidget(label_38);
+        verticalLayout_2->addWidget(schulname_neu);
 
-        label_39 = new QLabel(widget);
-        label_39->setObjectName(QString::fromUtf8("label_39"));
+        strasse_neu = new QLabel(layoutWidget);
+        strasse_neu->setObjectName(QString::fromUtf8("strasse_neu"));
 
-        verticalLayout_2->addWidget(label_39);
+        verticalLayout_2->addWidget(strasse_neu);
 
-        label_40 = new QLabel(widget);
-        label_40->setObjectName(QString::fromUtf8("label_40"));
+        hausnummer_neu = new QLabel(layoutWidget);
+        hausnummer_neu->setObjectName(QString::fromUtf8("hausnummer_neu"));
 
-        verticalLayout_2->addWidget(label_40);
+        verticalLayout_2->addWidget(hausnummer_neu);
 
-        label_41 = new QLabel(widget);
-        label_41->setObjectName(QString::fromUtf8("label_41"));
+        plz_neu = new QLabel(layoutWidget);
+        plz_neu->setObjectName(QString::fromUtf8("plz_neu"));
 
-        verticalLayout_2->addWidget(label_41);
+        verticalLayout_2->addWidget(plz_neu);
 
-        label_42 = new QLabel(widget);
-        label_42->setObjectName(QString::fromUtf8("label_42"));
+        ort_neu = new QLabel(layoutWidget);
+        ort_neu->setObjectName(QString::fromUtf8("ort_neu"));
 
-        verticalLayout_2->addWidget(label_42);
+        verticalLayout_2->addWidget(ort_neu);
 
-        label_43 = new QLabel(widget);
-        label_43->setObjectName(QString::fromUtf8("label_43"));
+        land_neu = new QLabel(layoutWidget);
+        land_neu->setObjectName(QString::fromUtf8("land_neu"));
 
-        verticalLayout_2->addWidget(label_43);
+        verticalLayout_2->addWidget(land_neu);
 
-        label_44 = new QLabel(widget);
-        label_44->setObjectName(QString::fromUtf8("label_44"));
+        telefonnummer_neu = new QLabel(layoutWidget);
+        telefonnummer_neu->setObjectName(QString::fromUtf8("telefonnummer_neu"));
 
-        verticalLayout_2->addWidget(label_44);
+        verticalLayout_2->addWidget(telefonnummer_neu);
 
-        label_45 = new QLabel(widget);
-        label_45->setObjectName(QString::fromUtf8("label_45"));
+        weitereTel_neu = new QLabel(layoutWidget);
+        weitereTel_neu->setObjectName(QString::fromUtf8("weitereTel_neu"));
 
-        verticalLayout_2->addWidget(label_45);
+        verticalLayout_2->addWidget(weitereTel_neu);
+
+        email_neu = new QLabel(layoutWidget);
+        email_neu->setObjectName(QString::fromUtf8("email_neu"));
+
+        verticalLayout_2->addWidget(email_neu);
 
 
         horizontalLayout->addLayout(verticalLayout_2);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        lineEdit_21 = new QLineEdit(widget);
+        lineEdit_21 = new QLineEdit(layoutWidget);
         lineEdit_21->setObjectName(QString::fromUtf8("lineEdit_21"));
 
         verticalLayout->addWidget(lineEdit_21);
 
-        lineEdit_22 = new QLineEdit(widget);
+        lineEdit_22 = new QLineEdit(layoutWidget);
         lineEdit_22->setObjectName(QString::fromUtf8("lineEdit_22"));
 
         verticalLayout->addWidget(lineEdit_22);
 
-        lineEdit_23 = new QLineEdit(widget);
+        lineEdit_23 = new QLineEdit(layoutWidget);
         lineEdit_23->setObjectName(QString::fromUtf8("lineEdit_23"));
 
         verticalLayout->addWidget(lineEdit_23);
 
-        lineEdit_24 = new QLineEdit(widget);
+        lineEdit_24 = new QLineEdit(layoutWidget);
         lineEdit_24->setObjectName(QString::fromUtf8("lineEdit_24"));
 
         verticalLayout->addWidget(lineEdit_24);
 
-        lineEdit_25 = new QLineEdit(widget);
+        lineEdit_25 = new QLineEdit(layoutWidget);
         lineEdit_25->setObjectName(QString::fromUtf8("lineEdit_25"));
 
         verticalLayout->addWidget(lineEdit_25);
 
-        lineEdit_26 = new QLineEdit(widget);
+        lineEdit_26 = new QLineEdit(layoutWidget);
         lineEdit_26->setObjectName(QString::fromUtf8("lineEdit_26"));
 
         verticalLayout->addWidget(lineEdit_26);
 
-        lineEdit_27 = new QLineEdit(widget);
+        lineEdit_27 = new QLineEdit(layoutWidget);
         lineEdit_27->setObjectName(QString::fromUtf8("lineEdit_27"));
 
         verticalLayout->addWidget(lineEdit_27);
 
-        lineEdit_28 = new QLineEdit(widget);
+        lineEdit_28 = new QLineEdit(layoutWidget);
         lineEdit_28->setObjectName(QString::fromUtf8("lineEdit_28"));
 
         verticalLayout->addWidget(lineEdit_28);
 
-        lineEdit_29 = new QLineEdit(widget);
+        lineEdit_29 = new QLineEdit(layoutWidget);
         lineEdit_29->setObjectName(QString::fromUtf8("lineEdit_29"));
 
         verticalLayout->addWidget(lineEdit_29);
 
-        lineEdit_30 = new QLineEdit(widget);
+        comboBox_neu = new QComboBox(layoutWidget);
+        comboBox_neu->setObjectName(QString::fromUtf8("comboBox_neu"));
+
+        verticalLayout->addWidget(comboBox_neu);
+
+        lineEdit_30 = new QLineEdit(layoutWidget);
         lineEdit_30->setObjectName(QString::fromUtf8("lineEdit_30"));
 
         verticalLayout->addWidget(lineEdit_30);
@@ -390,10 +415,10 @@ public:
         verticalLayout_5->addLayout(horizontalLayout);
 
 
-        horizontalLayout_4->addLayout(verticalLayout_5);
+        alteVersion->addLayout(verticalLayout_5);
 
 
-        verticalLayout_7->addLayout(horizontalLayout_4);
+        verticalLayout_7->addLayout(alteVersion);
 
         statusbar = new QStatusBar(View_VersionsverlaufDetailliert);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -411,27 +436,29 @@ public:
         KTDVS_2->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "KTDVS", nullptr));
         logout->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Logout(symbol)", nullptr));
         label_2->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "alte Version", nullptr));
-        label_13->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Vorname", nullptr));
-        label_14->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Nachname", nullptr));
-        label_15->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Schulname", nullptr));
-        label_16->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Stra\303\237e", nullptr));
-        label_17->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Hausnummer", nullptr));
-        label_18->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Plz", nullptr));
-        label_19->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Ort", nullptr));
-        label_20->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Land", nullptr));
-        label_21->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Telefonnummer", nullptr));
-        label_22->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Email", nullptr));
+        vorname->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Vorname", nullptr));
+        nachname_alt->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Nachname", nullptr));
+        schulname_alt->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Schulname", nullptr));
+        strasse_alt->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Stra\303\237e", nullptr));
+        hausnummer_alt->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Hausnummer", nullptr));
+        plz_alt->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Plz", nullptr));
+        ort_alt->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Ort", nullptr));
+        land_alt->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Land", nullptr));
+        telefonnummern_alt->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Telefonnummer", nullptr));
+        weitereTel->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "WeitereTel", nullptr));
+        email_alt->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Email", nullptr));
         label_35->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "neue Version", nullptr));
-        label_36->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Vorname", nullptr));
-        label_37->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Nachname", nullptr));
-        label_38->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Schulname", nullptr));
-        label_39->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Stra\303\237e", nullptr));
-        label_40->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Hausnummer", nullptr));
-        label_41->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Plz", nullptr));
-        label_42->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Ort", nullptr));
-        label_43->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Land", nullptr));
-        label_44->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Telefonnummer", nullptr));
-        label_45->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Email", nullptr));
+        vorname_neu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Vorname", nullptr));
+        nachname_neu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Nachname", nullptr));
+        schulname_neu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Schulname", nullptr));
+        strasse_neu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Stra\303\237e", nullptr));
+        hausnummer_neu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Hausnummer", nullptr));
+        plz_neu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Plz", nullptr));
+        ort_neu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Ort", nullptr));
+        land_neu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Land", nullptr));
+        telefonnummer_neu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Telefonnummer", nullptr));
+        weitereTel_neu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "WeitereTel", nullptr));
+        email_neu->setText(QCoreApplication::translate("View_VersionsverlaufDetailliert", "Email", nullptr));
     } // retranslateUi
 
 };
