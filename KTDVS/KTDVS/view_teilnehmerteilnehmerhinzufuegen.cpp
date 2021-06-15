@@ -3,6 +3,7 @@
 
 #include "View_Teilnehmerliste.h"
 #include "ui_View_TeilnehmerTeilnehmerHinzufuegen.h"
+#include "DAO_QT_Teilnehmer.h"
 #include <QtDebug>
 #include <iostream>
 //Hauptorganisator wird erstellt -> Teilnehemr = HO, "neuer Teilnehmer = true, da keine TD
@@ -213,7 +214,7 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_Speichern_clicked(){ //Die Teilneh
         teilnehmerdaten->setAdresse(adresse);
         teilnehmerdaten->setHaupttelefonnummer(ui->lineEdit_19->text().toStdString());
         teilnehmerdaten->setEmail(ui->lineEdit_20->text().toStdString());
-        teilnehmerdaten -> setKommentar(ui->Komentar->toPlainText().toStdString());
+        teilnehmerdaten->setKommentar(ui->Komentar->toPlainText().toStdString());
 
         QString teleString;
         if(addnumberamount == 0){
@@ -268,6 +269,8 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_zurueck_2_clicked()
 
 void View_TeilnehmerTeilnehmerHinzufuegen::on_logout_2_clicked()
 {
+    DAO_QT_Teilnehmer name;
+    if(hauptorgErstellen)name.remove(teiln->getTeilnehmerkey());
     QApplication::quit();
 }
 
