@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+	background-color: rgb(59, 59, 59);
+}</string>
+  </property>
   <widget class="QPushButton" name="NeuesSystem">
    <property name="geometry">
     <rect>
@@ -21,6 +26,12 @@
      <width>171</width>
      <height>111</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	background-color: rgb(93, 93, 93);
+	color: rgb(255, 255, 255);
+}</string>
    </property>
    <property name="text">
     <string>Neues System erstellen</string>
@@ -34,6 +45,12 @@
      <width>171</width>
      <height>111</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	background-color: rgb(93, 93, 93);
+	color: rgb(255, 255, 255);
+}</string>
    </property>
    <property name="text">
     <string>Bestehendem System beitreten</string>

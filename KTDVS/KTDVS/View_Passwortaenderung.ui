@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+	background-color: rgb(59, 59, 59);
+}</string>
+  </property>
   <widget class="QPushButton" name="Zurueck">
    <property name="geometry">
     <rect>
@@ -21,6 +26,12 @@
      <width>80</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	background-color: rgb(93, 93, 93);
+	color: rgb(255, 255, 255);
+}</string>
    </property>
    <property name="text">
     <string>Zurück</string>
@@ -64,6 +75,11 @@
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
          <widget class="QLabel" name="altesPas">
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+          </property>
           <property name="text">
            <string>altes Passwort</string>
           </property>
@@ -71,6 +87,11 @@
         </item>
         <item>
          <widget class="QLabel" name="label_2">
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+          </property>
           <property name="text">
            <string>Neues Passwort</string>
           </property>
@@ -81,10 +102,24 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QLineEdit" name="altesPasEdit"/>
+         <widget class="QLineEdit" name="altesPasEdit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="neuesPasEdit"/>
+         <widget class="QLineEdit" name="neuesPasEdit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -94,6 +129,12 @@
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QPushButton" name="pushButton">
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	background-color: rgb(93, 93, 93);
+	color: rgb(255, 255, 255);
+}</string>
+        </property>
         <property name="text">
          <string>Speichern</string>
         </property>
