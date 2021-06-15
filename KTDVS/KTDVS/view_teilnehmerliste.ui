@@ -25,6 +25,11 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+	background-color: rgb(59, 59, 59);
+}</string>
+  </property>
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
@@ -56,6 +61,12 @@
     </item>
     <item>
      <widget class="QPushButton" name="pushButton">
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	background-color: rgb(93, 93, 93);
+	color: rgb(255, 255, 255);
+}</string>
+      </property>
       <property name="text">
        <string>Teilnehmer hinzufügen</string>
       </property>
@@ -93,6 +104,11 @@
        <font>
         <pointsize>20</pointsize>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
       </property>
       <property name="text">
        <string>KTDVS</string>
@@ -183,6 +199,14 @@
      <width>1061</width>
      <height>611</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QTableWidget{
+	
+	alternate-background-color: rgb(59, 59, 59);
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
    </property>
    <property name="editTriggers">
     <set>QAbstractItemView::NoEditTriggers</set>

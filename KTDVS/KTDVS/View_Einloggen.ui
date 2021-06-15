@@ -25,7 +25,12 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="">
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+	background-color: rgb(59, 59, 59);
+}</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -47,6 +52,12 @@
              <layout class="QHBoxLayout" name="horizontalLayout_2">
               <item>
                <widget class="QPushButton" name="zurueck">
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+	background-color: rgb(93, 93, 93);
+	color: rgb(255, 255, 255);
+}</string>
+                </property>
                 <property name="text">
                  <string>Zurück</string>
                 </property>
@@ -62,6 +73,11 @@
                   <bold>true</bold>
                  </font>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                </property>
                 <property name="text">
                  <string>KTDVS</string>
                 </property>
@@ -74,6 +90,12 @@
                <widget class="QPushButton" name="logout_2">
                 <property name="enabled">
                  <bool>false</bool>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+	background-color: rgb(93, 93, 93);
+	color: rgb(255, 255, 255);
+}</string>
                 </property>
                 <property name="text">
                  <string>Logout</string>
@@ -172,6 +194,11 @@
              <layout class="QVBoxLayout" name="verticalLayout_4">
               <item>
                <widget class="QLabel" name="Labl1">
+                <property name="styleSheet">
+                 <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                </property>
                 <property name="text">
                  <string>E-Mail</string>
                 </property>
@@ -179,6 +206,11 @@
               </item>
               <item>
                <widget class="QLabel" name="LAbl2">
+                <property name="styleSheet">
+                 <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                </property>
                 <property name="text">
                  <string>Passwort</string>
                 </property>
@@ -189,10 +221,24 @@
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_3">
               <item>
-               <widget class="QLineEdit" name="EMail"/>
+               <widget class="QLineEdit" name="EMail">
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                </property>
+               </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="Passwort"/>
+               <widget class="QLineEdit" name="Passwort">
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -260,6 +306,12 @@
           </item>
           <item>
            <widget class="QPushButton" name="Login">
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+	background-color: rgb(93, 93, 93);
+	color: rgb(255, 255, 255);
+}</string>
+            </property>
             <property name="text">
              <string>Login</string>
             </property>
@@ -286,6 +338,11 @@
     </item>
     <item>
      <widget class="QLabel" name="LabelUnten">
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+      </property>
       <property name="text">
        <string>LabelUnten</string>
       </property>
@@ -296,6 +353,11 @@
     </item>
     <item>
      <widget class="QLabel" name="LabelOben">
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+      </property>
       <property name="text">
        <string>LabelOben</string>
       </property>
