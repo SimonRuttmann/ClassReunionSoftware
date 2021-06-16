@@ -209,12 +209,14 @@ bool DAO_QT_Teilnehmerdaten::selectFirstOfTeilnehmer(int teilnehmerkey, Teilnehm
     QStringList data = datumQString.split(" ");
 
     Datum* datum = new Datum();
+    if(data.length() == 6 ){
     datum->tag = data[0].toInt();
     datum->monat = data[1].toInt();
     datum->jahr = data[2].toInt();
     datum->stunde = data[3].toInt();
     datum->min = data[4].toInt();
     datum->sekunde = data[5].toInt();
+    }
 
     teilnehmerdaten.setDatum(*datum);
 
