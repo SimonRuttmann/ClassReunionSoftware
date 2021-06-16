@@ -1,16 +1,13 @@
-///////////////////////////////////////////////////////////
-//  Qt_DAO_Teilnehmer.cpp
-//  Implementation of the Class Qt_DAO_Teilnehmer
-//  Created on:      27-Mai-2021 14:19:33
-//  Original author: Simon Ruttmann
-///////////////////////////////////////////////////////////
-
 #include "DAO_QT_Teilnehmer.h"
 #include <QVariant>
 #include <QtSql>
 #include <QDebug>
 #include <iostream>
+
 DAO_QT_Teilnehmer::DAO_QT_Teilnehmer(){
+
+    //Vorbereiten der notwendigen Selects
+
     insert_query.prepare
     (
     "INSERT INTO Teilnehmer (passwort, isHauptorganisator, versuch, isSystempasswort) VALUES (:passwort, :isHauptorganisator, :versuch, :isSystempasswort);"
@@ -20,9 +17,7 @@ DAO_QT_Teilnehmer::DAO_QT_Teilnehmer(){
     (
     "SELECT last_insert_rowid();"
     );
-    //(
-   // "SELECT last_rowid();"
-   // );
+
 
     update_query.prepare
     (
@@ -86,7 +81,7 @@ bool DAO_QT_Teilnehmer::updateTeilnehmer(const Teilnehmer& teilnehmer){
 };
 
 
-//NUR TEILNEHMER!
+
 bool DAO_QT_Teilnehmer::selectAllTeilnehmer(list<Teilnehmer*>& teilnehmerliste){
     if(!select_query_all.exec()){
         qDebug() << "Fehler" ;
@@ -113,14 +108,10 @@ bool DAO_QT_Teilnehmer::insertOrganisator(Organisator &organisator){
     int versuch = organisator.getVersuch();
     bool isSystempasswort = organisator.isSystempasswort();
 
-    qDebug()<< "INSERT MIT pw: "+passwort+" isHaupt: " + isHauptorganisator + " versuch: "+ versuch +" Systempw: "+ isSystempasswort;
-
     insert_query.bindValue(":passwort", passwort);
     insert_query.bindValue(":isHauptorganisator",isHauptorganisator);
     insert_query.bindValue(":versuch", versuch);
     insert_query.bindValue(":isSystempasswort", isSystempasswort);
-
-    //qDebug("Test"); //<< "INSERT MIT pw: "; // << passwort.toStdString() << " isHaupt: " << isHauptorganisator << " versuch: " << versuch <<" Systempw: "<< isSystempasswort;
 
     if(!insert_query.exec()) {
         qDebug("insert fehlgeschlagen");
@@ -202,7 +193,6 @@ bool DAO_QT_Teilnehmer::selectAllOrganisatoren(list<Organisator*>& organisatorli
         bool isHauptorganistor = select_query_allOrg.value(2).toBool();
         int versuch = select_query_allOrg.value(3).toInt();
         bool isSys = select_query_allOrg.value(4).toBool();
-
 
         Organisator* organisator = new Organisator();
         organisator->setTeilnehmerkey(teilnehmerkey);

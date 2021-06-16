@@ -1,7 +1,3 @@
-// /////////////////////////////////////////////////////////
-//  Teilnehmer.h
-//  Implementation of the Class Teilnehmer
-// /////////////////////////////////////////////////////////
 
 #ifndef TEILNEHMER_H
 #define TEILNEHMER_H
@@ -15,7 +11,8 @@ class I_DAO_Teilnehmer;
 class I_DAO_Teilnehmerdaten;
 using namespace std;
 
-
+//Teilnehmer ist eine Objektverwaltung von Teilnehmerdatenobjekten.
+//Sie verwaltet das erstellen und loeschen auf diese Objekte
 class Teilnehmer
 {
 

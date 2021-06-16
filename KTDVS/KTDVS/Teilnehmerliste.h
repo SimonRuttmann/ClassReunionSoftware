@@ -1,7 +1,3 @@
-///////////////////////////////////////////////////////////
-//  Teilnehmerliste.h
-//  Implementation of the Class Teilnehmerliste
-///////////////////////////////////////////////////////////
 
 #ifndef TEILNEHMERLISTE_H
 #define TEILNEHMERLISTE_H
@@ -9,6 +5,8 @@
 #include "Teilnehmer.h"
 #include "DAO_QT_Teilnehmer.h"
 
+//Repraesentiert eine Objektverwaltung der Objekte Teilnehmer
+//Er verwaltet die Erstellung, Loeschung, Aktualisierung und Ernennung/Entlassung von Teilnehmer
 class Teilnehmerliste
 {
 
@@ -20,10 +18,8 @@ public:
     void setAktiverNutzer(Organisator* newVal);
 
 	Teilnehmer* teilnehmerErstellen();
-   // void teilnehmerLoeschen();
 
     Organisator* organisatorErstellen(string passwort, bool isHauptorganisator);
-   // void organisatorLoeschen();
 
     Teilnehmer* vonOrgZuTeilnehmer(Organisator* org);
 
@@ -43,10 +39,13 @@ public:
 public:
     static Teilnehmerliste* uniqueInstance;
     Organisator* aktiverNutzer;
+
     //Liste ALLER Teilnehmer
     list<Teilnehmer*> teilnehmerliste;
-    //Liste aller Organsiatoren
+
+    //Liste ALLER Organsiatoren
     list<Organisator*> organisatorliste;
+
     //Liste NUR Teilnehmer
     list<Teilnehmer*> nurTeilnehmerliste;
 

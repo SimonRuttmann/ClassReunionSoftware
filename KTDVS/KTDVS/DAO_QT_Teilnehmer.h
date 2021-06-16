@@ -1,7 +1,3 @@
-///////////////////////////////////////////////////////////
-//  Qt_DAO_Teilnehmer.h
-//  Implementation of the Class DAO_QT_Teilnehmer
-///////////////////////////////////////////////////////////
 
 #ifndef DAO_QT_TEILNEHMER_H
 #define DAO_QT_TEILNEHMER_H
@@ -36,9 +32,8 @@ public:
 
     bool insertTeilnehmer(Teilnehmer& teilnehmer);
     bool updateTeilnehmer(const Teilnehmer& teilnehmer);
-    //NUR TEILNEHMER
-    bool selectAllTeilnehmer(list<Teilnehmer*>& teilnehmerliste);
 
+    bool selectAllTeilnehmer(list<Teilnehmer*>& teilnehmerliste);
     bool selectHo(Organisator& teilnehmer);
 
     bool insertOrganisator(Organisator& organisator);
