@@ -46,7 +46,7 @@ MainWindow::MainWindow(QWidget *parent)
     //if(!Teilnehmerliste::instance()->getTeilnehmerliste()->empty()){
      //   View_Einloggen* beitretenStart = new View_Einloggen(this, false); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
      //   beitretenStart->show();
-     //   this->hide();
+     //   this->close();
     //}
     //else{
     View_ErsterSystemstart* ersterSystemstart = new View_ErsterSystemstart(this);

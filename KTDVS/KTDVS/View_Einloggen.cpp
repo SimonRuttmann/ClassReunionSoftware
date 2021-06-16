@@ -60,7 +60,7 @@ void View_Einloggen::on_Login_clicked()
 
         View_TeilnehmerTeilnehmerHinzufuegen* teilHin = new View_TeilnehmerTeilnehmerHinzufuegen(this->parent, Haupt, true, true);
         teilHin->show();
-        this->hide();
+        this->close();
     }
     else{
         // Fall : normales Anmelden
@@ -103,7 +103,7 @@ void View_Einloggen::on_Login_clicked()
 
                     View_Passwortaenderung* pa = new View_Passwortaenderung(this->parent,org);
                     pa->show();
-                    this->hide();
+                    this->close();
 
 
                     return;
@@ -111,7 +111,7 @@ void View_Einloggen::on_Login_clicked()
 
                     View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent);
                     tl->show();
-                    this->hide();
+                    this->close();
                     return;
                 }
 
@@ -174,7 +174,7 @@ void View_Einloggen::on_Login_clicked()
                     qDebug() << "Passwort wurde richtig eingegeben bei Hauotorg der viele versuche braucht";
                     View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent);
                     tl->show();
-                    this->hide();
+                    this->close();
                     return;
                     return;
                 }
@@ -194,5 +194,5 @@ void View_Einloggen::on_zurueck_clicked()
 {
     View_ErsterSystemstart* ersterSystemstart = new View_ErsterSystemstart(parent);
     ersterSystemstart->show();
-    this->hide();
+    this->close();
 }

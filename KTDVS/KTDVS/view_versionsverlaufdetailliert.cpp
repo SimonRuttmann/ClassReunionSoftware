@@ -143,7 +143,7 @@ void View_VersionsverlaufDetailliert::on_zurueck_clicked()
 {
     View_Versionsverlauf *scene= new View_Versionsverlauf(vater,teilnehmer);
 
-    this->hide();
+    this->close();
     scene->show();
 }
 

@@ -27,7 +27,7 @@ View_Versionsverlauf::~View_Versionsverlauf()
 void View_Versionsverlauf::on_pushButton_clicked()
 {
     View_Teilnehmerliste* viewListe = new View_Teilnehmerliste(this->vater);
-    this->hide();
+    this->close();
     viewListe->show();
     cout << "go back" << endl;
 
@@ -64,7 +64,7 @@ void View_Versionsverlauf::on_tableWidget_cellClicked(int row, int column)
 
         View_VersionsverlaufDetailliert* vd = new View_VersionsverlaufDetailliert(this->vater, vorherige, pressedOne, teilnehmer);
         vd->show();
-        this->hide();
+        this->close();
     }
 }
 

@@ -55,26 +55,26 @@ void View_Teilnehmerliste::onTeilnehmerdatenAendern(){
     View_TeilnehmerTeilnehmerHinzufuegen* viewTtH =
             new View_TeilnehmerTeilnehmerHinzufuegen(this->vater, this->ausgewaehlerTeilnehmer, false, false);
     viewTtH->show();
-    this->hide();
+    this->close();
 }
 
 void View_Teilnehmerliste::onTeilnehmerHinzufuegen(){
     View_TeilnehmerTeilnehmerHinzufuegen* viewTtH =
             new View_TeilnehmerTeilnehmerHinzufuegen(this->vater, nullptr, true, false);
     viewTtH->show();
-    this->hide();
+    this->close();
 }
 
 void View_Teilnehmerliste::onAlsOrganisatorHinzufuegen(){
     View_Passwortaenderung* pw = new View_Passwortaenderung(this->vater, this->ausgewaehlerTeilnehmer);
     pw->show();
-    this->hide();
+    this->close();
 }
 
 void View_Teilnehmerliste::onVersionsverlaufAnzeigen(){
     View_Versionsverlauf* vv = new View_Versionsverlauf(this->vater, this->ausgewaehlerTeilnehmer);
     vv->show();
-    this->hide();
+    this->close();
 }
 
 void View_Teilnehmerliste::onUpdate(){

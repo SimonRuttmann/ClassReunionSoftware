@@ -137,14 +137,14 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_PwAndern_clicked(){
     Teilnehmer* a =this->teiln;
     Organisator* b = (Organisator*) a;
     View_Passwortaenderung *pwa = new View_Passwortaenderung(vater,b); //da muss die richtige übergabe noch rein
-    this->hide();
+    this->close();
     pwa->show();
 
 }
 
 void View_TeilnehmerTeilnehmerHinzufuegen::on_Versionsverlauf_clicked(){
     View_Versionsverlauf *vv = new View_Versionsverlauf(vater,this->teiln);
-    this->hide();
+    this->close();
     vv->show();
 }
 
@@ -244,7 +244,7 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_Speichern_clicked(){ //Die Teilneh
         //Szenenuebergang -> View Teilnehmerliste
         View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->vater);
         tl->show();
-        this->hide();
+        this->close();
         return;
     }
     fehlermeldung();
@@ -266,7 +266,7 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_zurueck_2_clicked()
 {
     View_Teilnehmerliste* tl = new View_Teilnehmerliste(vater);
     tl->show();
-    this->hide();
+    this->close();
 }
 
 void View_TeilnehmerTeilnehmerHinzufuegen::on_logout_2_clicked()

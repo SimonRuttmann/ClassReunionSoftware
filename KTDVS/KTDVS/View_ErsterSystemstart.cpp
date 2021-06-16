@@ -24,7 +24,7 @@ void View_ErsterSystemstart::on_NeuesSystem_clicked()
 { // Parameter neues System noch setzen
     View_Einloggen* ersterStart = new View_Einloggen(this->parent, true);
     ersterStart ->show();
-    this->hide();
+    this->close();
 
 }
 
@@ -33,7 +33,7 @@ void View_ErsterSystemstart::on_Beitreten_clicked()
 {
     View_Einloggen* beitretenStart = new View_Einloggen(this->parent, false); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
     beitretenStart->show();
-    this->hide();
+    this->close();
 
 }
 
