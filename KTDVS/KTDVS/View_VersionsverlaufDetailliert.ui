@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+	background-color: rgb(59, 59, 59);
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget" native="true">
    <property name="geometry">
     <rect>
@@ -36,6 +41,12 @@
       <layout class="QHBoxLayout" name="horizontalLayout_7">
        <item>
         <widget class="QPushButton" name="zurueck">
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	background-color: rgb(93, 93, 93);
+	color: rgb(255, 255, 255);
+}</string>
+         </property>
          <property name="text">
           <string>Zurück</string>
          </property>
@@ -51,6 +62,11 @@
            <bold>true</bold>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+         </property>
          <property name="text">
           <string>KTDVS</string>
          </property>
@@ -61,8 +77,14 @@
        </item>
        <item>
         <widget class="QPushButton" name="logout">
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	background-color: rgb(93, 93, 93);
+	color: rgb(255, 255, 255);
+}</string>
+         </property>
          <property name="text">
-          <string>Logout(symbol)</string>
+          <string>Logout</string>
          </property>
         </widget>
        </item>
@@ -74,6 +96,11 @@
         <layout class="QVBoxLayout" name="verticalLayout_9">
          <item>
           <widget class="QLabel" name="label_4">
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+           </property>
            <property name="text">
             <string>ältere Version</string>
            </property>
@@ -92,6 +119,11 @@
                 <layout class="QVBoxLayout" name="verticalLayout_3">
                  <item>
                   <widget class="QLabel" name="vorname">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                   </property>
                    <property name="text">
                     <string>Vorname</string>
                    </property>
@@ -99,6 +131,11 @@
                  </item>
                  <item>
                   <widget class="QLabel" name="nachname_alt">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                   </property>
                    <property name="text">
                     <string>Nachname</string>
                    </property>
@@ -106,6 +143,11 @@
                  </item>
                  <item>
                   <widget class="QLabel" name="schulname_alt">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                   </property>
                    <property name="text">
                     <string>Schulname</string>
                    </property>
@@ -113,6 +155,11 @@
                  </item>
                  <item>
                   <widget class="QLabel" name="strasse_alt">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                   </property>
                    <property name="text">
                     <string>Straße</string>
                    </property>
@@ -120,6 +167,11 @@
                  </item>
                  <item>
                   <widget class="QLabel" name="hausnummer_alt">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                   </property>
                    <property name="text">
                     <string>Hausnummer</string>
                    </property>
@@ -127,6 +179,11 @@
                  </item>
                  <item>
                   <widget class="QLabel" name="plz_alt">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                   </property>
                    <property name="text">
                     <string>Plz</string>
                    </property>
@@ -134,6 +191,11 @@
                  </item>
                  <item>
                   <widget class="QLabel" name="ort_alt">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                   </property>
                    <property name="text">
                     <string>Ort</string>
                    </property>
@@ -141,6 +203,11 @@
                  </item>
                  <item>
                   <widget class="QLabel" name="land_alt">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                   </property>
                    <property name="text">
                     <string>Land</string>
                    </property>
@@ -148,6 +215,11 @@
                  </item>
                  <item>
                   <widget class="QLabel" name="telefonnummern_alt">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                   </property>
                    <property name="text">
                     <string>Telefonnummer</string>
                    </property>
@@ -155,6 +227,11 @@
                  </item>
                  <item>
                   <widget class="QLabel" name="weitereTel">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                   </property>
                    <property name="text">
                     <string>WeitereTel</string>
                    </property>
@@ -162,6 +239,11 @@
                  </item>
                  <item>
                   <widget class="QLabel" name="email_alt">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                   </property>
                    <property name="text">
                     <string>Email</string>
                    </property>
@@ -176,37 +258,119 @@
                    <property name="enabled">
                     <bool>true</bool>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                   </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_2"/>
+                  <widget class="QLineEdit" name="lineEdit_2">
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_3"/>
+                  <widget class="QLineEdit" name="lineEdit_3">
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_4"/>
+                  <widget class="QLineEdit" name="lineEdit_4">
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_5"/>
+                  <widget class="QLineEdit" name="lineEdit_5">
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_6"/>
+                  <widget class="QLineEdit" name="lineEdit_6">
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_7"/>
+                  <widget class="QLineEdit" name="lineEdit_7">
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_8"/>
+                  <widget class="QLineEdit" name="lineEdit_8">
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_9"/>
+                  <widget class="QLineEdit" name="lineEdit_9">
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
-                  <widget class="QComboBox" name="comboBox_alt"/>
+                  <widget class="QComboBox" name="comboBox_alt">
+                   <property name="styleSheet">
+                    <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}
+
+QComboBox::drop-down{\n	color: rgb(255, 255, 255);\n	background-color: rgb(59, 59, 59);\n}
+
+QComboBox:on{\n	color: rgb(255, 255, 255);\n	background-color: rgb(59, 59, 59);\n}
+
+QComboBox QAbstractItemView{\n	color: rgb(255, 255, 255);\n	background-color: rgb(59, 59, 59);\n}</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_10"/>
+                  <widget class="QLineEdit" name="lineEdit_10">
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                   </property>
+                  </widget>
                  </item>
                 </layout>
                </item>
@@ -216,6 +380,12 @@
               <layout class="QHBoxLayout" name="horizontalLayout">
                <item>
                 <widget class="QTextEdit" name="textEdit_alt">
+                 <property name="styleSheet">
+                  <string notr="true">QTextEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                 </property>
                  <property name="placeholderText">
                   <string>Kommentar...</string>
                  </property>
@@ -233,6 +403,11 @@
         <layout class="QVBoxLayout" name="verticalLayout_7">
          <item>
           <widget class="QLabel" name="label_2">
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+           </property>
            <property name="text">
             <string>neuere Version</string>
            </property>
@@ -249,6 +424,11 @@
               <layout class="QVBoxLayout" name="verticalLayout_2">
                <item>
                 <widget class="QLabel" name="vorname_neu">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                 </property>
                  <property name="text">
                   <string>Vorname</string>
                  </property>
@@ -256,6 +436,11 @@
                </item>
                <item>
                 <widget class="QLabel" name="nachname_neu">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                 </property>
                  <property name="text">
                   <string>Nachname</string>
                  </property>
@@ -263,6 +448,11 @@
                </item>
                <item>
                 <widget class="QLabel" name="schulname_neu">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                 </property>
                  <property name="text">
                   <string>Schulname</string>
                  </property>
@@ -270,6 +460,11 @@
                </item>
                <item>
                 <widget class="QLabel" name="strasse_neu">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                 </property>
                  <property name="text">
                   <string>Straße</string>
                  </property>
@@ -277,6 +472,11 @@
                </item>
                <item>
                 <widget class="QLabel" name="hausnummer_neu">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                 </property>
                  <property name="text">
                   <string>Hausnummer</string>
                  </property>
@@ -284,6 +484,11 @@
                </item>
                <item>
                 <widget class="QLabel" name="plz_neu">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                 </property>
                  <property name="text">
                   <string>Plz</string>
                  </property>
@@ -291,6 +496,11 @@
                </item>
                <item>
                 <widget class="QLabel" name="ort_neu">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                 </property>
                  <property name="text">
                   <string>Ort</string>
                  </property>
@@ -298,6 +508,11 @@
                </item>
                <item>
                 <widget class="QLabel" name="land_neu">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                 </property>
                  <property name="text">
                   <string>Land</string>
                  </property>
@@ -305,6 +520,11 @@
                </item>
                <item>
                 <widget class="QLabel" name="telefonnummer_neu">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                 </property>
                  <property name="text">
                   <string>Telefonnummer</string>
                  </property>
@@ -312,6 +532,11 @@
                </item>
                <item>
                 <widget class="QLabel" name="weitereTel_neu">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                 </property>
                  <property name="text">
                   <string>WeitereTel</string>
                  </property>
@@ -319,6 +544,11 @@
                </item>
                <item>
                 <widget class="QLabel" name="email_neu">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
+                 </property>
                  <property name="text">
                   <string>Email</string>
                  </property>
@@ -329,37 +559,120 @@
              <item>
               <layout class="QVBoxLayout" name="verticalLayout">
                <item>
-                <widget class="QLineEdit" name="lineEdit_21"/>
+                <widget class="QLineEdit" name="lineEdit_21">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                 </property>
+                </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_22"/>
+                <widget class="QLineEdit" name="lineEdit_22">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                 </property>
+                </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_23"/>
+                <widget class="QLineEdit" name="lineEdit_23">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                 </property>
+                </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_24"/>
+                <widget class="QLineEdit" name="lineEdit_24">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                 </property>
+                </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_25"/>
+                <widget class="QLineEdit" name="lineEdit_25">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                 </property>
+                </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_26"/>
+                <widget class="QLineEdit" name="lineEdit_26">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                 </property>
+                </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_27"/>
+                <widget class="QLineEdit" name="lineEdit_27">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                 </property>
+                </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_28"/>
+                <widget class="QLineEdit" name="lineEdit_28">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                 </property>
+                </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_29"/>
+                <widget class="QLineEdit" name="lineEdit_29">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                 </property>
+                </widget>
                </item>
                <item>
-                <widget class="QComboBox" name="comboBox_neu"/>
+                <widget class="QComboBox" name="comboBox_neu">
+                 <property name="styleSheet">
+                  <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}
+
+QComboBox::drop-down{\n	color: rgb(255, 255, 255);\n	background-color: rgb(59, 59, 59);\n}
+
+QComboBox:on{\n	color: rgb(255, 255, 255);\n	background-color: rgb(59, 59, 59);\n}
+
+QComboBox QAbstractItemView{\n	color: rgb(255, 255, 255);\n	background-color: rgb(59, 59, 59);\n}</string>
+                 </property>
+                </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_30"/>
+                <widget class="QLineEdit" name="lineEdit_30">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                 </property>
+                </widget>
                </item>
               </layout>
              </item>
@@ -369,6 +682,12 @@
             <layout class="QHBoxLayout" name="horizontalLayout_5">
              <item>
               <widget class="QTextEdit" name="textEdit_neu">
+               <property name="styleSheet">
+                <string notr="true">QTextEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+               </property>
                <property name="placeholderText">
                 <string extracomment="Kommentar...">Kommentar...</string>
                </property>
