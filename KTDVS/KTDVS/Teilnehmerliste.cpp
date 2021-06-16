@@ -1,15 +1,11 @@
-///////////////////////////////////////////////////////////
-//  Teilnehmerliste.cpp
-//  Implementation of the Class Teilnehmerliste
-///////////////////////////////////////////////////////////
 
 #include "Teilnehmerliste.h"
 #include <QDebug>
 
 Teilnehmerliste::Teilnehmerliste(){
     this->TeilnehmerDAO = new DAO_QT_Teilnehmer();
-    if(!this->TeilnehmerDAO->selectAllTeilnehmer(nurTeilnehmerliste)){qDebug()<<"Fehler Seelect";}else{qDebug()<<"SelectFunktioniert";}
-    if(!this->TeilnehmerDAO->selectAllOrganisatoren(organisatorliste)) qDebug()<<"Fehler Select";
+    if(!this->TeilnehmerDAO->selectAllTeilnehmer(nurTeilnehmerliste)){qDebug()<<"Fehler Select Teilnehmer";}
+    if(!this->TeilnehmerDAO->selectAllOrganisatoren(organisatorliste)) qDebug()<<"Fehler Select Organisatoren";
 
     //Der Teilnehmerliste Teilnehmer hinzufuegen
     list<Teilnehmer*>::iterator teiln = nurTeilnehmerliste.begin();
@@ -29,7 +25,6 @@ Teilnehmerliste::Teilnehmerliste(){
     //Allen Teilnehmern (teiln + org) aktuelle Datensaetze beschaffen
     list<Teilnehmer*>::iterator it = this->teilnehmerliste.begin();
     while(it != teilnehmerliste.end()){
-        qDebug()<<(*it)->getTeilnehmerkey();
          (*it)->aktuelleTeilnehmerdatenVonDBErhalten();
 
         it++;
@@ -45,7 +40,6 @@ Teilnehmerliste::~Teilnehmerliste(){
     while(it != teilnehmerliste.end()){
         this->teilnehmerliste.erase(it);
         delete(*it);
-        //it++;
     }
 
 
@@ -78,7 +72,7 @@ Organisator* Teilnehmerliste::organisatorErstellen(string passwort, bool isHaupt
     return organisator;
 };
 
-//Initialize of static member
+//Statischen Member initialisieren
 Teilnehmerliste* Teilnehmerliste::uniqueInstance = 0;
 
 Teilnehmerliste* Teilnehmerliste::instance(){
@@ -98,7 +92,7 @@ bool Teilnehmerliste::updateTeilnehmer(Teilnehmer& teilnehmer){
 };
 
 
-
+//Transformiert einen bestehenden Organisator zu einem Teilnehmer
 Teilnehmer* Teilnehmerliste::vonOrgZuTeilnehmer(Organisator* org){
 
     //Datenbank auf Teilnehmer ausrichten
@@ -142,8 +136,9 @@ Teilnehmer* Teilnehmerliste::vonOrgZuTeilnehmer(Organisator* org){
     return teiln;
 };
 
+//Transformiert einen bestehenden Teilnehmer zu einem Organisator
 Organisator* Teilnehmerliste::vonTeilnZuOrg(Teilnehmer* teiln, string systempasswort){
-    qDebug() << "Transformiere Teilnehmer zu Organisator";
+
     Organisator * org = new Organisator();
     org->setHauptorganisator(false);
     org->setIsSystempasswort(true);
@@ -151,13 +146,12 @@ Organisator* Teilnehmerliste::vonTeilnZuOrg(Teilnehmer* teiln, string systempass
     org->setVersuch(0);
     org->setTeilnehmerkey(teiln->getTeilnehmerkey());
 
-    qDebug() << "Crash";
+
     this->TeilnehmerDAO->updateOrganisator(*org);
-    qDebug() << "Crash1";
+
     //Dem Organisator die Teilnehmerdaten aus der DB holen
     org->aktuelleTeilnehmerdatenVonDBErhalten();
-    //org->getAktuelleTeilnehmerdaten();
-    qDebug() << "Crash2";
+
     int tkey = org->getTeilnehmerkey();
 
     //Teilnehmer aus nurTeilnehmerliste löschen
@@ -185,7 +179,6 @@ Organisator* Teilnehmerliste::vonTeilnZuOrg(Teilnehmer* teiln, string systempass
     this->teilnehmerliste.push_back(org);
 
     delete teiln;
-    qDebug() << "Methodendruchlauf";
     return org;
 
 
@@ -194,9 +187,3 @@ Organisator* Teilnehmerliste::vonTeilnZuOrg(Teilnehmer* teiln, string systempass
 list<Organisator*>* Teilnehmerliste::getOrganisatorliste(){return &(this->organisatorliste);};
 
 list<Teilnehmer*>* Teilnehmerliste::getTeilnehmerliste(){return &(this->teilnehmerliste);};
-
-//      Teilnehmer      3843
-//          ^
-//          |
-//      Pointer Teilnehmer zeigt auf 3843, hat 934934
-//

@@ -1,7 +1,3 @@
-///////////////////////////////////////////////////////////
-//  Teilnehmer.cpp
-//  Implementation of the Class Teilnehmer
-///////////////////////////////////////////////////////////
 
 #include "Teilnehmer.h"
 #include "I_DAO_Teilnehmer.h"
@@ -21,31 +17,12 @@
 
     };
 
-
-
     Teilnehmer::~Teilnehmer(){
-
-//        list<Adresse*> adressen;
-//        list<Teilnehmerdaten*>::iterator it = this->Teilnehmerdatenliste.begin();
-
-//        //delete this->aktuelleTeilnehmerdaten;
-//        Teilnehmerdaten* td;
 
         for (auto itr = this->Teilnehmerdatenliste.begin(); itr!=this->Teilnehmerdatenliste.end(); ++itr)
             {
                 delete  *itr;
             }
-
-//        while(it != Teilnehmerdatenliste.end()){
-//            td = *it;
-//            this->Teilnehmerdatenliste.erase(it);
-
-//        }
-
-
-//        while (!adressen.empty())
-//           delete (adressen.pop_front());
-//        }
 
     }
 
@@ -54,11 +31,8 @@
     };
 
     Teilnehmerdaten* Teilnehmer::aktuelleTeilnehmerdatenVonDBErhalten(){
-        qDebug()<<"Hole Teilnehmerdaten mit Teilnehmerkey: " << this->teilnehmerkey << " ";
         this->TeilnehmerdatenDAO->selectFirstOfTeilnehmer(this->teilnehmerkey, *this->aktuelleTeilnehmerdaten);
-        qDebug()<<"Erhalte TD mit Email: " << QString::fromStdString(aktuelleTeilnehmerdaten->getEMail()) << "teilnehmerkey: "<< getAktuelleTeilnehmerdaten()->getTeilnehmerkey();
         return this->aktuelleTeilnehmerdaten;
-
     };
 
     list<Teilnehmerdaten*>* Teilnehmer::getAlleTeilnehmerdaten(){
@@ -81,7 +55,6 @@
     };
 
     void Teilnehmer::neuenTDEintragEinfuegen(Teilnehmerdaten* td){
-        qDebug() << "Teilnehmerdaten werden eingefuegt: Vorname: " << QString::fromStdString(td->getVorname() )<< "Email: " << QString::fromStdString(td->getEMail()) ;
         int erstellerkey = Teilnehmerliste::instance()->aktiverNutzer->getTeilnehmerkey();
         td->setTeilnehmerkey(this->teilnehmerkey);
         td->setErstellerKey(erstellerkey);

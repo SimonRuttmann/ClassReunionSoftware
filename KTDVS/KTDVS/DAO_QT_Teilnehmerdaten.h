@@ -1,7 +1,3 @@
-///////////////////////////////////////////////////////////
-//  Qt_DAO_Teilnehmerdaten.h
-//  Implementation of the Class DAO_QT_Teilnehmerdaten
-///////////////////////////////////////////////////////////
 
 #ifndef DAO_QT_TEILNEHMERDATEN_H
 #define DAO_QT_TEILNEHMERDATEN_H
@@ -37,6 +33,6 @@ public:
     bool insert(Teilnehmerdaten& teilnehmerdaten);
     bool selectFirstOfTeilnehmer(int teilnehmerkey, Teilnehmerdaten& teilnehmerdaten);
     bool selectAllOfTeilnehmer(int teilnehmerkey,  list<Teilnehmerdaten*>& teilnehmerdatenliste);
-    bool selectAll(list<Teilnehmerdaten*>& teilnehmerdatenliste);
+
 };
 #endif // DAO_QT_TEILNEHMERDATEN_H

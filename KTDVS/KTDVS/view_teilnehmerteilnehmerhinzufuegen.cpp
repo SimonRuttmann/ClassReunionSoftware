@@ -158,7 +158,10 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_OrganisatorrechteEntfernen_clicked
     if(this->isOrg){
               qDebug()<<"Rufe von Org zu Teilnehmer auf";
               Teilnehmerliste::instance()->vonOrgZuTeilnehmer((Organisator*)this->teiln);
-          }else{
+              View_Teilnehmerliste* tll = new View_Teilnehmerliste(vater);
+              tll->show();
+              this->close();
+    }else{
               View_Passwortaenderung* tl = new View_Passwortaenderung(vater, teiln);
               tl->show();
               this->close();

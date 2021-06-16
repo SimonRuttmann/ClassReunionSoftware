@@ -1,7 +1,3 @@
-// /////////////////////////////////////////////////////////
-//  Organisator.h
-//  Implementation of the Class Organisator
-// /////////////////////////////////////////////////////////
 
 #ifndef ORGANISATOR_H
 #define ORGANISATOR_H
@@ -11,10 +7,14 @@
 class Organisator : public Teilnehmer
 {
 public:
+    //Enum, verwendet als Ruckgabe der Methode pruefePasswort
     enum Pruefung {EMailFalsch, EmailZutreffendPwFalsch, EMailZutreffendPwRichtig};
+
     Organisator(){};
     Organisator(string passwort, bool isHauptorganisator);
 
+    //Vergleicht die uebergebene Email/Passwort mit den eigenen Daten
+    //und gibt eine Wert aus der oben definierten Enum zurueck
     Pruefung pruefePasswort(string pw, string email);
 
     void setPasswort(string pw);
