@@ -38,6 +38,7 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
 
     //Check if Organisator
     this->isOrg = false;
+    ui->PwAndern->setVisible(false);
     if(aktuellerTeilnehmer != nullptr){
         list<Organisator*> orgsl = *Teilnehmerliste::instance()->getOrganisatorliste();
         list<Organisator*>::iterator it;
@@ -68,6 +69,9 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
     if(!nutzer->isHauptorganisator()){
         //hier muss geprüft werden ob man aktuell als hauptorganisator angemeldet ist, wenn nein dann des
         ui->OrganisatorrechteEntfernen->setVisible(false);
+    }
+    if(Teilnehmerliste::instance()->getAktiverNutzer()->isHauptorganisator()){
+        ui->PwAndern->setVisible(true);
     }
 
 
