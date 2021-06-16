@@ -31,16 +31,11 @@ void View_Versionsverlauf::on_pushButton_clicked()
     View_Teilnehmerliste* viewListe = new View_Teilnehmerliste(this->vater);
     this->close();
     viewListe->show();
-    cout << "go back" << endl;
-
 }
 
 void View_Versionsverlauf::on_toolButton_clicked()
 {
-
     QApplication::quit();
-//    cout << "logout" << endl;
-//    this->close();
 }
 
 void View_Versionsverlauf::on_tableWidget_cellClicked(int row, int column)
@@ -81,8 +76,6 @@ void View_Versionsverlauf::onInit(){
     list<Teilnehmerdaten*>::iterator it;
     int counter = 0;
 
-    cout << "add all start items" << endl;
-
     teilnehmer->getAlleTeilnehmerdaten()->clear();
     teilnehmerDaten = teilnehmer->alleTeilnehmerdatenErstellen();
 
@@ -104,7 +97,6 @@ void View_Versionsverlauf::onInit(){
             }
         }
 
-        //listeTeilnehmer->setItem(counter,2, new QTableWidgetItem(QString::fromStdString(to_string((*it)->getErstellerKey()))));
         listeTeilnehmer->setItem(counter,5, new QTableWidgetItem("click for details"));
 
         counter++;
