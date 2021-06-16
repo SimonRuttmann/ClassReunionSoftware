@@ -82,7 +82,7 @@ void View_Passwortaenderung::on_pushButton_clicked()
     ui-> Fehlermeldung ->setVisible(false);
     switch(fall){
         case 1: // Fall1= Org muss Passwort ändern beim ersten Anmelden
-        {   qDebug() <<"case1";
+        {   //qDebug() <<"case1";
             if(ui ->altesPasEdit ->text().isEmpty()||ui->neuesPasEdit->text().isEmpty()){
                 qDebug() <<"blockiert weil String empty";
                 ui ->KeineEingabe -> setVisible(true);
@@ -94,8 +94,8 @@ void View_Passwortaenderung::on_pushButton_clicked()
                 neuPasEingabe = ui ->neuesPasEdit -> text();
                 org ->setPasswort(neuPasEingabe.toStdString());
                 org ->setIsSystempasswort(false);
-                bool updated = Teilnehmerliste::instance()->updateOrganisator(*org);
-                qDebug()<<"MUHAHAHAHAHHAHAHAHAHAHAHHAHAH"<<updated;
+                Teilnehmerliste::instance()->updateOrganisator(*org);
+                //qDebug()<<"MUHAHAHAHAHHAHAHAHAHAHAHHAHAH"<<updated;
                 View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
                 tl->show();
                 this->close();
@@ -106,28 +106,28 @@ void View_Passwortaenderung::on_pushButton_clicked()
             break;
         }
         case 2:  // Fall2= Hauptorg ändert Teilnehmer auf Org
-        {   qDebug() <<"case2";
+        {  // qDebug() <<"case2";
             if(ui->neuesPasEdit->text().isEmpty()){
-                qDebug() <<"blockiert weil String empty";
+                //qDebug() <<"blockiert weil String empty";
                 ui ->KeineEingabe -> setVisible(true);
                 return;
             }
             neuPasEingabe = ui ->neuesPasEdit -> text();
-            qDebug() <<"Passwort wurde aus der Gui geholt";
+            //qDebug() <<"Passwort wurde aus der Gui geholt";
             org =Teilnehmerliste::instance()->vonTeilnZuOrg(teil,neuPasEingabe.toStdString());
 
-            bool updated = Teilnehmerliste::instance()->updateOrganisator(*org);
-            qDebug()<<"MUHAHAHAHAHHAHAHAHAHAHAHHAHAH"<<updated;
-            qDebug() <<"Teilnehmer wurde zum Organisator gemacht" << QString::fromStdString(org->getAktuelleTeilnehmerdaten()->getEMail());
+            Teilnehmerliste::instance()->updateOrganisator(*org);
+            //qDebug()<<"MUHAHAHAHAHHAHAHAHAHAHAHHAHAH"<<updated;
+            //qDebug() <<"Teilnehmer wurde zum Organisator gemacht" << QString::fromStdString(org->getAktuelleTeilnehmerdaten()->getEMail());
             View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
             tl->show();
             this->close();
             break;
         }
         case 3: //Fall3= Hauptorg ändert Passwort von ORg
-        {   qDebug() <<"case3";
+        {   //qDebug() <<"case3";
             if(ui->neuesPasEdit->text().isEmpty()){
-                qDebug() <<"blockiert weil String empty";
+                //qDebug() <<"blockiert weil String empty";
                 ui ->KeineEingabe -> setVisible(true);
                 return;
             }
@@ -135,8 +135,8 @@ void View_Passwortaenderung::on_pushButton_clicked()
             org->setPasswort(neuPasEingabe.toStdString());
             org->setIsSystempasswort(true);
             org->setVersuch(0);
-            bool updated = Teilnehmerliste::instance()->updateOrganisator(*org);
-            qDebug()<<"MUHAHAHAHAHHAHAHAHAHAHAHHAHAH"<<updated;
+            Teilnehmerliste::instance()->updateOrganisator(*org);
+            //qDebug()<<"MUHAHAHAHAHHAHAHAHAHAHAHHAHAH"<<updated;
             View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
             tl->show();
             this->close();
