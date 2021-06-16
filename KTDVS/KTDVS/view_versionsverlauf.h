@@ -38,7 +38,7 @@ private:
 
     QTableWidget *listeTeilnehmer;
     QPushButton *zurueck;
-    //QPushButton *details;
+
     QToolButton *ausloggen;
     QWidget* vater;
     void onInit();

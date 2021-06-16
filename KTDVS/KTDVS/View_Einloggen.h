@@ -3,7 +3,7 @@
 
 #include <QWidget>
 
-//pruefen ob ich noch brauche alles
+
 #include <QMainWindow>
 #include <QLineEdit>
 #include <QPushButton>
@@ -31,7 +31,7 @@ public:
 
     void onEinloggen();
     void onSchliessen();
-    void onErstelleHauptorganisator();// buttontext
+    void onErstelleHauptorganisator();
     void onInit();
 
     Organisator* org;

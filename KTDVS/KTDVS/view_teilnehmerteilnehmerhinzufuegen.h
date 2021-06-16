@@ -23,8 +23,7 @@ private slots:
     void on_PwAndern_clicked();
     void on_Speichern_clicked();
     void on_AddPhoneNumber_clicked();
-  //  void on_zurueck_clicked();
-  //  void on_logout_clicked();
+
 
 
     void on_zurueck_2_clicked();

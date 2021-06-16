@@ -4,8 +4,8 @@
 
 Teilnehmerliste::Teilnehmerliste(){
     this->TeilnehmerDAO = new DAO_QT_Teilnehmer();
-    if(!this->TeilnehmerDAO->selectAllTeilnehmer(nurTeilnehmerliste)){qDebug()<<"Fehler Select Teilnehmer";}
-    if(!this->TeilnehmerDAO->selectAllOrganisatoren(organisatorliste)) qDebug()<<"Fehler Select Organisatoren";
+    this->TeilnehmerDAO->selectAllTeilnehmer(nurTeilnehmerliste);
+    this->TeilnehmerDAO->selectAllOrganisatoren(organisatorliste);
 
     //Der Teilnehmerliste Teilnehmer hinzufuegen
     list<Teilnehmer*>::iterator teiln = nurTeilnehmerliste.begin();

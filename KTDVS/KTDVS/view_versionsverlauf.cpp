@@ -39,8 +39,7 @@ void View_Versionsverlauf::on_toolButton_clicked()
 {
 
     QApplication::quit();
-//    cout << "logout" << endl;
-//    this->close();
+
 }
 
 void View_Versionsverlauf::on_tableWidget_cellClicked(int row, int column)
@@ -104,7 +103,7 @@ void View_Versionsverlauf::onInit(){
             }
         }
 
-        //listeTeilnehmer->setItem(counter,2, new QTableWidgetItem(QString::fromStdString(to_string((*it)->getErstellerKey()))));
+
         listeTeilnehmer->setItem(counter,5, new QTableWidgetItem("click for details"));
 
         counter++;

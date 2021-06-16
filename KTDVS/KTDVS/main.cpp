@@ -28,15 +28,6 @@ int main(int argc, char *argv[])
     exit(2);
     }
 
-    bool isOrg = true;
-    Teilnehmer* aktuellerTeilnehmer = new Teilnehmer();
-    if(aktuellerTeilnehmer != nullptr){
-        Organisator* murks = (Organisator*)aktuellerTeilnehmer;
-        try{murks->getPasswort();}catch(exception e){isOrg = false;}
-    }
-    else{
-        isOrg = false;
-    }
 
     if(argc==2){
         QString arg = QCoreApplication::arguments().at(1);
