@@ -95,6 +95,11 @@
                  <string notr="true">QPushButton{
 	background-color: rgb(93, 93, 93);
 	color: rgb(255, 255, 255);
+}
+
+QPushButton:disabled{
+	color: rgb(68, 68, 68);
+	background-color: rgb(43, 43, 43);
 }</string>
                 </property>
                 <property name="text">
