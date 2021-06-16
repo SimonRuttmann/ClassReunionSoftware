@@ -68,8 +68,8 @@ int main(int argc, char *argv[])
             cleanDb.prepare("UPDATE sqlite_sequence set seq = 0;");
             cleanDb.exec();
             cleanDb.clear();
-        }
-        else if(arg==QString("test")){
+        //}
+        //else if(arg==QString("test")){
             qDebug() << "Testfall wurde aufgerufen";
             QSqlQuery   OrgM,OrgK,
                         t1,t2,t3,t4,t5,t6,t7,t8,t9,t10;
@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
 
             HOrg_1.prepare("INSERT INTO Teilnehmerdaten (teilnehmerkey, vorname, nachname, schulname, email, datum, postleitzahl, "
                                                         "hausnummer, stadt, strasse, land, kommentar, erstellerkey)"
-                           "VALUES                     (1, 'Roland', '', 'Dietrich', 'D@Albertus.com', '', 11111, "
+                           "VALUES                     (1, 'Roland', 'Test', 'Dietrich', 'admin@admin', '', 11111, "
                                                         "1, 'Antonstadt', 'Antonstrasse', 'Deutschland', 'meinKommentar', 1);");
 
             HOrg_tel_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (1, '1', '075116699177')");
