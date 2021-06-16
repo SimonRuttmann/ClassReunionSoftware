@@ -7,13 +7,18 @@
 #include <QDebug>
 // -> ui-> Fehlermeldung -> setVisible(false);
 
-View_Einloggen::View_Einloggen(QWidget *parent, bool isNeu) :
+View_Einloggen::View_Einloggen(QWidget *parent, bool isNeu, bool direkterStart) :
     QWidget(parent),
     ui(new Ui::View_Einloggen)
 {
+
     this->parent = parent;
     this->isNeu = isNeu;
     ui->setupUi(this);
+    if(direkterStart) {
+        ui->zurueck->setVisible(false);
+        ui->logout_2->setVisible(false);
+    }
     this->onInit();
 }
 

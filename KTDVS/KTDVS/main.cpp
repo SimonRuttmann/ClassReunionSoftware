@@ -53,8 +53,8 @@ int main(int argc, char *argv[])
             cleanDb.prepare("UPDATE sqlite_sequence set seq = 0;");
             cleanDb.exec();
             cleanDb.clear();
-        //}
-        //else if(arg==QString("test")){
+        }
+        else if(arg==QString("test")){
             qDebug() << "Testfall wurde aufgerufen";
             QSqlQuery   HOrg,OrgM,OrgK,
                         t1,t2,t3,t4,t5,t6,t7,t8,t9,t10;
