@@ -104,7 +104,7 @@ Teilnehmer* Teilnehmerliste::vonOrgZuTeilnehmer(Organisator* org){
     //Datenbank auf Teilnehmer ausrichten
     org->setHauptorganisator(false);
     org->setIsSystempasswort(false);
-    org->setPasswort(NULL);
+    org->setPasswort("");
     org->setVersuch(0);
     this->TeilnehmerDAO->updateTeilnehmer(*org);
 
