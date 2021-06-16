@@ -18,24 +18,6 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
     qDebug()<< "object erstellt";
     ui->setupUi(this);
 
-    //qDebug() << aktuellerTeilnehmer->getTeilnehmerkey();
-    //bool isOrg = true;
-    //qDebug() << "teseest";
-//    if(aktuellerTeilnehmer != nullptr && aktuellerTeilnehmer != NULL){
-//        Organisator* murks = (Organisator*)aktuellerTeilnehmer;
-//        try{murks->getPasswort();}catch(exception e){isOrg = false;}
-//    }
-//    else{
-//        isOrg = false;
-//    }
-//    bool isOrg = false;
-//    //dynamic_cast
-//    Organisator* org = static_cast<Organisator*>(aktuellerTeilnehmer);
-//    if(org){
-//        isOrg = true;
-//    }
-
-
     //Check if Organisator
     this->isOrg = false;
     ui->PwAndern->setVisible(false);
@@ -64,13 +46,11 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
 
 
     if(aktuellerTeilnehmer != nullptr && org != nullptr){
-    if(aktuellerTeilnehmer->getTeilnehmerkey() == org->getTeilnehmerkey()){
-        //setze Button disabled
-        ui->OrganisatorrechteEntfernen->setDisabled(true);
+        if(aktuellerTeilnehmer->getTeilnehmerkey() == org->getTeilnehmerkey()){
+            //setze Button disabled
+            ui->OrganisatorrechteEntfernen->setDisabled(true);
+        }
     }
-    }
-
-    qDebug() << "isOrg: " <<isOrg;
 
     if(isOrg){
         //Enable button
@@ -95,8 +75,8 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
 
     neuerTn = neuerTeilnehmer;
     if(aktuellerTeilnehmer != nullptr){
-    teiln = aktuellerTeilnehmer;
-}
+        teiln = aktuellerTeilnehmer;
+    }
     this->hauptorgErstellen = hauptorganisatorErstellen;
     vater = parent;
 
@@ -109,12 +89,9 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
     //kein neuer Teilnehmer, bisherige Daten anzeigen
     if(!neuerTeilnehmer){
         ui->Versionsverlauf->setEnabled(false);
-        qDebug()<<"des neue tut dinge";
-    //Kein neuer Teilnehmer -> Teilnehmerdaten sind erhalten
-    teilnehmerdaten = teiln->aktuelleTeilnehmerdatenVonDBErhalten();
-        qDebug()<<"des Daten erhalten klappt";
+        //Kein neuer Teilnehmer -> Teilnehmerdaten sind erhalten
+        teilnehmerdaten = teiln->aktuelleTeilnehmerdatenVonDBErhalten();
         oldEmail = teilnehmerdaten->getEMail();
-        qDebug()<<"getEmail hat geklappt";
         if(teilnehmerdaten->getVorname()!= "")ui->lineEdit_11->setText(QString::fromStdString(teilnehmerdaten->getVorname()));
         if(teilnehmerdaten->getNachname()!= "")ui->lineEdit_12->setText(QString::fromStdString(teilnehmerdaten->getNachname()));
         if(teilnehmerdaten->getSchulname()!= "")ui->lineEdit_13->setText(QString::fromStdString(teilnehmerdaten->getSchulname()));
@@ -126,7 +103,6 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
         if(teilnehmerdaten->getHaupttelefonnummer()!= "")ui->lineEdit_19->setText(QString::fromStdString(teilnehmerdaten->getHaupttelefonnummer()));
         if(teilnehmerdaten->getEMail()!= "")ui->lineEdit_20->setText(QString::fromStdString(teilnehmerdaten->getEMail()));
         if(teilnehmerdaten->getKommentar() != "")ui->Komentar->setText(QString::fromStdString(teilnehmerdaten->getKommentar()));
-        qDebug()<<"daten ohne weittelnr hat geklappt";
         if(!teilnehmerdaten->getWeitereTelefonnummern().empty()){
             string teles = "";
             list<string> teleList = teilnehmerdaten->getWeitereTelefonnummern();
@@ -172,20 +148,17 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_Versionsverlauf_clicked(){
 }
 
 void View_TeilnehmerTeilnehmerHinzufuegen::on_OrganisatorrechteEntfernen_clicked(){
-    //!instanceof<Organisator>(this->teiln)
     if(this->isOrg){
-              qDebug()<<"Rufe von Org zu Teilnehmer auf";
               Teilnehmerliste::instance()->vonOrgZuTeilnehmer((Organisator*)this->teiln);
               View_Teilnehmerliste* tll = new View_Teilnehmerliste(vater);
               tll->show();
               this->close();
-    }else{
+    }
+    else{
               View_Passwortaenderung* tl = new View_Passwortaenderung(vater, teiln);
               tl->show();
               this->close();
-          }
-
-//Muss extern abgeändert werden
+    }
 }
 
 void View_TeilnehmerTeilnehmerHinzufuegen::on_Speichern_clicked(){ //Die Teilnehmerdaten müssen da richtig abgeändert werden
@@ -211,7 +184,6 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_Speichern_clicked(){ //Die Teilneh
             && intcheck(ui->lineEdit_16->text().toStdString()) && isValid)
     {
 
-
         //Vorsicht, diese teilnehmerdaten sind nicht this->teilnehmerdaten (this->teilnehmerdaten Linke Seite, teilnehmerdaten Recht Seite)
         Teilnehmerdaten* teilnehmerdaten;
         Teilnehmer* teilnehmer;
@@ -225,7 +197,6 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_Speichern_clicked(){ //Die Teilneh
         }
         //Neue Teilnehmerdaten zu einem bestehenden Teilnehmer hinzufügen
         else{
-
             teilnehmer = this->teiln;
         }
 
@@ -276,18 +247,6 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_Speichern_clicked(){ //Die Teilneh
     fehlermeldung();
 }
 
-
-//void View_TeilnehmerTeilnehmerHinzufuegen::on_zurueck_clicked(){
- //   View_Teilnehmerliste* tl = new View_Teilnehmerliste(vater);
- //   tl->show();
-  //  this->close();
-//}
-
-//void View_TeilnehmerTeilnehmerHinzufuegen::on_logout_clicked(){
-  //  this->destroy();
-  //  this->close();
-//}
-
 void View_TeilnehmerTeilnehmerHinzufuegen::on_zurueck_2_clicked()
 {
     View_Teilnehmerliste* tl = new View_Teilnehmerliste(vater);
@@ -303,9 +262,9 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_logout_2_clicked()
 }
 
 void View_TeilnehmerTeilnehmerHinzufuegen::on_AddPhoneNumber_clicked(){
-    if(ui->lineEdit_21->text() == NULL || ui->lineEdit_21->text().toStdString() == ""){
+   if(ui->lineEdit_21->text() == NULL || ui->lineEdit_21->text().toStdString() == ""){
         return;
-    }
+   }
    addnumberamount++;
    addnumber.append(ui->lineEdit_21->text()+ ", ");
    ui->lineEdit_21->setText("");
@@ -323,8 +282,8 @@ void View_TeilnehmerTeilnehmerHinzufuegen::fehlermeldung(){
     if(ui->lineEdit_19->text()==NULL) ui->lineEdit_19->setPlaceholderText("Plichtangabe");
     if(ui->lineEdit_20->text()==NULL) ui->lineEdit_20->setPlaceholderText("Plichtangabe");
     if(!isValid){
-            ui->lineEdit_20->setText("");
-            ui->lineEdit_20->setPlaceholderText("Email schon vergeben");
+        ui->lineEdit_20->setText("");
+        ui->lineEdit_20->setPlaceholderText("Email schon vergeben");
     }
     if(!intcheck(ui->lineEdit_15->text().toStdString())){
         ui->lineEdit_15->setText("");
