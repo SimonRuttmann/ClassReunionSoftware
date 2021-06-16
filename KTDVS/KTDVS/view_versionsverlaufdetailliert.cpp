@@ -18,10 +18,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     neudaten=neu;
     this->teilnehmer=teilnehmer;
 
-
-    //Möglicher Fehler durch umbennung der Elemente in .ui
-
-    //Setze Eigenschaften der alten
+    //Setzt Eigenschaften der alten Daten
 
     ui->lineEdit_1->setReadOnly(true);
     ui->lineEdit_2->setReadOnly(true);
@@ -35,7 +32,7 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     ui->lineEdit_10->setReadOnly(true);
     ui->textEdit_alt->setReadOnly(true);
 
-    //altdaten=nullptr;
+    //Altdaten können nullptr sein falls die Daten neu erstellt wurden
     if(neudaten== nullptr){
         cout << "Neudaten wurden mit Nullpointer übergeben";
         return;
@@ -58,36 +55,27 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
     }
     else{
 
-    //Labels
-    ui->label_4->setText("ältere Version");
-    //QLineEdits
-    ui->lineEdit_1->setText(QString::fromStdString(altdaten->getVorname()));
-    ui->lineEdit_2->setText(QString::fromStdString(altdaten->getNachname()));
-    ui->lineEdit_3->setText(QString::fromStdString(altdaten->getSchulname()));
-    ui->lineEdit_4->setText(QString::fromStdString(altdaten->getAdresse().strasse));
-    ui->lineEdit_5->setText(QString::number(altdaten->getAdresse().haussnummer));
-    ui->lineEdit_6->setText(QString::number(altdaten->getAdresse().postleitzahl));
-    ui->lineEdit_7->setText(QString::fromStdString(altdaten->getAdresse().stadt));
-    ui->lineEdit_8->setText(QString::fromStdString(altdaten->getAdresse().land));
-    ui->lineEdit_9->setText(QString::fromStdString(altdaten->getHaupttelefonnummer()));
-    ui->lineEdit_10->setText(QString::fromStdString(altdaten->getEMail()));
-    ui->textEdit_alt->setText(QString::fromStdString(altdaten->getKommentar()));
+        //Labels
+        ui->label_4->setText("ältere Version");
+        //QLineEdits
+        ui->lineEdit_1->setText(QString::fromStdString(altdaten->getVorname()));
+        ui->lineEdit_2->setText(QString::fromStdString(altdaten->getNachname()));
+        ui->lineEdit_3->setText(QString::fromStdString(altdaten->getSchulname()));
+        ui->lineEdit_4->setText(QString::fromStdString(altdaten->getAdresse().strasse));
+        ui->lineEdit_5->setText(QString::number(altdaten->getAdresse().haussnummer));
+        ui->lineEdit_6->setText(QString::number(altdaten->getAdresse().postleitzahl));
+        ui->lineEdit_7->setText(QString::fromStdString(altdaten->getAdresse().stadt));
+        ui->lineEdit_8->setText(QString::fromStdString(altdaten->getAdresse().land));
+        ui->lineEdit_9->setText(QString::fromStdString(altdaten->getHaupttelefonnummer()));
+        ui->lineEdit_10->setText(QString::fromStdString(altdaten->getEMail()));
+        ui->textEdit_alt->setText(QString::fromStdString(altdaten->getKommentar()));
 
-    weitereTel=altdaten->getWeitereTelefonnummern();
-    ui->comboBox_alt->clear();
-    for(list<string>::iterator i =weitereTel.begin();i!=weitereTel.end();i++){
-        ui->comboBox_alt->addItem(QString::fromStdString(*i));
-    }
+        weitereTel=altdaten->getWeitereTelefonnummern();
+        ui->comboBox_alt->clear();
 
-        /*
-        //Kommentarfeld hinzufügen
-        hLayout= new QHBoxLayout;
-        QTextEdit *edit = new QTextEdit;
-        edit->setReadOnly(true);
-        edit->setText(QString(QString::fromStdString(altdaten->getKommentar())));
-        hLayout->addWidget(edit);
-        ui->alteVersion_2->addLayout(hLayout);
-        */
+        for(list<string>::iterator i =weitereTel.begin();i!=weitereTel.end();i++){
+            ui->comboBox_alt->addItem(QString::fromStdString(*i));
+        }
     }
 
     //Setze Eigenschaften der neuen Daten Reihe
@@ -117,19 +105,11 @@ View_VersionsverlaufDetailliert::View_VersionsverlaufDetailliert(QWidget *parent
 
     weitereTel=neudaten->getWeitereTelefonnummern();
     ui->comboBox_neu->clear();
+
     for(list<string>::iterator i =weitereTel.begin();i!=weitereTel.end();i++){
         ui->comboBox_neu->addItem(QString::fromStdString(*i));
     }
 
-    /*
-    //Kommentarfeld hinzufügen
-    hLayout= new QHBoxLayout;
-    QTextEdit *edit = new QTextEdit;
-    edit->setReadOnly(true);
-    edit->setText(QString(QString::fromStdString(neudaten->getKommentar())));
-    hLayout->addWidget(edit);
-    ui->neueVersion_2->addLayout(hLayout);
-    */
 }
 
 View_VersionsverlaufDetailliert::~View_VersionsverlaufDetailliert()
@@ -150,7 +130,6 @@ void View_VersionsverlaufDetailliert::on_zurueck_clicked()
 
 void View_VersionsverlaufDetailliert::on_logout_clicked()
 {
-    //Hier könnten noch Sessionparameter gelöscht werden
      QApplication::quit();
 }
 
