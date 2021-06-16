@@ -50,7 +50,25 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
         }
     }
 
+    // damit der Hauptorg seine Organisaotrachte nicht entfernen kann
+    list<Organisator*>* orglist = Teilnehmerliste::instance()->getOrganisatorliste();
+    list<Organisator*>::iterator it;
 
+    Organisator* org;
+    for (it = (orglist)->begin();it != (orglist)->end();it++){
+        org= *it;
+        if(org->isHauptorganisator()){
+            break;
+        }
+    }
+
+
+    if(aktuellerTeilnehmer != nullptr && org != nullptr){
+    if(aktuellerTeilnehmer->getTeilnehmerkey() == org->getTeilnehmerkey()){
+        //setze Button disabled
+        ui->OrganisatorrechteEntfernen->setDisabled(true);
+    }
+    }
 
     qDebug() << "isOrg: " <<isOrg;
 

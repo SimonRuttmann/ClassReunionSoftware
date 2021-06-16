@@ -44,7 +44,7 @@ void View_Teilnehmerliste::addFeld(Teilnehmerdaten* daten){
     listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,3, new QTableWidgetItem(QString::fromStdString(daten->getHaupttelefonnummer())));
     listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,4, new QTableWidgetItem(QString::fromStdString("Versionsverlauf")));
     listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,5, new QTableWidgetItem(QString::fromStdString("Daten anzeigen")));
-    listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,6, new QTableWidgetItem(QString::fromStdString("als Organisator")));
+    //listeTeilnehmer->setItem(listeTeilnehmer->rowCount() - 1,6, new QTableWidgetItem(QString::fromStdString("als Organisator")));
 }
 
 void View_Teilnehmerliste::onAusloggen(){
@@ -128,7 +128,7 @@ void View_Teilnehmerliste::on_Teilnehmertabelle_cellClicked(int row, int column)
         onVersionsverlaufAnzeigen();
     } else if (column == 5) {
         onTeilnehmerdatenAendern();
-    } else if (column == 6) {
+    }/* else if (column == 6) {
         onAlsOrganisatorHinzufuegen();
-    }
+    }*/
 }
