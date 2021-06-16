@@ -14,6 +14,8 @@ View_Versionsverlauf::View_Versionsverlauf(QWidget *parent, Teilnehmer* teilnehm
     zurueck = ui->pushButton;
     ausloggen = ui->toolButton;
 
+    ui->tableWidget->horizontalHeader()->setStyleSheet("background-color: rgb(59, 59, 59); color: rgb(255, 255, 255);");
+
     this->teilnehmer = teilnehmer;
     this->vater = parent;
     onInit();

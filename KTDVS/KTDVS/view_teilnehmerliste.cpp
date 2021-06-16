@@ -12,6 +12,7 @@ View_Teilnehmerliste::View_Teilnehmerliste(QWidget *parent) :
     this->vater = parent;
     ui->setupUi(this);
 
+    ui->Teilnehmertabelle->horizontalHeader()->setStyleSheet("background-color: rgb(59, 59, 59); color: rgb(255, 255, 255);");
 
     this->listeTeilnehmer = ui->Teilnehmertabelle;
 

@@ -79,6 +79,7 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
     vater = parent;
 
     if(this->hauptorgErstellen) {
+        //ui->zurueck_2->setVisible(false);
         ui->zurueck_2->setEnabled(false);
         ui->Versionsverlauf->setEnabled(false);
         ui->OrganisatorrechteEntfernen->setEnabled(false);
