@@ -23,7 +23,7 @@ class View_Einloggen : public QWidget
     Q_OBJECT
 
 public:
-    explicit View_Einloggen(QWidget *parent = nullptr, bool isNeu = false);
+    explicit View_Einloggen(QWidget *parent = nullptr, bool isNeu = false, bool direkterStart=false);
     ~View_Einloggen();
 
     Teilnehmer *subjekt;
