@@ -38,6 +38,7 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
 
     //Check if Organisator
     this->isOrg = false;
+    ui->PwAndern->setVisible(false);
     if(aktuellerTeilnehmer != nullptr){
         list<Organisator*> orgsl = *Teilnehmerliste::instance()->getOrganisatorliste();
         list<Organisator*>::iterator it;
@@ -69,6 +70,9 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
         //hier muss geprüft werden ob man aktuell als hauptorganisator angemeldet ist, wenn nein dann des
         ui->OrganisatorrechteEntfernen->setVisible(false);
     }
+    if(Teilnehmerliste::instance()->getAktiverNutzer()->isHauptorganisator()){
+        ui->PwAndern->setVisible(true);
+    }
 
 
     neuerTn = neuerTeilnehmer;
@@ -79,6 +83,7 @@ View_TeilnehmerTeilnehmerHinzufuegen::View_TeilnehmerTeilnehmerHinzufuegen(
     vater = parent;
 
     if(this->hauptorgErstellen) {
+        //ui->zurueck_2->setVisible(false);
         ui->zurueck_2->setEnabled(false);
         ui->Versionsverlauf->setEnabled(false);
         ui->OrganisatorrechteEntfernen->setEnabled(false);
@@ -137,14 +142,14 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_PwAndern_clicked(){
     Teilnehmer* a =this->teiln;
     Organisator* b = (Organisator*) a;
     View_Passwortaenderung *pwa = new View_Passwortaenderung(vater,b); //da muss die richtige übergabe noch rein
-    this->hide();
+    this->close();
     pwa->show();
 
 }
 
 void View_TeilnehmerTeilnehmerHinzufuegen::on_Versionsverlauf_clicked(){
     View_Versionsverlauf *vv = new View_Versionsverlauf(vater,this->teiln);
-    this->hide();
+    this->close();
     vv->show();
 }
 
@@ -247,7 +252,7 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_Speichern_clicked(){ //Die Teilneh
         //Szenenuebergang -> View Teilnehmerliste
         View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->vater);
         tl->show();
-        this->hide();
+        this->close();
         return;
     }
     fehlermeldung();
@@ -269,7 +274,7 @@ void View_TeilnehmerTeilnehmerHinzufuegen::on_zurueck_2_clicked()
 {
     View_Teilnehmerliste* tl = new View_Teilnehmerliste(vater);
     tl->show();
-    this->hide();
+    this->close();
 }
 
 void View_TeilnehmerTeilnehmerHinzufuegen::on_logout_2_clicked()

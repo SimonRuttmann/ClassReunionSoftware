@@ -14,6 +14,8 @@ View_Versionsverlauf::View_Versionsverlauf(QWidget *parent, Teilnehmer* teilnehm
     zurueck = ui->pushButton;
     ausloggen = ui->toolButton;
 
+    ui->tableWidget->horizontalHeader()->setStyleSheet("background-color: rgb(59, 59, 59); color: rgb(255, 255, 255);");
+
     this->teilnehmer = teilnehmer;
     this->vater = parent;
     onInit();
@@ -27,7 +29,7 @@ View_Versionsverlauf::~View_Versionsverlauf()
 void View_Versionsverlauf::on_pushButton_clicked()
 {
     View_Teilnehmerliste* viewListe = new View_Teilnehmerliste(this->vater);
-    this->hide();
+    this->close();
     viewListe->show();
     cout << "go back" << endl;
 
@@ -64,7 +66,7 @@ void View_Versionsverlauf::on_tableWidget_cellClicked(int row, int column)
 
         View_VersionsverlaufDetailliert* vd = new View_VersionsverlaufDetailliert(this->vater, vorherige, pressedOne, teilnehmer);
         vd->show();
-        this->hide();
+        this->close();
     }
 }
 

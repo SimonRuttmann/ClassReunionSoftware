@@ -37,21 +37,15 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
-
-
-    /* PROOOOOOOOOOOOOODUKTIIIIIIIIIIIIIIIIIIIIIIIIIIVVVVVVVVVVVVVVVVVVVVVVVVVVVVVCCCCCCCCCCCCCCCCCCCOOOOOOOOOOODDDDDDDDDDDDEEEEEEEE*/
-
-
-
-    //if(!Teilnehmerliste::instance()->getTeilnehmerliste()->empty()){
-     //   View_Einloggen* beitretenStart = new View_Einloggen(this, false); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
-     //   beitretenStart->show();
-     //   this->hide();
-    //}
-    //else{
+    if(!Teilnehmerliste::instance()->getTeilnehmerliste()->empty()){
+       View_Einloggen* beitretenStart = new View_Einloggen(this, false,true); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
+        beitretenStart->show();
+        this->close();
+    }
+    else{
     View_ErsterSystemstart* ersterSystemstart = new View_ErsterSystemstart(this);
     ersterSystemstart->show();
-    //}
+    }
 
 
 }

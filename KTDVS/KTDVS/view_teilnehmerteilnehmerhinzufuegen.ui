@@ -25,7 +25,12 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="">
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+	background-color: rgb(59, 59, 59);
+}</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -39,6 +44,17 @@
      <layout class="QHBoxLayout" name="horizontalLayout_5">
       <item>
        <widget class="QPushButton" name="zurueck_2">
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	background-color: rgb(93, 93, 93);
+	color: rgb(255, 255, 255);
+}
+
+QPushButton:disabled{
+	color: rgb(68, 68, 68);
+	background-color: rgb(43, 43, 43);
+}</string>
+        </property>
         <property name="text">
          <string>Zurück</string>
         </property>
@@ -69,6 +85,17 @@
       </item>
       <item>
        <widget class="QPushButton" name="logout_2">
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	background-color: rgb(93, 93, 93);
+	color: rgb(255, 255, 255);
+}
+
+QPushButton:disabled{
+	color: rgb(68, 68, 68);
+	background-color: rgb(43, 43, 43);
+}</string>
+        </property>
         <property name="text">
          <string>Logout</string>
         </property>
@@ -285,6 +312,12 @@
                       <property name="enabled">
                        <bool>true</bool>
                       </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                      </property>
                       <property name="placeholderText">
                        <string>Mustername</string>
                       </property>
@@ -292,6 +325,12 @@
                     </item>
                     <item>
                      <widget class="QLineEdit" name="lineEdit_12">
+                      <property name="styleSheet">
+                       <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                      </property>
                       <property name="placeholderText">
                        <string>Mustername</string>
                       </property>
@@ -299,6 +338,12 @@
                     </item>
                     <item>
                      <widget class="QLineEdit" name="lineEdit_13">
+                      <property name="styleSheet">
+                       <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                      </property>
                       <property name="placeholderText">
                        <string>Mustername</string>
                       </property>
@@ -306,6 +351,12 @@
                     </item>
                     <item>
                      <widget class="QLineEdit" name="lineEdit_14">
+                      <property name="styleSheet">
+                       <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                      </property>
                       <property name="placeholderText">
                        <string>Musterstraße</string>
                       </property>
@@ -313,6 +364,12 @@
                     </item>
                     <item>
                      <widget class="QLineEdit" name="lineEdit_15">
+                      <property name="styleSheet">
+                       <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                      </property>
                       <property name="placeholderText">
                        <string>13</string>
                       </property>
@@ -320,6 +377,12 @@
                     </item>
                     <item>
                      <widget class="QLineEdit" name="lineEdit_16">
+                      <property name="styleSheet">
+                       <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                      </property>
                       <property name="placeholderText">
                        <string>42069</string>
                       </property>
@@ -327,6 +390,12 @@
                     </item>
                     <item>
                      <widget class="QLineEdit" name="lineEdit_17">
+                      <property name="styleSheet">
+                       <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                      </property>
                       <property name="placeholderText">
                        <string>Musterstadt</string>
                       </property>
@@ -334,6 +403,12 @@
                     </item>
                     <item>
                      <widget class="QLineEdit" name="lineEdit_18">
+                      <property name="styleSheet">
+                       <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                      </property>
                       <property name="placeholderText">
                        <string>Musterland</string>
                       </property>
@@ -341,6 +416,12 @@
                     </item>
                     <item>
                      <widget class="QLineEdit" name="lineEdit_20">
+                      <property name="styleSheet">
+                       <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                      </property>
                       <property name="placeholderText">
                        <string>max@mustermann.de</string>
                       </property>
@@ -348,6 +429,12 @@
                     </item>
                     <item>
                      <widget class="QLineEdit" name="lineEdit_19">
+                      <property name="styleSheet">
+                       <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                      </property>
                       <property name="alignment">
                        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                       </property>
@@ -358,6 +445,12 @@
                     </item>
                     <item>
                      <widget class="QLineEdit" name="lineEdit_21">
+                      <property name="styleSheet">
+                       <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                      </property>
                       <property name="placeholderText">
                        <string>0123456789</string>
                       </property>
@@ -377,6 +470,12 @@
                   <height>500</height>
                  </size>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">QTextEdit{
+	color: rgb(255, 255, 255);
+	background-color: rgb(59, 59, 59);
+}</string>
+                </property>
                 <property name="placeholderText">
                  <string>Kommentar...</string>
                 </property>
@@ -386,6 +485,17 @@
                <layout class="QVBoxLayout" name="verticalLayout">
                 <item>
                  <widget class="QPushButton" name="Versionsverlauf">
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	background-color: rgb(93, 93, 93);
+	color: rgb(255, 255, 255);
+}
+
+QPushButton:disabled{
+	color: rgb(68, 68, 68);
+	background-color: rgb(43, 43, 43);
+}</string>
+                  </property>
                   <property name="text">
                    <string>Versionsverlauf</string>
                   </property>
@@ -393,6 +503,15 @@
                 </item>
                 <item>
                  <widget class="QPushButton" name="Speichern">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	background-color: rgb(93, 93, 93);
+	color: rgb(255, 255, 255);
+}</string>
+                  </property>
                   <property name="text">
                    <string>Speichern</string>
                   </property>
@@ -400,6 +519,20 @@
                 </item>
                 <item>
                  <widget class="QPushButton" name="PwAndern">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	background-color: rgb(93, 93, 93);
+	color: rgb(255, 255, 255);
+}
+
+QPushButton:disabled{
+	color: rgb(68, 68, 68);
+	background-color: rgb(43, 43, 43);
+}</string>
+                  </property>
                   <property name="text">
                    <string>Passwort ändern</string>
                   </property>
@@ -412,6 +545,17 @@
                   </property>
                   <property name="autoFillBackground">
                    <bool>false</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	background-color: rgb(93, 93, 93);
+	color: rgb(255, 255, 255);
+}
+
+QPushButton:disabled{
+	color: rgb(68, 68, 68);
+	background-color: rgb(43, 43, 43);
+}</string>
                   </property>
                   <property name="text">
                    <string>Organisatorrechte entfernen</string>
@@ -462,6 +606,12 @@
           </item>
           <item>
            <widget class="QPushButton" name="AddPhoneNumber">
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+	background-color: rgb(93, 93, 93);
+	color: rgb(255, 255, 255);
+}</string>
+            </property>
             <property name="text">
              <string>Weitere Telefonnummer hinzufügen</string>
             </property>

@@ -70,7 +70,7 @@ void View_Passwortaenderung::on_Zurueck_clicked()
 {
     View_Teilnehmerliste* tl = new View_Teilnehmerliste(parent);
     tl->show();
-    this->hide();
+    this->close();
 }
 
 
@@ -98,7 +98,7 @@ void View_Passwortaenderung::on_pushButton_clicked()
                 qDebug()<<"MUHAHAHAHAHHAHAHAHAHAHAHHAHAH"<<updated;
                 View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
                 tl->show();
-                this->hide();
+                this->close();
 
             }else{
                 ui-> Fehlermeldung -> setVisible(true);
@@ -121,7 +121,7 @@ void View_Passwortaenderung::on_pushButton_clicked()
             qDebug() <<"Teilnehmer wurde zum Organisator gemacht" << QString::fromStdString(org->getAktuelleTeilnehmerdaten()->getEMail());
             View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
             tl->show();
-            this->hide();
+            this->close();
             break;
         }
         case 3: //Fall3= Hauptorg ändert Passwort von ORg
@@ -139,7 +139,7 @@ void View_Passwortaenderung::on_pushButton_clicked()
             qDebug()<<"MUHAHAHAHAHHAHAHAHAHAHAHHAHAH"<<updated;
             View_Teilnehmerliste* tl = new View_Teilnehmerliste(this->parent); //statt 'this' muss es vermutlich eine globale Var mit dem Hauptfenster geben.
             tl->show();
-            this->hide();
+            this->close();
 
             break;
         }
