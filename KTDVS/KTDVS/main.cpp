@@ -65,6 +65,9 @@ int main(int argc, char *argv[])
             cleanDb.prepare("DELETE FROM Telefonnummer;");
             cleanDb.exec();
             cleanDb.clear();
+            cleanDb.prepare("UPDATE sqlite_sequence set seq = 0;");
+            cleanDb.exec();
+            cleanDb.clear();
         }
         else if(arg==QString("test")){
             qDebug() << "Testfall wurde aufgerufen";
@@ -106,7 +109,7 @@ int main(int argc, char *argv[])
                            "VALUES                     (1, 'Roland', '', 'Dietrich', 'D@Albertus.com', '', 11111, "
                                                         "1, 'Antonstadt', 'Antonstrasse', 'Deutschland', 'meinKommentar', 1);");
 
-            HOrg_tel_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (15, '1', '075116699177')");
+            HOrg_tel_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (1, '1', '075116699177')");
 
             HOrg.exec();
             HOrg_1.exec();
@@ -118,10 +121,10 @@ int main(int argc, char *argv[])
 
             OrgM_1.prepare("INSERT INTO Teilnehmerdaten (teilnehmerkey, vorname, nachname, schulname, email, datum, postleitzahl, "
                                                         "hausnummer, stadt, strasse, land, kommentar, erstellerkey)"
-                           "VALUES                     (2, 'Max','' , 'Mustermann', 'Antonius@Albertus.com', '', 11111, "
+                           "VALUES                     (2, 'Max','' , 'Mustermann', '1@Albertus.com', '', 11111, "
                                                         "1, 'Antonstadt', 'Antonstrasse', 'Deutschland', 'meinKommentar', 1);");
 
-            OrgM_tel_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (1, 1, 075116699177)");
+            OrgM_tel_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (2, 1, 075116699177)");
 
             OrgM.exec();
             OrgM_1.exec();
@@ -131,10 +134,10 @@ int main(int argc, char *argv[])
 
             OrgK_1.prepare("INSERT INTO Teilnehmerdaten (teilnehmerkey, vorname, nachname, schulname, email, datum, postleitzahl, "
                                                         "hausnummer, stadt, strasse, land, kommentar, erstellerkey)"
-                           "VALUES                     (3, 'Klara', '', 'Musterfrau', 'Antonius@Albertus.com', '', 11111, "
+                           "VALUES                     (3, 'Klara', '', 'Musterfrau', '2@Albertus.com', '', 11111, "
                                                         "1, 'Antonstadt', 'Antonstrasse', 'Deutschland', 'meinKommentar', 1);");
 
-            OrgK_tel_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (1, 1, 075116699177)");
+            OrgK_tel_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (3, 1, 075116699177)");
 
             OrgK.exec();
             OrgK_1.exec();
@@ -144,10 +147,10 @@ int main(int argc, char *argv[])
 
             td1_1.prepare("INSERT INTO Teilnehmerdaten (teilnehmerkey, vorname, nachname, schulname, email, datum, postleitzahl, "
                                                         "hausnummer, stadt, strasse, land, kommentar, erstellerkey)"
-                           "VALUES                     (1, 'Erstus', 'Albertus', 'Alberti', 'Antonius@Albertus.com', '', 11111, "
+                           "VALUES                     (4, 'Erstus', 'Albertus', 'Alberti', '3@Albertus.com', '', 11111, "
                                                         "1, 'Antonstadt', 'Antonstrasse', 'Deutschland', 'meinKommentar', 1);");
 
-            tel1_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (1, 1, 075116699177)");
+            tel1_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (4, 1, 075116699177)");
 
             t1.exec();
             td1_1.exec();
@@ -158,10 +161,10 @@ int main(int argc, char *argv[])
 
             td2_1.prepare("INSERT INTO Teilnehmerdaten (teilnehmerkey, vorname, nachname, schulname, email, datum, postleitzahl, "
                                                         "hausnummer, stadt, strasse, land, kommentar, erstellerkey)"
-                           "VALUES                     (2, 'Zweitus', 'Albertus', 'Alberti', 'Antonius@Albertus.com', '', 11111, "
+                           "VALUES                     (5, 'Zweitus', 'Albertus', 'Alberti', '4@Albertus.com', '', 11111, "
                                                         "1, 'Antonstadt', 'Antonstrasse', 'Deutschland', 'meinKommentar', 1);");
 
-            tel2_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (1, 1, 075116699177)");
+            tel2_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (5, 1, 075116699177)");
 
             t2.exec();
             td2_1.exec();
@@ -171,10 +174,10 @@ int main(int argc, char *argv[])
 
             td3_1.prepare("INSERT INTO Teilnehmerdaten (teilnehmerkey, vorname, nachname, schulname, email, datum, postleitzahl, "
                                                         "hausnummer, stadt, strasse, land, kommentar, erstellerkey)"
-                           "VALUES                     (3, 'Dreitus', 'Albertus', 'Alberti', 'Antonius@Albertus.com', '', 11111, "
+                           "VALUES                     (6, 'Dreitus', 'Albertus', 'Alberti', '5@Albertus.com', '', 11111, "
                                                         "1, 'Antonstadt', 'Antonstrasse', 'Deutschland', 'meinKommentar', 1);");
 
-            tel3_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (1, 1, 075116699177)");
+            tel3_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (6, 1, 075116699177)");
 
             t3.exec();
             td3_1.exec();
@@ -184,10 +187,10 @@ int main(int argc, char *argv[])
 
             td4_1.prepare("INSERT INTO Teilnehmerdaten (teilnehmerkey, vorname, nachname, schulname, email, datum, postleitzahl, "
                                                         "hausnummer, stadt, strasse, land, kommentar, erstellerkey)"
-                           "VALUES                     (4, 'Viertus', 'Albertus', 'Alberti', 'Antonius@Albertus.com', '', 11111, "
+                           "VALUES                     (7, 'Viertus', 'Albertus', 'Alberti', '6@Albertus.com', '', 11111, "
                                                         "1, 'Antonstadt', 'Antonstrasse', 'Deutschland', 'meinKommentar', 1);");
 
-            tel4_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (1, 1, 075116699177)");
+            tel4_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (7, 1, 075116699177)");
 
             t4.exec();
             td4_1.exec();
@@ -197,10 +200,10 @@ int main(int argc, char *argv[])
 
             td5_1.prepare("INSERT INTO Teilnehmerdaten (teilnehmerkey, vorname, nachname, schulname, email, datum, postleitzahl, "
                                                         "hausnummer, stadt, strasse, land, kommentar, erstellerkey)"
-                           "VALUES                     (5, 'Fünftus', 'Albertus', 'Alberti', 'Antonius@Albertus.com', '', 11111, "
+                           "VALUES                     (8, 'Fünftus', 'Albertus', 'Alberti', '7@Albertus.com', '', 11111, "
                                                         "1, 'Antonstadt', 'Antonstrasse', 'Deutschland', 'meinKommentar', 1);");
 
-            tel5_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (1, 1, 075116699177)");
+            tel5_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (8, 1, 075116699177)");
 
             t5.exec();
             td5_1.exec();
@@ -210,10 +213,10 @@ int main(int argc, char *argv[])
 
             td6_1.prepare("INSERT INTO Teilnehmerdaten (teilnehmerkey, vorname, nachname, schulname, email, datum, postleitzahl, "
                                                         "hausnummer, stadt, strasse, land, kommentar, erstellerkey)"
-                           "VALUES                     (6, 'Sechstus', 'Albertus', 'Alberti', 'Antonius@Albertus.com', '', 11111, "
+                           "VALUES                     (9, 'Sechstus', 'Albertus', 'Alberti', '8@Albertus.com', '', 11111, "
                                                         "1, 'Antonstadt', 'Antonstrasse', 'Deutschland', 'meinKommentar', 1);");
 
-            tel6_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (1, 1, 075116699177)");
+            tel6_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (9, 1, 075116699177)");
 
             t6.exec();
             td6_1.exec();
@@ -223,10 +226,10 @@ int main(int argc, char *argv[])
 
             td7_1.prepare("INSERT INTO Teilnehmerdaten (teilnehmerkey, vorname, nachname, schulname, email, datum, postleitzahl, "
                                                         "hausnummer, stadt, strasse, land, kommentar, erstellerkey)"
-                           "VALUES                     (7, 'Siebtus', 'Albertus', 'Alberti', 'Antonius@Albertus.com', '', 11111, "
+                           "VALUES                     (10, 'Siebtus', 'Albertus', 'Alberti', '9@Albertus.com', '', 11111, "
                                                         "1, 'Antonstadt', 'Antonstrasse', 'Deutschland', 'meinKommentar', 1);");
 
-            tel7_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (1, 1, 075116699177)");
+            tel7_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (10, 1, 075116699177)");
 
             t7.exec();
             td7_1.exec();
@@ -236,10 +239,10 @@ int main(int argc, char *argv[])
 
             td8_1.prepare("INSERT INTO Teilnehmerdaten (teilnehmerkey, vorname, nachname, schulname, email, datum, postleitzahl, "
                                                         "hausnummer, stadt, strasse, land, kommentar, erstellerkey)"
-                           "VALUES                     (8, 'Achtus', 'Albertus', 'Alberti', 'Antonius@Albertus.com', '', 11111, "
+                           "VALUES                     (11, 'Achtus', 'Albertus', 'Alberti', '10@Albertus.com', '', 11111, "
                                                         "1, 'Antonstadt', 'Antonstrasse', 'Deutschland', 'meinKommentar', 1);");
 
-            tel8_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (1, 1, 075116699177)");
+            tel8_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (11, 1, 075116699177)");
 
             t8.exec();
             td8_1.exec();
@@ -249,10 +252,10 @@ int main(int argc, char *argv[])
 
             td9_1.prepare("INSERT INTO Teilnehmerdaten (teilnehmerkey, vorname, nachname, schulname, email, datum, postleitzahl, "
                                                         "hausnummer, stadt, strasse, land, kommentar, erstellerkey)"
-                           "VALUES                     (9, 'Neuntus', 'Albertus', 'Alberti', 'Antonius@Albertus.com', '', 11111, "
+                           "VALUES                     (12, 'Neuntus', 'Albertus', 'Alberti', '11@Albertus.com', '', 11111, "
                                                         "1, 'Antonstadt', 'Antonstrasse', 'Deutschland', 'meinKommentar', 1);");
 
-            tel9_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (1, 1, 075116699177)");
+            tel9_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (12, 1, 075116699177)");
 
             t9.exec();
             td9_1.exec();
@@ -262,10 +265,10 @@ int main(int argc, char *argv[])
 
             td10_1.prepare("INSERT INTO Teilnehmerdaten (teilnehmerkey, vorname, nachname, schulname, email, datum, postleitzahl, "
                                                         "hausnummer, stadt, strasse, land, kommentar, erstellerkey)"
-                           "VALUES                     (10, 'Dakadenz', 'Albertus', 'Alberti', 'Antonius@Albertus.com', '', 11111, "
+                           "VALUES                     (13, 'Dakadenz', 'Albertus', 'Alberti', '12@Albertus.com', '', 11111, "
                                                         "1, 'Antonstadt', 'Antonstrasse', 'Deutschland', 'meinKommentar', 1);");
 
-            tel10_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (1, 1, 075116699177)");
+            tel10_1.prepare("INSERT INTO Telefonnummer (teilnehmerdatenkey, isHaupttelefonnummer, telefonnummer) VALUES (13, 1, 075116699177)");
 
             t10.exec();
             td10_1.exec();
