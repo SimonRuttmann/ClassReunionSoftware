@@ -15,7 +15,10 @@ View_Einloggen::View_Einloggen(QWidget *parent, bool isNeu, bool direkterStart) 
     this->parent = parent;
     this->isNeu = isNeu;
     ui->setupUi(this);
-    if(direkterStart) ui->zurueck->setVisible(false);
+    if(direkterStart) {
+        ui->zurueck->setVisible(false);
+        ui->logout_2->setVisible(false);
+    }
     this->onInit();
 }
 
