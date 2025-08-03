@@ -2,6 +2,15 @@
 
 **KTDVS** is a desktop application designed to simplify the organization of class reunions by managing participant data with role-based access control and version tracking.
 
+<div align="center">
+  <img src="media/img/app/login.png" width="48%"/>
+  <img src="media/img/app/user_list.png" width="48%"/>
+</div>
+<div align="center">
+  <img src="media/img/app/user_edit_filled.png" width="48%"/>
+  <img src="media/img/app/user_version.png" width="48%"/>
+</div>
+
 <!-- TOC -->
 * [🧑‍🎓 KTDVS – Class Reunion Data Management Software](#-ktdvs--class-reunion-data-management-software)
   * [🎓 Project & Context](#-project--context)
@@ -21,15 +30,6 @@
   * [📦 Running the Project](#-running-the-project)
   * [🖼️ Interactive Prototype](#-interactive-prototype)
 <!-- TOC -->
-
-<div align="center">
-  <img src="media/img/app/login.png" width="48%"/>
-  <img src="media/img/app/user_list.png" width="48%"/>
-</div>
-<div align="center">
-  <img src="media/img/app/user_edit_filled.png" width="48%"/>
-  <img src="media/img/app/user_version.png" width="48%"/>
-</div>
 
 ---
 
@@ -215,7 +215,7 @@ Feel free to fork, adapt, or reuse — just give credit. 🤝
 > - C++17-compatible compiler
 > - SQLite support
 >
-> Clone or download this repository, open the `.pro` file in Qt Creator, then build and run.
+> Clone or download this repository, run the `KTDVS.exe` file in the build folder.
 
 ---
 
