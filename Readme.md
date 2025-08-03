@@ -3,12 +3,12 @@
 **KTDVS** is a desktop application designed to simplify the organization of class reunions by managing participant data with access control and version tracking.
 
 <div align="center">
-  <img src="media/img/app/login.png" width="50%"/>
-  <img src="media/img/app/user_list.png" width="50%"/>
+  <img src="media/img/app/login.png" width="48%"/>
+  <img src="media/img/app/user_list.png" width="48%"/>
 </div>
 <div align="center">
-  <img src="media/img/app/user_edit_filled.png" width="50%"/>
-  <img src="media/img/app/user_version.png" width="50%"/>
+  <img src="media/img/app/user_edit_filled.png" width="48%"/>
+  <img src="media/img/app/user_version.png" width="48%"/>
 </div>
 
 ---
