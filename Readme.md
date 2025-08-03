@@ -2,7 +2,14 @@
 
 **KTDVS** is a desktop application designed to simplify the organization of class reunions by managing participant data with access control and version tracking.
 
-![Screenshot – Participant View](media/img/app/user_version.png)
+<div align="center">
+  <img src="media/img/app/login.png" width="50%"/>
+  <img src="media/img/app/user_list.png" width="50%"/>
+</div>
+<div align="center">
+  <img src="media/img/app/user_edit_filled.png" width="50%"/>
+  <img src="media/img/app/user_version.png" width="50%"/>
+</div>
 
 ---
 
@@ -18,17 +25,23 @@ The goal was to go through a complete software development process, including:
 - Implementation in C++ with Qt
 - Persistent data storage using SQLite
 
+For using it on multiple devices the sqlite database has to be shared. 
+This can be done by putting the database-file on a network storage or cloud providers storage like Dropbox or GoogleDrive.
+
 ---
 
 ## 🧩 Key Features
 
 - ✏️ Add, edit, and delete participants
 - 📖 View individual change history (versions)
-- 📜 Global history of all data changes
+- 📜 Per user history of all data changes
 - 🔐 Role-based user access (admin vs. editor)
 - 💾 Persistent local storage (SQLite)
 - 👤 Role system: main organizer and co-organizers
 - 🧠 Qt-based modern GUI
+
+Full requirements available in  
+📄 [IEEE 830 Requirements Specification (PDF)](docs/SoftwareAnforderungenIEEE.pdf)
 
 ---
 
@@ -93,6 +106,10 @@ Here you can edit the already existing user.
   <img src="media/img/app/user_edit_filled.png"/>
 </div>
 
+---
+
+### 📖 Versioning users
+
 When you want to see how the data was edited since its creation you can open a version list by clicking
 "Versionsverlauf". Here all changes are listed done to that user.
 
@@ -107,23 +124,18 @@ list and you will be navigated to a form listing the data before and after that 
   <img src="media/img/app/user_version.png"/>
 </div>
 
----
+### 👤 Promoting users
 
-### ✏️ Managing Entries & 🗂️ Categories
-
-Well what would you expect from a saving app? 😅
-
-SparApp offers full:
-- 📝 Entry CRUD (create, read, update, delete)
-- 🗂️ Category CRUD (personal & group-wide)
+Single users can be promoted to become organizers.
+The promoter will receive a **one time password** for the new organizer.
+The new organizer can login with it and replace the password with its own.
+If an organizer uses 3 times a wrong password, the account is locked and the user has to inform the system owner.
+The system owner can reset the password using the promote view.
 
 <div align="center">
-  <img src="media/gifs/crop/savingentry-creation-crop.gif"/>
-  <img src="media/gifs/crop/savingentry-edit-delete-crop.gif"/>
-  <img src="media/gifs/crop/category-creation-crop.gif"/>
+  <img src="media/img/app/user_promote.png"/>
+  <img src="media/img/app/first_login_organizer.png"/>
 </div>
-
-> For more details, see the [Design PDF](docs/Entwurf.pdf)
 
 ---
 
@@ -137,43 +149,13 @@ SparApp offers full:
 - **Framework:** Qt (tested with Qt Creator)
 - **Database:** SQLite (single-file)
 
+A class diagram of the app can be seen below:
+
+<div align="center">
+  <img src="media/img/design/class_diagram.png"/>
+</div>
+
 > Diagrams and explanations can be found in the [design documentation](docs/Entwurf.pdf)
-
----
-
-## 📂 Project Structure
-
-```bash
-KTDVS/
-│
-├── src/                   # C++ source code
-│   ├── views/             # GUI (Qt)
-│   ├── model/             # Data models
-│   └── dao/               # Data Access Layer (DAO pattern)
-│
-├── db/                    # SQLite DB file
-│   └── ktdvs.sqlite
-│
-├── docs/                  # Design & requirement docs
-│   ├── Entwurf.pdf
-│   └── SoftwareAnforderungenIEEE.pdf
-│
-└── media/
-    └── screenshots/
-```
-
----
-
-## ✅ Example Use Cases
-
-- 🔑 Login with email & password
-- 🧾 Add new participants via form
-- 🔁 Password change at first login
-- 📜 Global and individual history views
-- 🧹 Reset passwords (admin only)
-
-Full requirements available in  
-📄 [IEEE 830 Requirements Specification (PDF)](docs/SoftwareAnforderungenIEEE.pdf)
 
 ---
 
@@ -187,7 +169,7 @@ Full requirements available in
 
 ---
 
-## 👨‍👩‍👧‍👦 Team
+## 🧑‍💻 Teamwork makes the Dream Work
 
 Developed by:
 
